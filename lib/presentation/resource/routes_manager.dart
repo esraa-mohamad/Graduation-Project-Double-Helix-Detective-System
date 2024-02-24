@@ -1,3 +1,14 @@
+import 'package:double_helix_detective_system/presentation/Identification/identification_form_view.dart';
+import 'package:double_helix_detective_system/presentation/Identification/identification_result_view.dart';
+import 'package:double_helix_detective_system/presentation/login/login_view.dart';
+import 'package:double_helix_detective_system/presentation/missing_persons/missing_persons_form_view.dart';
+import 'package:double_helix_detective_system/presentation/missing_persons/missing_persons_result_view.dart';
+import 'package:double_helix_detective_system/presentation/paternity_test/paternity_test_form_view.dart';
+import 'package:double_helix_detective_system/presentation/paternity_test/paternity_test_result_view.dart';
+import 'package:double_helix_detective_system/presentation/population/population_view.dart';
+import 'package:double_helix_detective_system/presentation/resource/strings_manager.dart';
+import 'package:double_helix_detective_system/presentation/services_presented/service_presented_view.dart';
+import 'package:double_helix_detective_system/presentation/splash/splash_view.dart';
 import 'package:flutter/material.dart';
 
 class RoutesManager{
@@ -14,10 +25,43 @@ class RoutesManager{
 }
 
 class RouteGenerator{
-  // static Route<dynamic>getRoute(RouteSettings settings){
-  //   switch(settings.name){
-  //     case RoutesManager.splashRoute:
-  //       return MaterialPageRoute(builder: (_)=>)
-  //   }
-  // }
+  static Route<dynamic>getRoute(RouteSettings settings){
+    switch(settings.name){
+      case RoutesManager.splashRoute:
+        return MaterialPageRoute(builder: (_)=>const SplashView());
+      case RoutesManager.loginRoute:
+        return MaterialPageRoute(builder: (_)=>const LoginView());
+      case RoutesManager.servicesPresentedRoute:
+        return MaterialPageRoute(builder: (_)=>const ServicesView());
+      case RoutesManager.paternityFormRoute:
+        return MaterialPageRoute(builder: (_)=>const PaternityTestForm());
+      case RoutesManager.paternityResultRoute:
+        return MaterialPageRoute(builder: (_)=>const PaternityTestResult());
+      case RoutesManager.identificationFormRoute:
+        return MaterialPageRoute(builder: (_)=>const IdentificationForm());
+      case RoutesManager.identificationResultRoute:
+        return MaterialPageRoute(builder: (_)=>const IdentificationResult());
+      case RoutesManager.missingPersonFormRoute:
+        return MaterialPageRoute(builder: (_)=>const MissingForm());
+      case RoutesManager.missingPersonResultRoute:
+        return MaterialPageRoute(builder: (_)=>const MissingResult());
+      case RoutesManager.populationRoute:
+        return MaterialPageRoute(builder: (_)=>const PopulationView());
+
+      default :return unDefinedRoute();
+    }
+  }
+
+  static Route<dynamic> unDefinedRoute() {
+    return MaterialPageRoute(builder: (_){
+      return Scaffold(
+       appBar:AppBar(  title: const Text(
+          AppStrings.noDefinedRoute),
+      ),
+      body: const Center(
+      child: Text(
+      AppStrings.noDefinedRoute)),
+      );
+    });
+  }
 }
