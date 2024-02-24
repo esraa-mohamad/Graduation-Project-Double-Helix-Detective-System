@@ -1,15 +1,16 @@
-import 'package:double_helix_detective_system/presentation/Identification/identification_form_view.dart';
-import 'package:double_helix_detective_system/presentation/Identification/identification_result_view.dart';
-import 'package:double_helix_detective_system/presentation/login/login_view.dart';
-import 'package:double_helix_detective_system/presentation/missing_persons/missing_persons_form_view.dart';
-import 'package:double_helix_detective_system/presentation/missing_persons/missing_persons_result_view.dart';
-import 'package:double_helix_detective_system/presentation/paternity_test/paternity_test_form_view.dart';
-import 'package:double_helix_detective_system/presentation/paternity_test/paternity_test_result_view.dart';
-import 'package:double_helix_detective_system/presentation/population/population_view.dart';
+
 import 'package:double_helix_detective_system/presentation/resource/strings_manager.dart';
-import 'package:double_helix_detective_system/presentation/services_presented/service_presented_view.dart';
-import 'package:double_helix_detective_system/presentation/splash/splash_view.dart';
 import 'package:flutter/material.dart';
+import '../screens/Identification/identification_form_view.dart';
+import '../screens/Identification/identification_result_view.dart';
+import '../screens/login/login_view.dart';
+import '../screens/missing_persons/missing_persons_form_view.dart';
+import '../screens/missing_persons/missing_persons_result_view.dart';
+import '../screens/paternity_test/paternity_test_form_view.dart';
+import '../screens/paternity_test/paternity_test_result_view.dart';
+import '../screens/population/population_view.dart';
+import '../screens/services_presented/service_presented_view.dart';
+import '../screens/splash/splash_view.dart';
 
 class RoutesManager{
   static const String splashRoute='/';
