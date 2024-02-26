@@ -1,10 +1,11 @@
+import 'package:double_helix_detective_system/presentation/screens/splash/splash_view.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatefulWidget {
   // named constructor
-  MyApp._internal();
+  const MyApp._internal();
   //singleton
-  static final MyApp _instance= MyApp._internal();
+  static const MyApp _instance= MyApp._internal();
   //factory
   factory MyApp()=>_instance;
 
@@ -15,6 +16,8 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const MaterialApp(
+      home: SplashView(),
+    );
   }
 }
