@@ -1,5 +1,6 @@
-import 'package:double_helix_detective_system/presentation/screens/splash/splash_view.dart';
 import 'package:flutter/material.dart';
+import '../presentation/resource/routes_manager.dart';
+import '../presentation/resource/theme_manager.dart';
 
 class MyApp extends StatefulWidget {
   // named constructor
@@ -16,8 +17,11 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: SplashView(),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: getApplicationTheme(),
+      onGenerateRoute: RouteGenerator.getRoute,
+      initialRoute: RoutesManager.splashRoute,
     );
   }
 }

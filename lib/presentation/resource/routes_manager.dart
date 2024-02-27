@@ -1,5 +1,6 @@
 
 import 'package:double_helix_detective_system/presentation/resource/strings_manager.dart';
+import 'package:double_helix_detective_system/presentation/screens/on_boarding/on_boarding.dart';
 import 'package:flutter/material.dart';
 import '../screens/Identification/identification_form_view.dart';
 import '../screens/Identification/identification_result_view.dart';
@@ -14,6 +15,7 @@ import '../screens/splash/splash_view.dart';
 
 class RoutesManager{
   static const String splashRoute='/';
+  static const String onBoardingRoute='/onBoarding';
   static const String loginRoute='/login';
   static const String servicesPresentedRoute='/servicesPresented';
   static const String paternityFormRoute='/paternityForm';
@@ -30,6 +32,8 @@ class RouteGenerator{
     switch(settings.name){
       case RoutesManager.splashRoute:
         return MaterialPageRoute(builder: (_)=>const SplashView());
+      case RoutesManager.onBoardingRoute:
+        return MaterialPageRoute(builder: (_)=>const OnBoarding());
       case RoutesManager.loginRoute:
         return MaterialPageRoute(builder: (_)=>const LoginView());
       case RoutesManager.servicesPresentedRoute:
