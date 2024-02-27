@@ -1,6 +1,6 @@
 
 import 'package:double_helix_detective_system/presentation/resource/strings_manager.dart';
-import 'package:double_helix_detective_system/presentation/screens/on_boarding/on_boarding.dart';
+import 'package:double_helix_detective_system/presentation/screens/on_boarding/onboarding_view.dart';
 import 'package:flutter/material.dart';
 import '../screens/Identification/identification_form_view.dart';
 import '../screens/Identification/identification_result_view.dart';

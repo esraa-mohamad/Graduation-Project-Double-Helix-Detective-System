@@ -67,7 +67,7 @@ class _SplashViewState extends State<SplashView> {
                 ),
               ),
               Expanded(
-                child: Lottie.asset(LottiAssets.splashLogo,
+                child: Lottie.asset(AssetsManager.splashLogo,
                     repeat: true,
                     reverse: false,
                     animate: true,
