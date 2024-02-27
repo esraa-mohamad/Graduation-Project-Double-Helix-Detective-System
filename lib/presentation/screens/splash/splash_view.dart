@@ -79,12 +79,12 @@ class _SplashViewState extends State<SplashView> {
       ),
     );
   }
-}
-
-
   @override
   void dispose() {
     super.dispose();
     _timer?.cancel();
   }
 }
+
+
+
