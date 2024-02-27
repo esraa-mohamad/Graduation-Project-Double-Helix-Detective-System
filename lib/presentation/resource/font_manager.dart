@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class FontConstants
 {
-  static const String fontFamily = " Roboto Condensed";
+  static const String fontFamily = "Roboto Condensed";
   static const String arabicFontFamily = "Cairo";
 }
 
@@ -12,7 +12,7 @@ class FontWeightManager
   static const FontWeight regular = FontWeight.w500;
   static const FontWeight medium = FontWeight.w600;
   static const FontWeight semiBold = FontWeight.w700;
-  static const FontWeight bold = FontWeight.w800;
+  static const FontWeight bold = FontWeight.w900;
 }
 
 class FontSize

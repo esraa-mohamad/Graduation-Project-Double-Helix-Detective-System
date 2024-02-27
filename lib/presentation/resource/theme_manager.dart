@@ -54,22 +54,22 @@ ThemeData getApplicationTheme(){
     textTheme: TextTheme(
         displayLarge: getBoldStyle(
             color: ColorManager.primary,
-            fontSize: FontSize.s22
+            fontSize: FontSize.s30
         ),
         headlineLarge: getSemiBoldStyle(
             color: ColorManager.gray,
-            fontSize: FontSize.s16
+            fontSize: FontSize.s25
         ),
         headlineMedium: getMediumStyle(
             color: ColorManager.gray ,
-            fontSize: FontSize.s16
+            fontSize: FontSize.s22
         ),
         titleMedium: getMediumStyle(
             color: ColorManager.primary,
-            fontSize: FontSize.s18
+            fontSize: FontSize.s20
         ),
-        bodyLarge: getRegularStyle(color: ColorManager.primary),
-        bodySmall: getRegularStyle(color: ColorManager.title)),
+        bodyLarge: getRegularStyle(fontSize:FontSize.s18 , color: ColorManager.primary),
+        bodySmall: getRegularStyle(fontSize:FontSize.s16 ,color: ColorManager.title)),
 
     // input decoration theme (text form field)
     inputDecorationTheme: InputDecorationTheme(

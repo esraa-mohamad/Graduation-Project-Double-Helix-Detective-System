@@ -71,7 +71,7 @@ TextStyle getSemiBoldStyle({
 
 // bold style
 TextStyle getBoldStyle({
-  double fontSize = FontSize.s28,
+  double fontSize = FontSize.s30,
   required Color color ,
 })
 {
