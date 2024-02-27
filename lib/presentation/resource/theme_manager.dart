@@ -41,11 +41,11 @@ ThemeData getApplicationTheme(){
       style: ElevatedButton.styleFrom(
         textStyle: getRegularStyle(
             color: ColorManager.background,
-            fontSize: FontSize.s20
+            fontSize: FontSize.s25
         ),
         backgroundColor: ColorManager.primary,
         shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppSize.s12)
+            borderRadius: BorderRadius.circular(AppSize.s20)
         ),
       ),
     ),
@@ -62,14 +62,14 @@ ThemeData getApplicationTheme(){
         ),
         headlineMedium: getMediumStyle(
             color: ColorManager.gray ,
-            fontSize: FontSize.s22
+            fontSize: FontSize.s20
         ),
         titleMedium: getMediumStyle(
             color: ColorManager.primary,
-            fontSize: FontSize.s20
+            fontSize: FontSize.s22
         ),
         bodyLarge: getRegularStyle(fontSize:FontSize.s18 , color: ColorManager.primary),
-        bodySmall: getRegularStyle(fontSize:FontSize.s16 ,color: ColorManager.title)),
+        bodySmall: getRegularStyle(fontSize:FontSize.s16 ,color: ColorManager.gray)),
 
     // input decoration theme (text form field)
     inputDecorationTheme: InputDecorationTheme(
@@ -79,30 +79,35 @@ ThemeData getApplicationTheme(){
         hintStyle:
         getRegularStyle(color: ColorManager.gray, fontSize: FontSize.s16),
         labelStyle:
-        getMediumStyle(color: ColorManager.title, fontSize: FontSize.s18),
+        getMediumStyle(color: ColorManager.title, fontSize: FontSize.s20),
         errorStyle: getRegularStyle(color: ColorManager.error),
 
+        // border
+        border: const OutlineInputBorder(
+            borderSide:
+            BorderSide(color: ColorManager.primary, width: AppSize.s1_5),
+            borderRadius: BorderRadius.all(Radius.circular(AppSize.s20))),
         // enabled border style
         enabledBorder: const OutlineInputBorder(
             borderSide:
             BorderSide(color: ColorManager.primary, width: AppSize.s1_5),
-            borderRadius: BorderRadius.all(Radius.circular(AppSize.s8))),
+            borderRadius: BorderRadius.all(Radius.circular(AppSize.s20))),
 
         // focused border style
         focusedBorder: const OutlineInputBorder(
             borderSide:
             BorderSide(color: ColorManager.gray, width: AppSize.s1_5),
-            borderRadius: BorderRadius.all(Radius.circular(AppSize.s8))),
+            borderRadius: BorderRadius.all(Radius.circular(AppSize.s20))),
 
         // error border style
         errorBorder: const OutlineInputBorder(
             borderSide:
             BorderSide(color: ColorManager.error, width: AppSize.s1_5),
-            borderRadius: BorderRadius.all(Radius.circular(AppSize.s8))),
+            borderRadius: BorderRadius.all(Radius.circular(AppSize.s20))),
         // focused border style
         focusedErrorBorder: const OutlineInputBorder(
             borderSide:
             BorderSide(color: ColorManager.primary, width: AppSize.s1_5),
-            borderRadius: BorderRadius.all(Radius.circular(AppSize.s8)))),
+            borderRadius: BorderRadius.all(Radius.circular(AppSize.s20)))),
   );
 }
