@@ -54,15 +54,15 @@ ThemeData getApplicationTheme(){
     textTheme: TextTheme(
         displayLarge: getBoldStyle(
             color: ColorManager.primary,
-            fontSize: FontSize.s30
+            fontSize: FontSize.s60
         ),
         headlineLarge: getSemiBoldStyle(
             color: ColorManager.gray,
-            fontSize: FontSize.s25
+            fontSize: FontSize.s30
         ),
         headlineMedium: getMediumStyle(
             color: ColorManager.gray ,
-            fontSize: FontSize.s22
+            fontSize: FontSize.s40
         ),
         titleMedium: getMediumStyle(
             color: ColorManager.primary,

@@ -4,6 +4,7 @@ import 'package:double_helix_detective_system/presentation/screens/on_boarding/v
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:lottie/lottie.dart';
 
 import '../../../domain/models/models.dart';
 import '../../resource/assets_manager.dart';
@@ -86,6 +87,7 @@ class _OnBoardingState extends State<OnBoarding> {
 
   Widget _getBottomSheet(SliderViewObject  sliderViewObject) {
     return Container(
+      width: MediaQuery.of(context).size.width,
       color: ColorManager.primary,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -104,7 +106,8 @@ class _OnBoardingState extends State<OnBoarding> {
                   curve: Curves.bounceInOut);
             },
             ),
-          ), Row(
+          ),
+          Row(
             children: [
               for(int i = 0; i < sliderViewObject.numOfSlides; i++)
                 Padding(padding: const EdgeInsets.all(AppPadding.p8),
@@ -152,38 +155,39 @@ class OnbaordingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        const SizedBox(
-          height: AppSize.s40,
+
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(AppPadding.p8),
+              child: Text(
+                _sliderObject.title,
+                textAlign: TextAlign.center,
+                style: Theme
+                    .of(context)
+                    .textTheme
+                    .displayLarge,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(AppPadding.p8),
+              child: Text(
+                _sliderObject.subTitle,
+                textAlign: TextAlign.center,
+                style: Theme
+                    .of(context)
+                    .textTheme
+                    .headlineMedium,
+              ),
+            ),
+          ],
         ),
-        Padding(
-          padding: const EdgeInsets.all(AppPadding.p8),
-          child: Text(
-            _sliderObject.title,
-            textAlign: TextAlign.center,
-            style: Theme
-                .of(context)
-                .textTheme
-                .headlineLarge,
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(AppPadding.p8),
-          child: Text(
-            _sliderObject.subTitle,
-            textAlign: TextAlign.center,
-            style: Theme
-                .of(context)
-                .textTheme
-                .headlineMedium,
-          ),
-        ),
-        const SizedBox(
-          height: AppSize.s60,
-        ),
-        SvgPicture.asset(_sliderObject.image),
+
+        Lottie.asset(_sliderObject.image,height: AppSize.s450,width: AppSize.s450,repeat: true,reverse: false,animate: true),
       ],
     );
   }

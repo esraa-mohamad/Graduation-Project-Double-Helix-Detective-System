@@ -62,13 +62,13 @@ class OnBoardingViewModel extends BaseViewModel
   List<SliderObject> _getSliderData() =>
       [
         SliderObject(AppStrings.identificationCrime, AppStrings.identificationCrimeSub,
-            AssetsManager.identificationCrime),
-        // SliderObject(AppString.onBoardingTitle2, AppString.onBoardingSubTitle2,
-        //     AssetsManager.onBoarding2),
-        // SliderObject(AppString.onBoardingTitle3, AppString.onBoardingSubTitle3,
-        //     AssetsManager.onBoarding3),
-        // SliderObject(AppString.onBoardingTitle4, AppString.onBoardingSubTitle4,
-        //     AssetsManager.onBoarding4),
+            AssetsManager.identificationCrime2),
+        SliderObject(AppStrings.identificationDisaster, AppStrings.identificationDisasterSub,
+            AssetsManager.identificationDisaster),
+        SliderObject(AppStrings.missing, AppStrings.missingSub,
+            AssetsManager.missing),
+        SliderObject(AppStrings.paternity, AppStrings.paternitySub,
+            AssetsManager.paternity),
       ];
 }
 
