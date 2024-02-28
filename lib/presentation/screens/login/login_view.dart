@@ -23,7 +23,7 @@ class LoginView extends StatelessWidget {
         child: Center(
           child: SizedBox(
             width: AppSize.s500,
-            height: AppSize.s350,
+            height: AppSize.s400,
             child: Card(
               child: Padding(
                 padding: const EdgeInsets.all(AppPadding.p18),
