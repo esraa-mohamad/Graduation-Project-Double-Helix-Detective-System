@@ -12,3 +12,7 @@ class AssetsManager {
   static const String rightArrow="$imagePath/right_arrow_ic.svg";
   static const String identificationCrime="$imagePath/crime.png";
 }
+
+class ImagesAssets {
+  static const String backgroundLogin = 'assets/images/dna3.jpg';
+}
