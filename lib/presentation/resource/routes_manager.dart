@@ -4,7 +4,7 @@ import 'package:double_helix_detective_system/presentation/screens/on_boarding/o
 import 'package:flutter/material.dart';
 import '../screens/Identification/identification_form_view.dart';
 import '../screens/Identification/identification_result_view.dart';
-import '../screens/login/login_view.dart';
+import '../screens/login/view/login_view.dart';
 import '../screens/missing_persons/missing_persons_form_view.dart';
 import '../screens/missing_persons/missing_persons_result_view.dart';
 import '../screens/paternity_test/paternity_test_form_view.dart';

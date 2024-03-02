@@ -51,15 +51,9 @@ class LoginView extends StatelessWidget {
                       const SizedBox(
                         height: AppSize.s40,
                       ),
-                      SizedBox(
-                        width: double.infinity,
-                        child: Padding(
-                          padding: const EdgeInsets.all(AppPadding.p12),
-                          child: CustomeElevatedButton(
-                            onPressed: (){},
-                            textButton: 'Login',
-                          ),
-                        ),
+                      CustomeElevatedButton(
+                        onPressed: (){},
+                        textButton: 'Login',
                       ),
                     ],
                   ),

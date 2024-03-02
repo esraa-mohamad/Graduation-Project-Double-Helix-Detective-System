@@ -43,6 +43,7 @@ ThemeData getApplicationTheme(){
             color: ColorManager.lightBackground,
             fontSize: FontSize.s25
         ),
+        padding: const EdgeInsets.all(AppSize.s18),
         backgroundColor: ColorManager.primary,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(AppSize.s20)
