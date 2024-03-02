@@ -1,15 +1,24 @@
 
-import 'package:double_helix_detective_system/presentation/screens/base/base_view_model.dart';
+import 'dart:async';
+
+import 'package:double_helix_detective_system/presentation/base/base_view_model.dart';
+import 'package:double_helix_detective_system/presentation/common/freezed_data_class.dart';
 
 class LoginViewModel extends BaseViewModel with
     LoginViewModelInput , LoginViewModelOutput
 {
 
+  final StreamController _emailStreamController = StreamController<String>.broadcast();
+  final StreamController _passwordStreamController = StreamController<String>.broadcast();
+
+  var loginObject = LoginObject(email: "", password: "");
+
   // inputs **********************
 
   @override
   void dispose() {
-    // TODO: implement dispose
+    _passwordStreamController.close();
+    _emailStreamController.close();
   }
 
   @override
@@ -17,63 +26,63 @@ class LoginViewModel extends BaseViewModel with
     // TODO: implement start
   }
 
+  // TODO : using login use case after implement it
   @override
   login() {
     // TODO: implement login
     throw UnimplementedError();
   }
 
-  @override
-  Sink password() {
-    // TODO: implement password
-    throw UnimplementedError();
-  }
 
   @override
   setPassword(String password) {
-    // TODO: implement setPassword
-    throw UnimplementedError();
+    inputPassword.add(password);
+    loginObject.copyWith(password: password);
   }
 
   @override
-  setEmail(String userName) {
-    // TODO: implement setUserName
-    throw UnimplementedError();
+  setEmail(String email) {
+    inputEmail.add(email);
+    loginObject.copyWith(email: email);
   }
 
   @override
-  Sink email() {
-    // TODO: implement userName
-    throw UnimplementedError();
-  }
+  Sink get inputEmail => _emailStreamController.sink;
+
+
+  @override
+  Sink get inputPassword => _passwordStreamController.sink;
+
 
   // outputs *******************
   @override
-  Stream<bool> outIsPasswordValid() {
-    // TODO: implement outIsPasswordValid
-    throw UnimplementedError();
-  }
+  Stream<bool> get outIsEmailValid => _emailStreamController.stream
+      .map((email) => isEmailValid(email));
 
   @override
-  Stream<bool> outIsEmailValid() {
-    // TODO: implement outIsUserNameValid
-    throw UnimplementedError();
+  Stream<bool> get outIsPasswordValid => _passwordStreamController.stream
+      .map((password) => isPasswordValid(password));
+
+  bool isEmailValid(String email){
+    return email.isNotEmpty;
   }
 
-
+  bool isPasswordValid(String password){
+    return password.isNotEmpty;
+  }
 }
 
 mixin LoginViewModelInput {
-  setEmail(String userName);
+  setEmail(String email);
   setPassword(String password);
   login();
 
-  Sink email();
-  Sink password();
+  Sink get inputEmail;
+  Sink get inputPassword;
 
 }
 
 mixin LoginViewModelOutput {
-  Stream<bool> outIsEmailValid();
-  Stream<bool> outIsPasswordValid();
+  Stream<bool> get outIsEmailValid;
+  Stream<bool> get outIsPasswordValid;
 }

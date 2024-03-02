@@ -6,11 +6,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lottie/lottie.dart';
 
-import '../../../domain/models/models.dart';
-import '../../resource/assets_manager.dart';
-import '../../resource/color_manager.dart';
-import '../../resource/routes_manager.dart';
-import '../../resource/values_manager.dart';
+import '../../../../domain/models/models.dart';
+import '../../../resource/assets_manager.dart';
+import '../../../resource/color_manager.dart';
+import '../../../resource/routes_manager.dart';
+import '../../../resource/values_manager.dart';
 
 class OnBoarding extends StatefulWidget {
   const OnBoarding({super.key});

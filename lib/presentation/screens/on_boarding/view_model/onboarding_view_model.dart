@@ -1,6 +1,7 @@
 import 'dart:async';
 
-import 'package:double_helix_detective_system/presentation/screens/base/base_view_model.dart';
+
+import 'package:double_helix_detective_system/presentation/base/base_view_model.dart';
 
 import '../../../../domain/models/models.dart';
 import '../../../resource/assets_manager.dart';
