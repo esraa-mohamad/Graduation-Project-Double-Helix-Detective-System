@@ -4,6 +4,8 @@ import 'package:double_helix_detective_system/presentation/screens/login/viewMod
 import 'package:double_helix_detective_system/presentation/widget/elevated_button.dart';
 import 'package:double_helix_detective_system/presentation/widget/text_form_field.dart';
 import 'package:flutter/material.dart';
+
+import '../../../resource/strings_manager.dart';
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
 
@@ -15,8 +17,11 @@ class _LoginViewState extends State<LoginView> {
 
   final LoginViewModel _loginViewModel = LoginViewModel();
 
+  final _formKey = GlobalKey<FormState>();
+
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
 
   _bind(){
     _loginViewModel.start();
@@ -32,7 +37,12 @@ class _LoginViewState extends State<LoginView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return _loginViewContent();
+  }
+
+
+  Widget _loginViewContent(){
+    return  Scaffold(
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -51,35 +61,71 @@ class _LoginViewState extends State<LoginView> {
             child: Card(
               child: Padding(
                 padding: const EdgeInsets.all(AppPadding.p18),
-                child: Center(
-                  child: Column(
-                    children: [
-                      Text(
-                        'Login',
-                        style: Theme.of(context).textTheme.displayLarge,
+                child: SingleChildScrollView(
+                  child: Center(
+                    child: Form(
+                      key: _formKey,
+                      child: Column(
+                        children: [
+                          Text(
+                            AppStrings.login,
+                            style: Theme.of(context).textTheme.displayLarge,
+                          ),
+                          const SizedBox(
+                            height: AppSize.s40,
+                          ),
+                          StreamBuilder<bool>(
+                              stream: _loginViewModel.outIsEmailValid,
+                              builder: (context , snapshot){
+                                return  CustomeTextField(
+                                    keyboardType: TextInputType.emailAddress,
+                                    controller: _emailController,
+                                    hintText: AppStrings.email,
+                                    labelText: AppStrings.email,
+                                    errorText: (snapshot.data ?? true)
+                                        ? null
+                                        : AppStrings.emailError,
+                                );
+                              }
+                          ),
+                          const SizedBox(
+                            height: AppSize.s40,
+                          ),
+                          StreamBuilder<bool>(
+                              stream: _loginViewModel.outIsPasswordValid,
+                              builder: (context , snapshot){
+                                return CustomeTextField(
+                                    keyboardType: TextInputType.visiblePassword,
+                                    controller: _passwordController,
+                                    hintText: AppStrings.password,
+                                    labelText: AppStrings.password,
+                                    errorText: (snapshot.data ?? true)
+                                        ? null
+                                        : AppStrings.emailError,
+                                );
+                              }
+                          ),
+                          const SizedBox(
+                            height: AppSize.s40,
+                          ),
+                          StreamBuilder(
+                              stream: _loginViewModel.outAreAllInputValid,
+                              builder: (context , snapshot){
+                                return SizedBox(
+                                  width: double.infinity,
+                                  height: AppSize.s40,
+                                  child: CustomeElevatedButton(
+                                      onPressed: (snapshot.data ?? false)
+                                          ?(){_loginViewModel.login();}
+                                          : null ,
+                                      textButton: AppStrings.login
+                                  ),
+                                );
+                              }
+                          ),
+                        ],
                       ),
-                      const SizedBox(
-                        height: AppSize.s40,
-                      ),
-                      const CustomeTextField(
-                          hintText: 'Email',
-                          labelText: 'Email'
-                      ),
-                      const SizedBox(
-                        height: AppSize.s40,
-                      ),
-                      const CustomeTextField(
-                          hintText: 'Password',
-                          labelText: 'Password'
-                      ),
-                      const SizedBox(
-                        height: AppSize.s40,
-                      ),
-                      CustomeElevatedButton(
-                        onPressed: (){},
-                        textButton: 'Login',
-                      ),
-                    ],
+                    ),
                   ),
                 ),
               ),
@@ -89,6 +135,7 @@ class _LoginViewState extends State<LoginView> {
       ),
     );
   }
+
 
   @override
   void dispose() {

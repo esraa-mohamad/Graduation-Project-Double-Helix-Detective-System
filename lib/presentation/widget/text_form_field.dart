@@ -4,26 +4,26 @@ class CustomeTextField extends StatelessWidget {
    const CustomeTextField({
      required this.hintText ,
      required this.labelText ,
+     this.errorText,
+     this.keyboardType,
+     this.controller,
      super.key
    });
 
   final String hintText ;
   final String labelText ;
-
+  final String?  errorText ;
+  final TextInputType? keyboardType ;
+  final TextEditingController? controller ;
   @override
   Widget build(BuildContext context) {
     return   TextFormField(
+      keyboardType: keyboardType,
+      controller: controller,
       decoration: InputDecoration(
         labelText: labelText,
-        labelStyle:Theme.of(context).inputDecorationTheme.labelStyle,
         hintText: hintText,
-        hintStyle: Theme.of(context).inputDecorationTheme.hintStyle,
-        errorStyle: Theme.of(context).inputDecorationTheme.errorStyle,
-        border: Theme.of(context).inputDecorationTheme.border,
-        enabledBorder: Theme.of(context).inputDecorationTheme.enabledBorder,
-        focusedBorder: Theme.of(context).inputDecorationTheme.focusedBorder,
-        focusedErrorBorder: Theme.of(context).inputDecorationTheme.focusedErrorBorder,
-        errorBorder: Theme.of(context).inputDecorationTheme.errorBorder,
+        errorText: errorText,
       ),
     );
   }

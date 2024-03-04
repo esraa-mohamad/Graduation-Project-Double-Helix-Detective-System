@@ -9,4 +9,9 @@ class AppStrings{
   static const paternity = "Paternity Tests";
   static const paternitySub = "determines if a man is the biological father of a child ";
   static const skip = "Skip";
+  static const login = "Login";
+  static const email = "Email";
+  static const password = "Password";
+  static const emailError = "Please enter your email";
+  static const passwordError = "Please enter your password";
 }
