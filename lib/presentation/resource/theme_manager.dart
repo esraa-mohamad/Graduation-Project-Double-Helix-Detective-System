@@ -39,7 +39,10 @@ ThemeData getApplicationTheme(){
     // elevated button them
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-          textStyle: getRegularStyle(color: ColorManager.white,fontSize: FontSize.s22),
+          textStyle:getButtonStyle(
+              color: ColorManager.white,
+              fontSize: FontSize.s22
+          ),
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(AppSize.s18)
           ),
@@ -53,20 +56,40 @@ ThemeData getApplicationTheme(){
             color: ColorManager.primary,
             fontSize: FontSize.s60
         ),
+        displayMedium: getButtonStyle(
+            color: ColorManager.white,
+            fontSize: FontSize.s22
+        ),
         headlineLarge: getSemiBoldStyle(
             color: ColorManager.gray,
             fontSize: FontSize.s30
         ),
-        headlineMedium: getMediumStyle(
-            color: ColorManager.gray ,
+        titleLarge: getBoldStyle(
+            color: ColorManager.primary,
             fontSize: FontSize.s40
         ),
-        titleMedium: getMediumStyle(
-            color: ColorManager.primary,
-            fontSize: FontSize.s22
+        titleMedium: getSemiBoldStyle(
+          color: ColorManager.title,
+          fontSize: FontSize.s25
         ),
-        bodyLarge: getRegularStyle(fontSize:FontSize.s18 , color: ColorManager.primary),
-        bodySmall: getRegularStyle(fontSize:FontSize.s16 ,color: ColorManager.gray)),
+        headlineMedium: getMediumStyle(
+            color: ColorManager.primary ,
+            fontSize: FontSize.s40
+        ),
+       bodyLarge: getRegularStyle(
+          fontSize:FontSize.s22 ,
+          color: ColorManager.title
+        ),
+       bodyMedium: getLightStyle(
+          color: ColorManager.gray,
+          fontSize: FontSize.s20
+        ),
+        bodySmall: getLightStyle(
+          color: ColorManager.primary,
+          fontSize: FontSize.s18
+        ),
+
+    ),
 
     // input decoration theme (text form field)
     inputDecorationTheme: InputDecorationTheme(

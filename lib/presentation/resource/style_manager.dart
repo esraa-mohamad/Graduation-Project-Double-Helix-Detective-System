@@ -81,3 +81,16 @@ TextStyle getBoldStyle({
       color: color
   );
 }
+
+// regularStyle
+TextStyle getButtonStyle({
+  double fontSize = FontSize.s18,
+  required Color color ,
+})
+{
+  return _getTextStyle(
+      fontSize: fontSize,
+      fontWeight: FontWeightManager.regular,
+      color: color
+  );
+}

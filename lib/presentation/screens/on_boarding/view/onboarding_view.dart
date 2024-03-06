@@ -71,10 +71,13 @@ class _OnBoardingState extends State<OnBoarding> {
                       Navigator.pushReplacementNamed(
                           context, RoutesManager.loginRoute);
                     },
-                    child: const Text(
+                    child:  Text(
                       AppStrings.skip,
                       textAlign: TextAlign.end,
-                      style: TextStyle(color: ColorManager.primary),
+                      style: Theme
+                          .of(context)
+                          .textTheme
+                          .bodySmall,
                     )),
               ),
               _getBottomSheet(sliderViewObject)
@@ -181,7 +184,7 @@ class OnbaordingPage extends StatelessWidget {
                 style: Theme
                     .of(context)
                     .textTheme
-                    .headlineMedium,
+                    .headlineLarge,
               ),
             ),
           ],

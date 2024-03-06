@@ -69,7 +69,7 @@ class _LoginViewState extends State<LoginView> {
                         children: [
                           Text(
                             AppStrings.login,
-                            style: Theme.of(context).textTheme.displayLarge,
+                            style: Theme.of(context).textTheme.titleLarge,
                           ),
                           const SizedBox(
                             height: AppSize.s40,
