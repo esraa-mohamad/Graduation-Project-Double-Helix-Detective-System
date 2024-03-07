@@ -54,7 +54,7 @@ class _SplashViewState extends State<SplashView> {
                 child: Center(
                   child: DefaultTextStyle(
                     style: const TextStyle(
-                      fontSize: FontSize.s30,
+                      fontSize: FontSize.s60,
                       color: ColorManager.primary,
                       fontFamily:FontConstants.fontFamily,
                     ),

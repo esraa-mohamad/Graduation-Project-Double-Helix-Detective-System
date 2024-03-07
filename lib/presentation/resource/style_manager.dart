@@ -16,6 +16,55 @@ TextStyle _getTextStyle ({
     color: color,
   );
 }
+TextStyle _getArabicStyle ({
+  required double fontSize ,
+  required FontWeight fontWeight ,
+  required Color color,
+})
+{
+  return TextStyle(
+    fontSize: fontSize,
+    fontWeight: fontWeight,
+    fontFamily: FontConstants.arabicFontFamily,
+    color: color,
+  );
+}
+
+// large arabic style
+TextStyle getBoldArabicStyle({
+  double fontSize = FontSize.s16,
+  required Color color ,
+})
+{
+  return _getArabicStyle(
+      fontSize: fontSize,
+      fontWeight: FontWeightManager.bold,
+      color: color
+  );
+}
+
+TextStyle getSemiBoldArabicStyle({
+  double fontSize = FontSize.s16,
+  required Color color ,
+})
+{
+  return _getArabicStyle(
+      fontSize: fontSize,
+      fontWeight: FontWeightManager.bold,
+      color: color
+  );
+}
+TextStyle getMediumArabicStyle({
+  double fontSize = FontSize.s16,
+  required Color color ,
+})
+{
+  return _getArabicStyle(
+      fontSize: fontSize,
+      fontWeight: FontWeightManager.bold,
+      color: color
+  );
+}
 
 // light style
 TextStyle getLightStyle({

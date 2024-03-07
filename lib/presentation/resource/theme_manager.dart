@@ -22,10 +22,10 @@ ThemeData getApplicationTheme(){
       color: ColorManager.primary,
       elevation: AppSize.s4,
       shadowColor: ColorManager.shadow,
-      titleTextStyle:
-      getRegularStyle(
-          fontSize: FontSize.s18,
-          color: ColorManager.title),
+      titleTextStyle: getSemiBoldStyle(
+          color: ColorManager.white,
+          fontSize: FontSize.s25
+      ),
     ),
 
     // button theme
@@ -52,43 +52,54 @@ ThemeData getApplicationTheme(){
 
     // text theme
     textTheme: TextTheme(
+      // for splash and on boarding
         displayLarge: getBoldStyle(
             color: ColorManager.primary,
             fontSize: FontSize.s60
         ),
-        displayMedium: getButtonStyle(
-            color: ColorManager.white,
-            fontSize: FontSize.s22
-        ),
+
         headlineLarge: getSemiBoldStyle(
             color: ColorManager.gray,
             fontSize: FontSize.s30
         ),
+
+        // for titles
         titleLarge: getBoldStyle(
             color: ColorManager.primary,
             fontSize: FontSize.s40
         ),
         titleMedium: getSemiBoldStyle(
-          color: ColorManager.title,
+          color: ColorManager.white,
           fontSize: FontSize.s25
         ),
+
+        // for body
         headlineMedium: getMediumStyle(
             color: ColorManager.primary ,
             fontSize: FontSize.s40
         ),
        bodyLarge: getRegularStyle(
-          fontSize:FontSize.s22 ,
+          fontSize:FontSize.s30 ,
           color: ColorManager.title
         ),
        bodyMedium: getLightStyle(
-          color: ColorManager.gray,
-          fontSize: FontSize.s20
-        ),
-        bodySmall: getLightStyle(
           color: ColorManager.primary,
-          fontSize: FontSize.s18
+          fontSize: FontSize.s25
         ),
 
+        // for text arabic
+        displayMedium: getBoldArabicStyle(
+            color: ColorManager.primary,
+            fontSize: FontSize.s30
+        ),
+        bodySmall: getSemiBoldArabicStyle(
+          color: ColorManager.title,
+          fontSize: FontSize.s25
+        ),
+        headlineSmall:  getMediumArabicStyle(
+            color: ColorManager.darkGray,
+            fontSize: FontSize.s20
+        ),
     ),
 
     // input decoration theme (text form field)

@@ -77,7 +77,7 @@ class _OnBoardingState extends State<OnBoarding> {
                       style: Theme
                           .of(context)
                           .textTheme
-                          .bodySmall,
+                          .bodyMedium,
                     )),
               ),
               _getBottomSheet(sliderViewObject)

@@ -14,4 +14,13 @@ class AppStrings{
   static const password = "Password";
   static const emailError = "Please enter your email";
   static const passwordError = "Please enter your password";
+  static const search = "Search";
+  static const uploadDna = "Upload DNA";
+  static const missingResult = "Missing Result";
+  static const identificationPerson = "Identification Persons";
+  static const crimePerson = "Crime";
+  static const disasterPerson = "Disaster";
+  static const fatherRelative = "الأب";
+  static const motherRelative = "الأم";
+  static const person = "المفقود";
 }

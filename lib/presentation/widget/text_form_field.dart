@@ -7,6 +7,7 @@ class CustomeTextField extends StatelessWidget {
      this.errorText,
      this.keyboardType,
      this.controller,
+     this.maxLines=1,
      super.key
    });
 
@@ -15,11 +16,13 @@ class CustomeTextField extends StatelessWidget {
   final String?  errorText ;
   final TextInputType? keyboardType ;
   final TextEditingController? controller ;
+  final int maxLines;
   @override
   Widget build(BuildContext context) {
     return   TextFormField(
       keyboardType: keyboardType,
       controller: controller,
+      maxLines: maxLines,
       decoration: InputDecoration(
         labelText: labelText,
         hintText: hintText,
