@@ -39,9 +39,10 @@ ThemeData getApplicationTheme(){
     // elevated button them
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
+          foregroundColor: ColorManager.white,
           textStyle:getButtonStyle(
               color: ColorManager.white,
-              fontSize: FontSize.s22
+              fontSize: FontSize.s25
           ),
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(AppSize.s18)
@@ -79,27 +80,18 @@ ThemeData getApplicationTheme(){
             fontSize: FontSize.s40
         ),
        bodyLarge: getRegularStyle(
-          fontSize:FontSize.s30 ,
+          fontSize:FontSize.s22 ,
           color: ColorManager.title
         ),
        bodyMedium: getLightStyle(
+          color: ColorManager.gray,
+          fontSize: FontSize.s20
+        ),
+        bodySmall: getLightStyle(
           color: ColorManager.primary,
-          fontSize: FontSize.s25
+          fontSize: FontSize.s18
         ),
 
-        // for text arabic
-        displayMedium: getBoldArabicStyle(
-            color: ColorManager.primary,
-            fontSize: FontSize.s30
-        ),
-        bodySmall: getSemiBoldArabicStyle(
-          color: ColorManager.title,
-          fontSize: FontSize.s25
-        ),
-        headlineSmall:  getMediumArabicStyle(
-            color: ColorManager.darkGray,
-            fontSize: FontSize.s20
-        ),
     ),
 
     // input decoration theme (text form field)

@@ -83,7 +83,7 @@ class _ServicesViewState extends State<ServicesView> {
                     child: Center(
                       child: Text(
                         AppStrings.identification,
-                        style: Theme.of(context).textTheme.displayMedium,
+                        style: Theme.of(context).textTheme.titleMedium,
                       ),
                     ),
                   ),
@@ -122,7 +122,7 @@ class _ServicesViewState extends State<ServicesView> {
                     child: Center(
                       child: Text(
                         AppStrings.missing,
-                        style: Theme.of(context).textTheme.displayMedium,
+                        style: Theme.of(context).textTheme.titleMedium,
                       ),
                     ),
                   ),
@@ -161,7 +161,7 @@ class _ServicesViewState extends State<ServicesView> {
                     child: Center(
                       child: Text(
                         AppStrings.paternity,
-                        style: Theme.of(context).textTheme.displayMedium,
+                        style: Theme.of(context).textTheme.titleMedium,
                       ),
                     ),
                   ),
