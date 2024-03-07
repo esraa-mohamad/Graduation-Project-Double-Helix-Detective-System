@@ -10,7 +10,7 @@ import '../screens/missing_persons/missing_persons_result_view.dart';
 import '../screens/paternity_test/paternity_test_form_view.dart';
 import '../screens/paternity_test/paternity_test_result_view.dart';
 import '../screens/population/population_view.dart';
-import '../screens/services_presented/service_presented_view.dart';
+import '../screens/services_presented/view/service_presented_view.dart';
 import '../screens/splash/splash_view.dart';
 
 class RoutesManager{

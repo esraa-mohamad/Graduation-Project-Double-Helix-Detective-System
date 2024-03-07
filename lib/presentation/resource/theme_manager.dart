@@ -25,7 +25,7 @@ ThemeData getApplicationTheme(){
       titleTextStyle:
       getRegularStyle(
           fontSize: FontSize.s18,
-          color: ColorManager.title),
+          color: ColorManager.white),
     ),
 
     // button theme

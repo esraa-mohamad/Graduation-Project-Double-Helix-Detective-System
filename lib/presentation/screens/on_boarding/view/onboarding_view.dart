@@ -69,7 +69,7 @@ class _OnBoardingState extends State<OnBoarding> {
                 child: TextButton(
                     onPressed: () {
                       Navigator.pushReplacementNamed(
-                          context, RoutesManager.loginRoute);
+                          context, RoutesManager.servicesPresentedRoute);
                     },
                     child:  Text(
                       AppStrings.skip,

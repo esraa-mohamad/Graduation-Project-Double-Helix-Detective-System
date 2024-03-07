@@ -31,7 +31,6 @@ class LoginViewModel extends BaseViewModel with
   // TODO : using login use case after implement it
   @override
   login() {
-    // TODO: implement login
     throw UnimplementedError();
   }
 

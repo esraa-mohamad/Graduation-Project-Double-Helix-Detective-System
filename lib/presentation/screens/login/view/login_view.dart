@@ -115,7 +115,8 @@ class _LoginViewState extends State<LoginView> {
                                   width: double.infinity,
                                   height: AppSize.s40,
                                   child: CustomeElevatedButton(
-                                      onPressed: (snapshot.data ?? false)
+                                      onPressed:
+                                      (snapshot.data ?? false)
                                           ?(){_loginViewModel.login();}
                                           : null ,
                                       textButton: AppStrings.login

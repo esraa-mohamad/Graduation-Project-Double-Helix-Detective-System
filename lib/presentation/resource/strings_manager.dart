@@ -14,4 +14,6 @@ class AppStrings{
   static const password = "Password";
   static const emailError = "Please enter your email";
   static const passwordError = "Please enter your password";
+  static const service='Services';
+  static const identification='Identification';
 }
