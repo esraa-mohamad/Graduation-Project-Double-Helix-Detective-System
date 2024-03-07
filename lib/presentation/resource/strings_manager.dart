@@ -14,6 +14,8 @@ class AppStrings{
   static const password = "Password";
   static const emailError = "Please enter your email";
   static const passwordError = "Please enter your password";
+  static const service='Services';
+  static const identification='Identification';
   static const search = "Search";
   static const uploadDna = "Upload DNA";
   static const missingResult = "Missing Result";
