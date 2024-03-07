@@ -44,14 +44,11 @@ class _LoginViewState extends State<LoginView> {
   Widget _loginViewContent(){
     return  Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
-            image: const AssetImage(ImagesAssets.backgroundLogin),
+            image: AssetImage(ImagesAssets.backgroundLogin),
             fit: BoxFit.cover,
-            colorFilter: ColorFilter.mode(
-              Colors.white.withOpacity(0.6),
-              BlendMode.dstIn,
-            ),
+
           ),
         ),
         child: Center(

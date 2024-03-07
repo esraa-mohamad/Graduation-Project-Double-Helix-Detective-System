@@ -14,5 +14,5 @@ class AssetsManager {
 }
 
 class ImagesAssets {
-  static const String backgroundLogin = 'assets/images/dna3.jpg';
+  static const String backgroundLogin = 'assets/images/back_dna.jpg';
 }
