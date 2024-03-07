@@ -75,6 +75,7 @@ class _LoginViewState extends State<LoginView> {
                               stream: _loginViewModel.outIsEmailValid,
                               builder: (context , snapshot){
                                 return  CustomeTextField(
+                                  secure: false,
                                     keyboardType: TextInputType.emailAddress,
                                     controller: _emailController,
                                     hintText: AppStrings.email,
@@ -92,6 +93,7 @@ class _LoginViewState extends State<LoginView> {
                               stream: _loginViewModel.outIsPasswordValid,
                               builder: (context , snapshot){
                                 return CustomeTextField(
+                                    secure: true,
                                     keyboardType: TextInputType.visiblePassword,
                                     controller: _passwordController,
                                     hintText: AppStrings.password,

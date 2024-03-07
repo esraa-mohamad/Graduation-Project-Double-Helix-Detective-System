@@ -8,7 +8,8 @@ class CustomeTextField extends StatelessWidget {
      this.keyboardType,
      this.controller,
      this.maxLines=1,
-     super.key
+      required this.secure,
+     super.key,
    });
 
   final String hintText ;
@@ -17,9 +18,11 @@ class CustomeTextField extends StatelessWidget {
   final TextInputType? keyboardType ;
   final TextEditingController? controller ;
   final int maxLines;
+  final bool secure;
   @override
   Widget build(BuildContext context) {
     return   TextFormField(
+      obscureText: secure,
       keyboardType: keyboardType,
       controller: controller,
       maxLines: maxLines,

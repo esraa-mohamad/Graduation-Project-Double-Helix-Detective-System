@@ -68,6 +68,7 @@ class _MissingFormState extends State<MissingForm> {
                       height: AppSize.s20,
                     ),
                     CustomeTextField(
+                      secure: false,
                         controller: _uploadDnaController,
                         keyboardType: TextInputType.text,
                         hintText: AppStrings.uploadDna,
