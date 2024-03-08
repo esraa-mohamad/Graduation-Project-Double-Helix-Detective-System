@@ -1,5 +1,6 @@
 import 'package:double_helix_detective_system/presentation/resource/assets_manager.dart';
 import 'package:double_helix_detective_system/presentation/resource/color_manager.dart';
+import 'package:double_helix_detective_system/presentation/resource/routes_manager.dart';
 import 'package:double_helix_detective_system/presentation/resource/strings_manager.dart';
 import 'package:double_helix_detective_system/presentation/resource/values_manager.dart';
 import 'package:flutter/cupertino.dart';
@@ -63,7 +64,7 @@ class _ServicesViewState extends State<ServicesView> {
                 },
                 child: GestureDetector(
                   onTap: () {
-                    // Add your onTap logic here
+                    Navigator.pushNamed(context,RoutesManager.identificationFormRoute);
                   },
                   child: Container(
                     width: AppSize.s250,
@@ -75,13 +76,13 @@ class _ServicesViewState extends State<ServicesView> {
                       borderRadius: BorderRadius.circular(10.0),
                       image: isHovered1
                           ? const DecorationImage(
-                        image: AssetImage(AssetsManager.services),
+                        image: AssetImage(AssetsManager.crimeIcon),
                         fit: BoxFit.cover,
                       )
                           : null,
                     ),
                     child: Center(
-                      child: Text(
+                      child:isHovered1? null : Text(
                         AppStrings.identification,
                         style: Theme.of(context).textTheme.titleMedium,
                       ),
@@ -102,7 +103,7 @@ class _ServicesViewState extends State<ServicesView> {
                 },
                 child: GestureDetector(
                   onTap: () {
-                    // Add your onTap logic here
+                    Navigator.pushNamed(context,RoutesManager.missingPersonFormRoute);
                   },
                   child: Container(
                     width: AppSize.s250,
@@ -114,13 +115,13 @@ class _ServicesViewState extends State<ServicesView> {
                       borderRadius: BorderRadius.circular(10.0),
                       image: isHovered2
                           ? const DecorationImage(
-                        image: AssetImage(AssetsManager.services),
+                        image: AssetImage(AssetsManager.missingIcon),
                         fit: BoxFit.cover,
                       )
                           : null,
                     ),
                     child: Center(
-                      child: Text(
+                      child: isHovered2? null :Text(
                         AppStrings.missing,
                         style: Theme.of(context).textTheme.titleMedium,
                       ),
@@ -141,7 +142,7 @@ class _ServicesViewState extends State<ServicesView> {
                 },
                 child: GestureDetector(
                   onTap: () {
-                    // Add your onTap logic here
+                    Navigator.pushNamed(context,RoutesManager.paternityFormRoute);
                   },
                   child: Container(
                     width: AppSize.s250,
@@ -153,13 +154,13 @@ class _ServicesViewState extends State<ServicesView> {
                       borderRadius: BorderRadius.circular(10.0),
                       image: isHovered3
                           ? const DecorationImage(
-                        image: AssetImage(AssetsManager.services),
+                        image: AssetImage(AssetsManager.paternityIcon),
                         fit: BoxFit.cover,
                       )
                           : null,
                     ),
                     child: Center(
-                      child: Text(
+                      child: isHovered3? null :Text(
                         AppStrings.paternity,
                         style: Theme.of(context).textTheme.titleMedium,
                       ),

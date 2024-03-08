@@ -1,4 +1,5 @@
 import 'package:double_helix_detective_system/presentation/resource/color_manager.dart';
+import 'package:double_helix_detective_system/presentation/resource/routes_manager.dart';
 import 'package:double_helix_detective_system/presentation/resource/strings_manager.dart';
 import 'package:double_helix_detective_system/presentation/resource/values_manager.dart';
 import 'package:double_helix_detective_system/presentation/screens/missing_persons/form/viewModel/missing_form_view_model.dart';
@@ -82,7 +83,9 @@ class _MissingFormState extends State<MissingForm> {
                       width: double.infinity,
                       height: AppSize.s40,
                       child: CustomeElevatedButton(
-                          onPressed: (){},
+                          onPressed: (){
+                            Navigator.pushNamed(context, RoutesManager.missingPersonResultRoute);
+                          },
                           textButton: AppStrings.search
                       ),
                     ),

@@ -10,9 +10,11 @@ class AssetsManager {
   static const String solidCircle="$imagePath/solid_circle_ic.svg";
   static const String leftArrow="$imagePath/left_arrow_ic.svg";
   static const String rightArrow="$imagePath/right_arrow_ic.svg";
-  static const String services="$imagePath/background.png";
+  static const String services="$imagePath/services.jpg";
+  static const String backgroundLogin = '$imagePath/back_dna.jpg';
+  static const String crimeIcon='$imagePath/crime.jpg';
+  static const String paternityIcon='$imagePath/pater.jpg';
+  static const String missingIcon='$imagePath/missing.jpg';
+
 }
 
-class ImagesAssets {
-  static const String backgroundLogin = 'assets/images/back_dna.jpg';
-}

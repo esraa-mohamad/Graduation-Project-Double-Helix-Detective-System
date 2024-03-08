@@ -46,7 +46,7 @@ class _LoginViewState extends State<LoginView> {
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(ImagesAssets.backgroundLogin),
+            image: AssetImage(AssetsManager.backgroundLogin),
             fit: BoxFit.cover,
 
           ),
@@ -75,7 +75,7 @@ class _LoginViewState extends State<LoginView> {
                               stream: _loginViewModel.outIsEmailValid,
                               builder: (context , snapshot){
                                 return  CustomeTextField(
-                                  secure: false,
+                                    secure: false,
                                     keyboardType: TextInputType.emailAddress,
                                     controller: _emailController,
                                     hintText: AppStrings.email,
