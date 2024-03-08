@@ -22,6 +22,7 @@ class _LoginViewState extends State<LoginView> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
+   bool _visiblePassword = false;
 
   _bind(){
     _loginViewModel.start();
@@ -33,6 +34,7 @@ class _LoginViewState extends State<LoginView> {
   void initState() {
     _bind();
     super.initState();
+    _visiblePassword=true;
   }
 
   @override
@@ -78,6 +80,9 @@ class _LoginViewState extends State<LoginView> {
                                     secure: false,
                                     keyboardType: TextInputType.emailAddress,
                                     controller: _emailController,
+                                    suffixIcon: const Icon(
+                                      Icons.alternate_email
+                                    ),
                                     hintText: AppStrings.email,
                                     labelText: AppStrings.email,
                                     errorText: (snapshot.data ?? true)
@@ -96,6 +101,19 @@ class _LoginViewState extends State<LoginView> {
                                     secure: true,
                                     keyboardType: TextInputType.visiblePassword,
                                     controller: _passwordController,
+                                    obscureText: _visiblePassword,
+                                    suffixIcon:IconButton(
+                                      icon: Icon(_visiblePassword
+                                          ? Icons.visibility_off
+                                          : Icons.visibility),
+                                      onPressed: () {
+                                        setState(
+                                              () {
+                                            _visiblePassword = !_visiblePassword;
+                                          },
+                                        );
+                                      },
+                                    ),
                                     hintText: AppStrings.password,
                                     labelText: AppStrings.password,
                                     errorText: (snapshot.data ?? true)

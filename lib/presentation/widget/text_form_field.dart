@@ -8,8 +8,10 @@ class CustomeTextField extends StatelessWidget {
      this.keyboardType,
      this.controller,
      this.maxLines=1,
-      required this.secure,
-     super.key,
+     this.suffixIcon,
+     this.onTap,
+     this.obscureText = false,
+     super.key
    });
 
   final String hintText ;
@@ -18,18 +20,22 @@ class CustomeTextField extends StatelessWidget {
   final TextInputType? keyboardType ;
   final TextEditingController? controller ;
   final int maxLines;
-  final bool secure;
+  final Widget? suffixIcon;
+  final void Function()? onTap;
+  final bool obscureText ;
   @override
   Widget build(BuildContext context) {
     return   TextFormField(
-      obscureText: secure,
       keyboardType: keyboardType,
       controller: controller,
+      obscureText: obscureText,
       maxLines: maxLines,
+      onTap: onTap,
       decoration: InputDecoration(
         labelText: labelText,
         hintText: hintText,
         errorText: errorText,
+        suffixIcon: suffixIcon,
       ),
     );
   }
