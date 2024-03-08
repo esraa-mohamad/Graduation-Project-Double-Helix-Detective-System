@@ -46,7 +46,7 @@ class _SplashViewState extends State<SplashView> {
       backgroundColor: ColorManager.lightBackground,
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(AppPadding.p8),
+          padding: const EdgeInsets.all(AppPadding.p18),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

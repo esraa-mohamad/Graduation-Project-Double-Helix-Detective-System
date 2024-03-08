@@ -19,6 +19,10 @@ ThemeData getApplicationTheme(){
     // app bar theme
     appBarTheme: AppBarTheme(
       centerTitle: true,
+      iconTheme: IconThemeData(
+        size: AppSize.s25,
+        color: ColorManager.white
+      ),
       color: ColorManager.primary,
       elevation: AppSize.s4,
       shadowColor: ColorManager.shadow,

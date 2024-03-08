@@ -35,6 +35,14 @@ class _PopulationViewState extends State<PopulationView> {
     return Scaffold(
       backgroundColor: ColorManager.lightBackground,
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(
+              Icons.arrow_back_ios_outlined
+          ),
+          onPressed: (){
+            Navigator.pop(context);
+          },
+        ),
         title: Text(
           AppStrings.addPopulation.toUpperCase(),
         ),

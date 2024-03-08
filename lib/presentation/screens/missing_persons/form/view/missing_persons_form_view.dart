@@ -35,6 +35,14 @@ class _MissingFormState extends State<MissingForm> {
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back_ios_outlined
+          ),
+          onPressed: (){
+            Navigator.pop(context);
+          },
+        ),
         title: Text(
           AppStrings.missing.toUpperCase(),
         ),
@@ -45,7 +53,7 @@ class _MissingFormState extends State<MissingForm> {
           child: Container(
             padding: const EdgeInsets.all(AppPadding.p18),
             width: double.infinity,
-            height: AppSize.s400,
+            height: AppSize.s450,
             decoration: const BoxDecoration(
               color:ColorManager.background,
               borderRadius: BorderRadius.only(
@@ -73,10 +81,10 @@ class _MissingFormState extends State<MissingForm> {
                         keyboardType: TextInputType.text,
                         hintText: AppStrings.uploadDna,
                         labelText: AppStrings.uploadDna,
-                        maxLines: 8,
+                        maxLines: 6,
                     ),
                     const SizedBox(
-                      height: AppSize.s20,
+                      height: AppSize.s40,
                     ),
                     SizedBox(
                       width: double.infinity,
