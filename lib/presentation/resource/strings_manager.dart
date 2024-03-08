@@ -20,9 +20,35 @@ class AppStrings{
   static const uploadDna = "Upload DNA";
   static const missingResult = "Missing Result";
   static const identificationPerson = "Identification Persons";
-  static const crimePerson = "Crime";
-  static const disasterPerson = "Disaster";
   static const fatherRelative = "الأب";
   static const motherRelative = "الأم";
   static const person = "المفقود";
+
+  // population
+  static const addPopulation = "Add Population";
+  static const namePerson = "Name";
+  static const addressPerson = "Address";
+  static const nationalIdPerson = "National ID";
+  static const phonePerson = "Phone";
+  static const genderPerson = "Gender";
+  static const malePerson = "Male";
+  static const femalePerson = "Female";
+  static const birthdayPerson = "Birthday";
+  static const bloodPerson = "Blood";
+  static const aaPerson = "A+";
+  static const aPerson = "A-";
+  static const bbPerson = "B+";
+  static const bPerson = "B-";
+  static const ooPerson = "O+";
+  static const oPerson = "O-";
+  static const ababPerson = "AB+";
+  static const abPerson = "AB-";
+  static const statusPerson = "Status";
+  static const missingPerson = "Missing";
+  static const disasterPerson = "Disaster";
+  static const crimePerson = "Crime";
+  static const acknowledgedPerson = "Acknowledged";
+  static const descriptionPerson = "Description";
+  static const dnaPerson = "DNA";
+  static const addPerson = "Add Person";
 }

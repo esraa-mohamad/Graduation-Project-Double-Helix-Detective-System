@@ -54,43 +54,53 @@ ThemeData getApplicationTheme(){
     // text theme
     textTheme: TextTheme(
       // for splash and on boarding
-        displayLarge: getBoldStyle(
-            color: ColorManager.primary,
-            fontSize: FontSize.s60
-        ),
+      displayLarge: getBoldStyle(
+          color: ColorManager.primary,
+          fontSize: FontSize.s60
+      ),
 
-        headlineLarge: getSemiBoldStyle(
-            color: ColorManager.gray,
-            fontSize: FontSize.s30
-        ),
+      headlineLarge: getSemiBoldStyle(
+          color: ColorManager.gray,
+          fontSize: FontSize.s30
+      ),
 
-        // for titles
-        titleLarge: getBoldStyle(
-            color: ColorManager.primary,
-            fontSize: FontSize.s40
-        ),
-        titleMedium: getSemiBoldStyle(
+      // for titles
+      titleLarge: getBoldStyle(
+          color: ColorManager.primary,
+          fontSize: FontSize.s40
+      ),
+      titleMedium: getSemiBoldStyle(
           color: ColorManager.white,
           fontSize: FontSize.s25
-        ),
+      ),
 
-        // for body
-        headlineMedium: getMediumStyle(
-            color: ColorManager.primary ,
-            fontSize: FontSize.s40
-        ),
-       bodyLarge: getRegularStyle(
-          fontSize:FontSize.s22 ,
+      // for body
+      headlineMedium: getMediumStyle(
+          color: ColorManager.primary ,
+          fontSize: FontSize.s40
+      ),
+      bodyLarge: getRegularStyle(
+          fontSize:FontSize.s30 ,
           color: ColorManager.title
-        ),
-       bodyMedium: getLightStyle(
-          color: ColorManager.gray,
-          fontSize: FontSize.s20
-        ),
-        bodySmall: getLightStyle(
+      ),
+      bodyMedium: getMediumStyle(
           color: ColorManager.primary,
-          fontSize: FontSize.s18
-        ),
+          fontSize: FontSize.s22
+      ),
+
+      // for text arabic
+      displayMedium: getBoldArabicStyle(
+          color: ColorManager.primary,
+          fontSize: FontSize.s30
+      ),
+      bodySmall: getSemiBoldArabicStyle(
+          color: ColorManager.title,
+          fontSize: FontSize.s25
+      ),
+      headlineSmall:  getMediumArabicStyle(
+          color: ColorManager.darkGray,
+          fontSize: FontSize.s20
+      ),
 
     ),
 
@@ -104,6 +114,7 @@ ThemeData getApplicationTheme(){
         labelStyle:
         getMediumStyle(color: ColorManager.title, fontSize: FontSize.s20),
         errorStyle: getRegularStyle(color: ColorManager.error , fontSize: FontSize.s14),
+        suffixIconColor: ColorManager.primary,
 
         // border
         border: const OutlineInputBorder(

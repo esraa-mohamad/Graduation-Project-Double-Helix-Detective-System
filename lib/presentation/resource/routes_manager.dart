@@ -9,7 +9,7 @@ import '../screens/missing_persons/form/view/missing_persons_form_view.dart';
 import '../screens/missing_persons/result/view/missing_persons_result_view.dart';
 import '../screens/paternity_test/paternity_test_form_view.dart';
 import '../screens/paternity_test/paternity_test_result_view.dart';
-import '../screens/population/population_view.dart';
+import '../screens/population/view/population_view.dart';
 import '../screens/services_presented/view/service_presented_view.dart';
 import '../screens/splash/splash_view.dart';
 
