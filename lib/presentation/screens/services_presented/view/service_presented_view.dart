@@ -3,11 +3,9 @@ import 'package:double_helix_detective_system/presentation/resource/color_manage
 import 'package:double_helix_detective_system/presentation/resource/routes_manager.dart';
 import 'package:double_helix_detective_system/presentation/resource/strings_manager.dart';
 import 'package:double_helix_detective_system/presentation/resource/values_manager.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 class ServicesView extends StatefulWidget {
-  const ServicesView({Key? key}) : super(key: key);
+  const ServicesView({super.key});
 
   @override
   State<ServicesView> createState() => _ServicesViewState();
@@ -22,6 +20,7 @@ class _ServicesViewState extends State<ServicesView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Text(AppStrings.service),
         actions: const [
           Padding(

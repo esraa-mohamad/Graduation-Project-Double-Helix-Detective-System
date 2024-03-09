@@ -16,14 +16,27 @@ class AppStrings{
   static const passwordError = "Please enter your password";
   static const service='Services';
   static const identification='Identification';
+  //missing search
   static const search = "Search";
   static const uploadDna = "Upload DNA";
+  //missing result
   static const missingResult = "Missing Result";
   static const identificationPerson = "Identification Persons";
   static const fatherRelative = "الأب";
   static const motherRelative = "الأم";
   static const person = "المفقود";
-
+  //identification search
+  static const caseP="case";
+  // paternity
+  static const uploadFather="upload father DNA";
+  static const uploadChild="upload child DNA";
+  static const test="Test paternity";
+  //paternity result
+  static const paternityResult = "Paternity Result";
+  static const matchResult = "Probability of Paternity";
+  static const findFamily = "Welcome back to the Family";
+  static const backSer = "Back to services";
+  static const addDB = "Add to Population";
   // population
   static const addPopulation = "Add Population";
   static const namePerson = "Name";

@@ -1,6 +1,5 @@
 import 'package:double_helix_detective_system/presentation/resource/constants_manager.dart';
 import 'package:double_helix_detective_system/presentation/resource/strings_manager.dart';
-import 'package:double_helix_detective_system/presentation/screens/on_boarding/view_model/onboarding_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
@@ -11,6 +10,7 @@ import '../../../resource/assets_manager.dart';
 import '../../../resource/color_manager.dart';
 import '../../../resource/routes_manager.dart';
 import '../../../resource/values_manager.dart';
+import '../viewModel/onBoarding_view_model.dart';
 
 class OnBoarding extends StatefulWidget {
   const OnBoarding({super.key});
@@ -51,7 +51,7 @@ class _OnBoardingState extends State<OnBoarding> {
         ),
         body: PageView.builder(
           itemBuilder: (context, index) {
-            return OnbaordingPage(sliderViewObject.sliderObject);
+            return OnBoardingPage(sliderViewObject.sliderObject);
           },
           controller: _pageController,
           itemCount: sliderViewObject.numOfSlides,
@@ -114,7 +114,7 @@ class _OnBoardingState extends State<OnBoarding> {
             children: [
               for(int i = 0; i < sliderViewObject.numOfSlides; i++)
                 Padding(padding: const EdgeInsets.all(AppPadding.p8),
-                  child: _getProberCircle(i,sliderViewObject.currentIndex),)
+                  child: _getProperCircle(i,sliderViewObject.currentIndex),)
             ],
           ),
           Padding(
@@ -137,7 +137,7 @@ class _OnBoardingState extends State<OnBoarding> {
     );
   }
 
-  Widget _getProberCircle(int index,int currentIndex) {
+  Widget _getProperCircle(int index,int currentIndex) {
     if (index == currentIndex) {
       return SvgPicture.asset(AssetsManager.hollowCircle);
     } else {
@@ -152,8 +152,8 @@ class _OnBoardingState extends State<OnBoarding> {
   }
 
 }
-class OnbaordingPage extends StatelessWidget {
-  const OnbaordingPage(this._sliderObject, {Key? key}) : super(key: key);
+class OnBoardingPage extends StatelessWidget {
+  const OnBoardingPage(this._sliderObject, {super.key});
   final SliderObject _sliderObject;
 
   @override
