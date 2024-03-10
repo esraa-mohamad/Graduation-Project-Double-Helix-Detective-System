@@ -12,3 +12,16 @@ class SliderViewObject{
   SliderObject sliderObject;
   SliderViewObject(this.sliderObject,this.currentIndex,this.numOfSlides);
 }
+
+class Technical {
+  String userName ;
+  String phone ;
+
+  Technical(this.userName , this.phone);
+}
+
+class Authentication {
+  Technical ? technical ;
+
+  Authentication(this.technical);
+}
