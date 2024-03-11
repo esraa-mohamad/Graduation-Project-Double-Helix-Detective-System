@@ -56,7 +56,6 @@ class _LoginViewState extends State<LoginView> {
         child: Center(
           child: SizedBox(
             width: AppSize.s500,
-            height: AppSize.s400,
             child: Card(
               child: Padding(
                 padding: const EdgeInsets.all(AppPadding.p18),

@@ -35,7 +35,8 @@ class LoginViewModel extends BaseViewModel with
   login() async{
     (await _loginUseCase.execute(LoginUseCaseInput(loginObject.email, loginObject.password))).fold((failure) =>{
 
-    }, (data) =>{});
+    }, (data) =>{
+    });
   }
 
 

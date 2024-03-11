@@ -5,9 +5,21 @@ import 'app/di.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  await initAppModule();
+  initLoginModuleOnce();
   runApp(MyApp());
 }
+bool _isLoginModuleInitialized = false;
 
+void initLoginModuleOnce() {
+  if (!_isLoginModuleInitialized) {
+    // Ensure initAppModule is called before initLoginModule
+    initAppModule();
+
+    // Initialize login module only if it hasn't been initialized before
+    initLoginModule();
+
+    _isLoginModuleInitialized = true;
+  }
+}
 
 
