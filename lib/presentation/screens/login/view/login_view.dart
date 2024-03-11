@@ -15,7 +15,7 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
-  final LoginViewModel _loginViewModel =instance<LoginViewModel>();
+  final LoginViewModel _loginViewModel = instance<LoginViewModel>();
 
   final _formKey = GlobalKey<FormState>();
 

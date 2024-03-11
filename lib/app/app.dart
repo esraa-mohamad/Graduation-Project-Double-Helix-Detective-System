@@ -1,5 +1,6 @@
 import 'package:double_helix_detective_system/presentation/screens/login/view/login_view.dart';
 import 'package:flutter/material.dart';
+import '../presentation/resource/routes_manager.dart';
 import '../presentation/resource/theme_manager.dart';
 
 class MyApp extends StatefulWidget {
@@ -20,9 +21,8 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: getApplicationTheme(),
-      // onGenerateRoute:RouteGenerator.getRoute ,
-      // initialRoute: RoutesManager.splashRoute,
-      home:const  LoginView(),
+      onGenerateRoute:RouteGenerator.getRoute ,
+      initialRoute: RoutesManager.splashRoute,
     );
   }
 }

@@ -16,8 +16,9 @@ Future<void> initAppModule()async{
   instance.registerLazySingleton<NetworkInfo>(() => NetworkInfoImp(InternetConnectionChecker()));
   // for remote data source
   instance.registerLazySingleton<RemoteDataSource>(() => RemoteDataSourceImp(instance()));
+
   // for dio factory
-  instance.registerLazySingleton<DioFactory>(() =>DioFactory(instance()));
+  instance.registerLazySingleton<DioFactory>(() =>DioFactory());
   Dio dio =await instance<DioFactory>().getDio();
   //for app service client
   instance.registerLazySingleton<AppServicesTechnical>(() =>AppServicesTechnical(dio) );
@@ -26,6 +27,11 @@ Future<void> initAppModule()async{
 }
 
  initLoginModule() {
-  instance.registerFactory<LoginUseCase>(() =>LoginUseCase(instance()));
-  instance.registerFactory<LoginViewModel>(() =>LoginViewModel(instance()));
-}
+   if(!GetIt.I.isRegistered<LoginUseCase>()){
+     // login use case
+     instance.registerFactory<LoginUseCase>(() => LoginUseCase(instance()));
+
+     // login view model
+     instance.registerFactory<LoginViewModel>(() => LoginViewModel(instance()));
+   }
+ }

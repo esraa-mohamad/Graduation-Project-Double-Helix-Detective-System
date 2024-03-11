@@ -11,18 +11,18 @@ const String AUTHORIZATION = "authorization";
 
 class DioFactory{
 
-  final AuthenticationResponse _authenticationResponse;
-  DioFactory(this._authenticationResponse);
+  // final AuthenticationResponse _authenticationResponse;
+  // DioFactory(this._authenticationResponse);
 
 
   Future<Dio> getDio() async{
 
-    String token = _authenticationResponse.token!;
+    // String token = _authenticationResponse.token!;
     Dio dio = Dio();
     Map<String , String> headers= {
       CONTENT_TYPE : APPLICATION_JSON,
       ACCEPT : APPLICATION_JSON ,
-      AUTHORIZATION :  token,
+      AUTHORIZATION :  AppConstants.token,
     };
 
     dio.options = BaseOptions(
