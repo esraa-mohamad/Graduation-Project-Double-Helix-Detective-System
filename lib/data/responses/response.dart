@@ -5,10 +5,12 @@ part 'response.g.dart';
 
 @JsonSerializable()
 class BaseResponse {
-  @JsonKey(name: "Status")
+  @JsonKey(name: "status")
   int ? status ;
   @JsonKey(name: "message")
   String ? message ;
+  @JsonKey(name: "token")
+  String ? token ;
 }
 
 @JsonSerializable()
