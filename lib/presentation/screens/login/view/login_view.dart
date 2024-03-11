@@ -5,6 +5,7 @@ import 'package:double_helix_detective_system/presentation/widget/elevated_butto
 import 'package:double_helix_detective_system/presentation/widget/text_form_field.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../app/di.dart';
 import '../../../resource/strings_manager.dart';
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -14,8 +15,7 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
-
-  final LoginViewModel _loginViewModel = LoginViewModel();
+  final LoginViewModel _loginViewModel =instance<LoginViewModel>();
 
   final _formKey = GlobalKey<FormState>();
 

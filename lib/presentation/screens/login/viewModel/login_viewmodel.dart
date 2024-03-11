@@ -1,6 +1,7 @@
 
 import 'dart:async';
 
+import 'package:double_helix_detective_system/domain/usecase/login_usecase.dart';
 import 'package:double_helix_detective_system/presentation/base/base_view_model.dart';
 import 'package:double_helix_detective_system/presentation/common/freezed_data_class.dart';
 
@@ -11,7 +12,8 @@ class LoginViewModel extends BaseViewModel with
   final StreamController _emailStreamController = StreamController<String>.broadcast();
   final StreamController _passwordStreamController = StreamController<String>.broadcast();
   final StreamController _outAllInputValidStreamController = StreamController<void>.broadcast();
-
+  final LoginUseCase _loginUseCase;
+  LoginViewModel(this._loginUseCase);
   var loginObject = LoginObject(email: "", password: "");
 
   // inputs **********************
@@ -30,8 +32,10 @@ class LoginViewModel extends BaseViewModel with
 
   // TODO : using login use case after implement it
   @override
-  login() {
-    throw UnimplementedError();
+  login() async{
+    (await _loginUseCase.execute(LoginUseCaseInput(loginObject.email, loginObject.password))).fold((failure) =>{
+
+    }, (data) =>{});
   }
 
 
