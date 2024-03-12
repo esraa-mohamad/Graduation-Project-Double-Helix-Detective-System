@@ -19,3 +19,8 @@ class AssetsManager {
 
 }
 
+class LottiAssets {
+  static const String error = "$lottiPath/error.json";
+  static const String loading = "$lottiPath/loading.json";
+}
+

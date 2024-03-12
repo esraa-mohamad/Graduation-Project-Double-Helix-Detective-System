@@ -64,4 +64,9 @@ class AppStrings{
   static const descriptionPerson = "Description";
   static const dnaPerson = "DNA";
   static const addPerson = "Add Person";
+
+  // dialogs
+  static const loading = "Loading...";
+  static const title = "";
+  static const ok = "OK";
 }
