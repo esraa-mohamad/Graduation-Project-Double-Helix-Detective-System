@@ -1,4 +1,5 @@
 import 'package:double_helix_detective_system/presentation/resource/assets_manager.dart';
+import 'package:double_helix_detective_system/presentation/resource/routes_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -76,6 +77,7 @@ class StateRenderer extends StatelessWidget {
       elevation: AppSize.s1_5,
       backgroundColor: Colors.transparent,
       child: Container(
+        width: AppSize.s400,
         decoration: BoxDecoration(
             color: ColorManager.white,
             shape: BoxShape.rectangle,
@@ -83,7 +85,6 @@ class StateRenderer extends StatelessWidget {
             boxShadow: const [
               BoxShadow(
                 color: Colors.black26,
-
               ),
             ]
         ),
@@ -103,8 +104,8 @@ class StateRenderer extends StatelessWidget {
 
   Widget _getAnimatedImage(String animationName){
     return SizedBox(
-      height: AppSize.s100,
-      width: AppSize.s100,
+      height: AppSize.s200,
+      width: AppSize.s200,
       child: Lottie.asset(
         animationName ,
       ),
@@ -131,12 +132,12 @@ class StateRenderer extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(AppPadding.p18),
         child: SizedBox(
-          width: double.infinity,
+          width: AppSize.s300,
           child: ElevatedButton(
             onPressed: ()
             {
               // popup error
-                Navigator.pop(context);
+                Navigator.pushNamed(context, RoutesManager.loginRoute);
             },
             child: Text(
                 buttonTitle

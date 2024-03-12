@@ -5,6 +5,9 @@ import 'package:double_helix_detective_system/domain/usecase/login_usecase.dart'
 import 'package:double_helix_detective_system/presentation/base/base_view_model.dart';
 import 'package:double_helix_detective_system/presentation/common/freezed_data_class.dart';
 
+import '../../../common/state_renderer/state_renderer.dart';
+import '../../../common/state_renderer/state_renderer_imp.dart';
+
 class LoginViewModel extends BaseViewModel with
     LoginViewModelInput , LoginViewModelOutput
 {
@@ -20,6 +23,7 @@ class LoginViewModel extends BaseViewModel with
 
   @override
   void dispose() {
+    super.dispose();
     _passwordStreamController.close();
     _emailStreamController.close();
     _outAllInputValidStreamController.close();
@@ -27,16 +31,16 @@ class LoginViewModel extends BaseViewModel with
 
   @override
   void start() {
-    // TODO: implement start
+    inputState.add(ContentState());
   }
-
-  // TODO : using login use case after implement it
   @override
   login() async{
+    inputState.add(LoadingState(StateRendererType.popupLoadingState));
     (await _loginUseCase.execute(LoginUseCaseInput(loginObject.email, loginObject.password)))
         .fold((failure) =>{
-
+      inputState.add(ErrorState(StateRendererType.popupErrorState, failure.message))
     }, (data) =>{
+      inputState.add(ContentState()),
     });
   }
 

@@ -46,28 +46,55 @@ class ContentState extends FlowState {
 
 extension FlowStateExtension on FlowState {
   Widget getScreenWidget(
-      context, Widget contentScreenWidget, Function retryActionFunction) {
+      BuildContext context,
+      Widget contentScreenWidget,
+      Function retryActionFunction
+      )
+  {
     switch (runtimeType) {
       case LoadingState:
         {
-          //show popup error
-          showPopUp(context, getStateRendererType(), getMessage());
-          //show content ui
-          return contentScreenWidget;
+          if(getStateRendererType()== StateRendererType.popupLoadingState){
+            // show popup loading
+            // show content ui of screen
+            showPopUp(context , getStateRendererType() ,getMessage());
+            return contentScreenWidget;
+          }else{
+            // show full screen
+            return StateRenderer(
+                stateRendererType: getStateRendererType(),
+                message: getMessage(),
+                retryActionFunction: retryActionFunction
+            );
+          }
         }
       case ErrorState:
         {
-          //show popup error
-          showPopUp(context, getStateRendererType(), getMessage());
-          //show content ui
-          return contentScreenWidget;
+          dismissDialog(context);
+          if(getStateRendererType()== StateRendererType.popupErrorState){
+            // show popup loading
+            // show content ui of screen
+            showPopUp(context , getStateRendererType() ,getMessage());
+            return contentScreenWidget;
+          }else{
+            // show full screen
+            return StateRenderer(
+                stateRendererType: getStateRendererType(),
+                message: getMessage(),
+                retryActionFunction: retryActionFunction
+            );
+          }
         }
       case ContentState:
         {
+          dismissDialog(context);
           return contentScreenWidget;
         }
       default:
-        return contentScreenWidget;
+        {
+          dismissDialog(context);
+          return contentScreenWidget;
+        }
     }
   }
 
@@ -79,5 +106,13 @@ extension FlowStateExtension on FlowState {
               retryActionFunction: () {},
               message: message,
             )));
+  }
+  _isCurrentDialogShowing(BuildContext context)
+  => ModalRoute.of(context)!.isCurrent != true;
+
+  dismissDialog(BuildContext context){
+    if(_isCurrentDialogShowing(context)){
+      Navigator.of(context , rootNavigator: true).pop(true);
+    }
   }
 }
