@@ -26,8 +26,8 @@ class _OnBoardingState extends State<OnBoarding> {
   final OnBoardingViewModel _viewModel = OnBoardingViewModel();
   final AppPreferences _appPreferences = instance<AppPreferences>();
   _bind(){
-    _viewModel.start();
     _appPreferences.setOnBoardingScreenViewed();
+    _viewModel.start();
   }
   @override
   void initState() {

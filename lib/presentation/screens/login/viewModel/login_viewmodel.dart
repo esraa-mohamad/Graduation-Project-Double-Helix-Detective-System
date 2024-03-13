@@ -5,6 +5,8 @@ import 'package:double_helix_detective_system/domain/usecase/login_usecase.dart'
 import 'package:double_helix_detective_system/presentation/base/base_view_model.dart';
 import 'package:double_helix_detective_system/presentation/common/freezed_data_class.dart';
 
+import '../../../../app/app_prefs.dart';
+import '../../../../app/di.dart';
 import '../../../common/state_renderer/state_renderer.dart';
 import '../../../common/state_renderer/state_renderer_imp.dart';
 
@@ -15,6 +17,7 @@ class LoginViewModel extends BaseViewModel with
   final StreamController _emailStreamController = StreamController<String>.broadcast();
   final StreamController _passwordStreamController = StreamController<String>.broadcast();
   final StreamController _outAllInputValidStreamController = StreamController<void>.broadcast();
+  final AppPreferences _appPreferences = instance<AppPreferences>();
 
   // stream for navigator
   StreamController isUserLoggedSuccessfullyStreamController = StreamController<bool>();
@@ -47,6 +50,7 @@ class LoginViewModel extends BaseViewModel with
       inputState.add(ErrorState(StateRendererType.popupErrorState, failure.message))
     }, (data) {
       inputState.add(ContentState());
+      _appPreferences.setUserLoggedIn();
     isUserLoggedSuccessfullyStreamController.add(true);
     });
   }

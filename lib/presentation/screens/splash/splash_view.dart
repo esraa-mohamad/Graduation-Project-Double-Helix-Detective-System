@@ -9,7 +9,6 @@ import 'package:double_helix_detective_system/presentation/resource/font_manager
 import 'package:double_helix_detective_system/presentation/resource/values_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../resource/constants_manager.dart';
 import '../../resource/routes_manager.dart';

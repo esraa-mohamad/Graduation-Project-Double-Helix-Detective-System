@@ -19,9 +19,15 @@ Future<void> initAppModule()async{
   // for remote data source
   instance.registerLazySingleton<RemoteDataSource>(() => RemoteDataSourceImp(instance()));
 
-  final sharedPreferences = await SharedPreferences.getInstance();
-  instance.registerLazySingleton<SharedPreferences>(() => sharedPreferences);
-  instance.registerLazySingleton<AppPreferences>(() =>AppPreferences(instance()));
+  final sharedPrefs = await SharedPreferences.getInstance();
+
+  instance.registerLazySingleton<SharedPreferences>(
+          ()=>sharedPrefs);
+
+  // apps prefs instance
+  instance.registerLazySingleton<AppPreferences>(
+          () => AppPreferences(instance()));
+
   // for dio factory
   instance.registerLazySingleton<DioFactory>(() =>DioFactory(null));
   Dio dio =await instance<DioFactory>().getDio();
