@@ -1,9 +1,11 @@
 import 'package:double_helix_detective_system/presentation/resource/assets_manager.dart';
+import 'package:double_helix_detective_system/presentation/resource/routes_manager.dart';
 import 'package:double_helix_detective_system/presentation/resource/values_manager.dart';
 import 'package:double_helix_detective_system/presentation/screens/login/viewModel/login_viewmodel.dart';
 import 'package:double_helix_detective_system/presentation/widget/elevated_button.dart';
 import 'package:double_helix_detective_system/presentation/widget/text_form_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 
 import '../../../../app/di.dart';
 import '../../../common/state_renderer/state_renderer_imp.dart';
@@ -29,6 +31,15 @@ class _LoginViewState extends State<LoginView> {
     _loginViewModel.start();
     _emailController.addListener(() => _loginViewModel.setEmail(_emailController.text));
     _passwordController.addListener(() => _loginViewModel.setPassword(_passwordController.text));
+    _loginViewModel.isUserLoggedSuccessfullyStreamController.stream.listen((isLoggedIn)
+    {
+      if(isLoggedIn){
+        SchedulerBinding.instance.addPostFrameCallback((_)
+        {
+          Navigator.of(context).pushReplacementNamed(RoutesManager.servicesPresentedRoute);
+        });
+      }
+    });
   }
 
   @override

@@ -2,6 +2,7 @@
 import 'package:double_helix_detective_system/presentation/resource/strings_manager.dart';
 import 'package:double_helix_detective_system/presentation/screens/on_boarding/view/onboarding_view.dart';
 import 'package:flutter/material.dart';
+import '../../app/di.dart';
 import '../screens/Identification/form/view/identification_form_view.dart';
 import '../screens/Identification/result/view/identification_result_view.dart';
 import '../screens/login/view/login_view.dart';
@@ -35,6 +36,7 @@ class RouteGenerator{
       case RoutesManager.onBoardingRoute:
         return MaterialPageRoute(builder: (_)=>const OnBoarding());
       case RoutesManager.loginRoute:
+        initLoginModule();
         return MaterialPageRoute(builder: (_)=>const LoginView());
       case RoutesManager.servicesPresentedRoute:
         return MaterialPageRoute(builder: (_)=>const ServicesView());

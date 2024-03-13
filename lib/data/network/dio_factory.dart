@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:double_helix_detective_system/app/constants.dart';
-import 'package:double_helix_detective_system/data/responses/response.dart';
 import 'package:flutter/foundation.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 

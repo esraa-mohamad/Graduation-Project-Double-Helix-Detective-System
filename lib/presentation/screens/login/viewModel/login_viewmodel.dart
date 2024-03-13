@@ -15,6 +15,10 @@ class LoginViewModel extends BaseViewModel with
   final StreamController _emailStreamController = StreamController<String>.broadcast();
   final StreamController _passwordStreamController = StreamController<String>.broadcast();
   final StreamController _outAllInputValidStreamController = StreamController<void>.broadcast();
+
+  // stream for navigator
+  StreamController isUserLoggedSuccessfullyStreamController = StreamController<bool>();
+
   final LoginUseCase _loginUseCase;
   LoginViewModel(this._loginUseCase);
   var loginObject = LoginObject(email: "", password: "");
@@ -27,20 +31,23 @@ class LoginViewModel extends BaseViewModel with
     _passwordStreamController.close();
     _emailStreamController.close();
     _outAllInputValidStreamController.close();
+    isUserLoggedSuccessfullyStreamController.close();
   }
 
   @override
   void start() {
     inputState.add(ContentState());
   }
+
   @override
   login() async{
-    inputState.add(LoadingState(StateRendererType.popupLoadingState));
+    inputState.add(LoadingState( StateRendererType.popupLoadingState));
     (await _loginUseCase.execute(LoginUseCaseInput(loginObject.email, loginObject.password)))
         .fold((failure) =>{
       inputState.add(ErrorState(StateRendererType.popupErrorState, failure.message))
-    }, (data) =>{
-      inputState.add(ContentState()),
+    }, (data) {
+      inputState.add(ContentState());
+    isUserLoggedSuccessfullyStreamController.add(true);
     });
   }
 

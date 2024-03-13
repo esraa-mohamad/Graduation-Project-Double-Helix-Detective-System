@@ -5,7 +5,7 @@ import 'app/di.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  initLoginModuleOnce();
+  initAppModule();
   runApp(MyApp());
 }
 bool _isLoginModuleInitialized = false;
