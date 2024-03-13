@@ -52,7 +52,7 @@ extension FlowStateExtension on FlowState {
       )
   {
     switch (runtimeType) {
-      case LoadingState:
+      case LoadingState :
         {
           if(getStateRendererType()== StateRendererType.popupLoadingState){
             // show popup loading
@@ -60,15 +60,10 @@ extension FlowStateExtension on FlowState {
             showPopUp(context , getStateRendererType() ,getMessage());
             return contentScreenWidget;
           }else{
-            // show full screen
-            return StateRenderer(
-                stateRendererType: getStateRendererType(),
-                message: getMessage(),
-                retryActionFunction: retryActionFunction
-            );
+            return Container();
           }
         }
-      case ErrorState:
+      case ErrorState :
         {
           dismissDialog(context);
           if(getStateRendererType()== StateRendererType.popupErrorState){
@@ -77,17 +72,15 @@ extension FlowStateExtension on FlowState {
             showPopUp(context , getStateRendererType() ,getMessage());
             return contentScreenWidget;
           }else{
-            // show full screen
-            return StateRenderer(
-                stateRendererType: getStateRendererType(),
-                message: getMessage(),
-                retryActionFunction: retryActionFunction
-            );
+
+            return Container();
           }
         }
-      case ContentState:
+      case ContentState :
         {
-          dismissDialog(context);
+          if (_isCurrentDialogShowing(context)) {
+            dismissDialog(context);
+          }
           return contentScreenWidget;
         }
       default:

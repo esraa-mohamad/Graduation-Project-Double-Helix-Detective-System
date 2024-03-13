@@ -1,8 +1,10 @@
 import 'package:dio/dio.dart';
+import 'package:double_helix_detective_system/app/app_prefs.dart';
 import 'package:double_helix_detective_system/data/network/app_api.dart';
 import 'package:double_helix_detective_system/data/network/network_info.dart';
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../data/data_source/remote_data_source.dart';
 import '../data/network/dio_factory.dart';
@@ -17,8 +19,11 @@ Future<void> initAppModule()async{
   // for remote data source
   instance.registerLazySingleton<RemoteDataSource>(() => RemoteDataSourceImp(instance()));
 
+  final sharedPreferences = await SharedPreferences.getInstance();
+  instance.registerLazySingleton<SharedPreferences>(() => sharedPreferences);
+  instance.registerLazySingleton<AppPreferences>(() =>AppPreferences(instance()));
   // for dio factory
-  instance.registerLazySingleton<DioFactory>(() =>DioFactory());
+  instance.registerLazySingleton<DioFactory>(() =>DioFactory(null));
   Dio dio =await instance<DioFactory>().getDio();
   //for app service client
   instance.registerLazySingleton<AppServicesTechnical>(() =>AppServicesTechnical(dio) );

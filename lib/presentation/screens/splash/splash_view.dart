@@ -1,12 +1,15 @@
 import 'dart:async';
 
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:double_helix_detective_system/app/app_prefs.dart';
+import 'package:double_helix_detective_system/app/di.dart';
 import 'package:double_helix_detective_system/presentation/resource/assets_manager.dart';
 import 'package:double_helix_detective_system/presentation/resource/color_manager.dart';
 import 'package:double_helix_detective_system/presentation/resource/font_manager.dart';
 import 'package:double_helix_detective_system/presentation/resource/values_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../resource/constants_manager.dart';
 import '../../resource/routes_manager.dart';
@@ -21,17 +24,33 @@ class SplashView extends StatefulWidget {
 
 class _SplashViewState extends State<SplashView> {
 
-  Timer? _timer ;
+  Timer? _timer;
 
-  _startDelay(){
+  _startDelay() {
     _timer = Timer(
-       const Duration(seconds: AppConstants.splashDelay),
+      const Duration(seconds: AppConstants.splashDelay),
       _goNext,
     );
   }
 
-  _goNext(){
-    Navigator.pushReplacementNamed(context, RoutesManager.onBoardingRoute);
+  final AppPreferences _appPreferences = instance<AppPreferences>();
+
+  _goNext() {
+    _appPreferences.isUserLoggedIn().then((isLogged) => {
+    if(isLogged){
+    Navigator.pushReplacementNamed(context, RoutesManager.servicesPresentedRoute)
+
+    } else{
+        _appPreferences.isOnBoardingScreenViewed().then((
+        isOnBoardingScreenViewed) => {
+    if(isOnBoardingScreenViewed){
+    Navigator.pushReplacementNamed(context, RoutesManager.loginRoute)
+    } else{
+        Navigator.pushReplacementNamed(context, RoutesManager.onBoardingRoute)
+  }})
+  }
+  }
+    );
   }
 
   @override

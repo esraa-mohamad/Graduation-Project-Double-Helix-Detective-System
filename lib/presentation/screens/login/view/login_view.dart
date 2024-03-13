@@ -1,3 +1,4 @@
+import 'package:double_helix_detective_system/app/app_prefs.dart';
 import 'package:double_helix_detective_system/presentation/resource/assets_manager.dart';
 import 'package:double_helix_detective_system/presentation/resource/routes_manager.dart';
 import 'package:double_helix_detective_system/presentation/resource/values_manager.dart';

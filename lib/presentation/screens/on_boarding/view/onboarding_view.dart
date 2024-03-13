@@ -1,3 +1,4 @@
+import 'package:double_helix_detective_system/app/app_prefs.dart';
 import 'package:double_helix_detective_system/presentation/resource/constants_manager.dart';
 import 'package:double_helix_detective_system/presentation/resource/strings_manager.dart';
 import 'package:flutter/material.dart';
@@ -5,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lottie/lottie.dart';
 
+import '../../../../app/di.dart';
 import '../../../../domain/models/models.dart';
 import '../../../resource/assets_manager.dart';
 import '../../../resource/color_manager.dart';
@@ -22,8 +24,10 @@ class OnBoarding extends StatefulWidget {
 class _OnBoardingState extends State<OnBoarding> {
   final PageController _pageController = PageController();
   final OnBoardingViewModel _viewModel = OnBoardingViewModel();
+  final AppPreferences _appPreferences = instance<AppPreferences>();
   _bind(){
     _viewModel.start();
+    _appPreferences.setOnBoardingScreenViewed();
   }
   @override
   void initState() {
