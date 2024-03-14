@@ -7,13 +7,13 @@ part of 'response.dart';
 // **************************************************************************
 
 BaseResponse _$BaseResponseFromJson(Map<String, dynamic> json) => BaseResponse()
-  ..status = json['status'] as int?
+  ..status = json['statusCode'] as int?
   ..message = json['message'] as String?
   ..token = json['token'] as String?;
 
 Map<String, dynamic> _$BaseResponseToJson(BaseResponse instance) =>
     <String, dynamic>{
-      'status': instance.status,
+      'statusCode': instance.status,
       'message': instance.message,
       'token': instance.token,
     };
@@ -38,15 +38,51 @@ AuthenticationResponse _$AuthenticationResponseFromJson(
           : TechnicalResponse.fromJson(
               json['technical'] as Map<String, dynamic>),
     )
-      ..status = json['status'] as int?
+      ..status = json['statusCode'] as int?
       ..message = json['message'] as String?
       ..token = json['token'] as String?;
 
 Map<String, dynamic> _$AuthenticationResponseToJson(
         AuthenticationResponse instance) =>
     <String, dynamic>{
-      'status': instance.status,
+      'statusCode': instance.status,
       'message': instance.message,
       'token': instance.token,
       'technical': instance.technicalResponse,
+    };
+
+PopulationResponse _$PopulationResponseFromJson(Map<String, dynamic> json) =>
+    PopulationResponse(
+      name: json['name'] as String?,
+      address: json['address'] as String?,
+      nationalId: json['national_id'] as String?,
+      statusPerson: json['status'] as String?,
+    );
+
+Map<String, dynamic> _$PopulationResponseToJson(PopulationResponse instance) =>
+    <String, dynamic>{
+      'name': instance.name,
+      'address': instance.address,
+      'national_id': instance.nationalId,
+      'status': instance.statusPerson,
+    };
+
+AddPopulationResponse _$AddPopulationResponseFromJson(
+        Map<String, dynamic> json) =>
+    AddPopulationResponse(
+      json['person'] == null
+          ? null
+          : PopulationResponse.fromJson(json['person'] as Map<String, dynamic>),
+    )
+      ..status = json['statusCode'] as int?
+      ..message = json['message'] as String?
+      ..token = json['token'] as String?;
+
+Map<String, dynamic> _$AddPopulationResponseToJson(
+        AddPopulationResponse instance) =>
+    <String, dynamic>{
+      'statusCode': instance.status,
+      'message': instance.message,
+      'token': instance.token,
+      'person': instance.populationResponse,
     };

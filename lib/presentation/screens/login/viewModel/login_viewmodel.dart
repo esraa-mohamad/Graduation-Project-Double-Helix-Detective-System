@@ -47,7 +47,7 @@ class LoginViewModel extends BaseViewModel with
     inputState.add(LoadingState( StateRendererType.popupLoadingState));
     (await _loginUseCase.execute(LoginUseCaseInput(loginObject.email, loginObject.password)))
         .fold((failure) =>{
-      inputState.add(ErrorState(StateRendererType.popupErrorState, "${failure.status}"))
+      inputState.add(ErrorState(StateRendererType.popupErrorState, failure.message))
     }, (data) {
       inputState.add(ContentState());
       _appPreferences.setUserLoggedIn();

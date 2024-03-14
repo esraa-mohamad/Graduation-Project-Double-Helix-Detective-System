@@ -53,6 +53,55 @@ class _AppServicesTechnical implements AppServicesTechnical {
     return value;
   }
 
+  @override
+  Future<AddPopulationResponse> add(
+    String name,
+    String address,
+    String nationalId,
+    String phone,
+    String gender,
+    DateTime birthDate,
+    DateTime bloodType,
+    DateTime status,
+    DateTime description,
+    DateTime dnaSequence,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = {
+      'name': name,
+      'address': address,
+      'national_id': nationalId,
+      'phone': phone,
+      'gender': gender,
+      'birthdate': birthDate,
+      'bloodType': bloodType,
+      'status': status,
+      'description': description,
+      'DNA_sequence': dnaSequence,
+    };
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<AddPopulationResponse>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/addpopulation',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = AddPopulationResponse.fromJson(_result.data!);
+    return value;
+  }
+
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
     if (T != dynamic &&
         !(requestOptions.responseType == ResponseType.bytes ||
