@@ -30,8 +30,10 @@ class RepositoryImp implements Repository{
           // failure
           // either left
           //return business error
+          print(response.status);
+          print(response.token);
           return Left(Failure(
-              status:  ApiInternalStatus.Failure ,
+              status:  response.status ?? ResponseStatus.DEFAULT ,
               message: response.message ?? ResponseMessage.DEFAULT
           ));
         }

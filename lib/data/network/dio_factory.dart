@@ -11,7 +11,7 @@ const String ACCEPT = "accept";
 const String AUTHORIZATION = "authorization";
 
 class DioFactory{
-  AuthenticationResponse? _authenticationResponse;
+  final AuthenticationResponse? _authenticationResponse;
 
   DioFactory(this._authenticationResponse);
   Future<Dio> getDio() async{
