@@ -24,10 +24,10 @@ abstract class AppServicesTechnical {
       @Field("phone") String phone ,
       @Field("gender") String gender ,
       @Field("birthdate") DateTime birthDate ,
-      @Field("bloodType") DateTime bloodType ,
-      @Field("status") DateTime status ,
-      @Field("description") DateTime description ,
-      @Field("DNA_sequence") DateTime dnaSequence ,
+      @Field("bloodType") String bloodType ,
+      @Field("status") String status ,
+      @Field("description") String description ,
+      @Field("DNA_sequence") String dnaSequence ,
       );
 
 }

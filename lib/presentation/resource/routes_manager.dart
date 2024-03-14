@@ -53,6 +53,7 @@ class RouteGenerator{
       case RoutesManager.missingPersonResultRoute:
         return MaterialPageRoute(builder: (_)=>const MissingResult());
       case RoutesManager.populationRoute:
+        initAddPopulationModule();
         return MaterialPageRoute(builder: (_)=>const PopulationView());
 
       default :return unDefinedRoute();

@@ -61,10 +61,10 @@ class _AppServicesTechnical implements AppServicesTechnical {
     String phone,
     String gender,
     DateTime birthDate,
-    DateTime bloodType,
-    DateTime status,
-    DateTime description,
-    DateTime dnaSequence,
+    String bloodType,
+    String status,
+    String description,
+    String dnaSequence,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};

@@ -142,4 +142,5 @@ class ResponseMessage {
 
 class ApiInternalStatus {
   static const int SUCCESS = 200;
+  static const int SUCCESSPOPULATION = 201;
 }

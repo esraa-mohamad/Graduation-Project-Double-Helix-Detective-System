@@ -25,3 +25,23 @@ class Authentication {
 
   Authentication(this.technical);
 }
+
+class Population {
+  String name ;
+  String nationalId ;
+  String address ;
+  String status ;
+
+  Population({
+    required this.name ,
+    required this.address ,
+    required this.nationalId ,
+    required this.status,
+  });
+}
+
+class AddPopulation {
+  Population ? population ;
+
+  AddPopulation(this.population);
+}

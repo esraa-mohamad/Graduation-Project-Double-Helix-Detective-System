@@ -19,3 +19,22 @@ extension AuthenticationResponseMapper on AuthenticationResponse? {
     );
   }
 }
+
+extension PopulationResponseMapper on PopulationResponse?{
+  Population toDomain(){
+    return Population(
+        name: this?.name.orEmpty() ?? AppConstants.empty,
+        address: this?.address.orEmpty() ?? AppConstants.empty,
+        nationalId: this?.nationalId.orEmpty() ?? AppConstants.empty,
+        status: this?.statusPerson.orEmpty() ?? AppConstants.empty
+    );
+  }
+}
+
+extension AddPopulationResponseMapper on AddPopulationResponse? {
+  AddPopulation toDomain() {
+    return AddPopulation(
+        this?.populationResponse.toDomain()
+    );
+  }
+}

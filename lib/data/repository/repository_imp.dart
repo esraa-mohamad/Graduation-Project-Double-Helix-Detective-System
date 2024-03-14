@@ -43,4 +43,31 @@ class RepositoryImp implements Repository{
     }
   }
 
+  @override
+  Future<Either<Failure, AddPopulation>> add(AddPopulationRequest addPopulationRequest) async {
+    if(await _networkInfo.isConnection){
+      try {
+        final response = await _remoteDataSource.add(addPopulationRequest);
+        if(response.status == ApiInternalStatus.SUCCESSPOPULATION){
+          // success
+          // either right
+          // return data
+          return Right(response.toDomain());
+        }else{
+          // failure
+          // either left
+          //return business error
+          return Left(Failure(
+              status:  response.status ?? ResponseStatus.DEFAULT ,
+              message: response.message ?? ResponseMessage.DEFAULT
+          ));
+        }
+      }catch(error) {
+        return Left(ErrorHandler.handle(error).failure);
+      }
+    }else{
+      return Left(DataSource.NO_INTERNET_CONNECTION.getFailure());
+    }
+  }
+
 }
