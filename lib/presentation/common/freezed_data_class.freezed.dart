@@ -149,3 +149,311 @@ abstract class _LoginObject implements LoginObject {
   _$$LoginObjectImplCopyWith<_$LoginObjectImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+/// @nodoc
+mixin _$PopulationObject {
+  String get name => throw _privateConstructorUsedError;
+  String get address => throw _privateConstructorUsedError;
+  String get nationalId => throw _privateConstructorUsedError;
+  String get phone => throw _privateConstructorUsedError;
+  String get gender => throw _privateConstructorUsedError;
+  DateTime get birthDate => throw _privateConstructorUsedError;
+  String get bloodType => throw _privateConstructorUsedError;
+  String get status => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
+  String get dnaSequence => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $PopulationObjectCopyWith<PopulationObject> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PopulationObjectCopyWith<$Res> {
+  factory $PopulationObjectCopyWith(
+          PopulationObject value, $Res Function(PopulationObject) then) =
+      _$PopulationObjectCopyWithImpl<$Res, PopulationObject>;
+  @useResult
+  $Res call(
+      {String name,
+      String address,
+      String nationalId,
+      String phone,
+      String gender,
+      DateTime birthDate,
+      String bloodType,
+      String status,
+      String description,
+      String dnaSequence});
+}
+
+/// @nodoc
+class _$PopulationObjectCopyWithImpl<$Res, $Val extends PopulationObject>
+    implements $PopulationObjectCopyWith<$Res> {
+  _$PopulationObjectCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+    Object? address = null,
+    Object? nationalId = null,
+    Object? phone = null,
+    Object? gender = null,
+    Object? birthDate = null,
+    Object? bloodType = null,
+    Object? status = null,
+    Object? description = null,
+    Object? dnaSequence = null,
+  }) {
+    return _then(_value.copyWith(
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      address: null == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String,
+      nationalId: null == nationalId
+          ? _value.nationalId
+          : nationalId // ignore: cast_nullable_to_non_nullable
+              as String,
+      phone: null == phone
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
+      gender: null == gender
+          ? _value.gender
+          : gender // ignore: cast_nullable_to_non_nullable
+              as String,
+      birthDate: null == birthDate
+          ? _value.birthDate
+          : birthDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      bloodType: null == bloodType
+          ? _value.bloodType
+          : bloodType // ignore: cast_nullable_to_non_nullable
+              as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      dnaSequence: null == dnaSequence
+          ? _value.dnaSequence
+          : dnaSequence // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$populationObjectImplCopyWith<$Res>
+    implements $PopulationObjectCopyWith<$Res> {
+  factory _$$populationObjectImplCopyWith(_$populationObjectImpl value,
+          $Res Function(_$populationObjectImpl) then) =
+      __$$populationObjectImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String name,
+      String address,
+      String nationalId,
+      String phone,
+      String gender,
+      DateTime birthDate,
+      String bloodType,
+      String status,
+      String description,
+      String dnaSequence});
+}
+
+/// @nodoc
+class __$$populationObjectImplCopyWithImpl<$Res>
+    extends _$PopulationObjectCopyWithImpl<$Res, _$populationObjectImpl>
+    implements _$$populationObjectImplCopyWith<$Res> {
+  __$$populationObjectImplCopyWithImpl(_$populationObjectImpl _value,
+      $Res Function(_$populationObjectImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+    Object? address = null,
+    Object? nationalId = null,
+    Object? phone = null,
+    Object? gender = null,
+    Object? birthDate = null,
+    Object? bloodType = null,
+    Object? status = null,
+    Object? description = null,
+    Object? dnaSequence = null,
+  }) {
+    return _then(_$populationObjectImpl(
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      address: null == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String,
+      nationalId: null == nationalId
+          ? _value.nationalId
+          : nationalId // ignore: cast_nullable_to_non_nullable
+              as String,
+      phone: null == phone
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
+      gender: null == gender
+          ? _value.gender
+          : gender // ignore: cast_nullable_to_non_nullable
+              as String,
+      birthDate: null == birthDate
+          ? _value.birthDate
+          : birthDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      bloodType: null == bloodType
+          ? _value.bloodType
+          : bloodType // ignore: cast_nullable_to_non_nullable
+              as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      dnaSequence: null == dnaSequence
+          ? _value.dnaSequence
+          : dnaSequence // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$populationObjectImpl implements _populationObject {
+  _$populationObjectImpl(
+      {required this.name,
+      required this.address,
+      required this.nationalId,
+      required this.phone,
+      required this.gender,
+      required this.birthDate,
+      required this.bloodType,
+      required this.status,
+      required this.description,
+      required this.dnaSequence});
+
+  @override
+  final String name;
+  @override
+  final String address;
+  @override
+  final String nationalId;
+  @override
+  final String phone;
+  @override
+  final String gender;
+  @override
+  final DateTime birthDate;
+  @override
+  final String bloodType;
+  @override
+  final String status;
+  @override
+  final String description;
+  @override
+  final String dnaSequence;
+
+  @override
+  String toString() {
+    return 'PopulationObject(name: $name, address: $address, nationalId: $nationalId, phone: $phone, gender: $gender, birthDate: $birthDate, bloodType: $bloodType, status: $status, description: $description, dnaSequence: $dnaSequence)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$populationObjectImpl &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.address, address) || other.address == address) &&
+            (identical(other.nationalId, nationalId) ||
+                other.nationalId == nationalId) &&
+            (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.gender, gender) || other.gender == gender) &&
+            (identical(other.birthDate, birthDate) ||
+                other.birthDate == birthDate) &&
+            (identical(other.bloodType, bloodType) ||
+                other.bloodType == bloodType) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.dnaSequence, dnaSequence) ||
+                other.dnaSequence == dnaSequence));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, name, address, nationalId, phone,
+      gender, birthDate, bloodType, status, description, dnaSequence);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$populationObjectImplCopyWith<_$populationObjectImpl> get copyWith =>
+      __$$populationObjectImplCopyWithImpl<_$populationObjectImpl>(
+          this, _$identity);
+}
+
+abstract class _populationObject implements PopulationObject {
+  factory _populationObject(
+      {required final String name,
+      required final String address,
+      required final String nationalId,
+      required final String phone,
+      required final String gender,
+      required final DateTime birthDate,
+      required final String bloodType,
+      required final String status,
+      required final String description,
+      required final String dnaSequence}) = _$populationObjectImpl;
+
+  @override
+  String get name;
+  @override
+  String get address;
+  @override
+  String get nationalId;
+  @override
+  String get phone;
+  @override
+  String get gender;
+  @override
+  DateTime get birthDate;
+  @override
+  String get bloodType;
+  @override
+  String get status;
+  @override
+  String get description;
+  @override
+  String get dnaSequence;
+  @override
+  @JsonKey(ignore: true)
+  _$$populationObjectImplCopyWith<_$populationObjectImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
