@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 import 'package:double_helix_detective_system/data/network/failure.dart';
 import 'package:double_helix_detective_system/data/network/requests.dart';
@@ -48,7 +50,7 @@ class AddPopulationInput {
 
   String description;
 
-  String dnaSequence;
+  File dnaSequence;
 
   AddPopulationInput({required this.name,
     required this.address,

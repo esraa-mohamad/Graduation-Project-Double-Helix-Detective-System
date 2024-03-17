@@ -1,3 +1,6 @@
+
+import 'dart:io';
+
 class LoginRequest {
   String email;
   String password;
@@ -24,7 +27,7 @@ class AddPopulationRequest {
 
   String description;
 
-  String dnaSequence;
+  File dnaSequence;
 
   AddPopulationRequest(
       {required this.name,

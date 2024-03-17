@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:double_helix_detective_system/presentation/base/base_view_model.dart';
 import 'package:double_helix_detective_system/presentation/common/freezed_data_class.dart';
@@ -21,7 +22,7 @@ class PopulationViewModel extends BaseViewModel
       .broadcast();
   StreamController<String> descriptionStreamController = StreamController
       .broadcast();
-  StreamController<String> dnaSequenceStreamController = StreamController
+  StreamController<File> dnaSequenceStreamController = StreamController
       .broadcast();
   StreamController<DateTime> birthDateStreamController = StreamController
       .broadcast();
@@ -34,7 +35,7 @@ class PopulationViewModel extends BaseViewModel
       bloodType: "",
       status: "",
       description: "",
-      dnaSequence: "");
+      dnaSequence:File("") );
 
   @override
   void dispose() {
@@ -105,9 +106,9 @@ class PopulationViewModel extends BaseViewModel
           _isValidDescription(description));
 
   @override
-  Stream<bool> get dnaSequenceOutput =>
+  Stream<File> get dnaSequenceOutput =>
       dnaSequenceStreamController.stream.map((dnaSequence) =>
-          _isValidDnaSequence(dnaSequence));
+          dnaSequence);
 
   @override
   Stream<bool> get genderOutput =>
@@ -152,10 +153,6 @@ class PopulationViewModel extends BaseViewModel
 
   bool _isValidStatus(String status) {
     return status.isNotEmpty;
-  }
-
-  bool _isValidDnaSequence(String dnaSequence) {
-    return dnaSequence.isNotEmpty;
   }
 
   bool _isValidDescription(String description) {
@@ -208,6 +205,6 @@ mixin PopulationViewModelOutput {
 
   Stream<DateTime> get birthDateOutput;
 
-  Stream<bool> get dnaSequenceOutput;
+  Stream<File> get dnaSequenceOutput;
 
 }

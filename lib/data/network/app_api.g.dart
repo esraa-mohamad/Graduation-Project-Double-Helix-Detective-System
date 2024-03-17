@@ -64,7 +64,7 @@ class _AppServicesTechnical implements AppServicesTechnical {
     String bloodType,
     String status,
     String description,
-    String dnaSequence,
+    File dnaSequence,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -79,7 +79,6 @@ class _AppServicesTechnical implements AppServicesTechnical {
       'bloodType': bloodType,
       'status': status,
       'description': description,
-      'DNA_sequence': dnaSequence,
     };
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<AddPopulationResponse>(Options(
@@ -89,7 +88,7 @@ class _AppServicesTechnical implements AppServicesTechnical {
     )
             .compose(
               _dio.options,
-              '/addpopulation',
+              '/addpopulationn',
               queryParameters: queryParameters,
               data: _data,
             )

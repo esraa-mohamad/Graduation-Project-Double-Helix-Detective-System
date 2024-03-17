@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:double_helix_detective_system/app/constants.dart';
 import 'package:retrofit/http.dart';
@@ -27,7 +29,7 @@ abstract class AppServicesTechnical {
       @Field("bloodType") String bloodType ,
       @Field("status") String status ,
       @Field("description") String description ,
-      @Field("DNA_sequence") String dnaSequence ,
+      @Part(fileName: "file") File dnaSequence ,
       );
 
 }

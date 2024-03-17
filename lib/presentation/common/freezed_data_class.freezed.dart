@@ -161,7 +161,7 @@ mixin _$PopulationObject {
   String get bloodType => throw _privateConstructorUsedError;
   String get status => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  String get dnaSequence => throw _privateConstructorUsedError;
+  File get dnaSequence => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PopulationObjectCopyWith<PopulationObject> get copyWith =>
@@ -184,7 +184,7 @@ abstract class $PopulationObjectCopyWith<$Res> {
       String bloodType,
       String status,
       String description,
-      String dnaSequence});
+      File dnaSequence});
 }
 
 /// @nodoc
@@ -251,7 +251,7 @@ class _$PopulationObjectCopyWithImpl<$Res, $Val extends PopulationObject>
       dnaSequence: null == dnaSequence
           ? _value.dnaSequence
           : dnaSequence // ignore: cast_nullable_to_non_nullable
-              as String,
+              as File,
     ) as $Val);
   }
 }
@@ -274,7 +274,7 @@ abstract class _$$populationObjectImplCopyWith<$Res>
       String bloodType,
       String status,
       String description,
-      String dnaSequence});
+      File dnaSequence});
 }
 
 /// @nodoc
@@ -339,7 +339,7 @@ class __$$populationObjectImplCopyWithImpl<$Res>
       dnaSequence: null == dnaSequence
           ? _value.dnaSequence
           : dnaSequence // ignore: cast_nullable_to_non_nullable
-              as String,
+              as File,
     ));
   }
 }
@@ -378,7 +378,7 @@ class _$populationObjectImpl implements _populationObject {
   @override
   final String description;
   @override
-  final String dnaSequence;
+  final File dnaSequence;
 
   @override
   String toString() {
@@ -430,7 +430,7 @@ abstract class _populationObject implements PopulationObject {
       required final String bloodType,
       required final String status,
       required final String description,
-      required final String dnaSequence}) = _$populationObjectImpl;
+      required final File dnaSequence}) = _$populationObjectImpl;
 
   @override
   String get name;
@@ -451,7 +451,7 @@ abstract class _populationObject implements PopulationObject {
   @override
   String get description;
   @override
-  String get dnaSequence;
+  File get dnaSequence;
   @override
   @JsonKey(ignore: true)
   _$$populationObjectImplCopyWith<_$populationObjectImpl> get copyWith =>

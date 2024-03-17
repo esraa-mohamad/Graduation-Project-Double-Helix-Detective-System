@@ -1,4 +1,5 @@
 // ignore: depend_on_referenced_packages
+import 'dart:io';
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'freezed_data_class.freezed.dart';
 
@@ -21,6 +22,6 @@ class PopulationObject with _$PopulationObject{
     required String bloodType,
     required String status,
     required String description,
-    required String dnaSequence
+    required File dnaSequence
 })=_populationObject;
 }
