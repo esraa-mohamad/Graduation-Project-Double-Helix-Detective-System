@@ -88,7 +88,7 @@ class _AppServicesTechnical implements AppServicesTechnical {
     )
             .compose(
               _dio.options,
-              '/addpopulationn',
+              '/addpopulation',
               queryParameters: queryParameters,
               data: _data,
             )
