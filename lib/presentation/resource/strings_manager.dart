@@ -69,4 +69,8 @@ class AppStrings{
   static const loading = "Loading...";
   static const title = "";
   static const ok = "OK";
+
+  static const errorDescription ="Description must be filled with valid data";
+  static const errorStatus ="Status must be chosen correctly";
+
 }

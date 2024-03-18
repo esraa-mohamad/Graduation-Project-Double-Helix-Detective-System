@@ -55,6 +55,7 @@ initAddPopulationModule() {
     instance.registerFactory<AddPopulationUseCase>(() => AddPopulationUseCase(instance()));
 
     // login view model
-    instance.registerFactory<PopulationViewModel>(() => PopulationViewModel());
+    instance.registerFactory<PopulationViewModel>(() => PopulationViewModel(instance()));
   }
 }
+
