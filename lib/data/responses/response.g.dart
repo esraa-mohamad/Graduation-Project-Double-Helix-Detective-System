@@ -8,14 +8,12 @@ part of 'response.dart';
 
 BaseResponse _$BaseResponseFromJson(Map<String, dynamic> json) => BaseResponse()
   ..status = json['statusCode'] as int?
-  ..message = json['message'] as String?
-  ..token = json['token'] as String?;
+  ..message = json['message'] as String?;
 
 Map<String, dynamic> _$BaseResponseToJson(BaseResponse instance) =>
     <String, dynamic>{
       'statusCode': instance.status,
       'message': instance.message,
-      'token': instance.token,
     };
 
 TechnicalResponse _$TechnicalResponseFromJson(Map<String, dynamic> json) =>
@@ -37,10 +35,10 @@ AuthenticationResponse _$AuthenticationResponseFromJson(
           ? null
           : TechnicalResponse.fromJson(
               json['technical'] as Map<String, dynamic>),
+      token: json['token'] as String?,
     )
       ..status = json['statusCode'] as int?
-      ..message = json['message'] as String?
-      ..token = json['token'] as String?;
+      ..message = json['message'] as String?;
 
 Map<String, dynamic> _$AuthenticationResponseToJson(
         AuthenticationResponse instance) =>
@@ -75,14 +73,12 @@ AddPopulationResponse _$AddPopulationResponseFromJson(
           : PopulationResponse.fromJson(json['person'] as Map<String, dynamic>),
     )
       ..status = json['statusCode'] as int?
-      ..message = json['message'] as String?
-      ..token = json['token'] as String?;
+      ..message = json['message'] as String?;
 
 Map<String, dynamic> _$AddPopulationResponseToJson(
         AddPopulationResponse instance) =>
     <String, dynamic>{
       'statusCode': instance.status,
       'message': instance.message,
-      'token': instance.token,
       'person': instance.populationResponse,
     };

@@ -15,7 +15,8 @@ extension TechnicalResponseMapper on TechnicalResponse? {
 extension AuthenticationResponseMapper on AuthenticationResponse? {
   Authentication toDomain() {
     return Authentication(
-      this?.technicalResponse.toDomain()
+      this?.technicalResponse.toDomain(),
+      this?.token.orEmpty() ?? AppConstants.empty,
     );
   }
 }

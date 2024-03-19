@@ -21,9 +21,10 @@ class Technical {
 }
 
 class Authentication {
+  String  token;
   Technical ? technical ;
 
-  Authentication(this.technical);
+  Authentication(this.technical , this.token);
 }
 
 class Population {

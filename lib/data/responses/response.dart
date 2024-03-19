@@ -9,8 +9,6 @@ class BaseResponse {
   int ? status ;
   @JsonKey(name: "message")
   String ? message ;
-  @JsonKey(name: "token")
-  String ? token ;
 }
 
 @JsonSerializable()
@@ -31,10 +29,12 @@ class TechnicalResponse {
 
 @JsonSerializable()
 class AuthenticationResponse extends BaseResponse{
+  @JsonKey(name: "token")
+  String ? token ;
   @JsonKey(name: "technical")
   TechnicalResponse ? technicalResponse ;
 
-  AuthenticationResponse({required this.technicalResponse});
+  AuthenticationResponse({required this.technicalResponse , required this.token});
 
   factory AuthenticationResponse.fromJson(Map<String,dynamic> json) =>_$AuthenticationResponseFromJson(json);
 

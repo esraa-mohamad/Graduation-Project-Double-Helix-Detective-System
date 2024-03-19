@@ -1,5 +1,4 @@
 import 'package:double_helix_detective_system/presentation/resource/assets_manager.dart';
-import 'package:double_helix_detective_system/presentation/resource/routes_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -137,7 +136,7 @@ class StateRenderer extends StatelessWidget {
             onPressed: ()
             {
               // popup error
-                Navigator.pushNamed(context, RoutesManager.loginRoute);
+                Navigator.pop(context);
             },
             child: Text(
                 buttonTitle

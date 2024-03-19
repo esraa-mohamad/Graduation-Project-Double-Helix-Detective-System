@@ -16,6 +16,7 @@ class AssetsManager {
   static const String crimeIcon='$imagePath/crime.jpg';
   static const String paternityIcon='$imagePath/pater.jpg';
   static const String missingIcon='$imagePath/missing.jpg';
+  static const String iconDna='$imagePath/icon_dna.png';
 
 }
 

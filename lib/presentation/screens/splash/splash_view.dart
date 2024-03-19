@@ -13,7 +13,6 @@ import 'package:lottie/lottie.dart';
 import '../../resource/constants_manager.dart';
 import '../../resource/routes_manager.dart';
 
-
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
 
@@ -22,7 +21,6 @@ class SplashView extends StatefulWidget {
 }
 
 class _SplashViewState extends State<SplashView> {
-
   Timer? _timer;
 
   _startDelay() {
@@ -36,20 +34,29 @@ class _SplashViewState extends State<SplashView> {
 
   _goNext() {
     _appPreferences.isUserLoggedIn().then((isLogged) => {
-    if(isLogged){
-    Navigator.pushReplacementNamed(context, RoutesManager.servicesPresentedRoute)
-
-    } else{
-        _appPreferences.isOnBoardingScreenViewed().then((
-        isOnBoardingScreenViewed) => {
-    if(isOnBoardingScreenViewed){
-    Navigator.pushReplacementNamed(context, RoutesManager.loginRoute)
-    } else{
-        Navigator.pushReplacementNamed(context, RoutesManager.onBoardingRoute)
-  }})
-  }
-  }
-    );
+          if (isLogged)
+            {
+              Navigator.pushReplacementNamed(
+                  context, RoutesManager.servicesPresentedRoute)
+            }
+          else
+            {
+              _appPreferences
+                  .isOnBoardingScreenViewed()
+                  .then((isOnBoardingScreenViewed) => {
+                        if (isOnBoardingScreenViewed)
+                          {
+                            Navigator.pushReplacementNamed(
+                                context, RoutesManager.loginRoute)
+                          }
+                        else
+                          {
+                            Navigator.pushReplacementNamed(
+                                context, RoutesManager.onBoardingRoute)
+                          }
+                      })
+            }
+        });
   }
 
   @override
@@ -74,7 +81,7 @@ class _SplashViewState extends State<SplashView> {
                     style: const TextStyle(
                       fontSize: FontSize.s60,
                       color: ColorManager.primary,
-                      fontFamily:FontConstants.fontFamily,
+                      fontFamily: FontConstants.fontFamily,
                     ),
                     child: AnimatedTextKit(
                       animatedTexts: [
@@ -85,10 +92,11 @@ class _SplashViewState extends State<SplashView> {
                 ),
               ),
               Expanded(
-                child: Lottie.asset(AssetsManager.splashLogo,
-                    repeat: true,
-                    reverse: false,
-                    animate: true,
+                child: Lottie.asset(
+                  AssetsManager.splashLogo,
+                  repeat: true,
+                  reverse: false,
+                  animate: true,
                 ),
               ),
             ],
@@ -97,12 +105,10 @@ class _SplashViewState extends State<SplashView> {
       ),
     );
   }
+
   @override
   void dispose() {
     super.dispose();
     _timer?.cancel();
   }
 }
-
-
-

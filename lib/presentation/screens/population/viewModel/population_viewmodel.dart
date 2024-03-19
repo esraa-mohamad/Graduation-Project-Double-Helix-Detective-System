@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:io';
-
 import 'package:double_helix_detective_system/domain/usecase/add_population_usecase.dart';
 import 'package:double_helix_detective_system/presentation/base/base_view_model.dart';
 import 'package:double_helix_detective_system/presentation/common/freezed_data_class.dart';
@@ -30,6 +29,7 @@ class PopulationViewModel extends BaseViewModel
   StreamController<DateTime> birthDateStreamController =
       StreamController.broadcast();
   StreamController<void> areAllInputsValidStreamController = StreamController();
+  StreamController isUserAddedSuccessfullyStreamController = StreamController<bool>();
   var populationObject = PopulationObject(
       name: "",
       address: "",
@@ -58,6 +58,7 @@ class PopulationViewModel extends BaseViewModel
     dnaSequenceStreamController.close();
     birthDateStreamController.close();
     areAllInputsValidStreamController.close();
+    isUserAddedSuccessfullyStreamController.close();
     super.dispose();
   }
 
@@ -88,6 +89,7 @@ class PopulationViewModel extends BaseViewModel
                       StateRendererType.popupErrorState, failure.message))
                 }, (data) {
       inputState.add(ContentState());
+      isUserAddedSuccessfullyStreamController.add(true);
     });
   }
 

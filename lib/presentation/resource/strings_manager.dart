@@ -62,7 +62,7 @@ class AppStrings{
   static const crimePerson = "Crime";
   static const acknowledgedPerson = "Acknowledged";
   static const descriptionPerson = "Description";
-  static const dnaPerson = "DNA";
+  static const dnaPerson = "Upload DNA File";
   static const addPerson = "Add Person";
 
   // dialogs

@@ -6,14 +6,16 @@ class CustomDropDownMenu extends StatelessWidget {
     required this.onSelected,
     required this.label,
     this.width,
+    this.errorText,
     this.controller,
     super.key
   });
 
   final List<DropdownMenuEntry<dynamic>> dropdownMenuEntries;
   final void Function(dynamic)? onSelected;
-  final Widget? label ;
+  final Widget label ;
   final double? width;
+  final String? errorText;
   final TextEditingController? controller;
   @override
   Widget build(BuildContext context) {
@@ -24,6 +26,7 @@ class CustomDropDownMenu extends StatelessWidget {
         onSelected:onSelected,
         enableSearch: true,
         label: label,
+        errorText: errorText,
     );
   }
 }

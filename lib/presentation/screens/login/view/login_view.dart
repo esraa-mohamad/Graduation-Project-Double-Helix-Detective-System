@@ -7,6 +7,7 @@ import 'package:double_helix_detective_system/presentation/widget/text_form_fiel
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
+import '../../../../app/app_prefs.dart';
 import '../../../../app/di.dart';
 import '../../../common/state_renderer/state_renderer_imp.dart';
 import '../../../resource/strings_manager.dart';
@@ -21,6 +22,7 @@ class _LoginViewState extends State<LoginView> {
   final LoginViewModel _loginViewModel = instance<LoginViewModel>();
 
   final _formKey = GlobalKey<FormState>();
+  final AppPreferences _appPreferences = instance<AppPreferences>();
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -36,6 +38,7 @@ class _LoginViewState extends State<LoginView> {
       if(isLoggedIn){
         SchedulerBinding.instance.addPostFrameCallback((_)
         {
+          _appPreferences.getAuthToken();
           Navigator.of(context).pushReplacementNamed(RoutesManager.servicesPresentedRoute);
         });
       }
