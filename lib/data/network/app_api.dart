@@ -29,7 +29,7 @@ abstract class AppServicesTechnical {
       @Field("bloodType") String bloodType ,
       @Field("status") String status ,
       @Field("description") String description ,
-      @Part(fileName: "file") File dnaSequence ,
+      @Part(name: "file" ) File dnaSequence,
       );
 
 }

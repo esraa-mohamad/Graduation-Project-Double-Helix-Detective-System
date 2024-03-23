@@ -468,8 +468,7 @@ class _PopulationViewState extends State<PopulationView> {
       // Extract the File object from the result
       var file = File(result.files.single.path!);
       _populationViewModel.setDnaSeq(file);
-      print(_populationViewModel.setDnaSeq(file));
-    }
+      }
     // if(result == null) return;
     // PlatformFile file = result.files.single;
     // print(file);
