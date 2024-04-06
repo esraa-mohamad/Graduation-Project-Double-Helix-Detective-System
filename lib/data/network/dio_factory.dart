@@ -43,18 +43,4 @@ class DioFactory{
 
     return dio;
   }
-  Future<Response> uploadFile(String filePath) async {
-    Dio dio = await getDio();
-    FormData formData = FormData.fromMap({
-      'file': await MultipartFile.fromFile(filePath),
-    });
-    try {
-      Response response = await dio.post('/upload', data: formData);
-      return response;
-    } catch (e) {
-      // Handle error
-      print('Error uploading file: $e');
-      rethrow;
-    }
-  }
 }

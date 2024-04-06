@@ -17,8 +17,9 @@ abstract class AppServicesTechnical {
       @Field("email") String email ,
       @Field("password") String password
       );
-  
+
   @POST("/addpopulation")
+  @MultiPart()
   Future<AddPopulationResponse> add (
       @Field("name") String name ,
       @Field("address") String address ,
@@ -29,7 +30,7 @@ abstract class AppServicesTechnical {
       @Field("bloodType") String bloodType ,
       @Field("status") String status ,
       @Field("description") String description ,
-      @Part(name: "file" ) File dnaSequence,
+      @Part(name: "file") File dnaSequence,
       );
 
 }

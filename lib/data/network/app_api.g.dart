@@ -85,6 +85,7 @@ class _AppServicesTechnical implements AppServicesTechnical {
       method: 'POST',
       headers: _headers,
       extra: _extra,
+      contentType: 'multipart/form-data',
     )
             .compose(
               _dio.options,
