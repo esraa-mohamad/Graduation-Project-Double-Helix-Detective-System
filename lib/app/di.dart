@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:double_helix_detective_system/app/app_prefs.dart';
 import 'package:double_helix_detective_system/data/network/app_api.dart';
 import 'package:double_helix_detective_system/data/network/network_info.dart';
+import 'package:double_helix_detective_system/data/responses/response.dart';
 import 'package:double_helix_detective_system/domain/usecase/add_population_usecase.dart';
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
@@ -33,8 +34,9 @@ Future<void> initAppModule()async{
   // for dio factory
   instance.registerLazySingleton<DioFactory>(() =>DioFactory(null));
   Dio dio =await instance<DioFactory>().getDio();
+  AuthenticationResponse authenticationResponse;
   //for app service client
-  instance.registerLazySingleton<AppServicesTechnical>(() =>AppServicesTechnical(dio) );
+  instance.registerLazySingleton<AppServicesTechnical>(() =>AppServicesTechnical(dio,authenticationResponse) );
   // for repository
   instance.registerLazySingleton<Repository>(() => RepositoryImp(instance(), instance()));
 }

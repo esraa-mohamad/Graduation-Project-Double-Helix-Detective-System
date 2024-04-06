@@ -10,7 +10,7 @@ part'app_api.g.dart'  ;
 @RestApi(baseUrl: AppConstants.baseUrl)
 abstract class AppServicesTechnical {
 
-  factory AppServicesTechnical(Dio dio , {String baseUrl}) = _AppServicesTechnical;
+  factory AppServicesTechnical(Dio dio ,AuthenticationResponse authenticationResponse ,{String baseUrl}) = _AppServicesTechnical;
   
   @POST("/signintechnical")
   Future<AuthenticationResponse> login (
