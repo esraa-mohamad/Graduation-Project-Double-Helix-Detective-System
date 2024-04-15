@@ -9,6 +9,7 @@ class LoginRequest {
 }
 
 class AddPopulationRequest {
+  String token;
   String name;
 
   String address;
@@ -30,7 +31,8 @@ class AddPopulationRequest {
   File dnaSequence;
 
   AddPopulationRequest(
-      {required this.name,
+      {required this.token,
+        required this.name,
       required this.address,
       required this.nationalId,
       required this.phone,

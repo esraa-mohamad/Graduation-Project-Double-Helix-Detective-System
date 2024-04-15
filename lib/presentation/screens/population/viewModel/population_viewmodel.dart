@@ -1,15 +1,20 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:double_helix_detective_system/app/app_prefs.dart';
+import 'package:double_helix_detective_system/app/constants.dart';
 import 'package:double_helix_detective_system/domain/usecase/add_population_usecase.dart';
 import 'package:double_helix_detective_system/presentation/base/base_view_model.dart';
 import 'package:double_helix_detective_system/presentation/common/freezed_data_class.dart';
 import 'package:double_helix_detective_system/presentation/resource/strings_manager.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../../app/di.dart';
 import '../../../common/state_renderer/state_renderer.dart';
 import '../../../common/state_renderer/state_renderer_imp.dart';
 
 class PopulationViewModel extends BaseViewModel
     with PopulationViewModelInput, PopulationViewModelOutput {
+  final AppPreferences _appPreferences = instance<AppPreferences>();
   StreamController<String> nameStreamController = StreamController.broadcast();
   StreamController<String> addressStreamController =
       StreamController.broadcast();
@@ -67,11 +72,13 @@ class PopulationViewModel extends BaseViewModel
     inputState.add(ContentState());
   }
 
+
   //inputs
   @override
   add() async {
     inputState.add(LoadingState(StateRendererType.popupLoadingState));
     (await _addPopulationUseCase.execute(AddPopulationInput(
+      token:await _appPreferences.getAuthToken()??AppConstants.empty,
       name: populationObject.name,
       address: populationObject.address,
       nationalId: populationObject.nationalId,

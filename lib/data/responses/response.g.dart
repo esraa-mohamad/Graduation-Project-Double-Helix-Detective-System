@@ -35,7 +35,7 @@ AuthenticationResponse _$AuthenticationResponseFromJson(
           ? null
           : TechnicalResponse.fromJson(
               json['technical'] as Map<String, dynamic>),
-      token: json['token'] as String?,
+      token: json['newToken'] as String?,
     )
       ..status = json['statusCode'] as int?
       ..message = json['message'] as String?;
@@ -45,7 +45,7 @@ Map<String, dynamic> _$AuthenticationResponseToJson(
     <String, dynamic>{
       'statusCode': instance.status,
       'message': instance.message,
-      'token': instance.token,
+      'newToken': instance.token,
       'technical': instance.technicalResponse,
     };
 

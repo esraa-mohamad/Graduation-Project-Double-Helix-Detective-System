@@ -32,11 +32,14 @@ Future<void> initAppModule()async{
           () => AppPreferences(instance()));
 
   // for dio factory
-  instance.registerLazySingleton<DioFactory>(() =>DioFactory(null));
-  Dio dio =await instance<DioFactory>().getDio();
+  // final DioFactory dioFactory = DioFactory(null);
+  // instance.registerLazySingleton<DioFactory>(() => dioFactory);
+  // instance.registerLazySingleton<DioFactory>(() =>DioFactory(null));
+  // Dio dio =await instance<DioFactory>().getDio();
+  Dio dio = DioFactory.getDio();
   AuthenticationResponse authenticationResponse;
   //for app service client
-  instance.registerLazySingleton<AppServicesTechnical>(() =>AppServicesTechnical(dio,authenticationResponse) );
+  instance.registerLazySingleton<AppServicesTechnical>(() =>AppServicesTechnical(dio) );
   // for repository
   instance.registerLazySingleton<Repository>(() => RepositoryImp(instance(), instance()));
 }

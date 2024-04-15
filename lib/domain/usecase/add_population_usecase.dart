@@ -18,6 +18,7 @@ class AddPopulationUseCase extends BaseUseCase<AddPopulationInput,AddPopulation>
   Future<Either<Failure, AddPopulation>> execute(
       AddPopulationInput input) async {
     return await _repository.add(AddPopulationRequest(
+        token:input.token ,
         name: input.name,
         address: input.address,
         nationalId: input.nationalId,
@@ -32,6 +33,7 @@ class AddPopulationUseCase extends BaseUseCase<AddPopulationInput,AddPopulation>
 }
 
 class AddPopulationInput {
+  String token;
   String name;
 
   String address;
@@ -52,7 +54,9 @@ class AddPopulationInput {
 
   File dnaSequence;
 
-  AddPopulationInput({required this.name,
+  AddPopulationInput({
+    required this.token,
+    required this.name,
     required this.address,
     required this.nationalId,
     required this.phone,

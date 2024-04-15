@@ -29,7 +29,7 @@ class TechnicalResponse {
 
 @JsonSerializable()
 class AuthenticationResponse extends BaseResponse{
-  @JsonKey(name: "token")
+  @JsonKey(name: "newToken")
   String ? token ;
   @JsonKey(name: "technical")
   TechnicalResponse ? technicalResponse ;

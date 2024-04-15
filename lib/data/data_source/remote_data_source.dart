@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:double_helix_detective_system/data/network/app_api.dart';
 import 'package:double_helix_detective_system/data/network/requests.dart';
 
@@ -23,17 +24,25 @@ class RemoteDataSourceImp implements RemoteDataSource {
   @override
   Future<AddPopulationResponse> add(
       AddPopulationRequest addPopulationRequest) async {
+    MyDateTime myBirthDate = MyDateTime(addPopulationRequest.birthDate);
+    //  var formData=FormData.fromMap({
+    //   'file': await MultipartFile.fromFile(addPopulationRequest.dnaSequence.path, filename: '')
+    //   ,
+    // });
+    MultipartFile file = await MultipartFile.fromFile(addPopulationRequest.dnaSequence.path, filename: '');
     return await _appServicesTechnical.add(
+      addPopulationRequest.token,
         addPopulationRequest.name,
         addPopulationRequest.address,
         addPopulationRequest.nationalId,
         addPopulationRequest.phone,
         addPopulationRequest.gender,
-        addPopulationRequest.birthDate,
+        myBirthDate,
         addPopulationRequest.bloodType,
         addPopulationRequest.status,
         addPopulationRequest.description,
-        addPopulationRequest.dnaSequence);
+        file,
+    );
   }
 
 

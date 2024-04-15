@@ -52,27 +52,23 @@ extension FlowStateExtension on FlowState {
       )
   {
     switch (runtimeType) {
-      case LoadingState :
+      case LoadingState  :
         {
           if(getStateRendererType()== StateRendererType.popupLoadingState){
-            // show popup loading
-            // show content ui of screen
             showPopUp(context , getStateRendererType() ,getMessage());
             return contentScreenWidget;
           }else{
+            dismissDialog(context);
             return Container();
           }
         }
-      case ErrorState :
+      case ErrorState  :
         {
           dismissDialog(context);
           if(getStateRendererType()== StateRendererType.popupErrorState){
-            // show popup loading
-            // show content ui of screen
             showPopUp(context , getStateRendererType() ,getMessage());
             return contentScreenWidget;
           }else{
-
             return Container();
           }
         }
@@ -91,21 +87,27 @@ extension FlowStateExtension on FlowState {
     }
   }
 
-  showPopUp(context, StateRendererType stateRendererType, String message) {
+  showPopUp(BuildContext context, StateRendererType stateRendererType, String message) {
+    print("Showing popup with message: $message"); // Add this line for debugging
     WidgetsBinding.instance.addPostFrameCallback((_) => showDialog(
         context: context,
+        useRootNavigator: false,
+        barrierDismissible: false, // Prevent dismissing by tapping outside
         builder: (context) => StateRenderer(
               stateRendererType: stateRendererType,
-              retryActionFunction: () {},
+              retryActionFunction: () {
+              },
               message: message,
             )));
   }
   _isCurrentDialogShowing(BuildContext context)
-  => ModalRoute.of(context)!.isCurrent != true;
+  => ModalRoute.of(context)?.isCurrent == true;
 
   dismissDialog(BuildContext context){
+    print("Dismissing dialog"); // Add this line for debugging
     if(_isCurrentDialogShowing(context)){
       Navigator.of(context , rootNavigator: true).pop(true);
     }
   }
 }
+

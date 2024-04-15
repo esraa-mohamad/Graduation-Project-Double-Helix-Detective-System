@@ -74,7 +74,7 @@ class StateRenderer extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppSize.s20),
       ),
       elevation: AppSize.s1_5,
-      backgroundColor: Colors.transparent,
+      backgroundColor: Colors.red,
       child: Container(
         width: AppSize.s400,
         decoration: BoxDecoration(
@@ -136,7 +136,8 @@ class StateRenderer extends StatelessWidget {
             onPressed: ()
             {
               // popup error
-                Navigator.pop(context);
+              print("Button pressed"); // Add this line for debugging
+              Navigator.of(context).pop();
             },
             child: Text(
                 buttonTitle
@@ -147,5 +148,6 @@ class StateRenderer extends StatelessWidget {
     );
   }
 }
+
 
 
