@@ -79,6 +79,6 @@ class AddPopulationResponse extends BaseResponse{
   factory AddPopulationResponse.fromJson(Map<String,dynamic> json) =>_$AddPopulationResponseFromJson(json);
 
   // to json
-  Map<String,dynamic> toJson() =>
-      _$AddPopulationResponseToJson(this);
+  // Map<String,dynamic> toJson() =>
+  //     _$AddPopulationResponseToJson(this);
 }

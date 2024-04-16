@@ -1,3 +1,4 @@
+
 import 'package:dio/dio.dart';
 import 'package:double_helix_detective_system/data/network/app_api.dart';
 import 'package:double_helix_detective_system/data/network/requests.dart';
@@ -29,19 +30,27 @@ class RemoteDataSourceImp implements RemoteDataSource {
     //   'file': await MultipartFile.fromFile(addPopulationRequest.dnaSequence.path, filename: '')
     //   ,
     // });
-    MultipartFile file = await MultipartFile.fromFile(addPopulationRequest.dnaSequence.path, filename: '');
+    // var formData = await MultipartFile.fromFile(addPopulationRequest.dnaSequence.path, filename: '');
+    var formData = FormData.fromMap({
+      'status': addPopulationRequest.status,
+      'phone': addPopulationRequest.phone,
+      'description': addPopulationRequest.description,
+      'file': [MultipartFile.fromString(addPopulationRequest.dnaSequence.path, filename: addPopulationRequest.dnaSequence.path)],
+    });
     return await _appServicesTechnical.add(
       addPopulationRequest.token,
-        addPopulationRequest.name,
-        addPopulationRequest.address,
-        addPopulationRequest.nationalId,
-        addPopulationRequest.phone,
-        addPopulationRequest.gender,
-        myBirthDate,
-        addPopulationRequest.bloodType,
-        addPopulationRequest.status,
-        addPopulationRequest.description,
-        file,
+        formData,
+
+        // addPopulationRequest.name,
+        // addPopulationRequest.address,
+        // addPopulationRequest.nationalId,
+        // addPopulationRequest.phone,
+        // addPopulationRequest.gender,
+        // myBirthDate,
+        // addPopulationRequest.bloodType,
+        // addPopulationRequest.status,
+        // addPopulationRequest.description,
+        // file,
     );
   }
 

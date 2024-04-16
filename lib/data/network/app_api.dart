@@ -34,17 +34,17 @@ abstract class AppServicesTechnical {
       // @Field("description") String description ,
       // @Part(name: "file") File dnaSequence,
       @Header("token")String token,
-      // @Body()FormData formData,
-      @Part(name: "name") String name,
-      @Part(name: "address") String address,
-      @Part(name: "national_id") String nationalId,
-      @Part(name: "phone") String phone,
-      @Part(name: "gender") String gender,
-      @Part(name: "birthdate") MyDateTime birthDate,
-      @Part(name: "bloodType") String bloodType,
-      @Part(name: "status") String status,
-      @Part(name: "description") String description,
-      @Part(name: "file") MultipartFile file
+      @Body()FormData formData,
+      // @Part(name: "name") String name,
+      // @Part(name: "address") String address,
+      // @Part(name: "national_id") String nationalId,
+      // @Part(name: "phone") String phone,
+      // @Part(name: "gender") String gender,
+      // @Part(name: "birthdate") MyDateTime birthDate,
+      // @Part(name: "bloodType") String bloodType,
+      // @Part(name: "status") String status,
+      // @Part(name: "description") String description,
+      // @Part(name: "file") MultipartFile file
       );
 
 }
