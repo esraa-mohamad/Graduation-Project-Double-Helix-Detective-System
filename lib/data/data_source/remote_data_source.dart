@@ -25,22 +25,25 @@ class RemoteDataSourceImp implements RemoteDataSource {
   @override
   Future<AddPopulationResponse> add(
       AddPopulationRequest addPopulationRequest) async {
-    MyDateTime myBirthDate = MyDateTime(addPopulationRequest.birthDate);
+
+    //*** هنرجع له لما نحتاجه ***
+
+    //MyDateTime myBirthDate = MyDateTime(addPopulationRequest.birthDate);
     //  var formData=FormData.fromMap({
     //   'file': await MultipartFile.fromFile(addPopulationRequest.dnaSequence.path, filename: '')
     //   ,
     // });
     // var formData = await MultipartFile.fromFile(addPopulationRequest.dnaSequence.path, filename: '');
-    var formData = FormData.fromMap({
-      'status': addPopulationRequest.status,
-      'phone': addPopulationRequest.phone,
-      'description': addPopulationRequest.description,
-      'file': [MultipartFile.fromString(addPopulationRequest.dnaSequence.path, filename: addPopulationRequest.dnaSequence.path)],
-    });
+
+    // var formData = FormData.fromMap({
+    //   'status': addPopulationRequest.status,
+    //   'description': addPopulationRequest.description,
+    //   'file': [MultipartFile.fromString(addPopulationRequest.dnaSequence.path, filename: addPopulationRequest.dnaSequence.path)],
+    // });
+
     return await _appServicesTechnical.add(
       addPopulationRequest.token,
-        formData,
-
+      addPopulationRequest.toFormData(),
         // addPopulationRequest.name,
         // addPopulationRequest.address,
         // addPopulationRequest.nationalId,
