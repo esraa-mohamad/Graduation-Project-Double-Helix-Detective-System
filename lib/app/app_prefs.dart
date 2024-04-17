@@ -25,7 +25,6 @@ class AppPreferences{
   Future<void> setUserLoggedIn(String token) async {
     _sharedPreferences.setBool(PREFS_KEY_IS_USER_LOGGED_IN, true);
     _sharedPreferences.setString(PREFS_KEY_AUTH_TOKEN, token);
-    print("tokenSet:-  $token");
   }
 
   Future<bool> isUserLoggedIn() async {
@@ -34,7 +33,6 @@ class AppPreferences{
 
   Future<String?> getAuthToken() async {
     String? token= _sharedPreferences.getString(PREFS_KEY_AUTH_TOKEN);
-    print("tokenGet:-  $token");
     return  token;
 
   }
