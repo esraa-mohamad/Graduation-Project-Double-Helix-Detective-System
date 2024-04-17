@@ -35,30 +35,30 @@ class _SplashViewState extends State<SplashView> {
   _goNext() {
     Navigator.pushReplacementNamed(
         context, RoutesManager.onBoardingRoute);
-    // _appPreferences.isUserLoggedIn().then((isLogged) => {
-    //       if (isLogged)
-    //         {
-    //           Navigator.pushReplacementNamed(
-    //               context, RoutesManager.loginRoute)
-    //         }
-    //       else
-    //         {
-    //           _appPreferences
-    //               .isOnBoardingScreenViewed()
-    //               .then((isOnBoardingScreenViewed) => {
-    //                     if (isOnBoardingScreenViewed)
-    //                       {
-    //                         Navigator.pushReplacementNamed(
-    //                             context, RoutesManager.loginRoute)
-    //                       }
-    //                     else
-    //                       {
-    //                        Navigator.pushReplacementNamed(
-    //                                 context, RoutesManager.onBoardingRoute)
-    //                       }
-    //                   })
-    //         }
-    //     });
+    _appPreferences.isUserLoggedIn().then((isLogged) => {
+          if (isLogged)
+            {
+              Navigator.pushReplacementNamed(
+                  context, RoutesManager.servicesPresentedRoute)
+            }
+          else
+            {
+              _appPreferences
+                  .isOnBoardingScreenViewed()
+                  .then((isOnBoardingScreenViewed) => {
+                        if (isOnBoardingScreenViewed)
+                          {
+                            Navigator.pushReplacementNamed(
+                                context, RoutesManager.loginRoute)
+                          }
+                        else
+                          {
+                           Navigator.pushReplacementNamed(
+                                    context, RoutesManager.onBoardingRoute)
+                          }
+                      })
+            }
+        });
   }
 
   @override
