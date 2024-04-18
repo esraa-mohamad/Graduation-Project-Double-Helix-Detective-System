@@ -440,10 +440,6 @@ class _PopulationViewState extends State<PopulationView> {
   // to add file to container to show it
   Widget _getFilePicker(File? file){
     if(file != null && file.path.isNotEmpty){
-      // return image
-      // return PDFView(
-      //   filePath: file.path,
-      // );
       return  Center(
         child: Row(
           children: [

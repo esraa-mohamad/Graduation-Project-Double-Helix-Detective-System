@@ -35,15 +35,16 @@ class RemoteDataSourceImp implements RemoteDataSource {
     // });
     // var formData = await MultipartFile.fromFile(addPopulationRequest.dnaSequence.path, filename: '');
 
-    // var formData = FormData.fromMap({
-    //   'status': addPopulationRequest.status,
-    //   'description': addPopulationRequest.description,
-    //   'file': [MultipartFile.fromString(addPopulationRequest.dnaSequence.path, filename: addPopulationRequest.dnaSequence.path)],
-    // });
+    var formData = FormData.fromMap({
+      'status': addPopulationRequest.status,
+      'description': addPopulationRequest.description,
+      'file': [MultipartFile.fromString(addPopulationRequest.dnaSequence.readAsStringSync(),filename: addPopulationRequest.dnaSequence.path)],
+    });
 
     return await _appServicesTechnical.add(
       addPopulationRequest.token,
-      addPopulationRequest.toFormData(),
+      formData
+      // addPopulationRequest.toFormData(),
         // addPopulationRequest.name,
         // addPopulationRequest.address,
         // addPopulationRequest.nationalId,
