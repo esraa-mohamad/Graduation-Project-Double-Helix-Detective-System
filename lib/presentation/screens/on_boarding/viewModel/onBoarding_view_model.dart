@@ -2,6 +2,7 @@ import 'dart:async';
 
 
 import 'package:double_helix_detective_system/presentation/base/base_view_model.dart';
+import 'package:rxdart/rxdart.dart';
 
 import '../../../../domain/models/models.dart';
 import '../../../resource/assets_manager.dart';
@@ -10,7 +11,7 @@ import '../../../resource/strings_manager.dart';
 class OnBoardingViewModel extends BaseViewModel
     with OnBoardingViewModelInputs, OnBoardingViewModelOutputs {
   // stream controller outputs =(stream + sink)
-  final StreamController _streamController = StreamController<SliderViewObject>();
+  final StreamController _streamController = BehaviorSubject<SliderViewObject>();
   late final List<SliderObject> _list ;
   int _currentIndex = 0;
   // onBoarding viewModel Inputs

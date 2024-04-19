@@ -48,14 +48,3 @@ abstract class AppServicesTechnical {
       );
 
 }
-class MyDateTime {
-  late final DateTime dateTime;
-
-  MyDateTime(this.dateTime);
-
-  Map<String, dynamic> toJson() {
-    return {
-      'dateTime': dateTime.toIso8601String(), // Convert DateTime to string
-    };
-  }
-}

@@ -70,6 +70,20 @@ class _PopulationViewState extends State<PopulationView> {
     _datePickerBirthdayController.addListener(() {
       DateTime selectedDate = DateFormat('yyyy-MM-dd').parse(_datePickerBirthdayController.text);
       _populationViewModel.setBirthDate(selectedDate);
+      // String? datePickerText = _datePickerBirthdayController.text;
+      //
+      // if (datePickerText != null && datePickerText.isNotEmpty) {
+      //   try {
+      //     DateTime selectedDate = DateFormat('yyyy-MM-dd').parse(datePickerText);
+      //     // Do something with selectedDate
+      //   } catch (e) {
+      //     print('Error parsing date: $e');
+      //     // Handle parsing error
+      //   }
+      // } else {
+      //   print('Date picker text is null or empty.');
+      //   // Handle null or empty case
+      // }
     });
     _populationViewModel.isUserAddedSuccessfullyStreamController.stream.listen((isAddedSuccessfully)
     {

@@ -6,7 +6,7 @@ import 'package:double_helix_detective_system/domain/usecase/add_population_usec
 import 'package:double_helix_detective_system/presentation/base/base_view_model.dart';
 import 'package:double_helix_detective_system/presentation/common/freezed_data_class.dart';
 import 'package:double_helix_detective_system/presentation/resource/strings_manager.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:rxdart/rxdart.dart';
 
 import '../../../../app/di.dart';
 import '../../../common/state_renderer/state_renderer.dart';
@@ -15,33 +15,33 @@ import '../../../common/state_renderer/state_renderer_imp.dart';
 class PopulationViewModel extends BaseViewModel
     with PopulationViewModelInput, PopulationViewModelOutput {
   final AppPreferences _appPreferences = instance<AppPreferences>();
-  StreamController<String> nameStreamController = StreamController.broadcast();
+  StreamController<String> nameStreamController = BehaviorSubject();
   StreamController<String> addressStreamController =
-      StreamController.broadcast();
+      BehaviorSubject();
   StreamController<String> nationalIdStreamController =
-      StreamController.broadcast();
-  StreamController<String> phoneStreamController = StreamController.broadcast();
+      BehaviorSubject();
+  StreamController<String> phoneStreamController = BehaviorSubject();
   StreamController<String> genderStreamController =
-      StreamController.broadcast();
+      BehaviorSubject();
   StreamController<String> bloodTypeStreamController =
-      StreamController.broadcast();
+      BehaviorSubject();
   StreamController<String> statusStreamController =
-      StreamController.broadcast();
+      BehaviorSubject();
   StreamController<String> descriptionStreamController =
-      StreamController.broadcast();
+      BehaviorSubject();
   StreamController<File> dnaSequenceStreamController =
-      StreamController.broadcast();
+      BehaviorSubject();
   StreamController<DateTime> birthDateStreamController =
-      StreamController.broadcast();
-  StreamController<void> areAllInputsValidStreamController = StreamController();
-  StreamController isUserAddedSuccessfullyStreamController = StreamController<bool>();
+      BehaviorSubject();
+  StreamController<void> areAllInputsValidStreamController = BehaviorSubject();
+  StreamController isUserAddedSuccessfullyStreamController = BehaviorSubject<bool>();
   var populationObject = PopulationObject(
       name: "",
       address: "",
       nationalId: "",
       phone: "",
       gender: "",
-      birthDate: DateTime(0),
+      birthDate: DateTime.now(),
       bloodType: "",
       status: "",
       description: "",
@@ -117,7 +117,7 @@ class PopulationViewModel extends BaseViewModel
     if (date.toString().isNotEmpty) {
       populationObject = populationObject.copyWith(birthDate: date);
     } else {
-      populationObject = populationObject.copyWith(birthDate: DateTime(0));
+      populationObject = populationObject.copyWith(birthDate: DateTime.now());
     }
     validate();
   }

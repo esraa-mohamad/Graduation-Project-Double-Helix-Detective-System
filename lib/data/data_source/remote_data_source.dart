@@ -43,8 +43,8 @@ class RemoteDataSourceImp implements RemoteDataSource {
 
     return await _appServicesTechnical.add(
       addPopulationRequest.token,
-      formData
-      // addPopulationRequest.toFormData(),
+        addPopulationRequest.toFormData(),
+        // addPopulationRequest.toFormData(),
         // addPopulationRequest.name,
         // addPopulationRequest.address,
         // addPopulationRequest.nationalId,
