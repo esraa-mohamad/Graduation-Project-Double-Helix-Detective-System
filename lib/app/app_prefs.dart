@@ -17,14 +17,6 @@ class AppPreferences{
     return _sharedPreferences.getBool(PREFS_KEY_ONBOARDING_SCREEN_VIEW)??false;
   }
 
-  // //login
-  // Future<void> setUserLoggedIn()async{
-  //   _sharedPreferences.setBool(PREFS_KEY_IS_USER_LOGGED_IN, true);
-  // }
-  // Future<bool> isUserLoggedIn() async{
-  //   return _sharedPreferences.getBool(PREFS_KEY_IS_USER_LOGGED_IN)??false;
-  // }
-
   // Login with token
   // Future<void> setUserLoggedIn(String token) async {
   //   _sharedPreferences.setBool(PREFS_KEY_IS_USER_LOGGED_IN, true);

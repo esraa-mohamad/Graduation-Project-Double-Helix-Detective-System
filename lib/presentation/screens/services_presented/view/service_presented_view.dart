@@ -1,3 +1,5 @@
+import 'package:double_helix_detective_system/app/app_prefs.dart';
+import 'package:double_helix_detective_system/app/di.dart';
 import 'package:double_helix_detective_system/presentation/resource/assets_manager.dart';
 import 'package:double_helix_detective_system/presentation/resource/color_manager.dart';
 import 'package:double_helix_detective_system/presentation/resource/routes_manager.dart';
@@ -15,19 +17,23 @@ class _ServicesViewState extends State<ServicesView> {
   bool isHovered1 = false;
   bool isHovered2 = false;
   bool isHovered3 = false;
-
+  final AppPreferences _appPreferences=instance<AppPreferences>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: const Text(AppStrings.service),
-        actions: const [
+        actions:[
           Padding(
-            padding: EdgeInsets.only(right: 8.0),
+            padding: const EdgeInsets.only(right: 8.0),
             child: CircleAvatar(
-              backgroundColor: ColorManager.primary,
+              backgroundColor: ColorManager.white,
               radius: 20,
+              child: IconButton(onPressed: (){
+                _appPreferences.clearUserData();
+                Navigator.pushNamedAndRemoveUntil(context, RoutesManager.loginRoute, (route) => false);
+              }, icon: const Icon(Icons.logout,color: ColorManager.primary,)),
             ),
           )
         ],

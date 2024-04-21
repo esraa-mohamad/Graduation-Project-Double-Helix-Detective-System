@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:ffi';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -46,5 +47,8 @@ abstract class AppServicesTechnical {
       // @Part(name: "description") String description,
       // @Part(name: "file") MultipartFile file
       );
-
+  @PUT("/logout")
+  Future<void>logout(
+      @Header("token")String token
+      );
 }

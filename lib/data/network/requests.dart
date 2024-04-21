@@ -69,12 +69,39 @@ class AddPopulationRequest {
       if(gender.isNotEmpty)
         'gender': gender,
       // if(myBirthDate.toJson().isNotEmpty )
-      //   'birthDate': myBirthDate.toJson(), // Convert DateTime to String
+      //   'birthDate': myBirthDate.toJson(),
+      // Convert DateTime to String
       if(bloodType.isNotEmpty)
        'bloodType': bloodType,
     });
     return formData;
   }
 }
+class LogoutRequest{
+  String token;
+  LogoutRequest(this.token);
+}
 
-
+//   FormData toFormData() {
+//     MyDateTime myBirthDate = MyDateTime(birthDate);
+//     FormData formData = FormData.fromMap({
+//       if(name.isNotEmpty)
+//         'name': name,
+//       // 'address': address,
+//       // 'nationalId': nationalId,
+//       // 'phone': phone,
+//       // 'gender': gender,
+//       // 'birthDate': myBirthDate, // Convert DateTime to String
+//       // 'bloodType': bloodType,
+//       'status': status,
+//       'description': description,
+//       'file': [
+//         MultipartFile.fromString(
+//           dnaSequence.path,
+//           filename: dnaSequence.path,
+//         )
+//       ],
+//     });
+//     return formData;
+//   }
+// }

@@ -9,6 +9,7 @@ abstract class RemoteDataSource {
   Future<AuthenticationResponse> login(LoginRequest loginRequest);
 
   Future<AddPopulationResponse> add(AddPopulationRequest addPopulationRequest);
+   Future<void> logout(LogoutRequest logoutRequest);
 }
 
 class RemoteDataSourceImp implements RemoteDataSource {
@@ -56,6 +57,11 @@ class RemoteDataSourceImp implements RemoteDataSource {
         // addPopulationRequest.description,
         // file,
     );
+  }
+
+  @override
+  Future<void> logout(LogoutRequest logoutRequest)async {
+    return await _appServicesTechnical.logout(logoutRequest.token);
   }
 
 

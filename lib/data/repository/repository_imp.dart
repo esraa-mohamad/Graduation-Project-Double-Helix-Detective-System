@@ -70,4 +70,19 @@ class RepositoryImp implements Repository{
     }
   }
 
+  @override
+  Future<Either<Failure, void>> logout(LogoutRequest logoutRequest) async {
+    if (await _networkInfo.isConnection) {
+      try {
+        final response = await _remoteDataSource.logout(logoutRequest);
+        // Assuming response handling logic here
+        return const Right(null); // Return Right with void value
+      } catch (error) {
+        return Left(ErrorHandler.handle(error).failure);
+      }
+    } else {
+      return Left(DataSource.NO_INTERNET_CONNECTION.getFailure());
+    }
+  }
+
 }
