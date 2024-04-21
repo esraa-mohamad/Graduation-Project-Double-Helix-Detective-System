@@ -31,10 +31,12 @@ class TechnicalResponse {
 class AuthenticationResponse extends BaseResponse{
   @JsonKey(name: "newToken")
   String ? token ;
+  @JsonKey(name: "expiresIn")
+  String ? expiresIn ;
   @JsonKey(name: "technical")
   TechnicalResponse ? technicalResponse ;
 
-  AuthenticationResponse({required this.technicalResponse , required this.token});
+  AuthenticationResponse({required this.technicalResponse , required this.token , required this.expiresIn });
 
   factory AuthenticationResponse.fromJson(Map<String,dynamic> json) =>_$AuthenticationResponseFromJson(json);
 

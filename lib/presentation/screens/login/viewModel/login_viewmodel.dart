@@ -50,7 +50,8 @@ class LoginViewModel extends BaseViewModel with
       inputState.add(ErrorState(StateRendererType.popupErrorState, failure.message))
     }, (data) {
       inputState.add(ContentState());
-      DateTime expiry = DateTime.now().add(const Duration(hours: 15));
+      int time = int.parse(data.expiresIn);
+      DateTime expiry = DateTime.now().add(Duration(hours: time));
       _appPreferences.setUserLoggedIn(data.token ,expiry);
     isUserLoggedSuccessfullyStreamController.add(true);
     });

@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 const String PREFS_KEY_ONBOARDING_SCREEN_VIEW ="PREFS_KEY_ONBOARDING_SCREEN_VIEW";
 const String PREFS_KEY_IS_USER_LOGGED_IN ="PREFS_KEY_IS_USER_LOGGED_IN";
@@ -41,7 +42,8 @@ class AppPreferences{
   // }
 
 
-  Future<void> setUserLoggedIn(String token, DateTime expiry) async {
+  Future<void>
+  setUserLoggedIn(String token, DateTime expiry) async {
     await _sharedPreferences.setBool(PREFS_KEY_IS_USER_LOGGED_IN, true);
     await _sharedPreferences.setString(PREFS_KEY_AUTH_TOKEN, token);
     await _sharedPreferences.setString(PREFS_KEY_TOKEN_EXPIRY, expiry.toIso8601String());
@@ -54,9 +56,10 @@ class AppPreferences{
       if (expiryString != null) {
         DateTime expiry = DateTime.parse(expiryString);
         if (expiry.isBefore(DateTime.now())) {
-          // Token has expired, clear user data and return false
+          // Token has expired, clear user data and exit the app
           await clearUserData();
-          return false;
+          SystemNavigator.pop(); // Close the app
+          return false ;
         }
       }
       // User is logged in and token is valid
@@ -81,6 +84,7 @@ class AppPreferences{
     await _sharedPreferences.remove(PREFS_KEY_IS_USER_LOGGED_IN);
     await _sharedPreferences.remove(PREFS_KEY_AUTH_TOKEN);
     await _sharedPreferences.remove(PREFS_KEY_TOKEN_EXPIRY);
+    await _sharedPreferences.remove(PREFS_KEY_ONBOARDING_SCREEN_VIEW);
   }
 
 

@@ -22,9 +22,10 @@ class Technical {
 
 class Authentication {
   String  token;
+  String  expiresIn;
   Technical ? technical ;
 
-  Authentication(this.technical , this.token);
+  Authentication(this.technical , this.token , this.expiresIn);
 }
 
 class Population {

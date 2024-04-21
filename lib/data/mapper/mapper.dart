@@ -17,6 +17,7 @@ extension AuthenticationResponseMapper on AuthenticationResponse? {
     return Authentication(
       this?.technicalResponse.toDomain(),
       this?.token.orEmpty() ?? AppConstants.empty,
+      this?.expiresIn.orEmpty()??AppConstants.empty,
     );
   }
 }
