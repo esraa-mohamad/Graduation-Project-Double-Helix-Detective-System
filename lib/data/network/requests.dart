@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 
 import '../../app/constants.dart';
-import 'app_api.dart';
 
 class LoginRequest {
   String email;
@@ -68,8 +67,8 @@ class AddPopulationRequest {
         'phone': phone,
       if(gender.isNotEmpty)
         'gender': gender,
-      // if(myBirthDate.toJson().isNotEmpty )
-      //   'birthDate': myBirthDate.toJson(),
+      if(myBirthDate.formattedDate().isNotEmpty )
+        'birthDate': myBirthDate.formattedDate(),
       // Convert DateTime to String
       if(bloodType.isNotEmpty)
        'bloodType': bloodType,

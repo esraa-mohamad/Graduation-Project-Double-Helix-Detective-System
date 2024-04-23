@@ -17,10 +17,4 @@ class MyDateTime {
   String formattedDate({String format = 'yyyy-MM-dd'}) {
     return DateFormat(format).format(dateTime);
   }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'dateTime': dateTime.toIso8601String(), // Convert DateTime to string
-    };
-  }
 }

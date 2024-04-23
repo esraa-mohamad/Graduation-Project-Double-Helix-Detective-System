@@ -4,6 +4,8 @@ import 'package:double_helix_detective_system/data/network/app_api.dart';
 import 'package:double_helix_detective_system/data/network/network_info.dart';
 import 'package:double_helix_detective_system/data/responses/response.dart';
 import 'package:double_helix_detective_system/domain/usecase/add_population_usecase.dart';
+import 'package:double_helix_detective_system/domain/usecase/logout_usecase.dart';
+import 'package:double_helix_detective_system/presentation/screens/services_presented/viewmodel/service_presented_viewmodel.dart';
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -55,12 +57,26 @@ Future<void> initAppModule()async{
  }
 
 initAddPopulationModule() {
-  if(!GetIt.I.isRegistered<AddPopulationUseCase>()){
+  if (!GetIt.I.isRegistered<AddPopulationUseCase>()) {
     // login use case
-    instance.registerFactory<AddPopulationUseCase>(() => AddPopulationUseCase(instance()));
+    instance.registerFactory<AddPopulationUseCase>(() =>
+        AddPopulationUseCase(instance()));
 
     // login view model
-    instance.registerFactory<PopulationViewModel>(() => PopulationViewModel(instance()));
+    instance.registerFactory<PopulationViewModel>(() =>
+        PopulationViewModel(instance()));
   }
+
 }
 
+
+initServicesModule() {
+  if (!GetIt.I.isRegistered<LogoutUseCase>()) {
+    // login use case
+    instance.registerFactory<LogoutUseCase>(() => LogoutUseCase(instance()));
+
+    // login view model
+    instance.registerFactory<ServicePresentedViewModel>(() =>
+        ServicePresentedViewModel(instance()));
+  }
+}
