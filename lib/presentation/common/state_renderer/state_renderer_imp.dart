@@ -88,7 +88,6 @@ extension FlowStateExtension on FlowState {
   }
 
   showPopUp(BuildContext context, StateRendererType stateRendererType, String message) {
-    print("Showing popup with message: $message"); // Add this line for debugging
     WidgetsBinding.instance.addPostFrameCallback((_) => showDialog(
         context: context,
         useRootNavigator: false,
@@ -100,14 +99,15 @@ extension FlowStateExtension on FlowState {
               message: message,
             )));
   }
-  _isCurrentDialogShowing(BuildContext context)
-  => ModalRoute.of(context)?.isCurrent == true;
-
-  dismissDialog(BuildContext context){
-    print("Dismissing dialog"); // Add this line for debugging
-    if(_isCurrentDialogShowing(context)){
-      Navigator.of(context , rootNavigator: true).pop(true);
+  dismissDialog(BuildContext context) {
+    if (_isCurrentDialogShowing(context)) {
+      Navigator.of(context, rootNavigator: true).pop();
     }
+  }
+
+  bool _isCurrentDialogShowing(BuildContext context) {
+    // Check if there's any active dialog in the context's route stack
+    return Navigator.of(context, rootNavigator: true).canPop();
   }
 }
 

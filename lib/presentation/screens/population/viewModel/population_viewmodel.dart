@@ -41,7 +41,7 @@ class PopulationViewModel extends BaseViewModel
       nationalId: "",
       phone: "",
       gender: "",
-      birthDate: DateTime.now(),
+      birthDate: DateTime(0),
       bloodType: "",
       status: "",
       description: "",
@@ -117,7 +117,7 @@ class PopulationViewModel extends BaseViewModel
     if (date.toString().isNotEmpty) {
       populationObject = populationObject.copyWith(birthDate: date);
     } else {
-      populationObject = populationObject.copyWith(birthDate: DateTime.now());
+      populationObject = populationObject.copyWith(birthDate: DateTime(0));
     }
     validate();
   }

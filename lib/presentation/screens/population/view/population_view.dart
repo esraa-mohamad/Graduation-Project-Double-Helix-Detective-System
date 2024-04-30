@@ -67,24 +67,6 @@ class _PopulationViewState extends State<PopulationView> {
     _statusController.addListener(() {
       _populationViewModel.setStatus(_statusController.text);
     });
-    _datePickerBirthdayController.addListener(() {
-      DateTime selectedDate = DateFormat('yyyy-MM-dd').parse(_datePickerBirthdayController.text);
-      _populationViewModel.setBirthDate(selectedDate);
-      // String? datePickerText = _datePickerBirthdayController.text;
-      //
-      // if (datePickerText != null && datePickerText.isNotEmpty) {
-      //   try {
-      //     DateTime selectedDate = DateFormat('yyyy-MM-dd').parse(datePickerText);
-      //     // Do something with selectedDate
-      //   } catch (e) {
-      //     print('Error parsing date: $e');
-      //     // Handle parsing error
-      //   }
-      // } else {
-      //   print('Date picker text is null or empty.');
-      //   // Handle null or empty case
-      // }
-    });
     _populationViewModel.isUserAddedSuccessfullyStreamController.stream.listen((isAddedSuccessfully)
     {
       if(isAddedSuccessfully){
@@ -446,9 +428,12 @@ class _PopulationViewState extends State<PopulationView> {
       firstDate: DateTime(1990),
       initialDate: DateTime.now(),
     );
-    if (pickedDate == null) return;
-    _datePickerBirthdayController.text =
-        DateFormat('yyyy-MM-dd').format(pickedDate);
+    if(pickedDate != null){
+      _datePickerBirthdayController.text =
+          DateFormat('yyyy-MM-dd').format(pickedDate);
+      DateTime selectedDate = DateFormat('yyyy-MM-dd').parse(_datePickerBirthdayController.text);
+      _populationViewModel.setBirthDate(selectedDate);
+    }
   }
 
   // to add file to container to show it
