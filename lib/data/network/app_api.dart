@@ -1,10 +1,6 @@
-import 'dart:convert';
-import 'dart:ffi';
-import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:double_helix_detective_system/app/constants.dart';
-import 'package:double_helix_detective_system/data/network/dio_factory.dart';
 import 'package:retrofit/http.dart';
 
 import '../responses/response.dart';
@@ -47,6 +43,7 @@ abstract class AppServicesTechnical {
       // @Part(name: "description") String description,
       // @Part(name: "file") MultipartFile file
       );
+
   @PUT("/logout")
   Future<void>logout(
       @Header("token")String token

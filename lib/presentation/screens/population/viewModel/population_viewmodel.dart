@@ -298,7 +298,7 @@ class PopulationViewModel extends BaseViewModel
       areAllInputsValidStreamController.stream.map((_) => _areAllInputsValid());
 
   bool _isValidAddress(String address) {
-    return address.isNotEmpty;
+    return address.length>3;
   }
 
   bool _isValidName(String name) {
