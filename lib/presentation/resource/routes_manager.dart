@@ -39,6 +39,7 @@ class RouteGenerator{
         initLoginModule();
         return MaterialPageRoute(builder: (_)=>const LoginView());
       case RoutesManager.servicesPresentedRoute:
+        initServicesModule();
         return MaterialPageRoute(builder: (_)=>const ServicesView());
       case RoutesManager.paternityFormRoute:
         return MaterialPageRoute(builder: (_)=>const PaternityTestForm());

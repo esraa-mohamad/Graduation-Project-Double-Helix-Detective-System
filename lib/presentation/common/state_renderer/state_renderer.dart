@@ -136,8 +136,7 @@ class StateRenderer extends StatelessWidget {
             onPressed: ()
             {
               // popup error
-              print("Button pressed"); // Add this line for debugging
-              Navigator.of(context).pop();
+              Navigator.of(context , rootNavigator: true).pop();
             },
             child: Text(
                 buttonTitle

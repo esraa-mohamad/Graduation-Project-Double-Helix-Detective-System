@@ -16,11 +16,13 @@ class ServicePresentedViewModel extends BaseViewModel with ServicePresentedViewM
   final LogoutUseCase _logoutUseCase;
   ServicePresentedViewModel(this._logoutUseCase);
   final AppPreferences _appPreferences = instance<AppPreferences>();
+  final StreamController<bool> _isHoveredController = BehaviorSubject<bool>();
 
   @override
   void dispose() {
     super.dispose();
     isUserLogoutStreamController.close();
+    _isHoveredController.close();
   }
 
   @override
@@ -45,24 +47,32 @@ class ServicePresentedViewModel extends BaseViewModel with ServicePresentedViewM
     });
   }
 
+
   @override
-  onEnter(bool hover) {
-    hover = true;
+  onEnter() {
+    _setHovered.add(true);
   }
 
   @override
-  onExit(bool hover) {
-    hover = true;
+  onExit() {
+    _setHovered.add(false);
   }
+
+
+  @override
+  Stream<bool> get isHovered => _isHoveredController.stream;
+
+  Sink<bool> get _setHovered =>_isHoveredController.sink;
 }
 
 mixin ServicePresentedViewModelInputs{
   logout();
 
-  onEnter(bool hover);
+  onEnter();
 
-  onExit(bool hover);
+  onExit();
 }
 
 mixin ServicePresentedViewModelOutputs{
+  Stream<bool> get isHovered;
 }
