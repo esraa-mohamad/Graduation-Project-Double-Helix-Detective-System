@@ -127,14 +127,15 @@ class _PopulationViewState extends State<PopulationView> {
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.only(right: AppPadding.p12),
-                      child: StreamBuilder<bool>(
-                        stream: _populationViewModel.nameOutput,
+                      child: StreamBuilder<String?>(
+                        stream: _populationViewModel.nameErrorOutput,
                         builder: (context , snapshot){
                           return CustomeTextField(
                               keyboardType: TextInputType.text,
                               controller: _nameController,
                               hintText: AppStrings.namePerson,
-                              labelText: AppStrings.namePerson
+                              labelText: AppStrings.namePerson,
+                            errorText: (snapshot.data),
                           );
                         },
                       )
@@ -143,14 +144,16 @@ class _PopulationViewState extends State<PopulationView> {
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.only(left: AppPadding.p12),
-                      child:StreamBuilder<bool>(
-                        stream: _populationViewModel.addressOutput,
+                      child:StreamBuilder<String?>(
+                        stream: _populationViewModel.addressErrorOutput,
                         builder: (context , snapshot){
                           return  CustomeTextField(
                               keyboardType: TextInputType.text,
                               controller: _addressController,
                               hintText: AppStrings.addressPerson,
-                              labelText: AppStrings.addressPerson);
+                              labelText: AppStrings.addressPerson,
+                            errorText: (snapshot.data),
+                          );
                         },
                       )
                     ),
@@ -167,14 +170,15 @@ class _PopulationViewState extends State<PopulationView> {
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.only(right: AppPadding.p12),
-                      child:StreamBuilder<bool>(
-                        stream: _populationViewModel.nationalIdOutput,
+                      child:StreamBuilder<String?>(
+                        stream: _populationViewModel.nationalIdErrorOutput,
                         builder: (context , snapshot){
                           return  CustomeTextField(
                             keyboardType: TextInputType.number,
                             controller: _nationalIdController,
                             hintText: AppStrings.nationalIdPerson,
                             labelText: AppStrings.nationalIdPerson,
+                            errorText: (snapshot.data),
                           );
                         },
                       )
@@ -183,14 +187,15 @@ class _PopulationViewState extends State<PopulationView> {
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.only(left: AppPadding.p12),
-                      child: StreamBuilder<bool>(
-                        stream: _populationViewModel.phoneOutput,
+                      child: StreamBuilder<String?>(
+                        stream: _populationViewModel.phoneErrorOutput,
                         builder: (context , snapshot){
                           return CustomeTextField(
                             keyboardType: TextInputType.phone,
                             controller: _phoneController,
                             hintText: AppStrings.phonePerson,
                             labelText: AppStrings.phonePerson,
+                            errorText: (snapshot.data),
                             suffixIcon: const Icon(Icons.phone),
                           );
                         },
@@ -210,8 +215,8 @@ class _PopulationViewState extends State<PopulationView> {
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.only(right: AppPadding.p12),
-                      child: StreamBuilder<bool>(
-                        stream: _populationViewModel.genderOutput,
+                      child: StreamBuilder<String?>(
+                        stream: _populationViewModel.genderErrorOutput,
                         builder: (context , snapshot){
                           return CustomDropDownMenu(
                             controller: _genderController,
@@ -231,6 +236,7 @@ class _PopulationViewState extends State<PopulationView> {
                               AppStrings.genderPerson,
                               style: Theme.of(context).textTheme.bodyMedium,
                             ),
+                            errorText: (snapshot.data),
                           );
                         },
                       )
@@ -269,8 +275,8 @@ class _PopulationViewState extends State<PopulationView> {
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.only(right: AppPadding.p12),
-                      child: StreamBuilder<bool>(
-                        stream: _populationViewModel.bloodTypeOutput,
+                      child: StreamBuilder<String?>(
+                        stream: _populationViewModel.bloodTypeErrorOutput,
                         builder: (context , snapshot){
                           return CustomDropDownMenu(
                             controller: _bloodController,
@@ -314,6 +320,7 @@ class _PopulationViewState extends State<PopulationView> {
                               AppStrings.bloodPerson,
                               style: Theme.of(context).textTheme.bodyMedium,
                             ),
+                            errorText: (snapshot.data),
                           );
                         },
                       )

@@ -72,5 +72,11 @@ class AppStrings{
 
   static const errorDescription ="Description must be filled with valid data";
   static const errorStatus ="Status must be chosen correctly";
+  static const errorName ="Name must be more than 3 character if it entered";
+  static const errorAddress ="Address must be more than 3 character if it entered";
+  static const errorPhone ="Phone must be 11 number if it entered";
+  static const errorNationalId ="National Id must be 14 number if it entered";
+  static const errorGender ="Choose gender male or female";
+  static const errorBloodType ="Choose Blood type from list";
 
 }

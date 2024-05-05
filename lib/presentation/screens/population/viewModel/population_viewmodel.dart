@@ -14,6 +14,7 @@ import '../../../common/state_renderer/state_renderer_imp.dart';
 
 class PopulationViewModel extends BaseViewModel
     with PopulationViewModelInput, PopulationViewModelOutput {
+
   final AppPreferences _appPreferences = instance<AppPreferences>();
   StreamController<String> nameStreamController = BehaviorSubject();
   StreamController<String> addressStreamController =
@@ -249,25 +250,12 @@ class PopulationViewModel extends BaseViewModel
       addressStreamController.stream.map((address) => _isValidAddress(address));
 
   @override
-  Stream<DateTime> get birthDateOutput =>
-      birthDateStreamController.stream.map((date) => date);
-
-  @override
   Stream<bool> get bloodTypeOutput => bloodTypeStreamController.stream
       .map((bloodType) => _isValidBloodType(bloodType));
 
   @override
   Stream<bool> get descriptionOutput => descriptionStreamController.stream
       .map((description) => _isValidDescription(description));
-
-  @override
-  Stream<String?> get descriptionErrorOutput =>
-      descriptionOutput.map((isValidDescription) =>
-          isValidDescription ? null : AppStrings.errorDescription);
-
-  @override
-  Stream<File> get dnaSequenceOutput =>
-      dnaSequenceStreamController.stream.map((dnaSequence) => dnaSequence);
 
   @override
   Stream<bool> get genderOutput =>
@@ -283,34 +271,77 @@ class PopulationViewModel extends BaseViewModel
 
   @override
   Stream<bool> get phoneOutput =>
-      nationalIdStreamController.stream.map((phone) => _isValidPhone(phone));
+      phoneStreamController.stream.map((phone) => _isValidPhone(phone));
 
   @override
   Stream<bool> get statusOutput =>
       statusStreamController.stream.map((status) => _isValidStatus(status));
 
   @override
+  Stream<bool> get areInputsValidOutput =>
+      areAllInputsValidStreamController.stream.map((_) => _areAllInputsValid());
+
+  @override
+  Stream<DateTime> get birthDateOutput =>
+      birthDateStreamController.stream.map((date) => date);
+
+  @override
+  Stream<File> get dnaSequenceOutput =>
+      dnaSequenceStreamController.stream.map((dnaSequence) => dnaSequence);
+
+  // new error message after regular expression
+  @override
+  Stream<String?> get descriptionErrorOutput =>
+      descriptionOutput.map((isValidDescription) =>
+      isValidDescription ? null : AppStrings.errorDescription);
+
+  @override
   Stream<String?> get statusErrorOutput => statusOutput
       .map((isValidStatus) => isValidStatus ? null : AppStrings.errorStatus);
 
   @override
-  Stream<bool> get areInputsValidOutput =>
-      areAllInputsValidStreamController.stream.map((_) => _areAllInputsValid());
+  Stream<String?> get nameErrorOutput => nameOutput
+      .map((isValidName) => isValidName ? null : AppStrings.errorName);
+
+  @override
+  Stream<String?> get addressErrorOutput => addressOutput
+      .map((isValidAddress) => isValidAddress ? null : AppStrings.errorAddress);
+
+  @override
+  Stream<String?> get phoneErrorOutput => phoneOutput
+      .map((isValidPhone) => isValidPhone ? null : AppStrings.errorPhone);
+
+  @override
+  Stream<String?> get nationalIdErrorOutput => nationalIdOutput
+      .map((isValidId) => isValidId ? null : AppStrings.errorNationalId);
+
+  @override
+  Stream<String?> get genderErrorOutput => genderOutput
+      .map((isValidGender) => isValidGender ? null : AppStrings.errorGender);
+
+  @override
+  Stream<String?> get bloodTypeErrorOutput => bloodTypeOutput
+      .map((isValidBlood) => isValidBlood ? null : AppStrings.errorBloodType);
+
 
   bool _isValidAddress(String address) {
-    return address.length>3;
+    RegExp regex = RegExp(r'^[\w\S\s]{3,255}$');
+    return regex.hasMatch(address);
   }
 
   bool _isValidName(String name) {
-    return name.isNotEmpty;
+    RegExp regex = RegExp(r'^[\w\S\s]{3,30}$');
+    return regex.hasMatch(name);
   }
 
   bool _isValidPhone(String phone) {
-    return phone.isNotEmpty;
+    RegExp regex = RegExp(r'^(010|012|011|015)\d{8}$');
+    return regex.hasMatch(phone);
   }
 
   bool _isValidNationalId(String nationalId) {
-    return nationalId.isNotEmpty;
+    RegExp regex = RegExp(r'^\d{14}$');
+    return regex.hasMatch(nationalId);
   }
 
   bool _isValidGender(String gender) {
@@ -338,6 +369,8 @@ class PopulationViewModel extends BaseViewModel
   validate() {
     areInputsValidInput.add(null);
   }
+
+
 }
 
 mixin PopulationViewModelInput {
@@ -389,15 +422,27 @@ mixin PopulationViewModelInput {
 mixin PopulationViewModelOutput {
   Stream<bool> get nameOutput;
 
+  Stream<String?> get nameErrorOutput;
+
   Stream<bool> get addressOutput;
+
+  Stream<String?> get addressErrorOutput;
 
   Stream<bool> get nationalIdOutput;
 
+  Stream<String?> get nationalIdErrorOutput;
+
   Stream<bool> get phoneOutput;
+
+  Stream<String?> get phoneErrorOutput;
 
   Stream<bool> get genderOutput;
 
+  Stream<String?> get genderErrorOutput;
+
   Stream<bool> get bloodTypeOutput;
+
+  Stream<String?> get bloodTypeErrorOutput;
 
   Stream<bool> get statusOutput;
 
