@@ -40,3 +40,9 @@ extension AddPopulationResponseMapper on AddPopulationResponse? {
     );
   }
 }
+extension CompareDnaMapper on CompareDna?{
+  CompareDna toDomain() {
+    return CompareDna(match: this?.match.orEmpty() ?? AppConstants.empty,
+        similarity:this?.similarity.orZero()??AppConstants.zero);
+  }
+}

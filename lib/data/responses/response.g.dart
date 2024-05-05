@@ -84,3 +84,19 @@ Map<String, dynamic> _$AddPopulationResponseToJson(
       'message': instance.message,
       'person': instance.populationResponse,
     };
+
+CompareDnaResponse _$CompareDnaResponseFromJson(Map<String, dynamic> json) =>
+    CompareDnaResponse(
+      json['match_status'] as String?,
+      json['similarity_percentage'] as int?,
+    )
+      ..status = json['statusCode'] as int?
+      ..message = json['message'] as String?;
+
+Map<String, dynamic> _$CompareDnaResponseToJson(CompareDnaResponse instance) =>
+    <String, dynamic>{
+      'statusCode': instance.status,
+      'message': instance.message,
+      'match_status': instance.match,
+      'similarity_percentage': instance.similarity,
+    };

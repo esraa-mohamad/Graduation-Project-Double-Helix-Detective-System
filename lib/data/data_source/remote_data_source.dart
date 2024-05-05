@@ -10,12 +10,14 @@ abstract class RemoteDataSource {
 
   Future<AddPopulationResponse> add(AddPopulationRequest addPopulationRequest);
    Future<void> logout(LogoutRequest logoutRequest);
+
+  Future<CompareDnaResponse> compareDna(CompareDnaRequest compareDnaRequest);
 }
 
 class RemoteDataSourceImp implements RemoteDataSource {
   final AppServicesTechnical _appServicesTechnical;
-
-  RemoteDataSourceImp(this._appServicesTechnical);
+  final AppServiceDna _appServiceDna;
+  RemoteDataSourceImp(this._appServicesTechnical,this._appServiceDna);
 
   @override
   Future<AuthenticationResponse> login(LoginRequest loginRequest) async {
@@ -35,12 +37,6 @@ class RemoteDataSourceImp implements RemoteDataSource {
     //   ,
     // });
     // var formData = await MultipartFile.fromFile(addPopulationRequest.dnaSequence.path, filename: '');
-
-    var formData = FormData.fromMap({
-      'status': addPopulationRequest.status,
-      'description': addPopulationRequest.description,
-      'file': [MultipartFile.fromString(addPopulationRequest.dnaSequence.readAsStringSync(),filename: addPopulationRequest.dnaSequence.path)],
-    });
 
     return await _appServicesTechnical.add(
       addPopulationRequest.token,
@@ -63,6 +59,15 @@ class RemoteDataSourceImp implements RemoteDataSource {
   Future<void> logout(LogoutRequest logoutRequest)async {
     return await _appServicesTechnical.logout(logoutRequest.token);
   }
+
+  @override
+  Future<CompareDnaResponse> compareDna(CompareDnaRequest compareDnaRequest)async  {
+    return await _appServiceDna.compareDna(
+     compareDnaRequest.toFormData()
+    );
+  }
+
+
 
 
 }

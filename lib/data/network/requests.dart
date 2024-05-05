@@ -81,3 +81,23 @@ class LogoutRequest{
   LogoutRequest(this.token);
 }
 
+class CompareDnaRequest{
+  File fileA;
+  File fileB;
+  CompareDnaRequest({required this.fileA,required this.fileB});
+
+  FormData toFormData() {
+    FormData formData = FormData.fromMap({
+      'file_a': [
+        MultipartFile.fromString(
+            fileA.readAsStringSync(), filename: fileA.path)
+      ],
+      'file_b': [
+        MultipartFile.fromString(
+            fileB.readAsStringSync(), filename: fileB.path)
+      ],
+    });
+    return formData;
+  }
+}
+

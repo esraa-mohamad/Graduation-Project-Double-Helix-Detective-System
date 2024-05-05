@@ -47,3 +47,12 @@ class AddPopulation {
 
   AddPopulation(this.population);
 }
+
+class CompareDna{
+  String match;
+  int similarity;
+  CompareDna({
+    required this.match,
+    required this.similarity
+});
+}

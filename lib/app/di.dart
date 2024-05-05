@@ -21,7 +21,7 @@ final instance=GetIt.instance;
 Future<void> initAppModule()async{
   instance.registerLazySingleton<NetworkInfo>(() => NetworkInfoImp(InternetConnectionChecker()));
   // for remote data source
-  instance.registerLazySingleton<RemoteDataSource>(() => RemoteDataSourceImp(instance()));
+  instance.registerLazySingleton<RemoteDataSource>(() => RemoteDataSourceImp(instance(),instance()));
 
   final sharedPrefs = await SharedPreferences.getInstance();
 
@@ -40,6 +40,8 @@ Future<void> initAppModule()async{
   Dio dio = DioFactory.getDio();
   //for app service client
   instance.registerLazySingleton<AppServicesTechnical>(() =>AppServicesTechnical(dio) );
+  instance.registerLazySingleton<AppServiceDna>(() =>AppServiceDna(dio) );
+
   // for repository
   instance.registerLazySingleton<Repository>(() => RepositoryImp(instance(), instance()));
 }

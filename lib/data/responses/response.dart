@@ -84,3 +84,19 @@ class AddPopulationResponse extends BaseResponse{
   // Map<String,dynamic> toJson() =>
   //     _$AddPopulationResponseToJson(this);
 }
+
+
+@JsonSerializable()
+class CompareDnaResponse extends BaseResponse{
+  @JsonKey(name:"match_status")
+  String ? match;
+  @JsonKey(name:"similarity_percentage")
+  int ? similarity;
+  CompareDnaResponse(this.match,this.similarity);
+  factory CompareDnaResponse.fromJson(Map<String,dynamic> json) =>_$CompareDnaResponseFromJson(json);
+
+  // to json
+  Map<String,dynamic> toJson() =>
+      _$CompareDnaResponseToJson(this);
+
+}

@@ -2,6 +2,7 @@
 import 'package:dio/dio.dart';
 import 'package:double_helix_detective_system/app/constants.dart';
 import 'package:retrofit/http.dart';
+import 'package:retrofit/retrofit.dart';
 
 import '../responses/response.dart';
 
@@ -47,5 +48,15 @@ abstract class AppServicesTechnical {
   @PUT("/logout")
   Future<void>logout(
       @Header("token")String token
+      );
+}
+
+@RestApi(baseUrl:AppConstants.baseUrlDna)
+abstract class AppServiceDna{
+  factory AppServiceDna(Dio dio ,{String baseUrl}) = _AppServiceDna;
+  @POST('/compare')
+  @MultiPart()
+  Future<CompareDnaResponse> compareDna(
+      @Body()FormData formData,
       );
 }
