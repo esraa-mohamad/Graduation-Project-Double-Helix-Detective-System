@@ -39,8 +39,8 @@ class _CustomCardServiceState extends State<CustomCardService> {
               Navigator.pushNamed(context, widget.route);
             },
             child: Container(
-              width: AppSize.s250,
-              height: AppSize.s250,
+              width: AppSize.s300,
+              height: AppSize.s300,
               decoration: BoxDecoration(
                 color:
                     isHovered ? null : ColorManager.lightBlue.withOpacity(0.5),

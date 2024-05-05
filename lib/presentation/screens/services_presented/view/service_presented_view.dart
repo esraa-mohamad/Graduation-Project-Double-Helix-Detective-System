@@ -82,7 +82,7 @@ class _ServicesViewState extends State<ServicesView> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 CustomCardService(
-                    route: RoutesManager.identificationFormRoute,
+                    route: RoutesManager.chooseIdentificationCase,
                     image: AssetsManager.crimeIcon,
                     caseState: AppStrings.identification,
                     ),

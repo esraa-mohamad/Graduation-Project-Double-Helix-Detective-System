@@ -16,8 +16,11 @@ class AppStrings{
   static const passwordError = "Please enter your password";
   static const service='Services';
   static const identification='Identification';
+  static const chooseIdentification='Choose Identification Case';
   //missing search
   static const search = "Search";
+  static const searchDB = "Search DataBase";
+  static const compare = "Compare DNA";
   static const uploadDna = "Upload DNA";
   //missing result
   static const missingResult = "Missing Result";

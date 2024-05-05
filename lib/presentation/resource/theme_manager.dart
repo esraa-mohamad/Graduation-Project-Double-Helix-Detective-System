@@ -19,7 +19,7 @@ ThemeData getApplicationTheme(){
     // app bar theme
     appBarTheme: AppBarTheme(
       centerTitle: true,
-      iconTheme: IconThemeData(
+      iconTheme: const IconThemeData(
         size: AppSize.s25,
         color: ColorManager.white
       ),
@@ -75,7 +75,7 @@ ThemeData getApplicationTheme(){
       ),
       titleMedium: getSemiBoldStyle(
           color: ColorManager.white,
-          fontSize: FontSize.s25
+          fontSize: FontSize.s30
       ),
 
       // for body

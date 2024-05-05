@@ -1,9 +1,11 @@
 
 import 'package:double_helix_detective_system/presentation/resource/strings_manager.dart';
+import 'package:double_helix_detective_system/presentation/screens/Identification/form/compare_dna/views/compare_dna_view.dart';
+import 'package:double_helix_detective_system/presentation/screens/choose_identification_case/views/choose_identification_case_view.dart';
 import 'package:double_helix_detective_system/presentation/screens/on_boarding/view/onboarding_view.dart';
 import 'package:flutter/material.dart';
 import '../../app/di.dart';
-import '../screens/Identification/form/view/identification_form_view.dart';
+import '../screens/Identification/form/search_database/view/search_database_view.dart';
 import '../screens/Identification/result/view/identification_result_view.dart';
 import '../screens/login/view/login_view.dart';
 import '../screens/missing_persons/form/view/missing_persons_form_view.dart';
@@ -21,11 +23,14 @@ class RoutesManager{
   static const String servicesPresentedRoute='/servicesPresented';
   static const String paternityFormRoute='/paternityForm';
   static const String paternityResultRoute='/paternityResult';
-  static const String identificationFormRoute='/identificationForm';
-  static const String identificationResultRoute='/identificationResult';
+  static const String searchFormRoute='/identificationForm';
+  static const String searchResultRoute='/identificationResult';
+  static const String compareDnaFormRoute='/compareDnaForm';
+
   static const String missingPersonFormRoute='/missingPersonForm';
   static const String missingPersonResultRoute='/missingPersonResult';
   static const String populationRoute='/population';
+  static const String chooseIdentificationCase='/chooseIdentification';
 }
 
 class RouteGenerator{
@@ -45,9 +50,9 @@ class RouteGenerator{
         return MaterialPageRoute(builder: (_)=>const PaternityTestForm());
       case RoutesManager.paternityResultRoute:
         return MaterialPageRoute(builder: (_)=>const PaternityTestResult());
-      case RoutesManager.identificationFormRoute:
-        return MaterialPageRoute(builder: (_)=>const IdentificationForm());
-      case RoutesManager.identificationResultRoute:
+      case RoutesManager.searchFormRoute:
+        return MaterialPageRoute(builder: (_)=>const SearchDatabaseFormView());
+      case RoutesManager.searchResultRoute:
         return MaterialPageRoute(builder: (_)=>const IdentificationResult());
       case RoutesManager.missingPersonFormRoute:
         return MaterialPageRoute(builder: (_)=>const MissingForm());
@@ -56,6 +61,10 @@ class RouteGenerator{
       case RoutesManager.populationRoute:
         initAddPopulationModule();
         return MaterialPageRoute(builder: (_)=>const PopulationView());
+      case RoutesManager.chooseIdentificationCase:
+        return MaterialPageRoute(builder: (_)=>const ChooseIdentificationView());
+      case RoutesManager.compareDnaFormRoute:
+        return MaterialPageRoute(builder: (_)=>const CompareDnaFormView());
 
       default :return unDefinedRoute();
     }

@@ -3,18 +3,18 @@ import 'package:double_helix_detective_system/presentation/widget/drop_down_menu
 import 'package:double_helix_detective_system/presentation/widget/text_form_field.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../resource/color_manager.dart';
-import '../../../../resource/values_manager.dart';
-import '../../../../widget/elevated_button.dart';
+import '../../../../../resource/color_manager.dart';
+import '../../../../../resource/values_manager.dart';
+import '../../../../../widget/elevated_button.dart';
 
-class IdentificationForm extends StatefulWidget {
-  const IdentificationForm({super.key});
+class SearchDatabaseFormView extends StatefulWidget {
+  const SearchDatabaseFormView({super.key});
 
   @override
-  State<IdentificationForm> createState() => _IdentificationFormState();
+  State<SearchDatabaseFormView> createState() => _SearchDatabaseFormViewState();
 }
 
-class _IdentificationFormState extends State<IdentificationForm> {
+class _SearchDatabaseFormViewState extends State<SearchDatabaseFormView> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _caseController = TextEditingController();
   final TextEditingController _dnaController = TextEditingController();
