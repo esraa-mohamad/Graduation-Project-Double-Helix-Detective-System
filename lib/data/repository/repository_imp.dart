@@ -74,13 +74,39 @@ class RepositoryImp implements Repository{
   Future<Either<Failure, void>> logout(LogoutRequest logoutRequest) async {
     if (await _networkInfo.isConnection) {
       try {
-        final response = await _remoteDataSource.logout(logoutRequest);
         // Assuming response handling logic here
         return const Right(null); // Return Right with void value
       } catch (error) {
         return Left(ErrorHandler.handle(error).failure);
       }
     } else {
+      return Left(DataSource.NO_INTERNET_CONNECTION.getFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, CompareDna>> compareDna(CompareDnaRequest compareDnaRequest) async {
+    if(await _networkInfo.isConnection){
+      try {
+        final response = await _remoteDataSource.compareDna(compareDnaRequest);
+        if(response.status == ApiInternalStatus.SUCCESS){
+          // success
+          // either right
+          // return data
+          return Right(response.toDomain());
+        }else{
+          // failure
+          // either left
+          //return business error
+          return Left(Failure(
+              status:  response.status ?? ResponseStatus.DEFAULT ,
+              message: response.message ?? ResponseMessage.DEFAULT
+          ));
+        }
+      }catch(error) {
+        return Left(ErrorHandler.handle(error).failure);
+      }
+    }else{
       return Left(DataSource.NO_INTERNET_CONNECTION.getFailure());
     }
   }

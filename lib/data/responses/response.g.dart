@@ -85,6 +85,17 @@ Map<String, dynamic> _$AddPopulationResponseToJson(
       'person': instance.populationResponse,
     };
 
+LogoutResponse _$LogoutResponseFromJson(Map<String, dynamic> json) =>
+    LogoutResponse()
+      ..status = json['statusCode'] as int?
+      ..message = json['message'] as String?;
+
+Map<String, dynamic> _$LogoutResponseToJson(LogoutResponse instance) =>
+    <String, dynamic>{
+      'statusCode': instance.status,
+      'message': instance.message,
+    };
+
 CompareDnaResponse _$CompareDnaResponseFromJson(Map<String, dynamic> json) =>
     CompareDnaResponse(
       json['match_status'] as String?,

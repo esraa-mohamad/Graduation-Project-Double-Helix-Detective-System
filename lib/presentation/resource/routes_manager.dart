@@ -1,12 +1,13 @@
 
 import 'package:double_helix_detective_system/presentation/resource/strings_manager.dart';
 import 'package:double_helix_detective_system/presentation/screens/Identification/form/compare_dna/views/compare_dna_view.dart';
+import 'package:double_helix_detective_system/presentation/screens/Identification/form/compare_dna/views/compare_result_view.dart';
 import 'package:double_helix_detective_system/presentation/screens/choose_identification_case/views/choose_identification_case_view.dart';
 import 'package:double_helix_detective_system/presentation/screens/on_boarding/view/onboarding_view.dart';
 import 'package:flutter/material.dart';
 import '../../app/di.dart';
 import '../screens/Identification/form/search_database/view/search_database_view.dart';
-import '../screens/Identification/result/view/identification_result_view.dart';
+import '../screens/Identification/result/search_result/view/identification_result_view.dart';
 import '../screens/login/view/login_view.dart';
 import '../screens/missing_persons/form/view/missing_persons_form_view.dart';
 import '../screens/missing_persons/result/view/missing_persons_result_view.dart';
@@ -26,6 +27,7 @@ class RoutesManager{
   static const String searchFormRoute='/identificationForm';
   static const String searchResultRoute='/identificationResult';
   static const String compareDnaFormRoute='/compareDnaForm';
+  static const String compareDnaResultRoute='/compareDnaResult';
 
   static const String missingPersonFormRoute='/missingPersonForm';
   static const String missingPersonResultRoute='/missingPersonResult';
@@ -64,7 +66,11 @@ class RouteGenerator{
       case RoutesManager.chooseIdentificationCase:
         return MaterialPageRoute(builder: (_)=>const ChooseIdentificationView());
       case RoutesManager.compareDnaFormRoute:
+        initCompareDnaModule();
         return MaterialPageRoute(builder: (_)=>const CompareDnaFormView());
+      case RoutesManager.compareDnaResultRoute :
+        initCompareDnaModule();
+        return MaterialPageRoute(builder: (_)=>const CompareDnaResultView());
 
       default :return unDefinedRoute();
     }

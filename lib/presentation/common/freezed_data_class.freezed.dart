@@ -457,3 +457,139 @@ abstract class _populationObject implements PopulationObject {
   _$$populationObjectImplCopyWith<_$populationObjectImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+/// @nodoc
+mixin _$CompareDnaObject {
+  File get fileA => throw _privateConstructorUsedError;
+  File get fileB => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $CompareDnaObjectCopyWith<CompareDnaObject> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CompareDnaObjectCopyWith<$Res> {
+  factory $CompareDnaObjectCopyWith(
+          CompareDnaObject value, $Res Function(CompareDnaObject) then) =
+      _$CompareDnaObjectCopyWithImpl<$Res, CompareDnaObject>;
+  @useResult
+  $Res call({File fileA, File fileB});
+}
+
+/// @nodoc
+class _$CompareDnaObjectCopyWithImpl<$Res, $Val extends CompareDnaObject>
+    implements $CompareDnaObjectCopyWith<$Res> {
+  _$CompareDnaObjectCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? fileA = null,
+    Object? fileB = null,
+  }) {
+    return _then(_value.copyWith(
+      fileA: null == fileA
+          ? _value.fileA
+          : fileA // ignore: cast_nullable_to_non_nullable
+              as File,
+      fileB: null == fileB
+          ? _value.fileB
+          : fileB // ignore: cast_nullable_to_non_nullable
+              as File,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$CompareDnaObjectImplCopyWith<$Res>
+    implements $CompareDnaObjectCopyWith<$Res> {
+  factory _$$CompareDnaObjectImplCopyWith(_$CompareDnaObjectImpl value,
+          $Res Function(_$CompareDnaObjectImpl) then) =
+      __$$CompareDnaObjectImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({File fileA, File fileB});
+}
+
+/// @nodoc
+class __$$CompareDnaObjectImplCopyWithImpl<$Res>
+    extends _$CompareDnaObjectCopyWithImpl<$Res, _$CompareDnaObjectImpl>
+    implements _$$CompareDnaObjectImplCopyWith<$Res> {
+  __$$CompareDnaObjectImplCopyWithImpl(_$CompareDnaObjectImpl _value,
+      $Res Function(_$CompareDnaObjectImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? fileA = null,
+    Object? fileB = null,
+  }) {
+    return _then(_$CompareDnaObjectImpl(
+      fileA: null == fileA
+          ? _value.fileA
+          : fileA // ignore: cast_nullable_to_non_nullable
+              as File,
+      fileB: null == fileB
+          ? _value.fileB
+          : fileB // ignore: cast_nullable_to_non_nullable
+              as File,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CompareDnaObjectImpl implements _CompareDnaObject {
+  _$CompareDnaObjectImpl({required this.fileA, required this.fileB});
+
+  @override
+  final File fileA;
+  @override
+  final File fileB;
+
+  @override
+  String toString() {
+    return 'CompareDnaObject(fileA: $fileA, fileB: $fileB)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CompareDnaObjectImpl &&
+            (identical(other.fileA, fileA) || other.fileA == fileA) &&
+            (identical(other.fileB, fileB) || other.fileB == fileB));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, fileA, fileB);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CompareDnaObjectImplCopyWith<_$CompareDnaObjectImpl> get copyWith =>
+      __$$CompareDnaObjectImplCopyWithImpl<_$CompareDnaObjectImpl>(
+          this, _$identity);
+}
+
+abstract class _CompareDnaObject implements CompareDnaObject {
+  factory _CompareDnaObject(
+      {required final File fileA,
+      required final File fileB}) = _$CompareDnaObjectImpl;
+
+  @override
+  File get fileA;
+  @override
+  File get fileB;
+  @override
+  @JsonKey(ignore: true)
+  _$$CompareDnaObjectImplCopyWith<_$CompareDnaObjectImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

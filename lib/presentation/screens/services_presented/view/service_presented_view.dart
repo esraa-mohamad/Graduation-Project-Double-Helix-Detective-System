@@ -101,4 +101,10 @@ class _ServicesViewState extends State<ServicesView> {
           ),
         ));
   }
+
+  @override
+  void dispose() {
+    _viewModel.dispose();
+    super.dispose();
+  }
 }

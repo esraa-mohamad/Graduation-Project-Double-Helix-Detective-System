@@ -77,6 +77,10 @@ ThemeData getApplicationTheme(){
           color: ColorManager.white,
           fontSize: FontSize.s30
       ),
+      titleSmall: getMediumStyle(
+          color: ColorManager.white,
+          fontSize: FontSize.s22
+      ),
 
       // for body
       headlineMedium: getMediumStyle(

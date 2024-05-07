@@ -8,4 +8,5 @@ abstract class Repository{
   Future<Either<Failure,Authentication>>login(LoginRequest loginRequest);
   Future<Either<Failure,AddPopulation>>add(AddPopulationRequest addPopulationRequest);
   Future<Either<Failure,void>>logout(LogoutRequest logoutRequest);
+  Future<Either<Failure,CompareDna>>compareDna(CompareDnaRequest compareDnaRequest);
 }

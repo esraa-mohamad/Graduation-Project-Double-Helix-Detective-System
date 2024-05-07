@@ -85,6 +85,17 @@ class AddPopulationResponse extends BaseResponse{
   //     _$AddPopulationResponseToJson(this);
 }
 
+@JsonSerializable()
+class LogoutResponse extends BaseResponse{
+
+  LogoutResponse();
+  factory LogoutResponse.fromJson(Map<String,dynamic> json) =>_$LogoutResponseFromJson(json);
+
+  // to json
+  Map<String,dynamic> toJson() =>
+      _$LogoutResponseToJson(this);
+}
+
 
 @JsonSerializable()
 class CompareDnaResponse extends BaseResponse{

@@ -36,7 +36,10 @@ class AppStrings{
   static const test="Test paternity";
   //paternity result
   static const paternityResult = "Paternity Result";
+  static const comparedResult = "Compared Result";
   static const matchResult = "Probability of Paternity";
+  static const similarity = "Probability of Similarity";
+  static const matchCompare = "Match status";
   static const findFamily = "Welcome back to the Family";
   static const backSer = "Back to services";
   static const addDB = "Add to Population";
@@ -67,6 +70,8 @@ class AppStrings{
   static const descriptionPerson = "Description";
   static const dnaPerson = "Upload DNA File";
   static const addPerson = "Add Person";
+  static const addFileA = "First File Dna";
+  static const addFileB = "Second File Dna";
 
   // dialogs
   static const loading = "Loading...";
