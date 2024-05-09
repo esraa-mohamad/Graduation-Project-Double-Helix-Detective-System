@@ -1,5 +1,4 @@
 
-import 'package:dio/dio.dart';
 import 'package:double_helix_detective_system/data/network/app_api.dart';
 import 'package:double_helix_detective_system/data/network/requests.dart';
 
@@ -12,6 +11,8 @@ abstract class RemoteDataSource {
    Future<void> logout(LogoutRequest logoutRequest);
 
   Future<CompareDnaResponse> compareDna(CompareDnaRequest compareDnaRequest);
+
+  Future<SearchMatchingInfoResponse> identificationSearch(IdentifySearchRequest identifySearchRequest);
 }
 
 class RemoteDataSourceImp implements RemoteDataSource {
@@ -67,7 +68,11 @@ class RemoteDataSourceImp implements RemoteDataSource {
     );
   }
 
-
-
+  @override
+  Future<SearchMatchingInfoResponse> identificationSearch(IdentifySearchRequest identifySearchRequest)async  {
+    return await _appServiceDna.identificationSearch(
+      identifySearchRequest.toFormData(),
+    );
+  }
 
 }

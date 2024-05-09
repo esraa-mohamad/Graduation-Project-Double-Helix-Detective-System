@@ -111,3 +111,52 @@ Map<String, dynamic> _$CompareDnaResponseToJson(CompareDnaResponse instance) =>
       'match_status': instance.match,
       'similarity_percentage': instance.similarity,
     };
+
+PersonInfoResponse _$PersonInfoResponseFromJson(Map<String, dynamic> json) =>
+    PersonInfoResponse(
+      name: json['name'] as String?,
+      address: json['address'] as String?,
+      phone: json['phone'] as String?,
+      nationalId: json['national_id'] as String?,
+      gender: json['gender'] as String?,
+      bloodType: json['bloodType'] as String?,
+      birthDate: json['birthdate'] as String?,
+      status: json['status'] as String?,
+      description: json['description'] as String?,
+    );
+
+Map<String, dynamic> _$PersonInfoResponseToJson(PersonInfoResponse instance) =>
+    <String, dynamic>{
+      'name': instance.name,
+      'address': instance.address,
+      'phone': instance.phone,
+      'national_id': instance.nationalId,
+      'gender': instance.gender,
+      'bloodType': instance.bloodType,
+      'birthdate': instance.birthDate,
+      'status': instance.status,
+      'description': instance.description,
+    };
+
+SearchMatchingInfoResponse _$SearchMatchingInfoResponseFromJson(
+        Map<String, dynamic> json) =>
+    SearchMatchingInfoResponse(
+      personInfoResponse: json['match_info'] == null
+          ? null
+          : PersonInfoResponse.fromJson(
+              json['match_info'] as Map<String, dynamic>),
+      matchStatus: json['match_status'] as String?,
+      similarity: json['similarity_percentage'] as int?,
+    )
+      ..status = json['statusCode'] as int?
+      ..message = json['message'] as String?;
+
+Map<String, dynamic> _$SearchMatchingInfoResponseToJson(
+        SearchMatchingInfoResponse instance) =>
+    <String, dynamic>{
+      'statusCode': instance.status,
+      'message': instance.message,
+      'match_info': instance.personInfoResponse,
+      'match_status': instance.matchStatus,
+      'similarity_percentage': instance.similarity,
+    };

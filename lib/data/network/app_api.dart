@@ -54,9 +54,16 @@ abstract class AppServicesTechnical {
 @RestApi(baseUrl:AppConstants.baseUrlDna)
 abstract class AppServiceDna{
   factory AppServiceDna(Dio dio ,{String baseUrl}) = _AppServiceDna;
+  
   @POST('/compare')
   @MultiPart()
   Future<CompareDnaResponse> compareDna(
+      @Body()FormData formData,
+      );
+  
+  @POST('/identify')
+  @MultiPart()
+  Future<SearchMatchingInfoResponse> identificationSearch(
       @Body()FormData formData,
       );
 }

@@ -101,3 +101,20 @@ class CompareDnaRequest{
   }
 }
 
+class IdentifySearchRequest  {
+  File file ;
+  String status ;
+
+  IdentifySearchRequest({required this.file , required this.status});
+  FormData toFormData() {
+    FormData formData = FormData.fromMap({
+      'file': [
+        MultipartFile.fromString(
+            file.readAsStringSync(), filename: file.path)
+      ],
+      'status': status.toLowerCase(),
+    });
+    return formData;
+  }
+}
+

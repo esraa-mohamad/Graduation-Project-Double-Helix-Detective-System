@@ -1,3 +1,4 @@
+
 // ignore: depend_on_referenced_packages
 import 'package:json_annotation/json_annotation.dart';
 part 'response.g.dart';
@@ -111,3 +112,62 @@ class CompareDnaResponse extends BaseResponse{
       _$CompareDnaResponseToJson(this);
 
 }
+
+@JsonSerializable()
+class PersonInfoResponse {
+  @JsonKey(name:"name")
+  String ? name ;
+  @JsonKey(name:"address")
+  String ? address ;
+  @JsonKey(name:"phone")
+  String ? phone ;
+  @JsonKey(name:"national_id")
+  String ? nationalId ;
+  @JsonKey(name:"gender")
+  String ? gender ;
+  @JsonKey(name:"bloodType")
+  String ? bloodType ;
+  @JsonKey(name:"birthdate")
+  String ? birthDate ;
+  @JsonKey(name:"status")
+  String ? status ;
+  @JsonKey(name:"description")
+  String ? description ;
+
+  PersonInfoResponse({
+    required this.name,
+    required this.address ,
+    required this.phone,
+    required this.nationalId,
+    required this.gender,
+    required this.bloodType ,
+    required this.birthDate ,
+    required this.status ,
+    required this.description
+});
+
+  factory PersonInfoResponse.fromJson(Map<String,dynamic> json) =>_$PersonInfoResponseFromJson(json);
+
+  // to json
+  Map<String,dynamic> toJson() =>
+      _$PersonInfoResponseToJson(this);
+}
+
+@JsonSerializable()
+class SearchMatchingInfoResponse  extends BaseResponse{
+  @JsonKey(name :"match_info")
+  PersonInfoResponse ? personInfoResponse;
+  @JsonKey(name: "match_status")
+  String ? matchStatus;
+  @JsonKey(name:"similarity_percentage")
+  int ? similarity;
+
+  SearchMatchingInfoResponse({required this.personInfoResponse , required this.matchStatus , required this.similarity});
+
+  factory SearchMatchingInfoResponse.fromJson(Map<String,dynamic> json) =>_$SearchMatchingInfoResponseFromJson(json);
+
+  // to json
+  Map<String,dynamic> toJson() =>
+      _$SearchMatchingInfoResponseToJson(this);
+}
+

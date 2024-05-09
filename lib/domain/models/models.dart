@@ -56,3 +56,39 @@ class CompareDna{
     required this.similarity
 });
 }
+
+class PersonInfo  {
+  String name ;
+  String address ;
+  String phone ;
+  String nationalId ;
+  String gender ;
+  String bloodType ;
+  String birthDate ;
+  String status ;
+  String description;
+
+  PersonInfo({
+    required this.name ,
+    required this.address ,
+    required this.phone ,
+    required this.nationalId ,
+    required this.gender ,
+    required this.bloodType ,
+    required this.birthDate ,
+    required this.status ,
+    required this.description
+});
+}
+
+class SearchMatchingInfo {
+  PersonInfo ? personInfo ;
+  String match;
+  int similarity;
+
+  SearchMatchingInfo({
+    required this.personInfo ,
+    required this.match ,
+    required this.similarity
+});
+}
