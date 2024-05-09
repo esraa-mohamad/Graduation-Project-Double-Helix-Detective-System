@@ -119,14 +119,7 @@ class _CompareDnaResultViewState extends State<CompareDnaResultView> {
         stream: _viewModel.compareDnaOutput,
         builder: (context , snapshot){
           print(snapshot.data);
-          //return _getCompareDnaData(snapshot.data!);
-          if (snapshot.hasData) {
-            return _getCompareDnaData(snapshot.data!);
-          } else if (snapshot.hasError) {
-            return Text('Error: ${snapshot.error}');
-          } else {
-            return Container(); // Or any other loading indicator
-          }
+          return _getCompareDnaData(snapshot.data);
         }
     );
   }
