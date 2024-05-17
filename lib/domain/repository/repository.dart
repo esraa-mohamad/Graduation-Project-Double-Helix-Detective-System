@@ -9,4 +9,5 @@ abstract class Repository{
   Future<Either<Failure,AddPopulation>>add(AddPopulationRequest addPopulationRequest);
   Future<Either<Failure,void>>logout(LogoutRequest logoutRequest);
   Future<Either<Failure,CompareDna>>compareDna(CompareDnaRequest compareDnaRequest);
+  Future<Either<Failure,SearchMatchingInfo>>searchMatchingInfo(IdentifySearchRequest  identifySearchRequest);
 }

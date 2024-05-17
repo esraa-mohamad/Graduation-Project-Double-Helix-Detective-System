@@ -8,7 +8,8 @@ import 'package:double_helix_detective_system/presentation/common/freezed_data_c
 import 'package:double_helix_detective_system/presentation/common/state_renderer/state_renderer_imp.dart';
 import 'package:rxdart/rxdart.dart';
 
-import '../../../../../common/state_renderer/state_renderer.dart';
+import '../../../../common/state_renderer/state_renderer.dart';
+
 
 class CompareDnaViewModel extends BaseViewModel with CompareDnaViewModelInputs,CompareDnaViewModelOutputs {
 

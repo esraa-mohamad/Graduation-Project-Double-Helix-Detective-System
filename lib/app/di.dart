@@ -5,7 +5,7 @@ import 'package:double_helix_detective_system/data/network/network_info.dart';
 import 'package:double_helix_detective_system/domain/usecase/add_population_usecase.dart';
 import 'package:double_helix_detective_system/domain/usecase/compare_dna_usecase.dart';
 import 'package:double_helix_detective_system/domain/usecase/logout_usecase.dart';
-import 'package:double_helix_detective_system/presentation/screens/Identification/form/compare_dna/viewmodel/compare_dna_viewmodel.dart';
+import 'package:double_helix_detective_system/domain/usecase/search_identification_usecase.dart';
 import 'package:double_helix_detective_system/presentation/screens/services_presented/viewmodel/service_presented_viewmodel.dart';
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
@@ -16,6 +16,8 @@ import '../data/network/dio_factory.dart';
 import '../data/repository/repository_imp.dart';
 import '../domain/repository/repository.dart';
 import '../domain/usecase/login_usecase.dart';
+import '../presentation/screens/Identification/compare_dna/viewmodel/compare_dna_viewmodel.dart';
+import '../presentation/screens/Identification/search_database/viewmodel/search_database_viewmodel.dart';
 import '../presentation/screens/login/viewModel/login_viewmodel.dart';
 import '../presentation/screens/population/viewModel/population_viewmodel.dart';
 
@@ -86,5 +88,14 @@ initCompareDnaModule() {
 
     instance.registerFactory<CompareDnaViewModel>(() =>
         CompareDnaViewModel(instance()));
+  }
+}
+
+initSearchIdentificationModule() {
+  if (!GetIt.I.isRegistered<SearchIdentificationUseCase>()) {
+    instance.registerFactory<SearchIdentificationUseCase>(() => SearchIdentificationUseCase(instance()));
+
+    instance.registerFactory<SearchDatabaseFormViewModel>(() =>
+        SearchDatabaseFormViewModel(instance()));
   }
 }

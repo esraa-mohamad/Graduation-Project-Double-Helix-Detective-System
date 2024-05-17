@@ -1,6 +1,7 @@
-import 'dart:io';
 
 // ignore: depend_on_referenced_packages
+import 'dart:io';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'freezed_data_class.freezed.dart';
@@ -32,4 +33,12 @@ class CompareDnaObject with _$CompareDnaObject {
     required File fileA,
     required File fileB,
   }) = _CompareDnaObject;
+}
+
+@freezed
+class SearchIdentificationObject with _$SearchIdentificationObject{
+  factory SearchIdentificationObject({
+    required File file,
+    required String status ,
+})= _SearchIdentificationObject;
 }

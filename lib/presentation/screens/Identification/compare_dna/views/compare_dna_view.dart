@@ -1,19 +1,20 @@
 import 'dart:io';
 
 import 'package:double_helix_detective_system/app/di.dart';
-import 'package:double_helix_detective_system/presentation/screens/Identification/form/compare_dna/viewmodel/compare_dna_viewmodel.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
 import 'package:path/path.dart' as path;
-import '../../../../../common/state_renderer/state_renderer_imp.dart';
-import '../../../../../resource/color_manager.dart';
-import '../../../../../resource/routes_manager.dart';
-import '../../../../../resource/strings_manager.dart';
-import '../../../../../resource/values_manager.dart';
-import '../../../../../widget/elevated_button.dart';
-import '../../../../../widget/upload_dna_file.dart';
+
+import '../../../../common/state_renderer/state_renderer_imp.dart';
+import '../../../../resource/color_manager.dart';
+import '../../../../resource/routes_manager.dart';
+import '../../../../resource/strings_manager.dart';
+import '../../../../resource/values_manager.dart';
+import '../../../../widget/elevated_button.dart';
+import '../../../../widget/upload_dna_file.dart';
+import '../viewmodel/compare_dna_viewmodel.dart';
 class CompareDnaFormView extends StatefulWidget {
   const CompareDnaFormView({super.key});
 

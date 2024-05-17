@@ -66,6 +66,7 @@ class AppStrings{
   static const missingPerson = "Missing";
   static const disasterPerson = "Disaster";
   static const crimePerson = "crime";
+  static const allDb = "all";
   static const acknowledgedPerson = "Acknowledged";
   static const descriptionPerson = "Description";
   static const dnaPerson = "Upload DNA File";

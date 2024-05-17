@@ -593,3 +593,145 @@ abstract class _CompareDnaObject implements CompareDnaObject {
   _$$CompareDnaObjectImplCopyWith<_$CompareDnaObjectImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+/// @nodoc
+mixin _$SearchIdentificationObject {
+  File get file => throw _privateConstructorUsedError;
+  String get status => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $SearchIdentificationObjectCopyWith<SearchIdentificationObject>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SearchIdentificationObjectCopyWith<$Res> {
+  factory $SearchIdentificationObjectCopyWith(SearchIdentificationObject value,
+          $Res Function(SearchIdentificationObject) then) =
+      _$SearchIdentificationObjectCopyWithImpl<$Res,
+          SearchIdentificationObject>;
+  @useResult
+  $Res call({File file, String status});
+}
+
+/// @nodoc
+class _$SearchIdentificationObjectCopyWithImpl<$Res,
+        $Val extends SearchIdentificationObject>
+    implements $SearchIdentificationObjectCopyWith<$Res> {
+  _$SearchIdentificationObjectCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? file = null,
+    Object? status = null,
+  }) {
+    return _then(_value.copyWith(
+      file: null == file
+          ? _value.file
+          : file // ignore: cast_nullable_to_non_nullable
+              as File,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$SearchIdentificationObjectImplCopyWith<$Res>
+    implements $SearchIdentificationObjectCopyWith<$Res> {
+  factory _$$SearchIdentificationObjectImplCopyWith(
+          _$SearchIdentificationObjectImpl value,
+          $Res Function(_$SearchIdentificationObjectImpl) then) =
+      __$$SearchIdentificationObjectImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({File file, String status});
+}
+
+/// @nodoc
+class __$$SearchIdentificationObjectImplCopyWithImpl<$Res>
+    extends _$SearchIdentificationObjectCopyWithImpl<$Res,
+        _$SearchIdentificationObjectImpl>
+    implements _$$SearchIdentificationObjectImplCopyWith<$Res> {
+  __$$SearchIdentificationObjectImplCopyWithImpl(
+      _$SearchIdentificationObjectImpl _value,
+      $Res Function(_$SearchIdentificationObjectImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? file = null,
+    Object? status = null,
+  }) {
+    return _then(_$SearchIdentificationObjectImpl(
+      file: null == file
+          ? _value.file
+          : file // ignore: cast_nullable_to_non_nullable
+              as File,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SearchIdentificationObjectImpl implements _SearchIdentificationObject {
+  _$SearchIdentificationObjectImpl({required this.file, required this.status});
+
+  @override
+  final File file;
+  @override
+  final String status;
+
+  @override
+  String toString() {
+    return 'SearchIdentificationObject(file: $file, status: $status)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SearchIdentificationObjectImpl &&
+            (identical(other.file, file) || other.file == file) &&
+            (identical(other.status, status) || other.status == status));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, file, status);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SearchIdentificationObjectImplCopyWith<_$SearchIdentificationObjectImpl>
+      get copyWith => __$$SearchIdentificationObjectImplCopyWithImpl<
+          _$SearchIdentificationObjectImpl>(this, _$identity);
+}
+
+abstract class _SearchIdentificationObject
+    implements SearchIdentificationObject {
+  factory _SearchIdentificationObject(
+      {required final File file,
+      required final String status}) = _$SearchIdentificationObjectImpl;
+
+  @override
+  File get file;
+  @override
+  String get status;
+  @override
+  @JsonKey(ignore: true)
+  _$$SearchIdentificationObjectImplCopyWith<_$SearchIdentificationObjectImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
