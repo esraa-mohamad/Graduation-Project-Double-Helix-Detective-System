@@ -37,6 +37,7 @@ class AppStrings{
   //paternity result
   static const paternityResult = "Paternity Result";
   static const comparedResult = "Compared Result";
+  static const searchResult = "Search Result";
   static const matchResult = "Probability of Paternity";
   static const similarity = "Probability of Similarity";
   static const matchCompare = "Match status";

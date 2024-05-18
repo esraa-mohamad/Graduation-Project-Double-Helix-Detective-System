@@ -38,7 +38,7 @@ class _SearchDatabaseFormViewState extends State<SearchDatabaseFormView> {
       if(isSearchedSuccessfully){
         SchedulerBinding.instance.addPostFrameCallback((_)
         {
-          Navigator.of(context).pushReplacementNamed(RoutesManager.searchFormRoute);
+          Navigator.of(context).pushReplacementNamed(RoutesManager.searchResultRoute);
         });
       }
     });
