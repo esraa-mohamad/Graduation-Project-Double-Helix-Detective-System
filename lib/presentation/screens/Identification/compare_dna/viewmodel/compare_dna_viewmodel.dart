@@ -25,6 +25,17 @@ class CompareDnaViewModel extends BaseViewModel with CompareDnaViewModelInputs,C
   final CompareDnaUseCase _compareDnaUseCase;
   CompareDnaViewModel(this._compareDnaUseCase);
 
+  // changes
+  // static final CompareDnaViewModel _singleton = CompareDnaViewModel._internal();
+  // factory CompareDnaViewModel(CompareDnaUseCase compareDnaUseCase) {
+  //   _singleton._compareDnaUseCase = compareDnaUseCase;
+  //   return _singleton;
+  // }
+  // CompareDnaViewModel._internal();
+  // late CompareDnaUseCase _compareDnaUseCase;
+
+
+
   var compareDnaObject = CompareDnaObject(
       fileA: File(""),
       fileB: File("")

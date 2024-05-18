@@ -84,9 +84,9 @@ initServicesModule() {
 
 initCompareDnaModule() {
   if (!GetIt.I.isRegistered<CompareDnaUseCase>()) {
-    instance.registerFactory<CompareDnaUseCase>(() => CompareDnaUseCase(instance()));
+    instance.registerLazySingleton<CompareDnaUseCase>(() => CompareDnaUseCase(instance()));
 
-    instance.registerFactory<CompareDnaViewModel>(() =>
+    instance.registerLazySingleton<CompareDnaViewModel>(() =>
         CompareDnaViewModel(instance()));
   }
 }

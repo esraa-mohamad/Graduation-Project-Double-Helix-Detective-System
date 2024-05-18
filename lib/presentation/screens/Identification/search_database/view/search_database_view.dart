@@ -181,7 +181,13 @@ class _SearchDatabaseFormViewState extends State<SearchDatabaseFormView> {
         child: Row(
           children: [
             const Icon(Icons.file_present_rounded , color: ColorManager.primary,size: AppSize.s25,),
-            Text('File Name:${path.basename(file.path)}'),
+            Expanded(
+              child: Text(
+                'File Name:${path.basename(file.path)}',
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
           ],
         ),
       );
