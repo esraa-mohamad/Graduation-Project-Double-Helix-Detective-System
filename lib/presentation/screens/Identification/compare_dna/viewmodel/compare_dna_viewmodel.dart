@@ -18,8 +18,6 @@ class CompareDnaViewModel extends BaseViewModel with CompareDnaViewModelInputs,C
   StreamController<File> fileBStreamController = BehaviorSubject();
   StreamController<void> areAllInputsValidStreamController = BehaviorSubject();
   StreamController isComparedDnaSuccessfullyStreamController = BehaviorSubject<bool>();
- // StreamController resultCompareDnaMatchStreamController = BehaviorSubject<String>();
- // StreamController resultCompareDnaSimilarityStreamController = BehaviorSubject<int>();
   StreamController resultCompareDnaStreamController = BehaviorSubject<CompareDna>();
 
   final CompareDnaUseCase _compareDnaUseCase;
