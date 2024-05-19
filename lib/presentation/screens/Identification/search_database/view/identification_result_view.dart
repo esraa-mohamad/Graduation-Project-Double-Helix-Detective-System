@@ -23,7 +23,7 @@ class _IdentificationResultState extends State<IdentificationResult> {
   final SearchDatabaseFormViewModel _viewModel = instance<SearchDatabaseFormViewModel>();
 
   _bind(){
-    _viewModel.start();
+    //_viewModel.start();
   }
 
   @override
@@ -51,7 +51,7 @@ class _IdentificationResultState extends State<IdentificationResult> {
           stream: _viewModel.outState,
           builder: (context , snapshot){
             return snapshot.data?.getScreenWidget(context , _getContentView(), (){
-              _viewModel.start();
+              _viewModel.identificationSearch();
             }) ??
                 _getContentView() ;
           }
@@ -89,8 +89,15 @@ class _IdentificationResultState extends State<IdentificationResult> {
     return StreamBuilder<SearchMatchingInfo>(
         stream: _viewModel.searchMatchInfoOutput,
         builder: (context , snapshot){
-          print(snapshot.data);
-          return _getSearchMatchData(snapshot.data);
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const CircularProgressIndicator();
+          } else if (snapshot.hasData) {
+            return _getSearchMatchData(snapshot.data);
+          } else if (snapshot.hasError) {
+            return Text('Error: ${snapshot.error}');
+          } else {
+            return const Text('No Data Available');
+          }
         }
     );
   }
@@ -104,188 +111,12 @@ class _IdentificationResultState extends State<IdentificationResult> {
           RichText(
             text: TextSpan(
               text: "${AppStrings.similarity} :- ",
-              style: Theme.of(context).textTheme.bodyLarge,
-              children: <TextSpan>[
-                TextSpan(
-                    text: '${searchMatchingInfo.similarity} %',
-                    style: Theme.of(context).textTheme.titleMedium),
-              ],
-            ),
-          ),
-          const SizedBox(
-            height: AppSize.s12,
-          ),
-          RichText(
-            text: TextSpan(
-              text: "${AppStrings.matchCompare} :- ",
-              style: Theme.of(context).textTheme.bodyLarge,
-              children: <TextSpan>[
-                TextSpan(
-                    text: searchMatchingInfo.match,
-                    style: Theme.of(context).textTheme.titleMedium),
-              ],
-            ),
-          ),
-          const SizedBox(
-            height: AppSize.s12,
-          ),
-           Card(
-            child: Column(
-              children: [
-                // Name : Esraa                   Address : benha
-                // Phone : 010                    National Id : 02
-                // Gender : female                Blood type : +AB
-                // Birth Date : 18/6              Status : eck
-                // description :
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    RichText(
-                      text: TextSpan(
-                        text: "${AppStrings.namePerson} :- ",
-                        style: Theme.of(context).textTheme.bodyLarge,
-                        children: <TextSpan>[
-                          TextSpan(
-                              text: searchMatchingInfo.personInfo!.name,
-                              style: Theme.of(context).textTheme.titleMedium),
-                        ],
-                      ),
-                    ),
-                    RichText(
-                      text: TextSpan(
-                        text: "${AppStrings.addressPerson} :- ",
-                        style: Theme.of(context).textTheme.bodyLarge,
-                        children: <TextSpan>[
-                          TextSpan(
-                              text: searchMatchingInfo.personInfo!.address,
-                              style: Theme.of(context).textTheme.titleMedium),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: AppSize.s12,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    RichText(
-                      text: TextSpan(
-                        text: "${AppStrings.phonePerson} :- ",
-                        style: Theme.of(context).textTheme.bodyLarge,
-                        children: <TextSpan>[
-                          TextSpan(
-                              text: searchMatchingInfo.personInfo!.phone,
-                              style: Theme.of(context).textTheme.titleMedium),
-                        ],
-                      ),
-                    ),
-                    RichText(
-                      text: TextSpan(
-                        text: "${AppStrings.nationalIdPerson} :- ",
-                        style: Theme.of(context).textTheme.bodyLarge,
-                        children: <TextSpan>[
-                          TextSpan(
-                              text: searchMatchingInfo.personInfo!.nationalId,
-                              style: Theme.of(context).textTheme.titleMedium),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: AppSize.s12,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    RichText(
-                      text: TextSpan(
-                        text: "${AppStrings.genderPerson} :- ",
-                        style: Theme.of(context).textTheme.bodyLarge,
-                        children: <TextSpan>[
-                          TextSpan(
-                              text: searchMatchingInfo.personInfo!.gender,
-                              style: Theme.of(context).textTheme.titleMedium),
-                        ],
-                      ),
-                    ),
-                    RichText(
-                      text: TextSpan(
-                        text: "${AppStrings.bloodPerson} :- ",
-                        style: Theme.of(context).textTheme.bodyLarge,
-                        children: <TextSpan>[
-                          TextSpan(
-                              text: searchMatchingInfo.personInfo!.bloodType,
-                              style: Theme.of(context).textTheme.titleMedium),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: AppSize.s12,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    RichText(
-                      text: TextSpan(
-                        text: "${AppStrings.birthdayPerson} :- ",
-                        style: Theme.of(context).textTheme.bodyLarge,
-                        children: <TextSpan>[
-                          TextSpan(
-                              text: searchMatchingInfo.personInfo!.birthDate,
-                              style: Theme.of(context).textTheme.titleMedium),
-                        ],
-                      ),
-                    ),
-                    RichText(
-                      text: TextSpan(
-                        text: "${AppStrings.statusPerson} :- ",
-                        style: Theme.of(context).textTheme.bodyLarge,
-                        children: <TextSpan>[
-                          TextSpan(
-                              text: searchMatchingInfo.personInfo!.status,
-                              style: Theme.of(context).textTheme.titleMedium),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: AppSize.s12,
-                ),
-                RichText(
-                  text: TextSpan(
-                    text: "${AppStrings.descriptionPerson} :- ",
-                    style: Theme.of(context).textTheme.bodyLarge,
-                    children: <TextSpan>[
-                      TextSpan(
-                          text: searchMatchingInfo.personInfo!.description,
-                          style: Theme.of(context).textTheme.titleMedium),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      );
-    }else{
-      print(" empty");
-      return Column(
-        children: [
-          RichText(
-            text: TextSpan(
-              text: "${AppStrings.similarity} :- ",
               style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                 fontWeight: FontWeightManager.semiBold,
               ),
               children: <TextSpan>[
                 TextSpan(
-                    text: '${searchMatchingInfo?.similarity} %',
+                    text: '${searchMatchingInfo.similarity} %',
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
                       color: ColorManager.primary,
                     )),
@@ -303,7 +134,7 @@ class _IdentificationResultState extends State<IdentificationResult> {
               ),
               children: <TextSpan>[
                 TextSpan(
-                    text: searchMatchingInfo?.match,
+                    text: searchMatchingInfo.match,
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
                       color: ColorManager.primary,
                     )),
@@ -318,11 +149,6 @@ class _IdentificationResultState extends State<IdentificationResult> {
             child: Card(
               child: Column(
                 children: [
-                  // Name : Esraa                   Address : benha
-                  // Phone : 010                    National Id : 02
-                  // Gender : female                Blood type : +AB
-                  // Birth Date : 18/6              Status : eck
-                  // description :
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -332,7 +158,7 @@ class _IdentificationResultState extends State<IdentificationResult> {
                           style: Theme.of(context).textTheme.bodyLarge,
                           children: <TextSpan>[
                             TextSpan(
-                                text: searchMatchingInfo?.personInfo!.name,
+                                text: searchMatchingInfo.personInfo!.name,
                                 style: Theme.of(context).textTheme.titleMedium),
                           ],
                         ),
@@ -343,7 +169,7 @@ class _IdentificationResultState extends State<IdentificationResult> {
                           style: Theme.of(context).textTheme.bodyLarge,
                           children: <TextSpan>[
                             TextSpan(
-                                text: searchMatchingInfo?.personInfo!.address,
+                                text: searchMatchingInfo.personInfo!.address,
                                 style: Theme.of(context).textTheme.titleMedium),
                           ],
                         ),
@@ -362,7 +188,7 @@ class _IdentificationResultState extends State<IdentificationResult> {
                           style: Theme.of(context).textTheme.bodyLarge,
                           children: <TextSpan>[
                             TextSpan(
-                                text: searchMatchingInfo?.personInfo!.phone,
+                                text: searchMatchingInfo.personInfo!.phone,
                                 style: Theme.of(context).textTheme.titleMedium),
                           ],
                         ),
@@ -373,7 +199,7 @@ class _IdentificationResultState extends State<IdentificationResult> {
                           style: Theme.of(context).textTheme.bodyLarge,
                           children: <TextSpan>[
                             TextSpan(
-                                text: searchMatchingInfo?.personInfo!.nationalId,
+                                text: searchMatchingInfo.personInfo!.nationalId,
                                 style: Theme.of(context).textTheme.titleMedium),
                           ],
                         ),
@@ -392,7 +218,7 @@ class _IdentificationResultState extends State<IdentificationResult> {
                           style: Theme.of(context).textTheme.bodyLarge,
                           children: <TextSpan>[
                             TextSpan(
-                                text: searchMatchingInfo?.personInfo!.gender,
+                                text: searchMatchingInfo.personInfo!.gender,
                                 style: Theme.of(context).textTheme.titleMedium),
                           ],
                         ),
@@ -403,7 +229,7 @@ class _IdentificationResultState extends State<IdentificationResult> {
                           style: Theme.of(context).textTheme.bodyLarge,
                           children: <TextSpan>[
                             TextSpan(
-                                text: searchMatchingInfo?.personInfo!.bloodType,
+                                text: searchMatchingInfo.personInfo!.bloodType,
                                 style: Theme.of(context).textTheme.titleMedium),
                           ],
                         ),
@@ -422,7 +248,7 @@ class _IdentificationResultState extends State<IdentificationResult> {
                           style: Theme.of(context).textTheme.bodyLarge,
                           children: <TextSpan>[
                             TextSpan(
-                                text: searchMatchingInfo?.personInfo!.birthDate,
+                                text: searchMatchingInfo.personInfo!.birthDate,
                                 style: Theme.of(context).textTheme.titleMedium),
                           ],
                         ),
@@ -433,7 +259,7 @@ class _IdentificationResultState extends State<IdentificationResult> {
                           style: Theme.of(context).textTheme.bodyLarge,
                           children: <TextSpan>[
                             TextSpan(
-                                text: searchMatchingInfo?.personInfo!.status,
+                                text: searchMatchingInfo.personInfo!.status,
                                 style: Theme.of(context).textTheme.titleMedium),
                           ],
                         ),
@@ -449,7 +275,7 @@ class _IdentificationResultState extends State<IdentificationResult> {
                       style: Theme.of(context).textTheme.bodyLarge,
                       children: <TextSpan>[
                         TextSpan(
-                            text: searchMatchingInfo?.personInfo!.description,
+                            text: searchMatchingInfo.personInfo!.description,
                             style: Theme.of(context).textTheme.titleMedium),
                       ],
                     ),
@@ -460,6 +286,9 @@ class _IdentificationResultState extends State<IdentificationResult> {
           ),
         ],
       );
+    }else{
+      print(" empty");
+      return Container();
      // return Container();
     }
 

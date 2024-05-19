@@ -93,9 +93,9 @@ initCompareDnaModule() {
 
 initSearchIdentificationModule() {
   if (!GetIt.I.isRegistered<SearchIdentificationUseCase>()) {
-    instance.registerFactory<SearchIdentificationUseCase>(() => SearchIdentificationUseCase(instance()));
+    instance.registerLazySingleton<SearchIdentificationUseCase>(() => SearchIdentificationUseCase(instance()));
 
-    instance.registerFactory<SearchDatabaseFormViewModel>(() =>
+    instance.registerLazySingleton<SearchDatabaseFormViewModel>(() =>
         SearchDatabaseFormViewModel(instance()));
   }
 }

@@ -72,7 +72,7 @@ class _AppServicesTechnical implements AppServicesTechnical {
     )
             .compose(
               _dio.options,
-              '/addpopulation',
+              '/api/addpopulation',
               queryParameters: queryParameters,
               data: _data,
             )
