@@ -171,3 +171,75 @@ class SearchMatchingInfoResponse  extends BaseResponse{
       _$SearchMatchingInfoResponseToJson(this);
 }
 
+@JsonSerializable()
+class AllMissingSearchResultResponse extends BaseResponse{
+  @JsonKey(name:'main_match_info')
+  MissingPersonInfoResponse ? missingPersonInfoResponse;
+  @JsonKey(name:"potential_relative_info")
+  List<MissingRelativeInfoResponse> ? missingRelativeInfoResponse;
+  AllMissingSearchResultResponse({required this.missingPersonInfoResponse,required this.missingRelativeInfoResponse});
+  factory AllMissingSearchResultResponse.fromJson(Map<String,dynamic> json) =>_$AllMissingSearchResultResponseFromJson(json);
+
+  // to json
+  Map<String,dynamic> toJson() =>
+      _$AllMissingSearchResultResponseToJson(this);
+}
+@JsonSerializable()
+class MissingPersonInfoResponse {
+  @JsonKey(name:"name")
+  String ? name ;
+  @JsonKey(name:"address")
+  String ? address ;
+  @JsonKey(name:"phone")
+  String ? phone ;
+  @JsonKey(name:"national_id")
+  String ? nationalId ;
+  @JsonKey(name:"gender")
+  String ? gender ;
+  @JsonKey(name:"bloodType")
+  String ? bloodType ;
+  @JsonKey(name:"birthdate")
+  String ? birthDate ;
+  @JsonKey(name:"status")
+  String ? status ;
+  @JsonKey(name:"description")
+  String ? description ;
+  @JsonKey(name: 'match_status')
+  String ? matchStatus;
+  @JsonKey(name: 'similarity_percentage')
+  int ? similarity;
+
+  MissingPersonInfoResponse({
+    required this.name,
+    required this.address ,
+    required this.phone,
+    required this.nationalId,
+    required this.gender,
+    required this.bloodType ,
+    required this.birthDate ,
+    required this.status ,
+    required this.description,
+    required this.matchStatus,
+    required this.similarity
+  });
+
+  factory MissingPersonInfoResponse.fromJson(Map<String,dynamic> json) =>_$MissingPersonInfoResponseFromJson(json);
+
+  // to json
+  Map<String,dynamic> toJson() =>
+      _$MissingPersonInfoResponseToJson(this);
+}
+@JsonSerializable()
+class MissingRelativeInfoResponse{
+  @JsonKey(name:'relative_data')
+  PersonInfoResponse ? missingRelativeInfo;
+
+  MissingRelativeInfoResponse({required this.missingRelativeInfo});
+  factory MissingRelativeInfoResponse.fromJson(Map<String,dynamic> json) =>_$MissingRelativeInfoResponseFromJson(json);
+
+  // to json
+  Map<String,dynamic> toJson() =>
+      _$MissingRelativeInfoResponseToJson(this);
+}
+
+

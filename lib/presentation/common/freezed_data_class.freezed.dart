@@ -735,3 +735,122 @@ abstract class _SearchIdentificationObject
   _$$SearchIdentificationObjectImplCopyWith<_$SearchIdentificationObjectImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
+
+/// @nodoc
+mixin _$MissingSearchObject {
+  File get file => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $MissingSearchObjectCopyWith<MissingSearchObject> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $MissingSearchObjectCopyWith<$Res> {
+  factory $MissingSearchObjectCopyWith(
+          MissingSearchObject value, $Res Function(MissingSearchObject) then) =
+      _$MissingSearchObjectCopyWithImpl<$Res, MissingSearchObject>;
+  @useResult
+  $Res call({File file});
+}
+
+/// @nodoc
+class _$MissingSearchObjectCopyWithImpl<$Res, $Val extends MissingSearchObject>
+    implements $MissingSearchObjectCopyWith<$Res> {
+  _$MissingSearchObjectCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? file = null,
+  }) {
+    return _then(_value.copyWith(
+      file: null == file
+          ? _value.file
+          : file // ignore: cast_nullable_to_non_nullable
+              as File,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$MissingSearchObjectImplCopyWith<$Res>
+    implements $MissingSearchObjectCopyWith<$Res> {
+  factory _$$MissingSearchObjectImplCopyWith(_$MissingSearchObjectImpl value,
+          $Res Function(_$MissingSearchObjectImpl) then) =
+      __$$MissingSearchObjectImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({File file});
+}
+
+/// @nodoc
+class __$$MissingSearchObjectImplCopyWithImpl<$Res>
+    extends _$MissingSearchObjectCopyWithImpl<$Res, _$MissingSearchObjectImpl>
+    implements _$$MissingSearchObjectImplCopyWith<$Res> {
+  __$$MissingSearchObjectImplCopyWithImpl(_$MissingSearchObjectImpl _value,
+      $Res Function(_$MissingSearchObjectImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? file = null,
+  }) {
+    return _then(_$MissingSearchObjectImpl(
+      file: null == file
+          ? _value.file
+          : file // ignore: cast_nullable_to_non_nullable
+              as File,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$MissingSearchObjectImpl implements _MissingSearchObject {
+  _$MissingSearchObjectImpl({required this.file});
+
+  @override
+  final File file;
+
+  @override
+  String toString() {
+    return 'MissingSearchObject(file: $file)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$MissingSearchObjectImpl &&
+            (identical(other.file, file) || other.file == file));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, file);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$MissingSearchObjectImplCopyWith<_$MissingSearchObjectImpl> get copyWith =>
+      __$$MissingSearchObjectImplCopyWithImpl<_$MissingSearchObjectImpl>(
+          this, _$identity);
+}
+
+abstract class _MissingSearchObject implements MissingSearchObject {
+  factory _MissingSearchObject({required final File file}) =
+      _$MissingSearchObjectImpl;
+
+  @override
+  File get file;
+  @override
+  @JsonKey(ignore: true)
+  _$$MissingSearchObjectImplCopyWith<_$MissingSearchObjectImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

@@ -92,3 +92,44 @@ class SearchMatchingInfo {
     required this.similarity
 });
 }
+
+class MissingPersonInfo{
+  String name ;
+  String address ;
+  String phone ;
+  String nationalId ;
+  String gender ;
+  String bloodType ;
+  String birthDate ;
+  String status ;
+  String description;
+  String matchStatus;
+  int similarity;
+
+  MissingPersonInfo({
+    required this.name ,
+    required this.address ,
+    required this.phone ,
+    required this.nationalId ,
+    required this.gender ,
+    required this.bloodType ,
+    required this.birthDate ,
+    required this.status ,
+    required this.description,
+    required this.matchStatus,
+    required this.similarity
+  });
+}
+
+class MissingRelativeInfo{
+  PersonInfo ? personInfo;
+  MissingRelativeInfo({
+    required this.personInfo
+});
+}
+
+class AllMissingSearchResult{
+  MissingPersonInfo ? missingPersonInfo;
+  List<MissingRelativeInfo> ? missingRelativeInfo;
+  AllMissingSearchResult({required this.missingPersonInfo,required this.missingRelativeInfo});
+}

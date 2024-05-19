@@ -138,4 +138,26 @@ class RepositoryImp implements Repository{
     }
   }
 
+  @override
+  Future<Either<Failure, AllMissingSearchResult>> missingSearch(MissingRequest missingRequest)async {
+    if(await _networkInfo.isConnection){
+      try {
+        final response = await _remoteDataSource.missingSearch(missingRequest);
+        if(response.status == ApiInternalStatus.SUCCESS){
+          return Right(response.toDomain());
+        }else{
+
+          return Left(Failure(
+              status:  response.status ?? ResponseStatus.DEFAULT ,
+              message: response.message ?? ResponseMessage.DEFAULT
+          ));
+        }
+      }catch(error) {
+        return Left(ErrorHandler.handle(error).failure);
+      }
+    }else{
+      return Left(DataSource.NO_INTERNET_CONNECTION.getFailure());
+    }
+  }
+
 }

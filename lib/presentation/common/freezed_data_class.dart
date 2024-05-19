@@ -42,3 +42,10 @@ class SearchIdentificationObject with _$SearchIdentificationObject{
     required String status ,
 })= _SearchIdentificationObject;
 }
+
+@freezed
+class MissingSearchObject with _$MissingSearchObject{
+  factory MissingSearchObject({
+    required File file,
+  })= _MissingSearchObject;
+}

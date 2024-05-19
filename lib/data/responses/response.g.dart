@@ -160,3 +160,75 @@ Map<String, dynamic> _$SearchMatchingInfoResponseToJson(
       'match_status': instance.matchStatus,
       'similarity_percentage': instance.similarity,
     };
+
+AllMissingSearchResultResponse _$AllMissingSearchResultResponseFromJson(
+        Map<String, dynamic> json) =>
+    AllMissingSearchResultResponse(
+      missingPersonInfoResponse: json['main_match_info'] == null
+          ? null
+          : MissingPersonInfoResponse.fromJson(
+              json['main_match_info'] as Map<String, dynamic>),
+      missingRelativeInfoResponse: (json['potential_relative_info']
+              as List<dynamic>?)
+          ?.map((e) =>
+              MissingRelativeInfoResponse.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    )
+      ..status = json['statusCode'] as int?
+      ..message = json['message'] as String?;
+
+Map<String, dynamic> _$AllMissingSearchResultResponseToJson(
+        AllMissingSearchResultResponse instance) =>
+    <String, dynamic>{
+      'statusCode': instance.status,
+      'message': instance.message,
+      'main_match_info': instance.missingPersonInfoResponse,
+      'potential_relative_info': instance.missingRelativeInfoResponse,
+    };
+
+MissingPersonInfoResponse _$MissingPersonInfoResponseFromJson(
+        Map<String, dynamic> json) =>
+    MissingPersonInfoResponse(
+      name: json['name'] as String?,
+      address: json['address'] as String?,
+      phone: json['phone'] as String?,
+      nationalId: json['national_id'] as String?,
+      gender: json['gender'] as String?,
+      bloodType: json['bloodType'] as String?,
+      birthDate: json['birthdate'] as String?,
+      status: json['status'] as String?,
+      description: json['description'] as String?,
+      matchStatus: json['match_status'] as String?,
+      similarity: json['similarity_percentage'] as int?,
+    );
+
+Map<String, dynamic> _$MissingPersonInfoResponseToJson(
+        MissingPersonInfoResponse instance) =>
+    <String, dynamic>{
+      'name': instance.name,
+      'address': instance.address,
+      'phone': instance.phone,
+      'national_id': instance.nationalId,
+      'gender': instance.gender,
+      'bloodType': instance.bloodType,
+      'birthdate': instance.birthDate,
+      'status': instance.status,
+      'description': instance.description,
+      'match_status': instance.matchStatus,
+      'similarity_percentage': instance.similarity,
+    };
+
+MissingRelativeInfoResponse _$MissingRelativeInfoResponseFromJson(
+        Map<String, dynamic> json) =>
+    MissingRelativeInfoResponse(
+      missingRelativeInfo: json['relative_data'] == null
+          ? null
+          : PersonInfoResponse.fromJson(
+              json['relative_data'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$MissingRelativeInfoResponseToJson(
+        MissingRelativeInfoResponse instance) =>
+    <String, dynamic>{
+      'relative_data': instance.missingRelativeInfo,
+    };

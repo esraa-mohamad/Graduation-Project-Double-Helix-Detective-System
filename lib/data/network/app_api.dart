@@ -58,12 +58,18 @@ abstract class AppServiceDna{
   @POST('/compare')
   @MultiPart()
   Future<CompareDnaResponse> compareDna(
-      @Body()FormData formData,
-      );
-  
+    @Body() FormData formData,
+  );
+
   @POST('/identify')
   @MultiPart()
   Future<SearchMatchingInfoResponse> identificationSearch(
-      @Body()FormData formData,
-      );
+    @Body() FormData formData,
+  );
+
+  @POST('/missing')
+  @MultiPart()
+  Future<AllMissingSearchResultResponse> missingSearch(
+    @Body() FormData formData,
+  );
 }

@@ -2,6 +2,7 @@ import 'package:double_helix_detective_system/app/constants.dart';
 import 'package:double_helix_detective_system/app/extentions.dart';
 import 'package:double_helix_detective_system/data/responses/response.dart';
 import 'package:double_helix_detective_system/domain/models/models.dart';
+import 'package:double_helix_detective_system/presentation/resource/strings_manager.dart';
 
 extension TechnicalResponseMapper on TechnicalResponse? {
   Technical toDomain() {
@@ -72,3 +73,44 @@ extension SearchMatchingInfoResponseMapper on SearchMatchingInfoResponse?{
     );
   }
 }
+
+extension MissingPersonInfoMapper on MissingPersonInfoResponse?{
+  MissingPersonInfo toDomain() {
+    return MissingPersonInfo(
+        name: this?.name.orEmpty() ?? AppConstants.empty,
+        address: this?.address.orEmpty() ?? AppConstants.empty,
+        phone: this?.phone.orEmpty() ?? AppConstants.empty,
+        nationalId: this?.nationalId.orEmpty() ?? AppConstants.empty,
+        gender: this?.gender.orEmpty() ?? AppConstants.empty,
+        bloodType: this?.bloodType.orEmpty() ?? AppConstants.empty,
+        birthDate: this?.birthDate.orEmpty() ?? AppConstants.empty,
+        status: this?.status.orEmpty() ?? AppConstants.empty,
+        description: this?.description.orEmpty() ?? AppConstants.empty,
+        matchStatus: this?.matchStatus.orEmpty()??AppConstants.empty,
+        similarity:  this?.similarity.orZero()??AppConstants.zero
+    );
+  }
+}
+
+extension MissingRelativeInfoMapper on MissingRelativeInfoResponse?{
+  MissingRelativeInfo toDomain(){
+    return MissingRelativeInfo(
+      personInfo: this?.missingRelativeInfo.toDomain()
+    );
+  }
+}
+extension AllMissingSearchResultMapper on AllMissingSearchResultResponse?{
+  AllMissingSearchResult toDomain(){
+    List<MissingRelativeInfo> missingRelative = (this
+        ?.missingRelativeInfoResponse
+        ?.map((missingRelativeInfoResponse) => missingRelativeInfoResponse.toDomain()) ??
+        const Iterable.empty())
+        .cast<MissingRelativeInfo>()
+        .toList();
+    return AllMissingSearchResult(
+        missingPersonInfo: this?.missingPersonInfoResponse.toDomain(),
+        missingRelativeInfo: missingRelative,
+    );
+  }
+}
+

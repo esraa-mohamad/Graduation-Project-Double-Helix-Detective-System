@@ -118,3 +118,19 @@ class IdentifySearchRequest  {
   }
 }
 
+class MissingRequest  {
+  File file ;
+
+  MissingRequest({required this.file});
+  FormData toFormData() {
+    FormData formData = FormData.fromMap({
+      'file_a': [
+        MultipartFile.fromString(
+            file.readAsStringSync(), filename: file.path)
+      ],
+    });
+    return formData;
+  }
+}
+
+
