@@ -25,7 +25,7 @@ class _CompareDnaResultViewState extends State<CompareDnaResultView> {
   final CompareDnaViewModel _viewModel = instance<CompareDnaViewModel>();
 
   _bind(){
-    _viewModel.start();
+    //_viewModel.start();
   }
   @override
   void initState() {
@@ -50,7 +50,7 @@ class _CompareDnaResultViewState extends State<CompareDnaResultView> {
           stream: _viewModel.outState,
           builder: (context , snapshot){
             return snapshot.data?.getScreenWidget(context , _getContentView(), (){
-              _viewModel.start();
+              _viewModel.compareDna();
             }) ??
                 _getContentView() ;
           }
@@ -119,8 +119,20 @@ class _CompareDnaResultViewState extends State<CompareDnaResultView> {
     return StreamBuilder<CompareDna>(
         stream: _viewModel.compareDnaOutput,
         builder: (context , snapshot){
-          print(snapshot.data);
-          return _getCompareDnaData(snapshot.data);
+          // print(snapshot.data);
+          // return _getCompareDnaData(snapshot.data);
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            // Show a loading indicator while waiting for data
+            return const CircularProgressIndicator();
+          } else if (snapshot.hasData) {
+            return _getCompareDnaData(snapshot.data);
+          } else if (snapshot.hasError) {
+            // Handle errors if any
+            return Text('Error: ${snapshot.error}');
+          } else {
+            // Handle the case when there is no data yet
+            return const Text('No Data Available');
+          }
         }
     );
   }

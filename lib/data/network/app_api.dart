@@ -18,7 +18,7 @@ abstract class AppServicesTechnical {
       @Field("password") String password
       );
 
-  @POST("/addpopulation")
+  @POST("/api/addpopulation")
   @MultiPart()
   Future<AddPopulationResponse> add (
       // @Field("name") String name ,

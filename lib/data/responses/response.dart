@@ -155,7 +155,7 @@ class PersonInfoResponse {
 
 @JsonSerializable()
 class SearchMatchingInfoResponse  extends BaseResponse{
-  @JsonKey(name :"match_info")
+  @JsonKey(name :"matches")
   PersonInfoResponse ? personInfoResponse;
   @JsonKey(name: "match_status")
   String ? matchStatus;

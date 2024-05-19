@@ -141,10 +141,10 @@ Map<String, dynamic> _$PersonInfoResponseToJson(PersonInfoResponse instance) =>
 SearchMatchingInfoResponse _$SearchMatchingInfoResponseFromJson(
         Map<String, dynamic> json) =>
     SearchMatchingInfoResponse(
-      personInfoResponse: json['match_info'] == null
+      personInfoResponse: json['matches'] == null
           ? null
           : PersonInfoResponse.fromJson(
-              json['match_info'] as Map<String, dynamic>),
+              json['matches'] as Map<String, dynamic>),
       matchStatus: json['match_status'] as String?,
       similarity: json['similarity_percentage'] as int?,
     )
@@ -156,7 +156,7 @@ Map<String, dynamic> _$SearchMatchingInfoResponseToJson(
     <String, dynamic>{
       'statusCode': instance.status,
       'message': instance.message,
-      'match_info': instance.personInfoResponse,
+      'matches': instance.personInfoResponse,
       'match_status': instance.matchStatus,
       'similarity_percentage': instance.similarity,
     };
