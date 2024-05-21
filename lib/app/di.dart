@@ -5,7 +5,9 @@ import 'package:double_helix_detective_system/data/network/network_info.dart';
 import 'package:double_helix_detective_system/domain/usecase/add_population_usecase.dart';
 import 'package:double_helix_detective_system/domain/usecase/compare_dna_usecase.dart';
 import 'package:double_helix_detective_system/domain/usecase/logout_usecase.dart';
+import 'package:double_helix_detective_system/domain/usecase/missing_usecase.dart';
 import 'package:double_helix_detective_system/domain/usecase/search_identification_usecase.dart';
+import 'package:double_helix_detective_system/presentation/screens/missing_persons/viewModel/missing_form_view_model.dart';
 import 'package:double_helix_detective_system/presentation/screens/services_presented/viewmodel/service_presented_viewmodel.dart';
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
@@ -97,5 +99,14 @@ initSearchIdentificationModule() {
 
     instance.registerLazySingleton<SearchDatabaseFormViewModel>(() =>
         SearchDatabaseFormViewModel(instance()));
+  }
+}
+
+initMissingSearchModule() {
+  if (!GetIt.I.isRegistered<MissingSearchUseCase>()) {
+    instance.registerLazySingleton<MissingSearchUseCase>(() => MissingSearchUseCase(instance()));
+
+    instance.registerLazySingleton<MissingSearchViewModel>(() =>
+        MissingSearchViewModel(instance()));
   }
 }

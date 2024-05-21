@@ -9,8 +9,8 @@ import '../screens/Identification/compare_dna/views/compare_result_view.dart';
 import '../screens/Identification/search_database/view/identification_result_view.dart';
 import '../screens/Identification/search_database/view/search_database_view.dart';
 import '../screens/login/view/login_view.dart';
-import '../screens/missing_persons/form/view/missing_persons_form_view.dart';
-import '../screens/missing_persons/result/view/missing_persons_result_view.dart';
+import '../screens/missing_persons/view/missing_persons_form_view.dart';
+import '../screens/missing_persons/view/missing_persons_result_view.dart';
 import '../screens/paternity_test/form/view/paternity_test_form_view.dart';
 import '../screens/paternity_test/result/view/paternity_test_result_view.dart';
 import '../screens/population/view/population_view.dart';
@@ -59,8 +59,10 @@ class RouteGenerator{
         initSearchIdentificationModule();
         return MaterialPageRoute(builder: (_)=>const IdentificationResult());
       case RoutesManager.missingPersonFormRoute:
+        initMissingSearchModule();
         return MaterialPageRoute(builder: (_)=>const MissingForm());
       case RoutesManager.missingPersonResultRoute:
+        initMissingSearchModule();
         return MaterialPageRoute(builder: (_)=>const MissingResult());
       case RoutesManager.populationRoute:
         initAddPopulationModule();
