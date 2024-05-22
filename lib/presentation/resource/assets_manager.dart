@@ -19,7 +19,7 @@ class AssetsManager {
   static const String iconDna='$imagePath/icon_dna.png';
   static const String compareIcon='$imagePath/compare.jpg';
   static const String searchIcon='$imagePath/search.jpg';
-
+  static const String cardId ='$imagePath/card_id.png';
 
 }
 
