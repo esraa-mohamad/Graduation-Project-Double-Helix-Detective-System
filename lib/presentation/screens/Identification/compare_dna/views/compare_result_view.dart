@@ -119,8 +119,6 @@ class _CompareDnaResultViewState extends State<CompareDnaResultView> {
     return StreamBuilder<CompareDna>(
         stream: _viewModel.compareDnaOutput,
         builder: (context , snapshot){
-          // print(snapshot.data);
-          // return _getCompareDnaData(snapshot.data);
           if (snapshot.connectionState == ConnectionState.waiting) {
             // Show a loading indicator while waiting for data
             return const CircularProgressIndicator();
