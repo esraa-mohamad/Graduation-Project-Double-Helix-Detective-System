@@ -1,5 +1,6 @@
 import 'package:double_helix_detective_system/domain/models/models.dart';
 import 'package:double_helix_detective_system/presentation/resource/color_manager.dart';
+import 'package:double_helix_detective_system/presentation/widget/card_show_person_info.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../app/di.dart';
@@ -136,154 +137,24 @@ class _IdentificationResultState extends State<IdentificationResult> {
                 TextSpan(
                     text: searchMatchingInfo.match,
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      color: ColorManager.primary,
-                    )),
+                          color: ColorManager.primary,
+                        )),
               ],
             ),
           ),
           const SizedBox(
             height: AppSize.s12,
           ),
-          Padding(
-            padding: const EdgeInsets.all(AppSize.s16),
-            child: Card(
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      RichText(
-                        text: TextSpan(
-                          text: "${AppStrings.namePerson} :- ",
-                          style: Theme.of(context).textTheme.bodyLarge,
-                          children: <TextSpan>[
-                            TextSpan(
-                                text: searchMatchingInfo.personInfo!.name,
-                                style: Theme.of(context).textTheme.titleMedium),
-                          ],
-                        ),
-                      ),
-                      RichText(
-                        text: TextSpan(
-                          text: "${AppStrings.addressPerson} :- ",
-                          style: Theme.of(context).textTheme.bodyLarge,
-                          children: <TextSpan>[
-                            TextSpan(
-                                text: searchMatchingInfo.personInfo!.address,
-                                style: Theme.of(context).textTheme.titleMedium),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: AppSize.s12,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      RichText(
-                        text: TextSpan(
-                          text: "${AppStrings.phonePerson} :- ",
-                          style: Theme.of(context).textTheme.bodyLarge,
-                          children: <TextSpan>[
-                            TextSpan(
-                                text: searchMatchingInfo.personInfo!.phone,
-                                style: Theme.of(context).textTheme.titleMedium),
-                          ],
-                        ),
-                      ),
-                      RichText(
-                        text: TextSpan(
-                          text: "${AppStrings.nationalIdPerson} :- ",
-                          style: Theme.of(context).textTheme.bodyLarge,
-                          children: <TextSpan>[
-                            TextSpan(
-                                text: searchMatchingInfo.personInfo!.nationalId,
-                                style: Theme.of(context).textTheme.titleMedium),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: AppSize.s12,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      RichText(
-                        text: TextSpan(
-                          text: "${AppStrings.genderPerson} :- ",
-                          style: Theme.of(context).textTheme.bodyLarge,
-                          children: <TextSpan>[
-                            TextSpan(
-                                text: searchMatchingInfo.personInfo!.gender,
-                                style: Theme.of(context).textTheme.titleMedium),
-                          ],
-                        ),
-                      ),
-                      RichText(
-                        text: TextSpan(
-                          text: "${AppStrings.bloodPerson} :- ",
-                          style: Theme.of(context).textTheme.bodyLarge,
-                          children: <TextSpan>[
-                            TextSpan(
-                                text: searchMatchingInfo.personInfo!.bloodType,
-                                style: Theme.of(context).textTheme.titleMedium),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: AppSize.s12,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      RichText(
-                        text: TextSpan(
-                          text: "${AppStrings.birthdayPerson} :- ",
-                          style: Theme.of(context).textTheme.bodyLarge,
-                          children: <TextSpan>[
-                            TextSpan(
-                                text: searchMatchingInfo.personInfo!.birthDate,
-                                style: Theme.of(context).textTheme.titleMedium),
-                          ],
-                        ),
-                      ),
-                      RichText(
-                        text: TextSpan(
-                          text: "${AppStrings.statusPerson} :- ",
-                          style: Theme.of(context).textTheme.bodyLarge,
-                          children: <TextSpan>[
-                            TextSpan(
-                                text: searchMatchingInfo.personInfo!.status,
-                                style: Theme.of(context).textTheme.titleMedium),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: AppSize.s12,
-                  ),
-                  RichText(
-                    text: TextSpan(
-                      text: "${AppStrings.descriptionPerson} :- ",
-                      style: Theme.of(context).textTheme.bodyLarge,
-                      children: <TextSpan>[
-                        TextSpan(
-                            text: searchMatchingInfo.personInfo!.description,
-                            style: Theme.of(context).textTheme.titleMedium),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
+          CustomCardShowPersonInfo(
+              name: searchMatchingInfo.personInfo!.name,
+              address: searchMatchingInfo.personInfo!.address,
+              phone: searchMatchingInfo.personInfo!.phone,
+              nationalId: searchMatchingInfo.personInfo!.nationalId,
+              gender: searchMatchingInfo.personInfo!.gender,
+              bloodType: searchMatchingInfo.personInfo!.bloodType,
+              birthDate: searchMatchingInfo.personInfo!.birthDate,
+              status: searchMatchingInfo.personInfo!.status,
+              description: searchMatchingInfo.personInfo!.description),
         ],
       );
     }else{

@@ -26,299 +26,202 @@ class CustomCardShowPersonInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(AppPadding.p16),
-          child: LayoutBuilder(
-            builder: (context, constraints) {
-              return Container(
-                decoration: BoxDecoration(
-                  color: backgroundColor, // Replace with your ColorManager.background
-                  borderRadius: BorderRadius.circular(AppSize.s16),
-                  boxShadow: const [
-                    BoxShadow(
-                      color: ColorManager.gray,
-                      blurRadius: AppSize.s4,
-                      spreadRadius: AppSize.s4,
-                    ),
-                  ],
-                ),
-                padding: const EdgeInsets.all(16),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Flexible(
-                      flex: 1,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          _buildRichText(
-                            context,
-                            label: AppStrings.namePerson,
-                            value: name,
-                          ),
-                          _buildRichText(
-                            context,
-                            label: AppStrings.addressPerson,
-                            value: address,
-                          ),
-                          _buildRichText(
-                            context,
-                            label: AppStrings.genderPerson,
-                            value: gender,
-                          ),
-                          _buildRichText(
-                            context,
-                            label: AppStrings.bloodPerson,
-                            value: bloodType,
-                          ),
-                          _buildRichText(
-                            context,
-                            label: AppStrings.descriptionPerson,
-                            value: description,
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(width: 16),
-                    Flexible(
-                      flex: 1,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          _buildRichText(
-                            context,
-                            label: AppStrings.phonePerson,
-                            value: phone,
-                          ),
-                          _buildRichText(
-                            context,
-                            label: AppStrings.nationalIdPerson,
-                            value: nationalId,
-                          ),
-                          _buildRichText(
-                            context,
-                            label: AppStrings.birthdayPerson,
-                            value: birthDate,
-                          ),
-                          _buildRichText(
-                            context,
-                            label: AppStrings.statusPerson,
-                            value: status,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              );
-            },
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildRichText(BuildContext context, {required String label, required String value}) {
-    return Padding(
-      padding: const EdgeInsets.all(AppPadding.p16),
-      child: LayoutBuilder(
-        builder: (context, constraints) {
-          return Container(
-            margin: const EdgeInsets.symmetric(horizontal: AppMargin.m100),
-            decoration: BoxDecoration(
-              color: backgroundColor,
-              // Replace with your ColorManager.background
-              borderRadius: BorderRadius.circular(AppSize.s16),
-              boxShadow: const [
-                BoxShadow(
-                  color: ColorManager.gray,
-                  blurRadius: AppSize.s4,
-                  spreadRadius: AppSize.s4,
-                ),
-              ],
-              border: Border.all(
-                  color: ColorManager.gray,
-                  width: AppSize.s2
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return Container(
+          margin: const EdgeInsets.symmetric(horizontal: AppMargin.m100),
+          decoration: BoxDecoration(
+            color: backgroundColor,
+            // Replace with your ColorManager.background
+            borderRadius: BorderRadius.circular(AppSize.s16),
+            boxShadow: const [
+              BoxShadow(
+                color: ColorManager.gray,
+                blurRadius: AppSize.s4,
+                spreadRadius: AppSize.s4,
               ),
+            ],
+            border: Border.all(
+                color: ColorManager.gray,
+                width: AppSize.s2
             ),
-            padding: const EdgeInsets.all(AppPadding.p16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Flexible(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            name,
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyLarge
-                                ?.copyWith(
-                              fontWeight: FontWeight.bold,
-                              fontSize: FontSize.s40,
+          ),
+          padding: const EdgeInsets.all(AppPadding.p16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Flexible(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          name,
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyLarge
+                              ?.copyWith(
+                            fontWeight: FontWeight.bold,
+                            fontSize: FontSize.s40,
+                          ),
+                        ),
+                        Row(
+                          children: [
+                            const Icon(
+                              Icons.home ,
+                              size: AppSize.s25,
+                              color: ColorManager.primary,
                             ),
-                          ),
-                          Row(
-                            children: [
-                              const Icon(
-                                Icons.home ,
-                                size: AppSize.s25,
-                                color: ColorManager.primary,
+                            const SizedBox(
+                              width: AppSize.s4,
+                            ),
+                            Text(
+                              address ,
+                              style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                                  fontSize: FontSize.s40
                               ),
-                              const SizedBox(
-                                width: AppSize.s4,
-                              ),
-                              Text(
-                                address ,
-                                style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                                    fontSize: FontSize.s40
-                                ),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              const Icon(
-                                Icons.phone ,
-                                size: AppSize.s25,
-                                color: ColorManager.primary,
-                              ),
-                              const SizedBox(
-                                width: AppSize.s4,
-                              ),
-                              Text(
-                                phone ,
-                                style: Theme.of(context).textTheme.titleMedium,
-                              ),
-                              const SizedBox(
-                                width: AppSize.s8,
-                              ),
-                              const Icon(
-                                Icons.minimize_outlined ,
-                                size: AppSize.s25,
-                                color: ColorManager.white,
-                              ),
-                              const SizedBox(
-                                width: AppSize.s4,
-                              ),
-                              const FaIcon(
-                                FontAwesomeIcons.idCard,
-                                size: AppSize.s25,
-                                color: ColorManager.primary,
-                              ),
-                              const SizedBox(
-                                width: AppSize.s4,
-                              ),
-                              Text(
-                                nationalId ,
-                                style: Theme.of(context).textTheme.titleMedium,
-                              ),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            const Icon(
+                              Icons.phone ,
+                              size: AppSize.s25,
+                              color: ColorManager.primary,
+                            ),
+                            const SizedBox(
+                              width: AppSize.s4,
+                            ),
+                            Text(
+                              phone ,
+                              style: Theme.of(context).textTheme.titleMedium,
+                            ),
+                            const SizedBox(
+                              width: AppSize.s8,
+                            ),
+                            const Icon(
+                              Icons.minimize_outlined ,
+                              size: AppSize.s25,
+                              color: ColorManager.white,
+                            ),
+                            const SizedBox(
+                              width: AppSize.s4,
+                            ),
+                            const FaIcon(
+                              FontAwesomeIcons.idCard,
+                              size: AppSize.s25,
+                              color: ColorManager.primary,
+                            ),
+                            const SizedBox(
+                              width: AppSize.s4,
+                            ),
+                            Text(
+                              nationalId ,
+                              style: Theme.of(context).textTheme.titleMedium,
+                            ),
 
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              const FaIcon(
-                                FontAwesomeIcons.personHalfDress ,
-                                size: AppSize.s25,
-                                color: ColorManager.primary,
-                              ),
-                              const SizedBox(
-                                width: AppSize.s4,
-                              ),
-                              Text(
-                                gender ,
-                                style: Theme.of(context).textTheme.titleMedium,
-                              ),
-                              const SizedBox(
-                                width: AppSize.s8,
-                              ),
-                              const Icon(
-                                Icons.minimize_outlined ,
-                                size: AppSize.s25,
-                                color: ColorManager.white,
-                              ),
-                              const SizedBox(
-                                width: AppSize.s4,
-                              ),
-                              const FaIcon(
-                                FontAwesomeIcons.handHoldingDroplet ,
-                                size: AppSize.s25,
-                                color: ColorManager.primary,
-                              ),
-                              const SizedBox(
-                                width: AppSize.s4,
-                              ),
-                              Text(
-                                bloodType,
-                                style: Theme.of(context).textTheme.titleMedium,
-                              ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            const FaIcon(
+                              FontAwesomeIcons.personHalfDress ,
+                              size: AppSize.s25,
+                              color: ColorManager.primary,
+                            ),
+                            const SizedBox(
+                              width: AppSize.s4,
+                            ),
+                            Text(
+                              gender ,
+                              style: Theme.of(context).textTheme.titleMedium,
+                            ),
+                            const SizedBox(
+                              width: AppSize.s8,
+                            ),
+                            const Icon(
+                              Icons.minimize_outlined ,
+                              size: AppSize.s25,
+                              color: ColorManager.white,
+                            ),
+                            const SizedBox(
+                              width: AppSize.s4,
+                            ),
+                            const FaIcon(
+                              FontAwesomeIcons.handHoldingDroplet ,
+                              size: AppSize.s25,
+                              color: ColorManager.primary,
+                            ),
+                            const SizedBox(
+                              width: AppSize.s4,
+                            ),
+                            Text(
+                              bloodType,
+                              style: Theme.of(context).textTheme.titleMedium,
+                            ),
 
-                            ],
-                          ),
-                        ],
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  Flexible(child: Image.asset(AssetsManager.cardId ,)),
+                ],
+              ),
+              Container(
+                height: AppSize.s1_5,
+                color: ColorManager.gray,
+              ),
+              Text(
+                description ,
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      const FaIcon(
+                        FontAwesomeIcons.personCircleExclamation,
+                        size: AppSize.s25,
+                        color: ColorManager.primary,
                       ),
-                    ),
-                    Flexible(child: Image.asset(AssetsManager.cardId ,)),
-                  ],
-                ),
-                Container(
-                  height: AppSize.s1_5,
-                  color: ColorManager.gray,
-                ),
-                Text(
-                  description ,
-                  style: Theme.of(context).textTheme.titleMedium,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        const FaIcon(
-                          FontAwesomeIcons.personCircleExclamation,
-                          size: AppSize.s25,
-                          color: ColorManager.primary,
-                        ),
-                        const SizedBox(
-                          width: AppSize.s5,
-                        ),
-                        Text(
-                          status,
-                          style: Theme.of(context).textTheme.titleMedium,
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        const Icon(
-                          Icons.calendar_month ,
-                          size: AppSize.s25,
-                          color: ColorManager.primary,
-                        ),
-                        const SizedBox(
-                          width: AppSize.s4,
-                        ),
-                        Text(
-                          birthDate ,
-                          style: Theme.of(context).textTheme.titleMedium,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          );
-        },
-      ),
+                      const SizedBox(
+                        width: AppSize.s5,
+                      ),
+                      Text(
+                        status,
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const Icon(
+                        Icons.calendar_month ,
+                        size: AppSize.s25,
+                        color: ColorManager.primary,
+                      ),
+                      const SizedBox(
+                        width: AppSize.s4,
+                      ),
+                      Text(
+                        birthDate.substring(0,10) ,
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
+
+
 }

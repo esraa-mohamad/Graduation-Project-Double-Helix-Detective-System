@@ -3,7 +3,6 @@ import 'package:double_helix_detective_system/presentation/resource/values_manag
 import 'package:double_helix_detective_system/presentation/screens/missing_persons/viewModel/missing_form_view_model.dart';
 import 'package:double_helix_detective_system/presentation/widget/card_show_person_info.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../app/di.dart';
 import '../../../common/state_renderer/state_renderer_imp.dart';
 import '../../../resource/color_manager.dart';
@@ -58,57 +57,79 @@ class _MissingResultState extends State<MissingResult> {
   }
 
   Widget _getContentView() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return Stack(
       children: [
-        Text(
-          'Missing Person Info',
-          style: Theme
-              .of(context)
-              .textTheme
-              .bodyLarge
-              ?.copyWith(
-            fontWeight: FontWeightManager.semiBold,
-          ),
-        ),
-        const SizedBox(
-          height: AppSize.s16,
-        ),
-        _getMissingPerson(),
-        const SizedBox(
-          height: AppSize.s20,
-        ),
-        Text(
-          'Missing Relative Info',
-          style: Theme
-              .of(context)
-              .textTheme
-              .bodyLarge
-              ?.copyWith(
-            fontWeight: FontWeightManager.semiBold,
-          ),
-        ),
-        const SizedBox(
-          height: AppSize.s16,
-        ),
-        _getMissingRelative(),
-        const SizedBox(
-          height: AppSize.s16,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            CustomeElevatedButton(
-                onPressed: () {
-                  Navigator.pushReplacementNamed(
-                      context, RoutesManager.servicesPresentedRoute);
-                },
-                textButton: AppStrings.backSer),
-            CustomeElevatedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, RoutesManager.populationRoute);
-                }, textButton: AppStrings.addDB),
+        CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(
+              child: Column(
+                children: [
+                  Text(
+                    'Missing Person Info',
+                    style: Theme
+                        .of(context)
+                        .textTheme
+                        .bodyLarge
+                        ?.copyWith(
+                      fontWeight: FontWeightManager.semiBold,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: AppSize.s16,
+                  ),
+                  _getMissingPerson(),
+                  const SizedBox(
+                    height: AppSize.s20,
+                  ),
+                  Text(
+                    'Missing Relative Info',
+                    style: Theme
+                        .of(context)
+                        .textTheme
+                        .bodyLarge
+                        ?.copyWith(
+                      fontWeight: FontWeightManager.semiBold,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: AppSize.s16,
+                  ),
+                ],
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: _getMissingRelative(),
+            ),
+            const SliverToBoxAdapter(
+              child:SizedBox(
+                height: AppSize.s16,
+              ),
+            )
           ],
+        ),
+        Positioned(
+          bottom: 0,
+          left: 0,
+          top: 0,
+          child: Container(
+            color: ColorManager.lightBackground,
+            padding:const  EdgeInsets.all(AppPadding.p14),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                CustomeElevatedButton(
+                    onPressed: () {
+                      Navigator.pushReplacementNamed(
+                          context, RoutesManager.servicesPresentedRoute);
+                    },
+                    textButton: AppStrings.backSer),
+                CustomeElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, RoutesManager.populationRoute);
+                    }, textButton: AppStrings.addDB),
+              ],
+            ),
+          ),
         )
       ],
     );
@@ -136,15 +157,15 @@ class _MissingResultState extends State<MissingResult> {
   Widget _getMissingPersonInfo(AllMissingSearchResult? allMissingSearchResult) {
    if(allMissingSearchResult != null){
      return CustomCardShowPersonInfo(
-         name: allMissingSearchResult.missingPersonInfo!.name,
-         address: allMissingSearchResult.missingPersonInfo!.address,
-         phone: allMissingSearchResult.missingPersonInfo!.name,
-         nationalId: allMissingSearchResult.missingPersonInfo!.name,
-         gender: allMissingSearchResult.missingPersonInfo!.name,
-         bloodType: allMissingSearchResult.missingPersonInfo!.name,
-         birthDate: allMissingSearchResult.missingPersonInfo!.name,
-         status: allMissingSearchResult.missingPersonInfo!.name,
-         description: allMissingSearchResult.missingPersonInfo!.name,
+       name: allMissingSearchResult.missingPersonInfo!.name,
+       address: allMissingSearchResult.missingPersonInfo!.address,
+       phone: allMissingSearchResult.missingPersonInfo!.phone,
+       nationalId: allMissingSearchResult.missingPersonInfo!.nationalId,
+       gender: allMissingSearchResult.missingPersonInfo!.gender,
+       bloodType: allMissingSearchResult.missingPersonInfo!.bloodType,
+       birthDate: allMissingSearchResult.missingPersonInfo!.birthDate,
+       status: allMissingSearchResult.missingPersonInfo!.status,
+       description: allMissingSearchResult.missingPersonInfo!.description,
      );
    }else
      {
@@ -172,7 +193,25 @@ class _MissingResultState extends State<MissingResult> {
 
   // missing relative info
   Widget _getMissingRelativeInfo(List<MissingRelativeInfo>? missingRelatives) {
-    return Container();
+    if (missingRelatives != null) {
+      return ListView(
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        children: missingRelatives.map((relative) =>
+            CustomCardShowPersonInfo(
+                name: relative.personInfo!.name,
+                address: relative.personInfo!.address,
+                phone: relative.personInfo!.phone,
+                nationalId: relative.personInfo!.nationalId,
+                gender: relative.personInfo!.gender,
+                bloodType: relative.personInfo!.bloodType,
+                birthDate: relative.personInfo!.birthDate,
+                status: relative.personInfo!.status,
+                description: relative.personInfo!.description)).toList(),
+      );
+    } else {
+      return Container();
+    }
   }
 
   @override
