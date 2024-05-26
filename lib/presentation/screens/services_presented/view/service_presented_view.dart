@@ -70,7 +70,7 @@ class _ServicesViewState extends State<ServicesView> {
             height: double.infinity,
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: const AssetImage(AssetsManager.services),
+                image: const AssetImage(AssetsImageManager.services),
                 fit: BoxFit.cover,
                 colorFilter: ColorFilter.mode(
                   Colors.white.withOpacity(1),
@@ -83,17 +83,17 @@ class _ServicesViewState extends State<ServicesView> {
               children: [
                 CustomCardService(
                     route: RoutesManager.chooseIdentificationCase,
-                    image: AssetsManager.crimeIcon,
+                    image: AssetsImageManager.crimeIcon,
                     caseState: AppStrings.identification,
                     ),
                 CustomCardService(
                   route: RoutesManager.missingPersonFormRoute,
-                  image: AssetsManager.missingIcon,
+                  image: AssetsImageManager.missingIcon,
                   caseState: AppStrings.missing,
                 ),
                 CustomCardService(
                   route: RoutesManager.paternityFormRoute,
-                  image: AssetsManager.paternityIcon,
+                  image: AssetsImageManager.paternityIcon,
                   caseState: AppStrings.paternity,
                 ),
               ],

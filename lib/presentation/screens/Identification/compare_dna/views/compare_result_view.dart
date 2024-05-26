@@ -80,7 +80,7 @@ class _CompareDnaResultViewState extends State<CompareDnaResultView> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Lottie.asset(LottiAssets.criminal,
+              Lottie.asset(AssetsLottiManager.criminal,
                   height: AppSize.s300,
                   width: AppSize.s300,
                   repeat: true,
