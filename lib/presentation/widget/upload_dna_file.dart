@@ -11,11 +11,13 @@ class UploadDnaFile extends StatefulWidget {
 
     required this.child,
     required this.onTap,
+    this.uploadText=AppStrings.dnaPerson,
     super.key
   });
 
   final void Function() onTap;
   final Widget child ;
+  final String uploadText;
 
   @override
   State<UploadDnaFile> createState() => _UploadDnaFileState();
@@ -53,7 +55,7 @@ class _UploadDnaFileState extends State<UploadDnaFile> {
               Flexible(
                 flex: 1,
                   child: Text(
-                    AppStrings.dnaPerson,
+                    widget.uploadText,
                     style: Theme.of(context).textTheme.bodyMedium,
                   )
               ),

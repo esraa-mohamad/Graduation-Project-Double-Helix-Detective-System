@@ -6,6 +6,7 @@ import 'package:double_helix_detective_system/domain/usecase/add_population_usec
 import 'package:double_helix_detective_system/domain/usecase/compare_dna_usecase.dart';
 import 'package:double_helix_detective_system/domain/usecase/logout_usecase.dart';
 import 'package:double_helix_detective_system/domain/usecase/missing_usecase.dart';
+import 'package:double_helix_detective_system/domain/usecase/paternity_test_usecase.dart';
 import 'package:double_helix_detective_system/domain/usecase/search_identification_usecase.dart';
 import 'package:double_helix_detective_system/presentation/screens/missing_persons/viewModel/missing_form_view_model.dart';
 import 'package:double_helix_detective_system/presentation/screens/services_presented/viewmodel/service_presented_viewmodel.dart';
@@ -21,6 +22,7 @@ import '../domain/usecase/login_usecase.dart';
 import '../presentation/screens/Identification/compare_dna/viewmodel/compare_dna_viewmodel.dart';
 import '../presentation/screens/Identification/search_database/viewmodel/search_database_viewmodel.dart';
 import '../presentation/screens/login/viewModel/login_viewmodel.dart';
+import '../presentation/screens/paternity_test/form/viewmodel/paternity_test_form_viewmodel.dart';
 import '../presentation/screens/population/viewModel/population_viewmodel.dart';
 
 final instance=GetIt.instance;
@@ -108,5 +110,14 @@ initMissingSearchModule() {
 
     instance.registerLazySingleton<MissingSearchViewModel>(() =>
         MissingSearchViewModel(instance()));
+  }
+}
+
+initPaternityTestModule() {
+  if (!GetIt.I.isRegistered<PaternityTestUseCase>()) {
+    instance.registerLazySingleton<PaternityTestUseCase>(() => PaternityTestUseCase(instance()));
+
+    instance.registerLazySingleton<PaternityTestViewModel>(() =>
+        PaternityTestViewModel(instance()));
   }
 }

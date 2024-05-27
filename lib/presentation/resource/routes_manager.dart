@@ -12,7 +12,7 @@ import '../screens/login/view/login_view.dart';
 import '../screens/missing_persons/view/missing_persons_form_view.dart';
 import '../screens/missing_persons/view/missing_persons_result_view.dart';
 import '../screens/paternity_test/form/view/paternity_test_form_view.dart';
-import '../screens/paternity_test/result/view/paternity_test_result_view.dart';
+import '../screens/paternity_test/form/view/paternity_test_result_view.dart';
 import '../screens/population/view/population_view.dart';
 import '../screens/services_presented/view/service_presented_view.dart';
 import '../screens/splash/splash_view.dart';
@@ -49,8 +49,10 @@ class RouteGenerator{
         initServicesModule();
         return MaterialPageRoute(builder: (_)=>const ServicesView());
       case RoutesManager.paternityFormRoute:
+        initPaternityTestModule();
         return MaterialPageRoute(builder: (_)=>const PaternityTestForm());
       case RoutesManager.paternityResultRoute:
+        initPaternityTestModule();
         return MaterialPageRoute(builder: (_)=>const PaternityTestResult());
       case RoutesManager.searchFormRoute:
         initSearchIdentificationModule();
