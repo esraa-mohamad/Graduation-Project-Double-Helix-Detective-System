@@ -63,7 +63,7 @@ class _UploadDnaFileState extends State<UploadDnaFile> {
                   ),
               Flexible(
                 flex: 1,
-                child: Image.asset(AssetsManager.iconDna , color: ColorManager.primary,),
+                child: Image.asset(AssetsImageManager.iconDna , color: ColorManager.primary,),
               ),
             ],
           ),

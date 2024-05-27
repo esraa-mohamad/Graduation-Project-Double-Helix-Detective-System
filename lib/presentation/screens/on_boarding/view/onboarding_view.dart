@@ -105,7 +105,7 @@ class _OnBoardingState extends State<OnBoarding> {
               child: SizedBox(
                 height: AppSize.s20,
                 width: AppSize.s20,
-                child: SvgPicture.asset(AssetsManager.leftArrow),
+                child: SvgPicture.asset(AssetsImageManager.leftArrow),
               ), onTap: () {
               _pageController.animateToPage(_viewModel.goPrevious(),
                   duration: const Duration(
@@ -127,7 +127,7 @@ class _OnBoardingState extends State<OnBoarding> {
               child: SizedBox(
                 height: AppSize.s20,
                 width: AppSize.s20,
-                child: SvgPicture.asset(AssetsManager.rightArrow),
+                child: SvgPicture.asset(AssetsImageManager.rightArrow),
               ),onTap: (){
               _pageController.animateToPage(_viewModel.goNext(),
                   duration: const Duration(
@@ -143,9 +143,9 @@ class _OnBoardingState extends State<OnBoarding> {
 
   Widget _getProperCircle(int index,int currentIndex) {
     if (index == currentIndex) {
-      return SvgPicture.asset(AssetsManager.hollowCircle);
+      return SvgPicture.asset(AssetsImageManager.hollowCircle);
     } else {
-      return SvgPicture.asset(AssetsManager.solidCircle);
+      return SvgPicture.asset(AssetsImageManager.solidCircle);
     }
   }
 

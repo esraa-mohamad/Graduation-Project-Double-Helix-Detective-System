@@ -1,9 +1,6 @@
-
-// ignore: depend_on_referenced_packages
 import 'dart:io';
-
+// ignore: depend_on_referenced_packages
 import 'package:freezed_annotation/freezed_annotation.dart';
-
 part 'freezed_data_class.freezed.dart';
 
 @freezed
@@ -48,4 +45,12 @@ class MissingSearchObject with _$MissingSearchObject{
   factory MissingSearchObject({
     required File file,
   })= _MissingSearchObject;
+}
+
+@freezed
+class PaternityTestObject with _$PaternityTestObject {
+  factory PaternityTestObject({
+    required File fileChild,
+    required File fileFather,
+  }) = _PaternityTestObject;
 }

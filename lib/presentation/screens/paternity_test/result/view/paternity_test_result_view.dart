@@ -49,7 +49,7 @@ class PaternityTestResult extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Lottie.asset(AssetsManager.family,
+                Lottie.asset(AssetsLottiManager.family,
                     height: AppSize.s300,
                     width: AppSize.s300,
                     repeat: true,

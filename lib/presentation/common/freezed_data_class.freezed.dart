@@ -854,3 +854,142 @@ abstract class _MissingSearchObject implements MissingSearchObject {
   _$$MissingSearchObjectImplCopyWith<_$MissingSearchObjectImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+/// @nodoc
+mixin _$PaternityTestObject {
+  File get fileChild => throw _privateConstructorUsedError;
+  File get fileFather => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $PaternityTestObjectCopyWith<PaternityTestObject> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PaternityTestObjectCopyWith<$Res> {
+  factory $PaternityTestObjectCopyWith(
+          PaternityTestObject value, $Res Function(PaternityTestObject) then) =
+      _$PaternityTestObjectCopyWithImpl<$Res, PaternityTestObject>;
+  @useResult
+  $Res call({File fileChild, File fileFather});
+}
+
+/// @nodoc
+class _$PaternityTestObjectCopyWithImpl<$Res, $Val extends PaternityTestObject>
+    implements $PaternityTestObjectCopyWith<$Res> {
+  _$PaternityTestObjectCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? fileChild = null,
+    Object? fileFather = null,
+  }) {
+    return _then(_value.copyWith(
+      fileChild: null == fileChild
+          ? _value.fileChild
+          : fileChild // ignore: cast_nullable_to_non_nullable
+              as File,
+      fileFather: null == fileFather
+          ? _value.fileFather
+          : fileFather // ignore: cast_nullable_to_non_nullable
+              as File,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$PaternityTestObjectImplCopyWith<$Res>
+    implements $PaternityTestObjectCopyWith<$Res> {
+  factory _$$PaternityTestObjectImplCopyWith(_$PaternityTestObjectImpl value,
+          $Res Function(_$PaternityTestObjectImpl) then) =
+      __$$PaternityTestObjectImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({File fileChild, File fileFather});
+}
+
+/// @nodoc
+class __$$PaternityTestObjectImplCopyWithImpl<$Res>
+    extends _$PaternityTestObjectCopyWithImpl<$Res, _$PaternityTestObjectImpl>
+    implements _$$PaternityTestObjectImplCopyWith<$Res> {
+  __$$PaternityTestObjectImplCopyWithImpl(_$PaternityTestObjectImpl _value,
+      $Res Function(_$PaternityTestObjectImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? fileChild = null,
+    Object? fileFather = null,
+  }) {
+    return _then(_$PaternityTestObjectImpl(
+      fileChild: null == fileChild
+          ? _value.fileChild
+          : fileChild // ignore: cast_nullable_to_non_nullable
+              as File,
+      fileFather: null == fileFather
+          ? _value.fileFather
+          : fileFather // ignore: cast_nullable_to_non_nullable
+              as File,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PaternityTestObjectImpl implements _PaternityTestObject {
+  _$PaternityTestObjectImpl(
+      {required this.fileChild, required this.fileFather});
+
+  @override
+  final File fileChild;
+  @override
+  final File fileFather;
+
+  @override
+  String toString() {
+    return 'PaternityTestObject(fileChild: $fileChild, fileFather: $fileFather)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PaternityTestObjectImpl &&
+            (identical(other.fileChild, fileChild) ||
+                other.fileChild == fileChild) &&
+            (identical(other.fileFather, fileFather) ||
+                other.fileFather == fileFather));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, fileChild, fileFather);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PaternityTestObjectImplCopyWith<_$PaternityTestObjectImpl> get copyWith =>
+      __$$PaternityTestObjectImplCopyWithImpl<_$PaternityTestObjectImpl>(
+          this, _$identity);
+}
+
+abstract class _PaternityTestObject implements PaternityTestObject {
+  factory _PaternityTestObject(
+      {required final File fileChild,
+      required final File fileFather}) = _$PaternityTestObjectImpl;
+
+  @override
+  File get fileChild;
+  @override
+  File get fileFather;
+  @override
+  @JsonKey(ignore: true)
+  _$$PaternityTestObjectImplCopyWith<_$PaternityTestObjectImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

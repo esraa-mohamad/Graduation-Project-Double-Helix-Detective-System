@@ -6,7 +6,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../resource/assets_manager.dart';
 import '../resource/font_manager.dart';
-import '../resource/strings_manager.dart';
 
 
 
@@ -168,7 +167,7 @@ class CustomCardShowPersonInfo extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Flexible(child: Image.asset(AssetsManager.cardId ,)),
+                  Flexible(child: Image.asset(AssetsImageManager.cardId ,)),
                 ],
               ),
               Container(

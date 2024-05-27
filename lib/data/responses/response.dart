@@ -242,4 +242,17 @@ class MissingRelativeInfoResponse{
       _$MissingRelativeInfoResponseToJson(this);
 }
 
+@JsonSerializable()
+class PaternityTestResponse extends BaseResponse{
+  @JsonKey(name:"match_status")
+  String ? match;
+  @JsonKey(name:"similarity_percentage")
+  int ? similarity;
+  PaternityTestResponse(this.match,this.similarity);
+  factory PaternityTestResponse.fromJson(Map<String,dynamic> json) =>_$PaternityTestResponseFromJson(json);
 
+  // to json
+  Map<String,dynamic> toJson() =>
+      _$PaternityTestResponseToJson(this);
+
+}

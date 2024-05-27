@@ -48,14 +48,14 @@ class StateRenderer extends StatelessWidget {
       case StateRendererType.popupLoadingState:
         return _getPopupDialog(context,
             [
-              _getAnimatedImage(LottiAssets.loading),
+              _getAnimatedImage(AssetsLottiManager.loading),
             ]
         );
 
       case StateRendererType.popupErrorState:
         return _getPopupDialog(context,
             [
-              _getAnimatedImage(LottiAssets.error),
+              _getAnimatedImage(AssetsLottiManager.error),
               _getMessage(message),
               _getRetryButton(AppStrings.ok, context),
             ]

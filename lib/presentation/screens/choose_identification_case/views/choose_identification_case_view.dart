@@ -39,7 +39,7 @@ class _ChooseIdentificationViewState extends State<ChooseIdentificationView> {
             height: double.infinity,
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: const AssetImage(AssetsManager.services),
+                image: const AssetImage(AssetsImageManager.services),
                 fit: BoxFit.cover,
                 colorFilter: ColorFilter.mode(
                   Colors.white.withOpacity(1),
@@ -52,12 +52,12 @@ class _ChooseIdentificationViewState extends State<ChooseIdentificationView> {
               children: [
                 CustomCardService(
                   route: RoutesManager.searchFormRoute,
-                  image: AssetsManager.searchIcon,
+                  image: AssetsImageManager.searchIcon,
                   caseState: AppStrings.searchDB,
                 ),
                 CustomCardService(
                   route: RoutesManager.compareDnaFormRoute,
-                  image: AssetsManager.compareIcon,
+                  image: AssetsImageManager.compareIcon,
                   caseState: AppStrings.compare,
                 ),
               ],
