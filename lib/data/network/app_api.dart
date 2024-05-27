@@ -72,4 +72,10 @@ abstract class AppServiceDna{
   Future<AllMissingSearchResultResponse> missingSearch(
     @Body() FormData formData,
   );
+
+  @POST('/paternity')
+  @MultiPart()
+  Future<PaternityTestResponse> paternityTest(
+      @Body() FormData formData,
+      );
 }

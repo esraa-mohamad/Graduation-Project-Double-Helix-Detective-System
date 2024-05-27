@@ -2,7 +2,6 @@ import 'package:double_helix_detective_system/app/constants.dart';
 import 'package:double_helix_detective_system/app/extentions.dart';
 import 'package:double_helix_detective_system/data/responses/response.dart';
 import 'package:double_helix_detective_system/domain/models/models.dart';
-import 'package:double_helix_detective_system/presentation/resource/strings_manager.dart';
 
 extension TechnicalResponseMapper on TechnicalResponse? {
   Technical toDomain() {
@@ -114,3 +113,10 @@ extension AllMissingSearchResultMapper on AllMissingSearchResultResponse?{
   }
 }
 
+
+extension PaternityTestMapper on PaternityTestResponse?{
+  PaternityTest toDomain() {
+    return PaternityTest(match: this?.match.orEmpty() ?? AppConstants.empty,
+        similarity: this?.similarity.orZero() ?? AppConstants.zero);
+  }
+}

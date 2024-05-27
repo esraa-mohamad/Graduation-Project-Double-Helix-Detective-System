@@ -133,4 +133,22 @@ class MissingRequest  {
   }
 }
 
+class PaternityTestRequest{
+  File fileChild;
+  File fileFather;
+  PaternityTestRequest({required this.fileChild,required this.fileFather});
 
+  FormData toFormData() {
+    FormData formData = FormData.fromMap({
+      'file_child': [
+        MultipartFile.fromString(
+            fileChild.readAsStringSync(), filename: fileChild.path)
+      ],
+      'file_father': [
+        MultipartFile.fromString(
+            fileFather.readAsStringSync(), filename: fileFather.path)
+      ],
+    });
+    return formData;
+  }
+}

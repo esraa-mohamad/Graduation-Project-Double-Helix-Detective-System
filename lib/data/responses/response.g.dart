@@ -7,7 +7,7 @@ part of 'response.dart';
 // **************************************************************************
 
 BaseResponse _$BaseResponseFromJson(Map<String, dynamic> json) => BaseResponse()
-  ..status = json['statusCode'] as int?
+  ..status = (json['statusCode'] as num?)?.toInt()
   ..message = json['message'] as String?;
 
 Map<String, dynamic> _$BaseResponseToJson(BaseResponse instance) =>
@@ -38,7 +38,7 @@ AuthenticationResponse _$AuthenticationResponseFromJson(
       token: json['newToken'] as String?,
       expiresIn: json['expiresIn'] as String?,
     )
-      ..status = json['statusCode'] as int?
+      ..status = (json['statusCode'] as num?)?.toInt()
       ..message = json['message'] as String?;
 
 Map<String, dynamic> _$AuthenticationResponseToJson(
@@ -74,7 +74,7 @@ AddPopulationResponse _$AddPopulationResponseFromJson(
           ? null
           : PopulationResponse.fromJson(json['person'] as Map<String, dynamic>),
     )
-      ..status = json['statusCode'] as int?
+      ..status = (json['statusCode'] as num?)?.toInt()
       ..message = json['message'] as String?;
 
 Map<String, dynamic> _$AddPopulationResponseToJson(
@@ -87,7 +87,7 @@ Map<String, dynamic> _$AddPopulationResponseToJson(
 
 LogoutResponse _$LogoutResponseFromJson(Map<String, dynamic> json) =>
     LogoutResponse()
-      ..status = json['statusCode'] as int?
+      ..status = (json['statusCode'] as num?)?.toInt()
       ..message = json['message'] as String?;
 
 Map<String, dynamic> _$LogoutResponseToJson(LogoutResponse instance) =>
@@ -99,9 +99,9 @@ Map<String, dynamic> _$LogoutResponseToJson(LogoutResponse instance) =>
 CompareDnaResponse _$CompareDnaResponseFromJson(Map<String, dynamic> json) =>
     CompareDnaResponse(
       json['match_status'] as String?,
-      json['similarity_percentage'] as int?,
+      (json['similarity_percentage'] as num?)?.toInt(),
     )
-      ..status = json['statusCode'] as int?
+      ..status = (json['statusCode'] as num?)?.toInt()
       ..message = json['message'] as String?;
 
 Map<String, dynamic> _$CompareDnaResponseToJson(CompareDnaResponse instance) =>
@@ -146,9 +146,9 @@ SearchMatchingInfoResponse _$SearchMatchingInfoResponseFromJson(
           : PersonInfoResponse.fromJson(
               json['matches'] as Map<String, dynamic>),
       matchStatus: json['match_status'] as String?,
-      similarity: json['similarity_percentage'] as int?,
+      similarity: (json['similarity_percentage'] as num?)?.toInt(),
     )
-      ..status = json['statusCode'] as int?
+      ..status = (json['statusCode'] as num?)?.toInt()
       ..message = json['message'] as String?;
 
 Map<String, dynamic> _$SearchMatchingInfoResponseToJson(
@@ -174,7 +174,7 @@ AllMissingSearchResultResponse _$AllMissingSearchResultResponseFromJson(
               MissingRelativeInfoResponse.fromJson(e as Map<String, dynamic>))
           .toList(),
     )
-      ..status = json['statusCode'] as int?
+      ..status = (json['statusCode'] as num?)?.toInt()
       ..message = json['message'] as String?;
 
 Map<String, dynamic> _$AllMissingSearchResultResponseToJson(
@@ -199,7 +199,7 @@ MissingPersonInfoResponse _$MissingPersonInfoResponseFromJson(
       status: json['status'] as String?,
       description: json['description'] as String?,
       matchStatus: json['match_status'] as String?,
-      similarity: json['similarity_percentage'] as int?,
+      similarity: (json['similarity_percentage'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$MissingPersonInfoResponseToJson(
@@ -231,4 +231,22 @@ Map<String, dynamic> _$MissingRelativeInfoResponseToJson(
         MissingRelativeInfoResponse instance) =>
     <String, dynamic>{
       'relative_data': instance.missingRelativeInfo,
+    };
+
+PaternityTestResponse _$PaternityTestResponseFromJson(
+        Map<String, dynamic> json) =>
+    PaternityTestResponse(
+      json['match_status'] as String?,
+      (json['similarity_percentage'] as num?)?.toInt(),
+    )
+      ..status = (json['statusCode'] as num?)?.toInt()
+      ..message = json['message'] as String?;
+
+Map<String, dynamic> _$PaternityTestResponseToJson(
+        PaternityTestResponse instance) =>
+    <String, dynamic>{
+      'statusCode': instance.status,
+      'message': instance.message,
+      'match_status': instance.match,
+      'similarity_percentage': instance.similarity,
     };

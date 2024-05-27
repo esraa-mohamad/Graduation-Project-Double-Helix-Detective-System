@@ -14,6 +14,9 @@ abstract class RemoteDataSource {
 
   Future<SearchMatchingInfoResponse> identificationSearch(IdentifySearchRequest identifySearchRequest);
   Future<AllMissingSearchResultResponse> missingSearch(MissingRequest missingRequest);
+
+  Future<PaternityTestResponse> paternityTest(PaternityTestRequest paternityTestRequest);
+
 }
 
 class RemoteDataSourceImp implements RemoteDataSource {
@@ -80,6 +83,13 @@ class RemoteDataSourceImp implements RemoteDataSource {
   Future<AllMissingSearchResultResponse> missingSearch(MissingRequest missingRequest)async {
     return await _appServiceDna.missingSearch(
       missingRequest.toFormData(),
+    );
+  }
+
+  @override
+  Future<PaternityTestResponse> paternityTest(PaternityTestRequest paternityTestRequest) async  {
+    return await _appServiceDna.paternityTest(
+        paternityTestRequest.toFormData()
     );
   }
 

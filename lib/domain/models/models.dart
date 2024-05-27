@@ -133,3 +133,12 @@ class AllMissingSearchResult{
   List<MissingRelativeInfo> ? missingRelativeInfo;
   AllMissingSearchResult({required this.missingPersonInfo,required this.missingRelativeInfo});
 }
+
+class PaternityTest{
+  String match;
+  int similarity;
+  PaternityTest({
+    required this.match,
+    required this.similarity
+  });
+}
