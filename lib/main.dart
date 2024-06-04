@@ -12,7 +12,6 @@ void main() async{
   await windowManager.ensureInitialized();
   if (Platform.isWindows) {
     WindowManager.instance.setTitle('Double Helix Detective System');
-    //WindowManager.instance.setMaximumSize(const Size(1600, 800));
     WindowManager.instance.setMinimumSize(const Size(1200, 700));
   }
   runApp(MyApp());
