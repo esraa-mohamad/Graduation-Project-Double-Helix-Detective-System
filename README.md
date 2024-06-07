@@ -1,6 +1,6 @@
 # double_helix_detective_system
 
-A new Flutter project.
+ A DNA Testing System 
 
 ## Getting Started
 
