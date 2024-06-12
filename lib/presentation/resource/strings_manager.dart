@@ -43,6 +43,8 @@ class AppStrings{
   static const similarity = "Probability of Similarity";
   static const matchCompare = "Match status";
   static const findFamily = "Welcome back to the Family";
+  static const accusedPerson = "An accused person";
+  static const notAccusedPerson = "An unaccused person";
   static const backSer = "Back to services";
   static const addDB = "Add to Population";
   // population

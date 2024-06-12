@@ -119,17 +119,17 @@ class _PaternityTestResultState extends State<PaternityTestResult> {
     if(paternityTest !=null){
       return Column(
         children: [
-          RichText(
-            text: TextSpan(
-              text: "${AppStrings.similarity} :- ",
-              style: Theme.of(context).textTheme.bodyLarge,
-              children: <TextSpan>[
-                TextSpan(
-                    text: '${paternityTest.similarity} %',
-                    style: Theme.of(context).textTheme.titleMedium),
-              ],
-            ),
-          ),
+          // RichText(
+          //   text: TextSpan(
+          //     text: "${AppStrings.similarity} :- ",
+          //     style: Theme.of(context).textTheme.bodyLarge,
+          //     children: <TextSpan>[
+          //       TextSpan(
+          //           text: '${paternityTest.similarity} %',
+          //           style: Theme.of(context).textTheme.titleMedium),
+          //     ],
+          //   ),
+          // ),
           const SizedBox(
             height: AppSize.s12,
           ),
@@ -139,7 +139,7 @@ class _PaternityTestResultState extends State<PaternityTestResult> {
               style: Theme.of(context).textTheme.bodyLarge,
               children: <TextSpan>[
                 TextSpan(
-                    text:paternityTest.match,
+                    text:paternityTest.prediction,
                     style: Theme.of(context).textTheme.titleMedium),
               ],
             ),

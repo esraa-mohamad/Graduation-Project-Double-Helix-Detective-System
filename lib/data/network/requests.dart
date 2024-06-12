@@ -124,7 +124,7 @@ class MissingRequest  {
   MissingRequest({required this.file});
   FormData toFormData() {
     FormData formData = FormData.fromMap({
-      'file_a': [
+      'file': [
         MultipartFile.fromString(
             file.readAsStringSync(), filename: file.path)
       ],
@@ -140,11 +140,11 @@ class PaternityTestRequest{
 
   FormData toFormData() {
     FormData formData = FormData.fromMap({
-      'file_child': [
+      'file_b': [
         MultipartFile.fromString(
             fileChild.readAsStringSync(), filename: fileChild.path)
       ],
-      'file_father': [
+      'file_a': [
         MultipartFile.fromString(
             fileFather.readAsStringSync(), filename: fileFather.path)
       ],

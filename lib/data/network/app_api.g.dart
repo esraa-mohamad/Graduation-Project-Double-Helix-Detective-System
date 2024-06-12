@@ -148,7 +148,7 @@ class _AppServiceDna implements AppServiceDna {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'https://api-smith-0xnrous-feb57dbaba0e.herokuapp.com';
+    baseUrl ??= 'http://127.0.0.1:5000';
   }
 
   final Dio _dio;
@@ -256,7 +256,7 @@ class _AppServiceDna implements AppServiceDna {
     )
             .compose(
               _dio.options,
-              '/paternity',
+              '/predict',
               queryParameters: queryParameters,
               data: _data,
             )

@@ -62,6 +62,7 @@ class _IdentificationResultState extends State<IdentificationResult> {
 
   Widget _getContentView(){
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         _getSearchMatchResult(),
         const SizedBox(
