@@ -102,15 +102,15 @@ class _MissingResultState extends State<MissingResult> {
             ),
             const SliverToBoxAdapter(
               child:SizedBox(
-                height: AppSize.s16,
+                height: AppSize.s40,
               ),
             )
           ],
         ),
         Positioned(
-          bottom: 0,
-          left: 0,
-          top: 0,
+           bottom: 0,
+           left: 0,
+          right: 0,
           child: Container(
             color: ColorManager.lightBackground,
             padding:const  EdgeInsets.all(AppPadding.p14),
@@ -198,17 +198,21 @@ class _MissingResultState extends State<MissingResult> {
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
         children: missingRelatives.map((relative) =>
-            CustomCardShowPersonInfo(
-                name: relative.personInfo!.name,
-                address: relative.personInfo!.address,
-                phone: relative.personInfo!.phone,
-                nationalId: relative.personInfo!.nationalId,
-                gender: relative.personInfo!.gender,
-                bloodType: relative.personInfo!.bloodType,
-                birthDate: relative.personInfo!.birthDate,
-                status: relative.personInfo!.status,
-                description: relative.personInfo!.description)).toList(),
+            Padding(
+              padding: const EdgeInsets.only(bottom: AppPadding.p20),
+              child: CustomCardShowPersonInfo(
+                  name: relative.personInfo!.name,
+                  address: relative.personInfo!.address,
+                  phone: relative.personInfo!.phone,
+                  nationalId: relative.personInfo!.nationalId,
+                  gender: relative.personInfo!.gender,
+                  bloodType: relative.personInfo!.bloodType,
+                  birthDate: relative.personInfo!.birthDate,
+                  status: relative.personInfo!.status,
+                  description: relative.personInfo!.description),
+            )).toList(),
       );
+
     } else {
       return Container();
     }

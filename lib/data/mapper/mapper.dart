@@ -116,7 +116,7 @@ extension AllMissingSearchResultMapper on AllMissingSearchResultResponse?{
 
 extension PaternityTestMapper on PaternityTestResponse?{
   PaternityTest toDomain() {
-    return PaternityTest(match: this?.match.orEmpty() ?? AppConstants.empty,
-        similarity: this?.similarity.orZero() ?? AppConstants.zero);
+    return PaternityTest(prediction: this?.prediction.orEmpty() ?? AppConstants.empty,
+       );
   }
 }

@@ -73,7 +73,7 @@ abstract class AppServiceDna{
     @Body() FormData formData,
   );
 
-  @POST('/paternity')
+  @POST('/predict')
   @MultiPart()
   Future<PaternityTestResponse> paternityTest(
       @Body() FormData formData,

@@ -138,7 +138,6 @@ class _CompareDnaResultViewState extends State<CompareDnaResultView> {
   Widget _getCompareDnaData(CompareDna? compareDna){
 
     if(compareDna !=null){
-      print("not empty");
       return Column(
         children: [
           RichText(
@@ -167,13 +166,14 @@ class _CompareDnaResultViewState extends State<CompareDnaResultView> {
             ),
           ),
           Text(
-            AppStrings.findFamily,
+            compareDna.match =='DNA Not MATCH' ?
+            AppStrings.notAccusedPerson   :
+            AppStrings.accusedPerson,
             style: Theme.of(context).textTheme.bodyLarge,
           ),
         ],
       );
     }else{
-      print(" empty");
       return Container();
     }
 

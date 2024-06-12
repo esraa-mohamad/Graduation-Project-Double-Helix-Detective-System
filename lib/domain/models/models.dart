@@ -135,10 +135,8 @@ class AllMissingSearchResult{
 }
 
 class PaternityTest{
-  String match;
-  int similarity;
+  String prediction;
   PaternityTest({
-    required this.match,
-    required this.similarity
+    required this.prediction,
   });
 }

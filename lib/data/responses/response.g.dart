@@ -236,8 +236,7 @@ Map<String, dynamic> _$MissingRelativeInfoResponseToJson(
 PaternityTestResponse _$PaternityTestResponseFromJson(
         Map<String, dynamic> json) =>
     PaternityTestResponse(
-      json['match_status'] as String?,
-      (json['similarity_percentage'] as num?)?.toInt(),
+      json['prediction'] as String?,
     )
       ..status = (json['statusCode'] as num?)?.toInt()
       ..message = json['message'] as String?;
@@ -247,6 +246,5 @@ Map<String, dynamic> _$PaternityTestResponseToJson(
     <String, dynamic>{
       'statusCode': instance.status,
       'message': instance.message,
-      'match_status': instance.match,
-      'similarity_percentage': instance.similarity,
+      'prediction': instance.prediction,
     };

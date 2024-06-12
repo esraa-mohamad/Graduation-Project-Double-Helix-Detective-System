@@ -53,7 +53,7 @@ class PaternityTestViewModel extends BaseViewModel
               StateRendererType.popupErrorState, failure.message))
         }, (data) {
       inputState.add(ContentState());
-      paternityTestInput.add(CompareDna(match: data.match, similarity: data.similarity));
+      paternityTestInput.add(PaternityTest(prediction: data.prediction));
       isPaternityTestDoneSuccessfullyStreamController.add(true);
     });
   }
