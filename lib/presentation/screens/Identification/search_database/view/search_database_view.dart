@@ -38,7 +38,7 @@ class _SearchDatabaseFormViewState extends State<SearchDatabaseFormView> {
       if(isSearchedSuccessfully){
         SchedulerBinding.instance.addPostFrameCallback((_)
         {
-          Navigator.of(context).pushReplacementNamed(RoutesManager.searchResultRoute);
+          Navigator.of(context).pushNamed(RoutesManager.searchResultRoute);
         });
       }
     });
@@ -57,6 +57,7 @@ class _SearchDatabaseFormViewState extends State<SearchDatabaseFormView> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios_outlined),
           onPressed: () {
+            _viewModel.clearData();
             Navigator.pop(context);
           },
         ),

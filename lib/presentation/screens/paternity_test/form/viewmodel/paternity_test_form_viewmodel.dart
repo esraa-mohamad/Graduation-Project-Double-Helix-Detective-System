@@ -65,7 +65,7 @@ class PaternityTestViewModel extends BaseViewModel
 
   @override
   Sink get paternityTestInput =>
-      isPaternityTestDoneSuccessfullyStreamController.sink;
+     resultPaternityTestStreamController.sink;
 
   @override
   Sink get fileChildInput => fileChildStreamController.sink;
@@ -79,7 +79,7 @@ class PaternityTestViewModel extends BaseViewModel
 
   @override
   Stream<PaternityTest> get paternityTestOutput =>
-      isPaternityTestDoneSuccessfullyStreamController.stream
+      resultPaternityTestStreamController.stream
           .map((paternityTest) => paternityTest);
 
   @override

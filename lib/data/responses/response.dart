@@ -246,8 +246,6 @@ class MissingRelativeInfoResponse{
 class PaternityTestResponse extends BaseResponse{
   @JsonKey(name:"prediction")
   String ? prediction;
-  // @JsonKey(name:"similarity_percentage")
-  // int ? similarity;
   PaternityTestResponse(this.prediction);
   factory PaternityTestResponse.fromJson(Map<String,dynamic> json) =>_$PaternityTestResponseFromJson(json);
 
