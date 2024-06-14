@@ -21,37 +21,37 @@ class PaternityTestResult extends StatefulWidget {
 class _PaternityTestResultState extends State<PaternityTestResult> {
   final PaternityTestViewModel _paternityTestViewModel =
       instance<PaternityTestViewModel>();
+
   @override
   void initState() {
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(AppStrings.paternityResult),
         leading: IconButton(
-          icon: const Icon(
-              Icons.arrow_back_ios_outlined
-          ),
-          onPressed: (){
+          icon: const Icon(Icons.arrow_back_ios_outlined),
+          onPressed: () {
             Navigator.pop(context);
           },
         ),
       ),
       body: StreamBuilder<FlowState>(
           stream: _paternityTestViewModel.outState,
-          builder: (context , snapshot){
-            return snapshot.data?.getScreenWidget(context , _getContentView(), (){
-              _paternityTestViewModel.testPaternity();
-            }) ??
-                _getContentView() ;
-          }
-      ),
+          builder: (context, snapshot) {
+            return snapshot.data?.getScreenWidget(context, _getContentView(),
+                    () {
+                  _paternityTestViewModel.testPaternity();
+                }) ??
+                _getContentView();
+          }),
     );
   }
 
-  Widget _getContentView(){
+  Widget _getContentView() {
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(AppPadding.p20),
@@ -73,20 +73,11 @@ class _PaternityTestResultState extends State<PaternityTestResult> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Lottie.asset(AssetsLottiManager.family,
-                  height: AppSize.s300,
-                  width: AppSize.s300,
-                  repeat: true,
-                  reverse: false,
-                  animate: true),
-              const SizedBox(
-                height: AppSize.s20,
-              ),
               _getCompareResult(),
               const SizedBox(
                 height: AppSize.s40,
               ),
-             const CustomActionsButtons(),
+              const CustomActionsButtons(),
             ],
           ),
         ),
@@ -94,10 +85,10 @@ class _PaternityTestResultState extends State<PaternityTestResult> {
     );
   }
 
-  Widget _getCompareResult(){
+  Widget _getCompareResult() {
     return StreamBuilder<PaternityTest>(
         stream: _paternityTestViewModel.paternityTestOutput,
-        builder: (context , snapshot){
+        builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             // Show a loading indicator while waiting for data
             return const CircularProgressIndicator();
@@ -110,28 +101,24 @@ class _PaternityTestResultState extends State<PaternityTestResult> {
             // Handle the case when there is no data yet
             return const Text('No Data Available');
           }
-        }
-    );
+        });
   }
 
-  Widget _getPaternityResultData(PaternityTest? paternityTest){
-
-    if(paternityTest !=null){
+  Widget _getPaternityResultData(PaternityTest? paternityTest) {
+    if (paternityTest != null) {
       return Column(
         children: [
-          // RichText(
-          //   text: TextSpan(
-          //     text: "${AppStrings.similarity} :- ",
-          //     style: Theme.of(context).textTheme.bodyLarge,
-          //     children: <TextSpan>[
-          //       TextSpan(
-          //           text: '${paternityTest.similarity} %',
-          //           style: Theme.of(context).textTheme.titleMedium),
-          //     ],
-          //   ),
-          // ),
+          Lottie.asset(
+            paternityTest.prediction =="not relative" ?
+                AssetsLottiManager.homeless :
+              AssetsLottiManager.family,
+              height: AppSize.s300,
+              width: AppSize.s300,
+              repeat: true,
+              reverse: false,
+              animate: true),
           const SizedBox(
-            height: AppSize.s12,
+            height: AppSize.s20,
           ),
           RichText(
             text: TextSpan(
@@ -139,21 +126,22 @@ class _PaternityTestResultState extends State<PaternityTestResult> {
               style: Theme.of(context).textTheme.bodyLarge,
               children: <TextSpan>[
                 TextSpan(
-                    text:paternityTest.prediction,
+                    text: paternityTest.prediction,
                     style: Theme.of(context).textTheme.titleMedium),
               ],
             ),
           ),
           Text(
-            AppStrings.findFamily,
+            paternityTest.prediction == 'not relative'
+                ? AppStrings.notFoundFamily
+                : AppStrings.findFamily,
             style: Theme.of(context).textTheme.bodyLarge,
           ),
         ],
       );
-    }else{
+    } else {
       return Container();
     }
-
   }
 
   @override

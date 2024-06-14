@@ -40,6 +40,7 @@ class SearchDatabaseFormViewModel extends BaseViewModel
     areAllInputsValidStreamController.close();
     isIdentificationSearchSuccessfullyStreamController.close();
     _searchMatchingResultStreamController.close();
+    super.dispose();
   }
 
   @override
@@ -85,6 +86,18 @@ class SearchDatabaseFormViewModel extends BaseViewModel
       searchMatchData.add(data);
       isIdentificationSearchSuccessfullyStreamController.add(true);
     });
+  }
+
+  void clearData() {
+    identificationSearchObject = SearchIdentificationObject(
+      file: File(""),
+      status: '',
+    );
+    fileInput.add(File(""));
+    statusInput.add("");
+    _searchMatchingResultStreamController.add(SearchMatchingInfo(personInfo: null, match: '', similarity: 0));
+    areAllInputsValidStreamController.add(null);
+    isIdentificationSearchSuccessfullyStreamController.add(false);
   }
 
   // inputs

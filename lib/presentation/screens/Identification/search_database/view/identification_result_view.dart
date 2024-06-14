@@ -44,6 +44,7 @@ class _IdentificationResultState extends State<IdentificationResult> {
               Icons.arrow_back_ios_outlined
           ),
           onPressed: (){
+            _viewModel.clearData();
             Navigator.pop(context);
           },
         ),
@@ -106,7 +107,7 @@ class _IdentificationResultState extends State<IdentificationResult> {
 
   Widget _getSearchMatchData(SearchMatchingInfo? searchMatchingInfo){
 
-    if(searchMatchingInfo !=null){
+    if(searchMatchingInfo !=null && searchMatchingInfo.personInfo != null){
       print("not empty");
       return Column(
         children: [
