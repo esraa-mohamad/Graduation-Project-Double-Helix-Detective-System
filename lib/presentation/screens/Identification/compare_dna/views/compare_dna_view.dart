@@ -100,28 +100,32 @@ class _CompareDnaFormViewState extends State<CompareDnaFormView> {
                 children: [
                   // dna sequence
                   UploadDnaFile(
-                      child: StreamBuilder<File>(
-                        stream: _compareDnaViewModel.fileAOutput,
-                        builder: (context, snapshot) {
-                          return _getFilePicker(snapshot.data);
-                        },
-                      ),
-                      onTap: () {
-                        _uploadFileA();
-                      }),
+                    onTap: () {
+                      _uploadFileA();
+                    },
+                    uploadText: AppStrings.uploadFirstDna,
+                    child: StreamBuilder<File>(
+                      stream: _compareDnaViewModel.fileAOutput,
+                      builder: (context, snapshot) {
+                        return _getFilePicker(snapshot.data);
+                      },
+                    ),
+                  ),
                   const SizedBox(
                     height: AppSize.s40,
                   ),
                   UploadDnaFile(
-                      child: StreamBuilder<File>(
-                        stream: _compareDnaViewModel.fileBOutput,
-                        builder: (context, snapshot) {
-                          return _getFilePicker(snapshot.data);
-                        },
-                      ),
-                      onTap: () {
-                        _uploadFileB();
-                      }),
+                    onTap: () {
+                      _uploadFileB();
+                    },
+                    uploadText: AppStrings.uploadSecondDna,
+                    child: StreamBuilder<File>(
+                      stream: _compareDnaViewModel.fileBOutput,
+                      builder: (context, snapshot) {
+                        return _getFilePicker(snapshot.data);
+                      },
+                    ),
+                  ),
                   const SizedBox(
                     height: AppSize.s40,
                   ),

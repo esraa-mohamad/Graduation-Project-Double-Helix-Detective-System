@@ -136,15 +136,17 @@ class _SearchDatabaseFormViewState extends State<SearchDatabaseFormView> {
                       height: AppSize.s20,
                     ),
                     UploadDnaFile(
-                        child: StreamBuilder<File>(
-                          stream: _viewModel.fileOutput,
-                          builder: (context, snapshot) {
-                            return _getFilePicker(snapshot.data);
-                          },
-                        ),
-                        onTap: () {
-                          _uploadDnaFile();
-                        }),
+                      onTap: () {
+                        _uploadDnaFile();
+                      },
+                      uploadText: AppStrings.uploadPersonDna,
+                      child: StreamBuilder<File>(
+                        stream: _viewModel.fileOutput,
+                        builder: (context, snapshot) {
+                          return _getFilePicker(snapshot.data);
+                        },
+                      ),
+                    ),
 
                     const SizedBox(
                       height: AppSize.s40,

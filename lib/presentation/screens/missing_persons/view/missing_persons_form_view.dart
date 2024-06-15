@@ -101,15 +101,17 @@ class _MissingFormState extends State<MissingForm> {
                 children: [
                   // dna sequence
                   UploadDnaFile(
-                      child: StreamBuilder<File>(
-                        stream: _missingSearchViewModel.fileOutput,
-                        builder: (context, snapshot) {
-                          return _getFilePicker(snapshot.data);
-                        },
-                      ),
-                      onTap: () {
-                        _uploadFile();
-                      }),
+                    uploadText: AppStrings.uploadMissingDna,
+                    child: StreamBuilder<File>(
+                      stream: _missingSearchViewModel.fileOutput,
+                      builder: (context, snapshot) {
+                        return _getFilePicker(snapshot.data);
+                      },
+                    ),
+                    onTap: () {
+                      _uploadFile();
+                    },
+                  ),
                   const SizedBox(
                     height: AppSize.s40,
                   ),
