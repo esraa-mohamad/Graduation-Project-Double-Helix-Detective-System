@@ -1,4 +1,3 @@
-
 import 'package:double_helix_detective_system/presentation/resource/strings_manager.dart';
 import 'package:double_helix_detective_system/presentation/screens/choose_identification_case/views/choose_identification_case_view.dart';
 import 'package:double_helix_detective_system/presentation/screens/on_boarding/view/onboarding_view.dart';
@@ -11,8 +10,8 @@ import '../screens/Identification/search_database/view/search_database_view.dart
 import '../screens/login/view/login_view.dart';
 import '../screens/missing_persons/view/missing_persons_form_view.dart';
 import '../screens/missing_persons/view/missing_persons_result_view.dart';
-import '../screens/paternity_test/form/view/paternity_test_form_view.dart';
-import '../screens/paternity_test/form/view/paternity_test_result_view.dart';
+import '../screens/paternity_test/view/paternity_test_form_view.dart';
+import '../screens/paternity_test/view/paternity_test_result_view.dart';
 import '../screens/population/view/population_view.dart';
 import '../screens/services_presented/view/service_presented_view.dart';
 import '../screens/splash/splash_view.dart';
