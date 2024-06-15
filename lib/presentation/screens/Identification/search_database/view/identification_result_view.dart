@@ -107,8 +107,7 @@ class _IdentificationResultState extends State<IdentificationResult> {
 
   Widget _getSearchMatchData(SearchMatchingInfo? searchMatchingInfo){
 
-    if(searchMatchingInfo !=null && searchMatchingInfo.personInfo != null){
-      print("not empty");
+    if(searchMatchingInfo !=null ){
       return Column(
         children: [
           RichText(
@@ -121,7 +120,7 @@ class _IdentificationResultState extends State<IdentificationResult> {
                 TextSpan(
                     text: '${searchMatchingInfo.similarity} %',
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      color: ColorManager.primary,
+                      color: ColorManager.gray,
                     )),
               ],
             ),
@@ -139,7 +138,7 @@ class _IdentificationResultState extends State<IdentificationResult> {
                 TextSpan(
                     text: searchMatchingInfo.match,
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                          color: ColorManager.primary,
+                          color: ColorManager.gray,
                         )),
               ],
             ),
@@ -147,6 +146,7 @@ class _IdentificationResultState extends State<IdentificationResult> {
           const SizedBox(
             height: AppSize.s12,
           ),
+          searchMatchingInfo.personInfo !=  null ?
           CustomCardShowPersonInfo(
               name: searchMatchingInfo.personInfo!.name,
               address: searchMatchingInfo.personInfo!.address,
@@ -156,11 +156,11 @@ class _IdentificationResultState extends State<IdentificationResult> {
               bloodType: searchMatchingInfo.personInfo!.bloodType,
               birthDate: searchMatchingInfo.personInfo!.birthDate,
               status: searchMatchingInfo.personInfo!.status,
-              description: searchMatchingInfo.personInfo!.description),
+              description: searchMatchingInfo.personInfo!.description) :
+          Container(),
         ],
       );
     }else{
-      print(" empty");
       return Container();
      // return Container();
     }
