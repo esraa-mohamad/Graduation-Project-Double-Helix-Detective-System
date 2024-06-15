@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 class CustomDropDownMenu extends StatelessWidget {
    const CustomDropDownMenu({
     required this.dropdownMenuEntries,
-    required this.onSelected,
     required this.label,
     this.width,
     this.errorText,
@@ -12,7 +11,6 @@ class CustomDropDownMenu extends StatelessWidget {
   });
 
   final List<DropdownMenuEntry<dynamic>> dropdownMenuEntries;
-  final void Function(dynamic)? onSelected;
   final Widget label ;
   final double? width;
   final String? errorText;
@@ -23,7 +21,6 @@ class CustomDropDownMenu extends StatelessWidget {
         controller: controller,
         width: width,
         dropdownMenuEntries:dropdownMenuEntries,
-        onSelected:onSelected,
         enableSearch: true,
         label: label,
         errorText: errorText,

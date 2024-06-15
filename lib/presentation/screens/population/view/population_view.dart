@@ -231,7 +231,6 @@ class _PopulationViewState extends State<PopulationView> {
                                 label: AppStrings.femalePerson,
                               ),
                             ],
-                            onSelected: (gender) {},
                             label: Text(
                               AppStrings.genderPerson,
                               style: Theme.of(context).textTheme.bodyMedium,
@@ -315,7 +314,6 @@ class _PopulationViewState extends State<PopulationView> {
                                 label: AppStrings.abPerson,
                               ),
                             ],
-                            onSelected: (blood) {},
                             label: Text(
                               AppStrings.bloodPerson,
                               style: Theme.of(context).textTheme.bodyMedium,
@@ -353,7 +351,6 @@ class _PopulationViewState extends State<PopulationView> {
                                 label: AppStrings.acknowledgedPerson,
                               ),
                             ],
-                            onSelected: (status) {},
                             label: Text(
                               AppStrings.statusPerson,
                               style: Theme.of(context).textTheme.bodyMedium,

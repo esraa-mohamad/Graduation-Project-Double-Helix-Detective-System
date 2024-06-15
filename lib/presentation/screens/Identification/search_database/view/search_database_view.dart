@@ -124,7 +124,6 @@ class _SearchDatabaseFormViewState extends State<SearchDatabaseFormView> {
                                 value: AppStrings.allDb,
                                 label: AppStrings.allDb),
                           ],
-                          onSelected: (state) {},
                           label: Text(
                             AppStrings.statusPerson,
                             style: Theme.of(context).textTheme.bodyMedium,
