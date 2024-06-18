@@ -13,7 +13,6 @@ import 'package:double_helix_detective_system/presentation/screens/services_pres
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../data/data_source/remote_data_source.dart';
 import '../data/network/dio_factory.dart';
 import '../data/repository/repository_imp.dart';
@@ -22,7 +21,7 @@ import '../domain/usecase/login_usecase.dart';
 import '../presentation/screens/Identification/compare_dna/viewmodel/compare_dna_viewmodel.dart';
 import '../presentation/screens/Identification/search_database/viewmodel/search_database_viewmodel.dart';
 import '../presentation/screens/login/viewModel/login_viewmodel.dart';
-import '../presentation/screens/paternity_test/form/viewmodel/paternity_test_form_viewmodel.dart';
+import '../presentation/screens/paternity_test/viewmodel/paternity_test_form_viewmodel.dart';
 import '../presentation/screens/population/viewModel/population_viewmodel.dart';
 
 final instance=GetIt.instance;

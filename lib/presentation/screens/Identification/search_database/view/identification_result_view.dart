@@ -1,15 +1,13 @@
 import 'package:double_helix_detective_system/domain/models/models.dart';
 import 'package:double_helix_detective_system/presentation/resource/color_manager.dart';
 import 'package:double_helix_detective_system/presentation/widget/card_show_person_info.dart';
+import 'package:double_helix_detective_system/presentation/widget/custom_actions_buttons.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../../app/di.dart';
 import '../../../../common/state_renderer/state_renderer_imp.dart';
 import '../../../../resource/font_manager.dart';
-import '../../../../resource/routes_manager.dart';
 import '../../../../resource/strings_manager.dart';
 import '../../../../resource/values_manager.dart';
-import '../../../../widget/elevated_button.dart';
 import '../viewmodel/search_database_viewmodel.dart';
 
 class IdentificationResult extends StatefulWidget {
@@ -69,21 +67,7 @@ class _IdentificationResultState extends State<IdentificationResult> {
         const SizedBox(
           height: AppSize.s40,
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            CustomeElevatedButton(
-                onPressed: () {
-                  Navigator.pushReplacementNamed(
-                      context, RoutesManager.servicesPresentedRoute);
-                },
-                textButton: AppStrings.backSer),
-            CustomeElevatedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, RoutesManager.populationRoute);
-                }, textButton: AppStrings.addDB),
-          ],
-        )
+        const CustomActionsButtons(),
       ],
     );
   }
