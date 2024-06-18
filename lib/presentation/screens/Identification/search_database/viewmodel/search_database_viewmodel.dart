@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+
 import 'package:double_helix_detective_system/presentation/base/base_view_model.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -17,7 +18,8 @@ class SearchDatabaseFormViewModel extends BaseViewModel
   StreamController<void> areAllInputsValidStreamController = BehaviorSubject();
   StreamController isIdentificationSearchSuccessfullyStreamController =
       BehaviorSubject<bool>();
-  final StreamController<SearchMatchingInfo> _searchMatchingResultStreamController = BehaviorSubject();
+  final StreamController<SearchMatchingInfo>
+      searchMatchingResultStreamController = BehaviorSubject();
 
   final SearchIdentificationUseCase _searchIdentificationUseCase;
 
@@ -39,7 +41,7 @@ class SearchDatabaseFormViewModel extends BaseViewModel
     statusStreamController.close();
     areAllInputsValidStreamController.close();
     isIdentificationSearchSuccessfullyStreamController.close();
-    _searchMatchingResultStreamController.close();
+    searchMatchingResultStreamController.close();
     super.dispose();
   }
 
@@ -89,15 +91,15 @@ class SearchDatabaseFormViewModel extends BaseViewModel
   }
 
   void clearData() {
-    identificationSearchObject = SearchIdentificationObject(
-      file: File(""),
-      status: '',
-    );
+    identificationSearchObject =
+        SearchIdentificationObject(file: File(""), status: '');
     fileInput.add(File(""));
     statusInput.add("");
-    _searchMatchingResultStreamController.add(SearchMatchingInfo(personInfo: null, match: '', similarity: 0));
     areAllInputsValidStreamController.add(null);
     isIdentificationSearchSuccessfullyStreamController.add(false);
+    searchMatchingResultStreamController
+        .add(SearchMatchingInfo(personInfo: null, match: '', similarity: 0));
+    inputState.add(ContentState());
   }
 
   // inputs
@@ -129,10 +131,12 @@ class SearchDatabaseFormViewModel extends BaseViewModel
 
   // search matching result
   @override
-  Sink get searchMatchData => _searchMatchingResultStreamController.sink;
+  Sink get searchMatchData => searchMatchingResultStreamController.sink;
 
   @override
-  Stream<SearchMatchingInfo> get searchMatchInfoOutput => _searchMatchingResultStreamController.stream.map((searchResult) => searchResult);
+  Stream<SearchMatchingInfo> get searchMatchInfoOutput =>
+      searchMatchingResultStreamController.stream
+          .map((searchResult) => searchResult);
 
   validate() {
     areInputsValidInput.add(null);
@@ -146,8 +150,6 @@ class SearchDatabaseFormViewModel extends BaseViewModel
     return identificationSearchObject.file.path.isNotEmpty &&
         identificationSearchObject.status.isNotEmpty;
   }
-
-
 }
 
 mixin SearchDatabaseFormViewModelInputs {
@@ -163,7 +165,7 @@ mixin SearchDatabaseFormViewModelInputs {
 
   identificationSearch();
 
-  Sink get searchMatchData ;
+  Sink get searchMatchData;
 }
 
 mixin SearchDatabaseFormViewModelOutputs {
@@ -175,5 +177,5 @@ mixin SearchDatabaseFormViewModelOutputs {
 
   Stream<bool> get areInputsValidOutput;
 
-  Stream<SearchMatchingInfo> get searchMatchInfoOutput ;
+  Stream<SearchMatchingInfo> get searchMatchInfoOutput;
 }

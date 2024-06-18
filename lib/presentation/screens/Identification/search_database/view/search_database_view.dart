@@ -27,8 +27,9 @@ class SearchDatabaseFormView extends StatefulWidget {
 class _SearchDatabaseFormViewState extends State<SearchDatabaseFormView> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _statusController = TextEditingController();
-  final SearchDatabaseFormViewModel _viewModel=instance<SearchDatabaseFormViewModel>();
+  late SearchDatabaseFormViewModel _viewModel;
   _bind(){
+    _viewModel=instance<SearchDatabaseFormViewModel>();
     _viewModel.start();
     _statusController.addListener(() {
       _viewModel.setStatus(_statusController.text);
@@ -38,7 +39,9 @@ class _SearchDatabaseFormViewState extends State<SearchDatabaseFormView> {
       if(isSearchedSuccessfully){
         SchedulerBinding.instance.addPostFrameCallback((_)
         {
-          Navigator.of(context).pushNamed(RoutesManager.searchResultRoute);
+          if(mounted){
+            Navigator.of(context).pushNamed(RoutesManager.searchResultRoute);
+          }
         });
       }
     });
@@ -212,7 +215,6 @@ class _SearchDatabaseFormViewState extends State<SearchDatabaseFormView> {
   }
   @override
   void dispose() {
-    _viewModel.dispose();
     super.dispose();
   }
 }

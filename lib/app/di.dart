@@ -25,20 +25,22 @@ import '../presentation/screens/login/viewModel/login_viewmodel.dart';
 import '../presentation/screens/paternity_test/form/viewmodel/paternity_test_form_viewmodel.dart';
 import '../presentation/screens/population/viewModel/population_viewmodel.dart';
 
-final instance=GetIt.instance;
-Future<void> initAppModule()async{
-  instance.registerLazySingleton<NetworkInfo>(() => NetworkInfoImp(InternetConnectionChecker()));
+final instance = GetIt.instance;
+
+Future<void> initAppModule() async {
+  instance.registerLazySingleton<NetworkInfo>(
+      () => NetworkInfoImp(InternetConnectionChecker()));
   // for remote data source
-  instance.registerLazySingleton<RemoteDataSource>(() => RemoteDataSourceImp(instance(),instance()));
+  instance.registerLazySingleton<RemoteDataSource>(
+      () => RemoteDataSourceImp(instance(), instance()));
 
   final sharedPrefs = await SharedPreferences.getInstance();
 
-  instance.registerLazySingleton<SharedPreferences>(
-          ()=>sharedPrefs);
+  instance.registerLazySingleton<SharedPreferences>(() => sharedPrefs);
 
   // apps prefs instance
-  instance.registerLazySingleton<AppPreferences>(
-          () => AppPreferences(instance()));
+  instance
+      .registerLazySingleton<AppPreferences>(() => AppPreferences(instance()));
 
   // for dio factory
   // final DioFactory dioFactory = DioFactory(null);
@@ -47,77 +49,79 @@ Future<void> initAppModule()async{
   // Dio dio =await instance<DioFactory>().getDio();
   Dio dio = DioFactory.getDio();
   //for app service client
-  instance.registerLazySingleton<AppServicesTechnical>(() =>AppServicesTechnical(dio) );
-  instance.registerLazySingleton<AppServiceDna>(() =>AppServiceDna(dio) );
+  instance.registerLazySingleton<AppServicesTechnical>(
+      () => AppServicesTechnical(dio));
+  instance.registerLazySingleton<AppServiceDna>(() => AppServiceDna(dio));
 
   // for repository
-  instance.registerLazySingleton<Repository>(() => RepositoryImp(instance(), instance()));
+  instance.registerLazySingleton<Repository>(
+      () => RepositoryImp(instance(), instance()));
 }
 
- initLoginModule() {
-   if(!GetIt.I.isRegistered<LoginUseCase>()){
-     // login use case
-     instance.registerFactory<LoginUseCase>(() => LoginUseCase(instance()));
+initLoginModule() {
+  if (!GetIt.I.isRegistered<LoginUseCase>()) {
+    // login use case
+    instance.registerFactory<LoginUseCase>(() => LoginUseCase(instance()));
 
-     // login view model
-     instance.registerFactory<LoginViewModel>(() => LoginViewModel(instance()));
-   }
- }
+    // login view model
+    instance.registerFactory<LoginViewModel>(() => LoginViewModel(instance()));
+  }
+}
 
 initAddPopulationModule() {
   if (!GetIt.I.isRegistered<AddPopulationUseCase>()) {
-    instance.registerFactory<AddPopulationUseCase>(() =>
-        AddPopulationUseCase(instance()));
+    instance.registerFactory<AddPopulationUseCase>(
+        () => AddPopulationUseCase(instance()));
 
-    instance.registerFactory<PopulationViewModel>(() =>
-        PopulationViewModel(instance()));
+    instance.registerFactory<PopulationViewModel>(
+        () => PopulationViewModel(instance()));
   }
-
 }
-
 
 initServicesModule() {
   if (!GetIt.I.isRegistered<LogoutUseCase>()) {
     instance.registerFactory<LogoutUseCase>(() => LogoutUseCase(instance()));
 
-    instance.registerFactory<ServicePresentedViewModel>(() =>
-        ServicePresentedViewModel(instance()));
+    instance.registerFactory<ServicePresentedViewModel>(
+        () => ServicePresentedViewModel(instance()));
   }
 }
-
 
 initCompareDnaModule() {
   if (!GetIt.I.isRegistered<CompareDnaUseCase>()) {
-    instance.registerLazySingleton<CompareDnaUseCase>(() => CompareDnaUseCase(instance()));
-
-    instance.registerLazySingleton<CompareDnaViewModel>(() =>
-        CompareDnaViewModel(instance()));
+    instance.registerLazySingleton<CompareDnaUseCase>(
+        () => CompareDnaUseCase(instance()));
+    instance.registerLazySingleton<CompareDnaViewModel>(
+        () => CompareDnaViewModel(instance()));
   }
 }
 
+
 initSearchIdentificationModule() {
   if (!GetIt.I.isRegistered<SearchIdentificationUseCase>()) {
-    instance.registerLazySingleton<SearchIdentificationUseCase>(() => SearchIdentificationUseCase(instance()));
-
-    instance.registerLazySingleton<SearchDatabaseFormViewModel>(() =>
-        SearchDatabaseFormViewModel(instance()));
+    instance.registerLazySingleton<SearchIdentificationUseCase>(
+        () => SearchIdentificationUseCase(instance()));
+    instance.registerLazySingleton<SearchDatabaseFormViewModel>(
+        () => SearchDatabaseFormViewModel(instance()));
   }
 }
 
 initMissingSearchModule() {
   if (!GetIt.I.isRegistered<MissingSearchUseCase>()) {
-    instance.registerLazySingleton<MissingSearchUseCase>(() => MissingSearchUseCase(instance()));
+    instance.registerLazySingleton<MissingSearchUseCase>(
+        () => MissingSearchUseCase(instance()));
 
-    instance.registerLazySingleton<MissingSearchViewModel>(() =>
-        MissingSearchViewModel(instance()));
+    instance.registerLazySingleton<MissingSearchViewModel>(
+        () => MissingSearchViewModel(instance()));
   }
 }
 
 initPaternityTestModule() {
   if (!GetIt.I.isRegistered<PaternityTestUseCase>()) {
-    instance.registerLazySingleton<PaternityTestUseCase>(() => PaternityTestUseCase(instance()));
+    instance.registerLazySingleton<PaternityTestUseCase>(
+        () => PaternityTestUseCase(instance()));
 
-    instance.registerLazySingleton<PaternityTestViewModel>(() =>
-        PaternityTestViewModel(instance()));
+    instance.registerLazySingleton<PaternityTestViewModel>(
+        () => PaternityTestViewModel(instance()));
   }
 }

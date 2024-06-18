@@ -9,7 +9,7 @@ import '../../../resource/color_manager.dart';
 import '../../../resource/font_manager.dart';
 import '../../../resource/routes_manager.dart';
 import '../../../resource/strings_manager.dart';
-import '../../../widget/elevated_button.dart';
+import '../../../widget/custom_actions_buttons.dart';
 
 class MissingResult extends StatefulWidget {
   const MissingResult({super.key});
@@ -20,11 +20,11 @@ class MissingResult extends StatefulWidget {
 
 class _MissingResultState extends State<MissingResult> {
 
-  final MissingSearchViewModel _missingSearchViewModel = instance<
-      MissingSearchViewModel>();
+  late MissingSearchViewModel _missingSearchViewModel ;
 
   @override
   void initState() {
+    _missingSearchViewModel = instance<MissingSearchViewModel>();
     super.initState();
   }
 
@@ -39,6 +39,7 @@ class _MissingResultState extends State<MissingResult> {
               Icons.arrow_back_ios_outlined
           ),
           onPressed: () {
+            _missingSearchViewModel.clearData();
             Navigator.pop(context);
           },
         ),
@@ -114,21 +115,13 @@ class _MissingResultState extends State<MissingResult> {
           child: Container(
             color: ColorManager.lightBackground,
             padding:const  EdgeInsets.all(AppPadding.p14),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                CustomeElevatedButton(
-                    onPressed: () {
-                      Navigator.pushReplacementNamed(
-                          context, RoutesManager.servicesPresentedRoute);
-                    },
-                    textButton: AppStrings.backSer),
-                CustomeElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, RoutesManager.populationRoute);
-                    }, textButton: AppStrings.addDB),
-              ],
-            ),
+            child: CustomActionsButtons(onPressed: (){
+              _missingSearchViewModel.clearData();
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                  RoutesManager.servicesPresentedRoute,
+                      (route) => false
+              );
+            },),
           ),
         )
       ],
@@ -220,7 +213,7 @@ class _MissingResultState extends State<MissingResult> {
 
   @override
   void dispose() {
-    _missingSearchViewModel.dispose();
+    Future.microtask(() => _missingSearchViewModel.clearData());
     super.dispose();
   }
 }

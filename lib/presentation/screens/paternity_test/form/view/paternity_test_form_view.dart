@@ -25,15 +25,18 @@ class PaternityTestForm extends StatefulWidget {
 
 class _PaternityTestFormState extends State<PaternityTestForm> {
   final _formKey = GlobalKey<FormState>();
-  final PaternityTestViewModel _paternityTestViewModel = instance<PaternityTestViewModel>();
+  late PaternityTestViewModel _paternityTestViewModel;
   _bind(){
+  _paternityTestViewModel = instance<PaternityTestViewModel>();
     _paternityTestViewModel.start();
     _paternityTestViewModel.isPaternityTestDoneSuccessfullyStreamController.stream.listen((isTestedSuccessfully)
     {
       if(isTestedSuccessfully){
         SchedulerBinding.instance.addPostFrameCallback((_)
         {
-          Navigator.of(context).pushReplacementNamed(RoutesManager.paternityResultRoute);
+         if(mounted){
+           Navigator.of(context).pushNamed(RoutesManager.paternityResultRoute);
+         }
         });
       }
     });
@@ -52,6 +55,7 @@ class _PaternityTestFormState extends State<PaternityTestForm> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios_outlined),
           onPressed: () {
+            _paternityTestViewModel.clearData();
             Navigator.pop(context);
           },
         ),
@@ -205,7 +209,6 @@ class _PaternityTestFormState extends State<PaternityTestForm> {
   }
   @override
   void dispose() {
-    _paternityTestViewModel.dispose();
     super.dispose();
   }
 }

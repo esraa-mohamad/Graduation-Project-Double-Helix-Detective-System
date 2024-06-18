@@ -89,12 +89,7 @@ class _PopulationViewState extends State<PopulationView> {
     return Scaffold(
       backgroundColor: ColorManager.lightBackground,
       appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_outlined),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
+        automaticallyImplyLeading: false,
         title: Text(
           AppStrings.addPopulation.toUpperCase(),
         ),
@@ -416,6 +411,19 @@ class _PopulationViewState extends State<PopulationView> {
                     );
                   }
                 )
+              ),
+              const SizedBox(height: AppSize.s20,),
+              SizedBox(
+                  width: double.infinity,
+                  height: AppSize.s40,
+                  child:CustomeElevatedButton(
+                      onPressed: (){
+                        Navigator.of(context).pushNamedAndRemoveUntil(
+                            RoutesManager.servicesPresentedRoute,
+                                (route) => false
+                        );
+                      }, textButton: AppStrings.backSer,
+                  ),
               ),
             ],
           ),

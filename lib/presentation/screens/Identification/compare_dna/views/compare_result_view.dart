@@ -6,6 +6,7 @@ import 'package:lottie/lottie.dart';
 import '../../../../common/state_renderer/state_renderer_imp.dart';
 import '../../../../resource/assets_manager.dart';
 import '../../../../resource/color_manager.dart';
+import '../../../../resource/routes_manager.dart';
 import '../../../../resource/strings_manager.dart';
 import '../../../../resource/values_manager.dart';
 import '../viewmodel/compare_dna_viewmodel.dart';
@@ -19,19 +20,18 @@ class CompareDnaResultView extends StatefulWidget {
 
 class _CompareDnaResultViewState extends State<CompareDnaResultView> {
 
-  final CompareDnaViewModel _viewModel = instance<CompareDnaViewModel>();
+  late CompareDnaViewModel _viewModel ;
 
-  _bind(){
-    //_viewModel.start();
-  }
+
   @override
   void initState() {
-    _bind();
     super.initState();
+    _viewModel=instance<CompareDnaViewModel>();
   }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  Scaffold(
       appBar: AppBar(
         title: const Text(AppStrings.comparedResult),
         leading: IconButton(
@@ -39,6 +39,7 @@ class _CompareDnaResultViewState extends State<CompareDnaResultView> {
               Icons.arrow_back_ios_outlined
           ),
           onPressed: (){
+            _viewModel.reset();
             Navigator.pop(context);
           },
         ),
@@ -90,7 +91,13 @@ class _CompareDnaResultViewState extends State<CompareDnaResultView> {
               const SizedBox(
                 height: AppSize.s40,
               ),
-              const CustomActionsButtons(),
+              CustomActionsButtons(onPressed: (){
+                _viewModel.reset();
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                    RoutesManager.servicesPresentedRoute,
+                        (route) => false
+                );
+              },),
             ],
           ),
         ),
@@ -103,10 +110,9 @@ class _CompareDnaResultViewState extends State<CompareDnaResultView> {
         stream: _viewModel.compareDnaOutput,
         builder: (context , snapshot){
           if (snapshot.connectionState == ConnectionState.waiting) {
-            // Show a loading indicator while waiting for data
             return const CircularProgressIndicator();
           } else if (snapshot.hasData) {
-            return _getCompareDnaData(snapshot.data);
+            return _getCompareDnaData(snapshot.data!);
           } else if (snapshot.hasError) {
             // Handle errors if any
             return Text('Error: ${snapshot.error}');
@@ -117,6 +123,7 @@ class _CompareDnaResultViewState extends State<CompareDnaResultView> {
         }
     );
   }
+
 
   Widget _getCompareDnaData(CompareDna? compareDna){
 
@@ -164,7 +171,10 @@ class _CompareDnaResultViewState extends State<CompareDnaResultView> {
 
   @override
   void dispose() {
-    _viewModel.dispose();
+    Future.microtask(() => _viewModel.reset());
     super.dispose();
   }
 }
+
+
+

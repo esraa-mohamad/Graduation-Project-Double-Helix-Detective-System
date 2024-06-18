@@ -25,7 +25,7 @@ class AssetsLottiManager {
   static const String missing="$lottiPath/missing.json";
   static const String paternity="$lottiPath/paternity.json";
   static const String family="$lottiPath/family.json";
-  static const String homeless="$lottiPath/homeless.json";
+  static const String homeless="$lottiPath/heartBreak.json";
   static const String error = "$lottiPath/error.json";
   static const String loading = "$lottiPath/loading.json";
   static const String criminal = "$lottiPath/criminal.json";

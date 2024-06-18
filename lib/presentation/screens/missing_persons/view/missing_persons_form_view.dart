@@ -24,16 +24,19 @@ class _MissingFormState extends State<MissingForm> {
 
   final _formKey = GlobalKey<FormState>();
 
-  final MissingSearchViewModel _missingSearchViewModel = instance<MissingSearchViewModel> ();
+  late MissingSearchViewModel _missingSearchViewModel;
 
   _bind(){
+    _missingSearchViewModel = instance<MissingSearchViewModel> ();
     _missingSearchViewModel.start();
     _missingSearchViewModel.isSearchMissingSuccessfullyStreamController.stream.listen((isSearchedSuccessfully)
     {
       if(isSearchedSuccessfully){
         SchedulerBinding.instance.addPostFrameCallback((_)
         {
-          Navigator.of(context).pushReplacementNamed(RoutesManager.missingPersonResultRoute);
+          if(mounted){
+            Navigator.of(context).pushNamed(RoutesManager.missingPersonResultRoute);
+          }
         });
       }
     });
@@ -53,6 +56,7 @@ class _MissingFormState extends State<MissingForm> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios_outlined),
           onPressed: () {
+            _missingSearchViewModel.clearData();
             Navigator.pop(context);
           },
         ),
@@ -180,6 +184,5 @@ class _MissingFormState extends State<MissingForm> {
   @override
   void dispose() {
     super.dispose();
-    _missingSearchViewModel.dispose();
   }
 }

@@ -40,16 +40,30 @@ class PaternityTestViewModel extends BaseViewModel
     inputState.add(ContentState());
   }
 
+  void clearData() {
+    paternityTestObject =
+        PaternityTestObject(fileChild: File(""), fileFather: File(""));
+
+    fileChildInput.add(File(""));
+    fileFatherInput.add(File(""));
+    areAllInputsValidStreamController.add(null);
+    isPaternityTestDoneSuccessfullyStreamController.add(false);
+    resultPaternityTestStreamController.add(PaternityTest(
+      prediction: '',
+    ));
+
+    inputState.add(ContentState());
+  }
+
   @override
-  testPaternity() async{
+  testPaternity() async {
     inputState.add(LoadingState(StateRendererType.popupLoadingState));
     (await _paternityTestUseCase.execute(PaternityTestUseCaseInput(
-        fileChild: paternityTestObject.fileChild,
-        fileFather: paternityTestObject.fileFather
-    )))
+            fileChild: paternityTestObject.fileChild,
+            fileFather: paternityTestObject.fileFather)))
         .fold(
             (failure) => {
-          inputState.add(ErrorState(
+                  inputState.add(ErrorState(
               StateRendererType.popupErrorState, failure.message))
         }, (data) {
       inputState.add(ContentState());

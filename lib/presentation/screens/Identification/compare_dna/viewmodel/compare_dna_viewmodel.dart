@@ -44,6 +44,16 @@ class CompareDnaViewModel extends BaseViewModel with CompareDnaViewModelInputs,C
     resultCompareDnaStreamController.close();
   }
 
+  void reset() {
+    // Reset the state of the ViewModel
+    compareDnaObject = CompareDnaObject(fileA: File(""), fileB: File(""));
+    fileAStreamController.add(File(""));
+    fileBStreamController.add(File(""));
+    areAllInputsValidStreamController.add(null);
+    isComparedDnaSuccessfullyStreamController.add(false);
+    resultCompareDnaStreamController.add(CompareDna(match: "", similarity: 0));
+    inputState.add(ContentState());
+  }
   @override
   compareDna() async {
     inputState.add(LoadingState(StateRendererType.popupLoadingState));
@@ -149,3 +159,5 @@ mixin CompareDnaViewModelOutputs{
 
 
 }
+
+

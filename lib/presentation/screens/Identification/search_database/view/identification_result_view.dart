@@ -9,7 +9,7 @@ import '../../../../resource/font_manager.dart';
 import '../../../../resource/routes_manager.dart';
 import '../../../../resource/strings_manager.dart';
 import '../../../../resource/values_manager.dart';
-import '../../../../widget/elevated_button.dart';
+import '../../../../widget/custom_actions_buttons.dart';
 import '../viewmodel/search_database_viewmodel.dart';
 
 class IdentificationResult extends StatefulWidget {
@@ -21,10 +21,10 @@ class IdentificationResult extends StatefulWidget {
 
 class _IdentificationResultState extends State<IdentificationResult> {
 
-  final SearchDatabaseFormViewModel _viewModel = instance<SearchDatabaseFormViewModel>();
+  late SearchDatabaseFormViewModel _viewModel ;
 
   _bind(){
-    //_viewModel.start();
+    _viewModel = instance<SearchDatabaseFormViewModel>();
   }
 
   @override
@@ -69,21 +69,13 @@ class _IdentificationResultState extends State<IdentificationResult> {
         const SizedBox(
           height: AppSize.s40,
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            CustomeElevatedButton(
-                onPressed: () {
-                  Navigator.pushReplacementNamed(
-                      context, RoutesManager.servicesPresentedRoute);
-                },
-                textButton: AppStrings.backSer),
-            CustomeElevatedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, RoutesManager.populationRoute);
-                }, textButton: AppStrings.addDB),
-          ],
-        )
+        CustomActionsButtons(onPressed: (){
+          _viewModel.clearData();
+          Navigator.of(context).pushNamedAndRemoveUntil(
+              RoutesManager.servicesPresentedRoute,
+                  (route) => false
+          );
+        },),
       ],
     );
   }
@@ -162,14 +154,13 @@ class _IdentificationResultState extends State<IdentificationResult> {
       );
     }else{
       return Container();
-     // return Container();
     }
 
   }
 
   @override
   void dispose() {
-    _viewModel.dispose();
+    Future.microtask(() => _viewModel.clearData());
     super.dispose();
   }
 }

@@ -6,6 +6,7 @@ import 'package:double_helix_detective_system/presentation/base/base_view_model.
 import 'package:double_helix_detective_system/presentation/common/freezed_data_class.dart';
 import 'package:double_helix_detective_system/presentation/common/state_renderer/state_renderer_imp.dart';
 import 'package:rxdart/rxdart.dart';
+
 import '../../../../domain/models/models.dart';
 import '../../../common/state_renderer/state_renderer.dart';
 
@@ -43,15 +44,42 @@ MissingSearchViewModelInput ,
     (await _missingSearchUseCase.execute(MissingSearchUseCaseInput(
     file: missingObject.file,
     ))).fold(
-    (failure) => {
-    inputState.add(ErrorState(
-    StateRendererType.popupErrorState, failure.message))
-    }, (data) {
-    inputState.add(ContentState());
-    allMissingSearchResultInput.add(data);
-    allMissingRelativeInput.add(data.missingRelativeInfo);
-    isSearchMissingSuccessfullyStreamController.add(true);
+            (failure) => {
+                  inputState.add(ErrorState(
+                      StateRendererType.popupErrorState, failure.message))
+                }, (data) {
+      inputState.add(ContentState());
+      allMissingSearchResultInput.add(data);
+      allMissingRelativeInput.add(data.missingRelativeInfo);
+      isSearchMissingSuccessfullyStreamController.add(true);
     });
+  }
+
+  void clearData() {
+    missingObject = MissingSearchObject(file: File(""));
+
+    // Clear the streams
+    fileInput.add(File(""));
+    areAllInputsValidStreamController.add(null);
+    isSearchMissingSuccessfullyStreamController.add(false);
+    resultAllMissingPersonStreamController.add(AllMissingSearchResult(
+        missingPersonInfo: MissingPersonInfo(
+            name: '',
+            address: '',
+            phone: '',
+            nationalId: '',
+            gender: '',
+            bloodType: '',
+            birthDate: '',
+            status: '',
+            description: '',
+            matchStatus: '',
+            similarity: 0),
+        missingRelativeInfo: []));
+    resultMissingRelativeStreamController.add(<MissingRelativeInfo>[]);
+
+    // Reset the state to ContentState
+    inputState.add(ContentState());
   }
 
   @override
