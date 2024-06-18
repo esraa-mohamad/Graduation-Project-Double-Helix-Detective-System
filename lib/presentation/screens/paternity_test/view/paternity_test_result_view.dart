@@ -1,11 +1,14 @@
 import 'package:double_helix_detective_system/domain/models/models.dart';
 import 'package:double_helix_detective_system/presentation/resource/assets_manager.dart';
-import 'package:double_helix_detective_system/presentation/screens/paternity_test/form/viewmodel/paternity_test_form_viewmodel.dart';
 import 'package:double_helix_detective_system/presentation/widget/custom_actions_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-
 import '../../../../../app/di.dart';
+import '../../../common/state_renderer/state_renderer_imp.dart';
+import '../../../resource/color_manager.dart';
+import '../../../resource/strings_manager.dart';
+import '../../../resource/values_manager.dart';
+import '../viewmodel/paternity_test_form_viewmodel.dart';
 import '../../../../common/state_renderer/state_renderer_imp.dart';
 import '../../../../resource/color_manager.dart';
 import '../../../../resource/routes_manager.dart';
@@ -116,9 +119,9 @@ class _PaternityTestResultState extends State<PaternityTestResult> {
       return Column(
         children: [
           Lottie.asset(
-            paternityTest.prediction =="not relative" ?
-                AssetsLottiManager.homeless :
-              AssetsLottiManager.family,
+              paternityTest.prediction == "not relative"
+                  ? AssetsLottiManager.homeless
+                  : AssetsLottiManager.family,
               height: AppSize.s300,
               width: AppSize.s300,
               repeat: true,

@@ -97,7 +97,10 @@ class _CompareDnaFormViewState extends State<CompareDnaFormView> {
               child: Column(
                 children: [
                   UploadDnaFile(
-                    onTap: _uploadFileA,
+                    onTap: () {
+                      _uploadFileA();
+                    },
+                    uploadText: AppStrings.uploadFirstDna,
                     child: StreamBuilder<File>(
                       stream: _compareDnaViewModel.fileAOutput,
                       builder: (context, snapshot) {
@@ -107,7 +110,10 @@ class _CompareDnaFormViewState extends State<CompareDnaFormView> {
                   ),
                   const SizedBox(height: AppSize.s40),
                   UploadDnaFile(
-                    onTap: _uploadFileB,
+                    onTap: () {
+                      _uploadFileB();
+                    },
+                    uploadText: AppStrings.uploadSecondDna,
                     child: StreamBuilder<File>(
                       stream: _compareDnaViewModel.fileBOutput,
                       builder: (context, snapshot) {

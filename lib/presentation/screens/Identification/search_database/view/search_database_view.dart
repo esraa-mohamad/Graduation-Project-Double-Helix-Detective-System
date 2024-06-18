@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:double_helix_detective_system/app/di.dart';
 import 'package:double_helix_detective_system/presentation/resource/strings_manager.dart';
 import 'package:double_helix_detective_system/presentation/screens/Identification/search_database/viewmodel/search_database_viewmodel.dart';
@@ -14,8 +13,6 @@ import '../../../../resource/routes_manager.dart';
 import '../../../../resource/values_manager.dart';
 import '../../../../widget/elevated_button.dart';
 import '../../../../widget/upload_dna_file.dart';
-
-
 
 class SearchDatabaseFormView extends StatefulWidget {
   const SearchDatabaseFormView({super.key});
@@ -46,6 +43,7 @@ class _SearchDatabaseFormViewState extends State<SearchDatabaseFormView> {
       }
     });
   }
+
   @override
   void initState() {
     _bind();
@@ -80,7 +78,8 @@ class _SearchDatabaseFormViewState extends State<SearchDatabaseFormView> {
       ),
     );
   }
-  Widget _getContentWidget(){
+
+  Widget _getContentWidget() {
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(AppPadding.p20),
@@ -89,19 +88,18 @@ class _SearchDatabaseFormViewState extends State<SearchDatabaseFormView> {
           width: double.infinity,
           // height: AppSize.s450,
           decoration: const BoxDecoration(
-              color:ColorManager.background,
+              color: ColorManager.background,
               borderRadius: BorderRadius.only(
                 topRight: Radius.circular(AppSize.s25),
                 bottomLeft: Radius.circular(AppSize.s25),
               ),
-              boxShadow:[
+              boxShadow: [
                 BoxShadow(
                   color: ColorManager.shadow,
                   blurRadius: 25.0,
                   spreadRadius: 10,
                 )
-              ]
-          ),
+              ]),
           child: SingleChildScrollView(
             child: Form(
                 key: _formKey,
@@ -112,43 +110,44 @@ class _SearchDatabaseFormViewState extends State<SearchDatabaseFormView> {
                       height: AppSize.s20,
                     ),
                     StreamBuilder<String?>(
-                      stream: _viewModel.statusErrorOutput,
-                      builder: (context, snapshot) {
-                        return CustomDropDownMenu(
-                          errorText: snapshot.data,
-                          dropdownMenuEntries: const <DropdownMenuEntry<String>>[
-                            DropdownMenuEntry(
-                                value: AppStrings.crimePerson,
-                                label: AppStrings.crimePerson),
-                            DropdownMenuEntry(
-                                value: AppStrings.acknowledgedPerson,
-                                label: AppStrings.acknowledgedPerson),
-                            DropdownMenuEntry(
-                                value: AppStrings.allDb,
-                                label: AppStrings.allDb),
-                          ],
-                          label: Text(
-                            AppStrings.statusPerson,
-                            style: Theme.of(context).textTheme.bodyMedium,
-                          ),
-                          controller: _statusController,
-                          width: MediaQuery.of(context).size.width*.95,
-                        );
-                      }
-                    ),
+                        stream: _viewModel.statusErrorOutput,
+                        builder: (context, snapshot) {
+                          return CustomDropDownMenu(
+                            errorText: snapshot.data,
+                            dropdownMenuEntries: const <DropdownMenuEntry<
+                                String>>[
+                              DropdownMenuEntry(
+                                  value: AppStrings.crimePerson,
+                                  label: AppStrings.crimePerson),
+                              DropdownMenuEntry(
+                                  value: AppStrings.acknowledgedPerson,
+                                  label: AppStrings.acknowledgedPerson),
+                              DropdownMenuEntry(
+                                  value: AppStrings.allDb,
+                                  label: AppStrings.allDb),
+                            ],
+                            label: Text(
+                              AppStrings.statusPerson,
+                              style: Theme.of(context).textTheme.bodyMedium,
+                            ),
+                            controller: _statusController,
+                            width: MediaQuery.of(context).size.width * .95,
+                          );
+                        }),
                     const SizedBox(
                       height: AppSize.s20,
                     ),
                     UploadDnaFile(
-                        child: StreamBuilder<File>(
-                          stream: _viewModel.fileOutput,
-                          builder: (context,snapshot){
-                            return _getFilePicker(snapshot.data);
-                          },
-                        ),
-                        onTap: (){
-                          _uploadDnaFile();
-                        }
+                      onTap: () {
+                        _uploadDnaFile();
+                      },
+                      uploadText: AppStrings.uploadPersonDna,
+                      child: StreamBuilder<File>(
+                        stream: _viewModel.fileOutput,
+                        builder: (context, snapshot) {
+                          return _getFilePicker(snapshot.data);
+                        },
+                      ),
                     ),
 
                     const SizedBox(
@@ -160,16 +159,15 @@ class _SearchDatabaseFormViewState extends State<SearchDatabaseFormView> {
                         height: AppSize.s40,
                         child: StreamBuilder<bool>(
                             stream: _viewModel.areInputsValidOutput,
-                            builder: (context , snapshot){
+                            builder: (context, snapshot) {
                               return CustomeElevatedButton(
                                   onPressed: (snapshot.data ?? false)
-                                      ?(){_viewModel.identificationSearch();}
+                                      ? () {
+                                          _viewModel.identificationSearch();
+                                        }
                                       : null,
-                                  textButton: AppStrings.search
-                              );
-                            }
-                        )
-                    ),
+                                  textButton: AppStrings.search);
+                            })),
                   ],
                 )),
           ),
@@ -177,13 +175,18 @@ class _SearchDatabaseFormViewState extends State<SearchDatabaseFormView> {
       ),
     );
   }
+
 // to add file to container to show it
-  Widget _getFilePicker(File? file){
-    if(file != null && file.path.isNotEmpty){
-      return  Center(
+  Widget _getFilePicker(File? file) {
+    if (file != null && file.path.isNotEmpty) {
+      return Center(
         child: Row(
           children: [
-            const Icon(Icons.file_present_rounded , color: ColorManager.primary,size: AppSize.s25,),
+            const Icon(
+              Icons.file_present_rounded,
+              color: ColorManager.primary,
+              size: AppSize.s25,
+            ),
             Expanded(
               child: Text(
                 'File Name:${path.basename(file.path)}',
@@ -194,14 +197,13 @@ class _SearchDatabaseFormViewState extends State<SearchDatabaseFormView> {
           ],
         ),
       );
-
-    }else {
+    } else {
       return Container();
     }
   }
 
   // to upload dna at set in vew model
-  _uploadDnaFile() async{
+  _uploadDnaFile() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles(
       type: FileType.any,
       allowedExtensions: ["txt"],
@@ -211,8 +213,8 @@ class _SearchDatabaseFormViewState extends State<SearchDatabaseFormView> {
       var file = File(result.files.single.path!);
       _viewModel.setFile(file);
     }
-
   }
+
   @override
   void dispose() {
     super.dispose();

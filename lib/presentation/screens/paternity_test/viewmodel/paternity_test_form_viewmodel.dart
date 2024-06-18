@@ -1,14 +1,12 @@
 import 'dart:async';
 import 'dart:io';
-
 import 'package:double_helix_detective_system/domain/models/models.dart';
 import 'package:double_helix_detective_system/domain/usecase/paternity_test_usecase.dart';
 import 'package:double_helix_detective_system/presentation/base/base_view_model.dart';
 import 'package:double_helix_detective_system/presentation/common/freezed_data_class.dart';
 import 'package:rxdart/rxdart.dart';
-
-import '../../../../common/state_renderer/state_renderer.dart';
-import '../../../../common/state_renderer/state_renderer_imp.dart';
+import '../../../common/state_renderer/state_renderer.dart';
+import '../../../common/state_renderer/state_renderer_imp.dart';
 
 class PaternityTestViewModel extends BaseViewModel
     with PaternityTestViewModelInputs, PaternityTestViewModelOutputs {

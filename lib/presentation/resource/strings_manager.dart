@@ -23,14 +23,15 @@ class AppStrings{
   static const searchDB = "Search DataBase";
   static const compare = "Compare DNA";
   static const uploadDna = "Upload DNA";
+  static const uploadMissingDna = "Upload Missing DNA";
+  static const uploadPersonDna = "Upload Person DNA";
   //missing result
   static const missingResult = "Missing Result";
   static const identificationPerson = "Identification Persons";
-  static const fatherRelative = "الأب";
-  static const motherRelative = "الأم";
-  static const person = "المفقود";
   //identification search
   static const caseP="case";
+  static const uploadFirstDna="Upload First DNA";
+  static const uploadSecondDna="Upload First DNA";
   // paternity
   static const uploadFather="upload father DNA";
   static const uploadChild="upload child DNA";

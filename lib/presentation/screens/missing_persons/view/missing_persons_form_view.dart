@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:double_helix_detective_system/presentation/resource/color_manager.dart';
 import 'package:double_helix_detective_system/presentation/resource/routes_manager.dart';
 import 'package:double_helix_detective_system/presentation/resource/strings_manager.dart';
@@ -13,6 +12,7 @@ import 'package:path/path.dart' as path;
 import '../../../../app/di.dart';
 import '../../../common/state_renderer/state_renderer_imp.dart';
 import '../../../widget/upload_dna_file.dart';
+
 class MissingForm extends StatefulWidget {
   const MissingForm({super.key});
 
@@ -21,7 +21,6 @@ class MissingForm extends StatefulWidget {
 }
 
 class _MissingFormState extends State<MissingForm> {
-
   final _formKey = GlobalKey<FormState>();
 
   late MissingSearchViewModel _missingSearchViewModel;
@@ -50,7 +49,7 @@ class _MissingFormState extends State<MissingForm> {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       backgroundColor: ColorManager.lightBackground,
       appBar: AppBar(
         leading: IconButton(
@@ -77,8 +76,7 @@ class _MissingFormState extends State<MissingForm> {
     );
   }
 
-
-  Widget _getContentWidget(){
+  Widget _getContentWidget() {
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(AppPadding.p20),
@@ -87,35 +85,35 @@ class _MissingFormState extends State<MissingForm> {
           width: double.infinity,
           height: AppSize.s200,
           decoration: const BoxDecoration(
-              color:ColorManager.background,
+              color: ColorManager.background,
               borderRadius: BorderRadius.only(
                 topRight: Radius.circular(AppSize.s25),
                 bottomLeft: Radius.circular(AppSize.s25),
               ),
-              boxShadow:[
+              boxShadow: [
                 BoxShadow(
                   color: ColorManager.shadow,
                   blurRadius: 25.0,
                   spreadRadius: 10,
                 )
-              ]
-          ),
+              ]),
           child: Form(
             key: _formKey,
-            child:  Center(
+            child: Center(
               child: Column(
                 children: [
                   // dna sequence
                   UploadDnaFile(
-                      child: StreamBuilder<File>(
-                        stream: _missingSearchViewModel.fileOutput,
-                        builder: (context,snapshot){
-                          return _getFilePicker(snapshot.data);
-                        },
-                      ),
-                      onTap: (){
-                        _uploadFile();
-                      }
+                    uploadText: AppStrings.uploadMissingDna,
+                    child: StreamBuilder<File>(
+                      stream: _missingSearchViewModel.fileOutput,
+                      builder: (context, snapshot) {
+                        return _getFilePicker(snapshot.data);
+                      },
+                    ),
+                    onTap: () {
+                      _uploadFile();
+                    },
                   ),
                   const SizedBox(
                     height: AppSize.s40,
@@ -126,16 +124,15 @@ class _MissingFormState extends State<MissingForm> {
                       height: AppSize.s40,
                       child: StreamBuilder<bool>(
                           stream: _missingSearchViewModel.allOutputValid,
-                          builder: (context , snapshot){
+                          builder: (context, snapshot) {
                             return CustomeElevatedButton(
                                 onPressed: (snapshot.data ?? false)
-                                    ?(){_missingSearchViewModel.missingSearch();}
+                                    ? () {
+                                        _missingSearchViewModel.missingSearch();
+                                      }
                                     : null,
-                                textButton: AppStrings.compare
-                            );
-                          }
-                      )
-                  ),
+                                textButton: AppStrings.compare);
+                          })),
                 ],
               ),
             ),
@@ -146,12 +143,16 @@ class _MissingFormState extends State<MissingForm> {
   }
 
   // to add file to container to show it
-  Widget _getFilePicker(File? file){
-    if(file != null && file.path.isNotEmpty){
-      return  Center(
+  Widget _getFilePicker(File? file) {
+    if (file != null && file.path.isNotEmpty) {
+      return Center(
         child: Row(
           children: [
-            const Icon(Icons.file_present_rounded , color: ColorManager.primary,size: AppSize.s25,),
+            const Icon(
+              Icons.file_present_rounded,
+              color: ColorManager.primary,
+              size: AppSize.s25,
+            ),
             Expanded(
               child: Text(
                 'File Name:${path.basename(file.path)}',
@@ -162,14 +163,13 @@ class _MissingFormState extends State<MissingForm> {
           ],
         ),
       );
-
-    }else {
+    } else {
       return Container();
     }
   }
 
   // to upload dna at set in vew model
-  _uploadFile() async{
+  _uploadFile() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles(
       type: FileType.any,
       allowedExtensions: ["txt"],
