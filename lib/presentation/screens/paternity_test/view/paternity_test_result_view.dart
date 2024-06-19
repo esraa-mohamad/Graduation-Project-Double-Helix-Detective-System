@@ -6,14 +6,11 @@ import 'package:lottie/lottie.dart';
 import '../../../../../app/di.dart';
 import '../../../common/state_renderer/state_renderer_imp.dart';
 import '../../../resource/color_manager.dart';
+import '../../../resource/routes_manager.dart';
 import '../../../resource/strings_manager.dart';
 import '../../../resource/values_manager.dart';
 import '../viewmodel/paternity_test_form_viewmodel.dart';
-import '../../../../common/state_renderer/state_renderer_imp.dart';
-import '../../../../resource/color_manager.dart';
-import '../../../../resource/routes_manager.dart';
-import '../../../../resource/strings_manager.dart';
-import '../../../../resource/values_manager.dart';
+
 
 class PaternityTestResult extends StatefulWidget {
   const PaternityTestResult({super.key});

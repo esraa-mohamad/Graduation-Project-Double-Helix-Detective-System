@@ -56,7 +56,7 @@ extension PersonInfoResponseMapper on PersonInfoResponse?{
         nationalId: this?.nationalId.orEmpty() ?? AppConstants.empty,
         gender: this?.gender.orEmpty() ?? AppConstants.empty,
         bloodType: this?.bloodType.orEmpty() ?? AppConstants.empty,
-        birthDate: this?.birthDate.orEmpty() ?? AppConstants.empty,
+        birthDate: this?.birthDate.orNow() ?? AppConstants.emptyDate,
         status: this?.status.orEmpty() ?? AppConstants.empty,
         description: this?.description.orEmpty() ?? AppConstants.empty
     );
@@ -82,7 +82,7 @@ extension MissingPersonInfoMapper on MissingPersonInfoResponse?{
         nationalId: this?.nationalId.orEmpty() ?? AppConstants.empty,
         gender: this?.gender.orEmpty() ?? AppConstants.empty,
         bloodType: this?.bloodType.orEmpty() ?? AppConstants.empty,
-        birthDate: this?.birthDate.orEmpty() ?? AppConstants.empty,
+        birthDate: this?.birthDate.orNow() ?? AppConstants.emptyDate,
         status: this?.status.orEmpty() ?? AppConstants.empty,
         description: this?.description.orEmpty() ?? AppConstants.empty,
         matchStatus: this?.matchStatus.orEmpty()??AppConstants.empty,

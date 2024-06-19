@@ -98,7 +98,16 @@ class SearchDatabaseFormViewModel extends BaseViewModel
     areAllInputsValidStreamController.add(null);
     isIdentificationSearchSuccessfullyStreamController.add(false);
     searchMatchingResultStreamController
-        .add(SearchMatchingInfo(personInfo: null, match: '', similarity: 0));
+        .add(SearchMatchingInfo(personInfo: PersonInfo(
+      name: '',
+      address: '',
+      phone: '',
+      nationalId: '',
+      gender: '',
+      bloodType: '',
+      birthDate: DateTime(0),
+      status: '',
+      description: '',), match: '', similarity: 0));
     inputState.add(ContentState());
   }
 

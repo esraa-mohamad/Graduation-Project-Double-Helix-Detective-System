@@ -64,7 +64,7 @@ class PersonInfo  {
   String nationalId ;
   String gender ;
   String bloodType ;
-  String birthDate ;
+  DateTime birthDate ;
   String status ;
   String description;
 
@@ -100,7 +100,7 @@ class MissingPersonInfo{
   String nationalId ;
   String gender ;
   String bloodType ;
-  String birthDate ;
+  DateTime birthDate ;
   String status ;
   String description;
   String matchStatus;

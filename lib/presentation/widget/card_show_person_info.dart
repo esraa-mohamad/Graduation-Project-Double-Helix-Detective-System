@@ -208,7 +208,7 @@ class CustomCardShowPersonInfo extends StatelessWidget {
                         width: AppSize.s4,
                       ),
                       Text(
-                        birthDate.substring(0,10) ,
+                        birthDate,
                         style: Theme.of(context).textTheme.titleMedium,
                       ),
                     ],

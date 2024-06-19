@@ -78,15 +78,6 @@ class _CompareDnaResultViewState extends State<CompareDnaResultView> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Lottie.asset(AssetsLottiManager.criminal,
-                  height: AppSize.s300,
-                  width: AppSize.s300,
-                  repeat: true,
-                  reverse: false,
-                  animate: true),
-              const SizedBox(
-                height: AppSize.s20,
-              ),
               _getCompareResult(),
               const SizedBox(
                 height: AppSize.s40,
@@ -130,6 +121,16 @@ class _CompareDnaResultViewState extends State<CompareDnaResultView> {
     if(compareDna !=null){
       return Column(
         children: [
+          Lottie.asset(
+              AssetsLottiManager.criminal,
+              height: AppSize.s300,
+              width: AppSize.s300,
+              repeat: true,
+              reverse: false,
+              animate: true),
+          const SizedBox(
+            height: AppSize.s20,
+          ),
           RichText(
             text: TextSpan(
               text: "${AppStrings.similarity} :- ",

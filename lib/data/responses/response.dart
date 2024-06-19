@@ -128,7 +128,7 @@ class PersonInfoResponse {
   @JsonKey(name:"bloodType")
   String ? bloodType ;
   @JsonKey(name:"birthdate")
-  String ? birthDate ;
+  DateTime ? birthDate ;
   @JsonKey(name:"status")
   String ? status ;
   @JsonKey(name:"description")
@@ -199,7 +199,7 @@ class MissingPersonInfoResponse {
   @JsonKey(name:"bloodType")
   String ? bloodType ;
   @JsonKey(name:"birthdate")
-  String ? birthDate ;
+  DateTime ? birthDate ;
   @JsonKey(name:"status")
   String ? status ;
   @JsonKey(name:"description")

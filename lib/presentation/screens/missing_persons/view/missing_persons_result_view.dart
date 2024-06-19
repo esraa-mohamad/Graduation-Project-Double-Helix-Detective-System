@@ -4,12 +4,13 @@ import 'package:double_helix_detective_system/presentation/screens/missing_perso
 import 'package:double_helix_detective_system/presentation/widget/card_show_person_info.dart';
 import 'package:double_helix_detective_system/presentation/widget/custom_actions_buttons.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import '../../../../app/di.dart';
 import '../../../common/state_renderer/state_renderer_imp.dart';
 import '../../../resource/color_manager.dart';
 import '../../../resource/font_manager.dart';
+import '../../../resource/routes_manager.dart';
 import '../../../resource/strings_manager.dart';
-import '../../../widget/custom_actions_buttons.dart';
 
 class MissingResult extends StatefulWidget {
   const MissingResult({super.key});
@@ -136,20 +137,49 @@ class _MissingResultState extends State<MissingResult> {
 
   // missing person info
   Widget _getMissingPersonInfo(AllMissingSearchResult? allMissingSearchResult) {
-    if (allMissingSearchResult != null) {
-      return CustomCardShowPersonInfo(
-        name: allMissingSearchResult.missingPersonInfo!.name,
-        address: allMissingSearchResult.missingPersonInfo!.address,
-        phone: allMissingSearchResult.missingPersonInfo!.phone,
-        nationalId: allMissingSearchResult.missingPersonInfo!.nationalId,
-        gender: allMissingSearchResult.missingPersonInfo!.gender,
-        bloodType: allMissingSearchResult.missingPersonInfo!.bloodType,
-        birthDate: allMissingSearchResult.missingPersonInfo!.birthDate,
-        status: allMissingSearchResult.missingPersonInfo!.status,
-        description: allMissingSearchResult.missingPersonInfo!.description,
-      );
+    if (allMissingSearchResult != null && allMissingSearchResult.missingPersonInfo!.birthDate != DateTime(0)) {
+
+        String birthDate = DateFormat('yyyy-MM-dd').format(allMissingSearchResult.missingPersonInfo!.birthDate);
+        return CustomCardShowPersonInfo(
+          backgroundColor: ColorManager.backgroundCard,
+          name: allMissingSearchResult.missingPersonInfo!.name,
+          address: allMissingSearchResult.missingPersonInfo!.address,
+          phone: allMissingSearchResult.missingPersonInfo!.phone,
+          nationalId: allMissingSearchResult.missingPersonInfo!.nationalId,
+          gender: allMissingSearchResult.missingPersonInfo!.gender,
+          bloodType: allMissingSearchResult.missingPersonInfo!.bloodType,
+          birthDate: birthDate,
+          status: allMissingSearchResult.missingPersonInfo!.status,
+          description: allMissingSearchResult.missingPersonInfo!.description,
+        );
+
     } else {
-      return Container();
+      return Container(
+        width: double.infinity,
+        margin: const EdgeInsets.symmetric(horizontal: AppMargin.m100),
+        decoration: BoxDecoration(
+          color: ColorManager.background,
+          // Replace with your ColorManager.background
+          borderRadius: BorderRadius.circular(AppSize.s16),
+          boxShadow: const [
+            BoxShadow(
+              color: ColorManager.gray,
+              blurRadius: AppSize.s4,
+              spreadRadius: AppSize.s4,
+            ),
+          ],
+          border: Border.all(
+              color: ColorManager.gray,
+              width: AppSize.s2
+          ),
+        ),
+        padding: const EdgeInsets.all(AppPadding.p16),
+        child: Text(
+          'No Data Found' ,
+          textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.displayMedium,
+        ),
+      );
     }
   }
 
@@ -172,7 +202,7 @@ class _MissingResultState extends State<MissingResult> {
 
   // missing relative info
   Widget _getMissingRelativeInfo(List<MissingRelativeInfo>? missingRelatives) {
-    if (missingRelatives != null) {
+    if (missingRelatives!.isNotEmpty) {
       return ListView(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
@@ -186,14 +216,38 @@ class _MissingResultState extends State<MissingResult> {
                       nationalId: relative.personInfo!.nationalId,
                       gender: relative.personInfo!.gender,
                       bloodType: relative.personInfo!.bloodType,
-                      birthDate: relative.personInfo!.birthDate,
+                      birthDate: DateFormat('yyyy-MM-dd').format(relative.personInfo!.birthDate),
                       status: relative.personInfo!.status,
                       description: relative.personInfo!.description),
                 ))
             .toList(),
       );
     } else {
-      return Container();
+      return Container(
+        margin: const EdgeInsets.symmetric(horizontal: AppMargin.m100),
+        decoration: BoxDecoration(
+          color: ColorManager.background,
+          // Replace with your ColorManager.background
+          borderRadius: BorderRadius.circular(AppSize.s16),
+          boxShadow: const [
+            BoxShadow(
+              color: ColorManager.gray,
+              blurRadius: AppSize.s4,
+              spreadRadius: AppSize.s4,
+            ),
+          ],
+          border: Border.all(
+              color: ColorManager.gray,
+              width: AppSize.s2
+          ),
+        ),
+        padding: const EdgeInsets.all(AppPadding.p16),
+        child: Text(
+          'No Relative Found' ,
+          textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.displayMedium,
+        ),
+      );
     }
   }
 

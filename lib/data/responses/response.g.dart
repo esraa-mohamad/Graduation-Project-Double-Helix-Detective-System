@@ -120,7 +120,9 @@ PersonInfoResponse _$PersonInfoResponseFromJson(Map<String, dynamic> json) =>
       nationalId: json['national_id'] as String?,
       gender: json['gender'] as String?,
       bloodType: json['bloodType'] as String?,
-      birthDate: json['birthdate'] as String?,
+      birthDate: json['birthdate'] == null
+          ? null
+          : DateTime.parse(json['birthdate'] as String),
       status: json['status'] as String?,
       description: json['description'] as String?,
     );
@@ -133,7 +135,7 @@ Map<String, dynamic> _$PersonInfoResponseToJson(PersonInfoResponse instance) =>
       'national_id': instance.nationalId,
       'gender': instance.gender,
       'bloodType': instance.bloodType,
-      'birthdate': instance.birthDate,
+      'birthdate': instance.birthDate?.toIso8601String(),
       'status': instance.status,
       'description': instance.description,
     };
@@ -195,7 +197,9 @@ MissingPersonInfoResponse _$MissingPersonInfoResponseFromJson(
       nationalId: json['national_id'] as String?,
       gender: json['gender'] as String?,
       bloodType: json['bloodType'] as String?,
-      birthDate: json['birthdate'] as String?,
+      birthDate: json['birthdate'] == null
+          ? null
+          : DateTime.parse(json['birthdate'] as String),
       status: json['status'] as String?,
       description: json['description'] as String?,
       matchStatus: json['match_status'] as String?,
@@ -211,7 +215,7 @@ Map<String, dynamic> _$MissingPersonInfoResponseToJson(
       'national_id': instance.nationalId,
       'gender': instance.gender,
       'bloodType': instance.bloodType,
-      'birthdate': instance.birthDate,
+      'birthdate': instance.birthDate?.toIso8601String(),
       'status': instance.status,
       'description': instance.description,
       'match_status': instance.matchStatus,

@@ -10,6 +10,17 @@ extension NonNullString on String?{
   }
 }
 
+extension NonNullDateTime on DateTime? {
+  DateTime orNow() {
+    if (this == null) {
+      return DateTime.now();
+    } else {
+      return this!;
+    }
+  }
+}
+
+
 extension NonNullInteger on int?{
   int orZero(){
     if(this == null){
