@@ -112,26 +112,31 @@ class _SearchDatabaseFormViewState extends State<SearchDatabaseFormView> {
                     StreamBuilder<String?>(
                         stream: _viewModel.statusErrorOutput,
                         builder: (context, snapshot) {
-                          return CustomDropDownMenu(
-                            errorText: snapshot.data,
-                            dropdownMenuEntries: const <DropdownMenuEntry<
-                                String>>[
-                              DropdownMenuEntry(
-                                  value: AppStrings.crimePerson,
-                                  label: AppStrings.crimePerson),
-                              DropdownMenuEntry(
-                                  value: AppStrings.acknowledgedPerson,
-                                  label: AppStrings.acknowledgedPerson),
-                              DropdownMenuEntry(
-                                  value: AppStrings.allDb,
-                                  label: AppStrings.allDb),
-                            ],
-                            label: Text(
-                              AppStrings.statusPerson,
-                              style: Theme.of(context).textTheme.bodyMedium,
-                            ),
-                            controller: _statusController,
-                            width: MediaQuery.of(context).size.width * .95,
+                          return LayoutBuilder(
+                            builder: (context, constraints){
+                              return CustomDropDownMenu(
+                                errorText: snapshot.data,
+                                dropdownMenuEntries: const <DropdownMenuEntry<
+                                    String>>[
+                                  DropdownMenuEntry(
+                                      value: AppStrings.crimePerson,
+                                      label: AppStrings.crimePerson),
+                                  DropdownMenuEntry(
+                                      value: AppStrings.acknowledgedPerson,
+                                      label: AppStrings.acknowledgedPerson),
+                                  DropdownMenuEntry(
+                                      value: AppStrings.allDb,
+                                      label: AppStrings.allDb),
+                                ],
+                                label: Text(
+                                  AppStrings.statusPerson,
+                                  style: Theme.of(context).textTheme.bodyMedium,
+                                ),
+                                controller: _statusController,
+                                width: constraints.maxWidth,
+                              );
+                            }
+
                           );
                         }),
                     const SizedBox(
