@@ -20,15 +20,11 @@ class LoginView extends StatefulWidget {
 
 class _LoginViewState extends State<LoginView> {
   final LoginViewModel _loginViewModel = instance<LoginViewModel>();
-
   final _formKey = GlobalKey<FormState>();
   final AppPreferences _appPreferences = instance<AppPreferences>();
-
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-
    bool _visiblePassword = false;
-
   _bind(){
     _loginViewModel.start();
     _emailController.addListener(() => _loginViewModel.setEmail(_emailController.text));
@@ -44,7 +40,6 @@ class _LoginViewState extends State<LoginView> {
       }
     });
   }
-
   @override
   void initState() {
     _bind();

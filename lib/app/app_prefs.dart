@@ -16,24 +16,6 @@ class AppPreferences{
   Future<bool> isOnBoardingScreenViewed() async{
     return _sharedPreferences.getBool(PREFS_KEY_ONBOARDING_SCREEN_VIEW)??false;
   }
-
-  // Login with token
-  // Future<void> setUserLoggedIn(String token) async {
-  //   _sharedPreferences.setBool(PREFS_KEY_IS_USER_LOGGED_IN, true);
-  //   _sharedPreferences.setString(PREFS_KEY_AUTH_TOKEN, token);
-  // }
-  //
-  // Future<bool> isUserLoggedIn() async {
-  //   return _sharedPreferences.getBool(PREFS_KEY_IS_USER_LOGGED_IN) ?? false;
-  // }
-  //
-  // Future<String?> getAuthToken() async {
-  //   String? token= _sharedPreferences.getString(PREFS_KEY_AUTH_TOKEN);
-  //   return  token;
-  //
-  // }
-
-
   Future<void>
   setUserLoggedIn(String token, DateTime expiry) async {
     await _sharedPreferences.setBool(PREFS_KEY_IS_USER_LOGGED_IN, true);
@@ -54,10 +36,8 @@ class AppPreferences{
           return false ;
         }
       }
-      // User is logged in and token is valid
       return true;
     } else {
-      // User is not logged in
       return false;
     }
   }

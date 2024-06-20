@@ -57,8 +57,6 @@ MissingSearchViewModelInput ,
 
   void clearData() {
     missingObject = MissingSearchObject(file: File(""));
-
-    // Clear the streams
     fileInput.add(File(""));
     areAllInputsValidStreamController.add(null);
     isSearchMissingSuccessfullyStreamController.add(false);
@@ -77,8 +75,6 @@ MissingSearchViewModelInput ,
             similarity: 0),
         missingRelativeInfo: []));
     resultMissingRelativeStreamController.add(<MissingRelativeInfo>[]);
-
-    // Reset the state to ContentState
     inputState.add(ContentState());
   }
 

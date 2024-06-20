@@ -23,8 +23,6 @@ class CompareDnaFormView extends StatefulWidget {
 class _CompareDnaFormViewState extends State<CompareDnaFormView> {
   final _formKey = GlobalKey<FormState>();
   late CompareDnaViewModel _compareDnaViewModel;
-
-
   void _bind() {
     _compareDnaViewModel = instance<CompareDnaViewModel>();
     _compareDnaViewModel.start();
@@ -38,7 +36,6 @@ class _CompareDnaFormViewState extends State<CompareDnaFormView> {
       }
     });
   }
-
   @override
   void initState() {
     _bind();

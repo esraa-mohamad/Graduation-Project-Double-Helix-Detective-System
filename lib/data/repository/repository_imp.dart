@@ -49,14 +49,8 @@ class RepositoryImp implements Repository{
       try {
         final response = await _remoteDataSource.add(addPopulationRequest);
         if(response.status == ApiInternalStatus.SUCCESSPOPULATION){
-          // success
-          // either right
-          // return data
           return Right(response.toDomain());
         }else{
-          // failure
-          // either left
-          //return business error
           return Left(Failure(
               status:  response.status ?? ResponseStatus.DEFAULT ,
               message: response.message ?? ResponseMessage.DEFAULT
@@ -74,8 +68,7 @@ class RepositoryImp implements Repository{
   Future<Either<Failure, void>> logout(LogoutRequest logoutRequest) async {
     if (await _networkInfo.isConnection) {
       try {
-        // Assuming response handling logic here
-        return const Right(null); // Return Right with void value
+        return const Right(null);
       } catch (error) {
         return Left(ErrorHandler.handle(error).failure);
       }
@@ -90,14 +83,8 @@ class RepositoryImp implements Repository{
       try {
         final response = await _remoteDataSource.compareDna(compareDnaRequest);
         if(response.status == ApiInternalStatus.SUCCESS){
-          // success
-          // either right
-          // return data
           return Right(response.toDomain());
         }else{
-          // failure
-          // either left
-          //return business error
           return Left(Failure(
               status:  response.status ?? ResponseStatus.DEFAULT ,
               message: response.message ?? ResponseMessage.DEFAULT
@@ -117,14 +104,8 @@ class RepositoryImp implements Repository{
       try {
         final response = await _remoteDataSource.identificationSearch(identifySearchRequest);
         if(response.status == ApiInternalStatus.SUCCESS){
-          // success
-          // either right
-          // return data
           return Right(response.toDomain());
         }else{
-          // failure
-          // either left
-          //return business error
           return Left(Failure(
               status:  response.status ?? ResponseStatus.DEFAULT ,
               message: response.message ?? ResponseMessage.DEFAULT

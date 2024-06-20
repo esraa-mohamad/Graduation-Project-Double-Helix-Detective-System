@@ -11,9 +11,7 @@ import 'base_usecase.dart';
 class PaternityTestUseCase
     extends BaseUseCase<PaternityTestUseCaseInput, PaternityTest> {
   final Repository _repository;
-
   PaternityTestUseCase(this._repository);
-
   @override
   Future<Either<Failure, PaternityTest>> execute(
       PaternityTestUseCaseInput input) async {
@@ -22,7 +20,6 @@ class PaternityTestUseCase
     );
   }
 }
-
 class PaternityTestUseCaseInput {
   File fileChild;
   File fileFather;

@@ -31,14 +31,6 @@ Failure _handleError(DioException error){
       return DataSource.BAD_REQUEST.getFailure();
     case DioExceptionType.badResponse:
       return _handleBadResponse(error.response);
-      // if(error.response != null && error.response?.statusCode != null && error.response?.statusMessage != null){
-      //   return Failure(
-      //     status: error.response?.statusCode ?? 0,
-      //     message: error.response?.statusMessage ?? '' ,
-      //   );
-      // }else{
-      //   return DataSource.DEFAULT.getFailure();
-      // }
     case DioExceptionType.cancel:
       return DataSource.CANCEL.getFailure();
     case DioExceptionType.connectionError:

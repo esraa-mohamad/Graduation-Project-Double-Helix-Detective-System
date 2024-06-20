@@ -71,7 +71,6 @@ class CompareDnaViewModel extends BaseViewModel with CompareDnaViewModelInputs,C
     isComparedDnaSuccessfullyStreamController.add(true);
     });
   }
-
   @override
   setFileA(File file) {
     fileAInput.add(file);
@@ -82,7 +81,6 @@ class CompareDnaViewModel extends BaseViewModel with CompareDnaViewModelInputs,C
     }
     validate();
   }
-
   @override
   setFileB(File file) {
     fileBInput.add(file);
@@ -98,36 +96,25 @@ class CompareDnaViewModel extends BaseViewModel with CompareDnaViewModelInputs,C
   // inputs
   @override
   Sink get areInputsValidInput => areAllInputsValidStreamController.sink;
-
   @override
   Sink get fileAInput => fileAStreamController.sink;
-
   @override
   Sink get fileBInput => fileBStreamController.sink;
-
-
   // outputs
   @override
   Stream<bool> get areInputsValidOutput => areAllInputsValidStreamController.stream.map((_) => _areAllInputsValid());
-
   @override
   Stream<File> get fileAOutput => fileAStreamController.stream.map((fileA) => fileA);
-
   @override
   Stream<File> get fileBOutput => fileBStreamController.stream.map((fileB) => fileB);
-
-
   bool _areAllInputsValid() {
     return compareDnaObject.fileA.path.isNotEmpty && compareDnaObject.fileB.path.isNotEmpty;
   }
-
   validate() {
     areInputsValidInput.add(null);
   }
-
   @override
   Sink get compareDnaInput => resultCompareDnaStreamController.sink;
-
   @override
   Stream<CompareDna> get compareDnaOutput => resultCompareDnaStreamController.stream.map((compareDna) => compareDna);
 
