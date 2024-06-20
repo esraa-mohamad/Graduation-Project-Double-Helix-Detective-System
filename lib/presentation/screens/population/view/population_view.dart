@@ -215,7 +215,6 @@ class _PopulationViewState extends State<PopulationView> {
                         builder: (context , snapshot){
                           return CustomDropDownMenu(
                             controller: _genderController,
-                            width: MediaQuery.of(context).size.width / 2.08,
                             dropdownMenuEntries: const <DropdownMenuEntry<String>>[
                               DropdownMenuEntry(
                                 value: AppStrings.malePerson,
@@ -274,7 +273,6 @@ class _PopulationViewState extends State<PopulationView> {
                         builder: (context , snapshot){
                           return CustomDropDownMenu(
                             controller: _bloodController,
-                            width: MediaQuery.of(context).size.width / 2.08,
                             dropdownMenuEntries: const <DropdownMenuEntry<String>>[
                               DropdownMenuEntry(
                                 value: AppStrings.aaPerson,
@@ -327,7 +325,6 @@ class _PopulationViewState extends State<PopulationView> {
                         builder: (context,snapshot){
                           return CustomDropDownMenu(
                             controller: _statusController,
-                            width: MediaQuery.of(context).size.width / 2.08,
                             dropdownMenuEntries: const <DropdownMenuEntry<String>>[
                               DropdownMenuEntry(
                                 value: AppStrings.missingPerson,

@@ -4,7 +4,6 @@ class CustomDropDownMenu extends StatelessWidget {
    const CustomDropDownMenu({
     required this.dropdownMenuEntries,
     required this.label,
-    this.width,
     this.errorText,
     this.controller,
     super.key
@@ -12,18 +11,21 @@ class CustomDropDownMenu extends StatelessWidget {
 
   final List<DropdownMenuEntry<dynamic>> dropdownMenuEntries;
   final Widget label ;
-  final double? width;
   final String? errorText;
   final TextEditingController? controller;
   @override
   Widget build(BuildContext context) {
-    return DropdownMenu(
-        controller: controller,
-        width: width,
-        dropdownMenuEntries:dropdownMenuEntries,
-        enableSearch: true,
-        label: label,
-        errorText: errorText,
+    return LayoutBuilder(
+      builder: (context , constraints){
+        return DropdownMenu(
+          controller: controller,
+          width: constraints.maxWidth,
+          dropdownMenuEntries:dropdownMenuEntries,
+          enableSearch: true,
+          label: label,
+          errorText: errorText,
+        );
+      }
     );
   }
 }

@@ -131,7 +131,7 @@ class _SearchDatabaseFormViewState extends State<SearchDatabaseFormView> {
                               style: Theme.of(context).textTheme.bodyMedium,
                             ),
                             controller: _statusController,
-                            width: MediaQuery.of(context).size.width * .95,
+
                           );
                         }),
                     const SizedBox(

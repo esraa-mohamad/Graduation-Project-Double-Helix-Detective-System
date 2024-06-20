@@ -96,7 +96,9 @@ class CustomCardShowPersonInfo extends StatelessWidget {
                             ),
                             Text(
                               phone ,
-                              style: Theme.of(context).textTheme.titleMedium,
+                              style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                                fontSize: FontSize.s28
+                              ),
                             ),
                             const SizedBox(
                               width: AppSize.s8,
@@ -119,7 +121,9 @@ class CustomCardShowPersonInfo extends StatelessWidget {
                             ),
                             Text(
                               nationalId ,
-                              style: Theme.of(context).textTheme.titleMedium,
+                              style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                                  fontSize: FontSize.s28
+                              ),
                             ),
 
                           ],
