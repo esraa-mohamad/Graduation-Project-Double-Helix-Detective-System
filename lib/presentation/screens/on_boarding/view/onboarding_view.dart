@@ -12,7 +12,7 @@ import '../../../resource/assets_manager.dart';
 import '../../../resource/color_manager.dart';
 import '../../../resource/routes_manager.dart';
 import '../../../resource/values_manager.dart';
-import '../viewModel/onBoarding_view_model.dart';
+import '../viewModel/onboarding_view_model.dart';
 
 class OnBoarding extends StatefulWidget {
   const OnBoarding({super.key});
