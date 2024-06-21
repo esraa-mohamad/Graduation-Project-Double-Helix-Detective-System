@@ -5,6 +5,7 @@ import 'package:double_helix_detective_system/presentation/resource/strings_mana
 import 'package:double_helix_detective_system/presentation/resource/values_manager.dart';
 import 'package:double_helix_detective_system/presentation/screens/missing_persons/viewModel/missing_form_view_model.dart';
 import 'package:double_helix_detective_system/presentation/widget/elevated_button.dart';
+import 'package:double_helix_detective_system/presentation/widget/named_uploaded_file.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -145,24 +146,7 @@ class _MissingFormState extends State<MissingForm> {
   // to add file to container to show it
   Widget _getFilePicker(File? file) {
     if (file != null && file.path.isNotEmpty) {
-      return Center(
-        child: Row(
-          children: [
-            const Icon(
-              Icons.file_present_rounded,
-              color: ColorManager.primary,
-              size: AppSize.s25,
-            ),
-            Expanded(
-              child: Text(
-                'File Name:${path.basename(file.path)}',
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
-            ),
-          ],
-        ),
-      );
+      return NamedUploadedFile(nameFile: path.basename(file.path));
     } else {
       return Container();
     }

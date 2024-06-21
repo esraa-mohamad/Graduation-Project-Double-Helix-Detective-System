@@ -8,6 +8,7 @@ import 'package:double_helix_detective_system/presentation/resource/values_manag
 import 'package:double_helix_detective_system/presentation/screens/population/viewModel/population_viewmodel.dart';
 import 'package:double_helix_detective_system/presentation/widget/custom_snackbar.dart';
 import 'package:double_helix_detective_system/presentation/widget/elevated_button.dart';
+import 'package:double_helix_detective_system/presentation/widget/named_uploaded_file.dart';
 import 'package:double_helix_detective_system/presentation/widget/text_form_field.dart';
 import 'package:double_helix_detective_system/presentation/widget/upload_dna_file.dart';
 import 'package:file_picker/file_picker.dart';
@@ -75,6 +76,7 @@ class _PopulationViewState extends State<PopulationView> {
         {
           Navigator.of(context).pushReplacementNamed(RoutesManager.servicesPresentedRoute);
         });
+        showSnackBar(context);
       }
     });
   }
@@ -420,7 +422,6 @@ class _PopulationViewState extends State<PopulationView> {
                             RoutesManager.servicesPresentedRoute,
                                 (route) => false
                         );
-                        const CustomSnackBar();
                       }, textButton: AppStrings.backSer,
                   ),
               ),
@@ -450,20 +451,7 @@ class _PopulationViewState extends State<PopulationView> {
   // to add file to container to show it
   Widget _getFilePicker(File? file){
     if(file != null && file.path.isNotEmpty){
-      return  Center(
-        child: Row(
-          children: [
-            const Icon(Icons.file_present_rounded , color: ColorManager.primary,size: AppSize.s25,),
-            Expanded(
-              child: Text(
-                'File Name:${path.basename(file.path)}',
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
-            ),
-          ],
-        ),
-      );
+      return  NamedUploadedFile(nameFile: path.basename(file.path));
 
     }else {
       return Container();
@@ -481,10 +469,6 @@ class _PopulationViewState extends State<PopulationView> {
       var file = File(result.files.single.path!);
       _populationViewModel.setDnaSeq(file);
       }
-    // if(result == null) return;
-    // PlatformFile file = result.files.single;
-    // print(file);
-    // print(file.path);
   }
 
   @override

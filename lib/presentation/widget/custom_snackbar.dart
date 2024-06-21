@@ -1,41 +1,50 @@
-import 'package:double_helix_detective_system/presentation/resource/color_manager.dart';
+import 'package:double_helix_detective_system/presentation/resource/font_manager.dart';
+import 'package:double_helix_detective_system/presentation/resource/values_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
-class CustomSnackBar extends StatelessWidget {
-  const CustomSnackBar({super.key});
+import '../resource/assets_manager.dart';
+import '../resource/color_manager.dart';
+import '../resource/strings_manager.dart';
 
-  @override
-  Widget build(BuildContext context) {
-    return
-        SnackBar(
-          elevation: 8,
-          behavior: SnackBarBehavior.floating,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-          backgroundColor:
-          ColorManager.primary,
-          duration: const Duration(seconds: 4),
-          content: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Icon(Icons.info, color: Colors.white),
-              const SizedBox(width: 10),
-              const Expanded(
-                child: Text(
-                  'Person added Successfully',
-                  style: TextStyle(color: Colors.white, fontSize: 16),
+void showSnackBar(BuildContext context){
+   ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        elevation: AppSize.s8,
+        behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppSize.s12),
+        ),
+        backgroundColor:
+        ColorManager.primary,
+        duration: const Duration(seconds: 4),
+        content: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Lottie.asset(
+                AssetsLottiManager.addedSuccess,
+                height: AppSize.s60,
+                 width: AppSize.s60,
+                repeat: true,
+                reverse: false,
+                animate: true),
+            const SizedBox(width: AppSize.s12),
+              Expanded(
+              child: Text(
+                AppStrings.addedSuccess,
+                style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                  fontSize: FontSize.s18,
                 ),
               ),
-              IconButton(
-                icon: const Icon(Icons.close, color: Colors.white),
-                onPressed: () {
-                  ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                },
-              ),
-            ],
-          ),
-        );
-    }
-  }
-
+            ),
+            IconButton(
+              icon: const Icon(Icons.close, color: ColorManager.white),
+              onPressed: () {
+                ScaffoldMessenger.of(context).hideCurrentSnackBar();
+              },
+            ),
+          ],
+        ),
+      )
+  );
+}

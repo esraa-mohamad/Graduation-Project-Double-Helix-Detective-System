@@ -18,6 +18,7 @@ class AppStrings{
   static const service='Services';
   static const identification='Identification';
   static const chooseIdentification='Choose Identification Case';
+  static const addedSuccess = 'Person added Successfully';
   //missing search
   static const search = "Search";
   static const searchDB = "Search DataBase";

@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:double_helix_detective_system/app/di.dart';
+import 'package:double_helix_detective_system/presentation/widget/named_uploaded_file.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -145,20 +146,7 @@ class _CompareDnaFormViewState extends State<CompareDnaFormView> {
 
   Widget _getFilePicker(File? file) {
     if (file != null && file.path.isNotEmpty) {
-      return Center(
-        child: Row(
-          children: [
-            const Icon(Icons.file_present_rounded, color: ColorManager.primary, size: AppSize.s25),
-            Expanded(
-              child: Text(
-                'File Name: ${path.basename(file.path)}',
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
-            ),
-          ],
-        ),
-      );
+      return NamedUploadedFile(nameFile: path.basename(file.path),);
     } else {
       return Container();
     }
