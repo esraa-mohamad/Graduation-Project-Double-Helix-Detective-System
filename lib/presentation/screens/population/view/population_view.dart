@@ -6,6 +6,7 @@ import 'package:double_helix_detective_system/presentation/resource/color_manage
 import 'package:double_helix_detective_system/presentation/resource/strings_manager.dart';
 import 'package:double_helix_detective_system/presentation/resource/values_manager.dart';
 import 'package:double_helix_detective_system/presentation/screens/population/viewModel/population_viewmodel.dart';
+import 'package:double_helix_detective_system/presentation/widget/custom_snackbar.dart';
 import 'package:double_helix_detective_system/presentation/widget/elevated_button.dart';
 import 'package:double_helix_detective_system/presentation/widget/text_form_field.dart';
 import 'package:double_helix_detective_system/presentation/widget/upload_dna_file.dart';
@@ -419,6 +420,7 @@ class _PopulationViewState extends State<PopulationView> {
                             RoutesManager.servicesPresentedRoute,
                                 (route) => false
                         );
+                        const CustomSnackBar();
                       }, textButton: AppStrings.backSer,
                   ),
               ),
