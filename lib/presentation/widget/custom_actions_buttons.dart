@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../resource/routes_manager.dart';
 import '../resource/strings_manager.dart';
 import 'elevated_button.dart';
 class CustomActionsButtons extends StatelessWidget {
-  const CustomActionsButtons({super.key,required this.onPressed});
+  const CustomActionsButtons({super.key,required this.onPressed, required this.onPressedAdd});
   final void Function()? onPressed;
+  final void Function()? onPressedAdd ;
   @override
   Widget build(BuildContext context) {
     return  Row(
@@ -15,9 +15,8 @@ class CustomActionsButtons extends StatelessWidget {
             onPressed: onPressed,
             textButton: AppStrings.backSer),
         CustomeElevatedButton(
-            onPressed: () {
-              Navigator.pushNamed(context, RoutesManager.populationRoute);
-            }, textButton: AppStrings.addDB),
+            onPressed: onPressedAdd,
+            textButton: AppStrings.addDB),
       ],
     );
   }

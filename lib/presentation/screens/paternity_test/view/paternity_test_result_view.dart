@@ -80,7 +80,13 @@ class _PaternityTestResultState extends State<PaternityTestResult> {
                 height: AppSize.s40,
               ),
               CustomActionsButtons(
+                onPressedAdd: () {
+                  _paternityTestViewModel.clearData();
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      RoutesManager.populationRoute, (route) => false);
+                },
                 onPressed: () {
+                  _paternityTestViewModel.clearData();
                   Navigator.of(context).pushNamedAndRemoveUntil(
                       RoutesManager.servicesPresentedRoute, (route) => false);
                 },

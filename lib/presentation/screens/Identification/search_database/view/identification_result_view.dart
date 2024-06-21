@@ -67,6 +67,11 @@ class _IdentificationResultState extends State<IdentificationResult> {
           height: AppSize.s40,
         ),
         CustomActionsButtons(
+          onPressedAdd: () {
+            _viewModel.clearData();
+            Navigator.of(context).pushNamedAndRemoveUntil(
+                RoutesManager.populationRoute, (route) => false);
+          },
           onPressed: () {
             _viewModel.clearData();
             Navigator.of(context).pushNamedAndRemoveUntil(

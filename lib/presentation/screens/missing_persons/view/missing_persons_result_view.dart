@@ -105,7 +105,13 @@ class _MissingResultState extends State<MissingResult> {
           child: Container(
             color: ColorManager.lightBackground,
             padding:const  EdgeInsets.all(AppPadding.p14),
-            child: CustomActionsButtons(onPressed: (){
+            child: CustomActionsButtons(
+              onPressedAdd: () {
+                _missingSearchViewModel.clearData();
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                    RoutesManager.populationRoute, (route) => false);
+              },
+              onPressed: (){
               _missingSearchViewModel.clearData();
               Navigator.of(context).pushNamedAndRemoveUntil(
                   RoutesManager.servicesPresentedRoute,

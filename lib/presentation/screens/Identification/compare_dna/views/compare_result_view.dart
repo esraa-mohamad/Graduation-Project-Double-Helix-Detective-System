@@ -19,26 +19,22 @@ class CompareDnaResultView extends StatefulWidget {
 }
 
 class _CompareDnaResultViewState extends State<CompareDnaResultView> {
-
-  late CompareDnaViewModel _viewModel ;
-
+  late CompareDnaViewModel _viewModel;
 
   @override
   void initState() {
     super.initState();
-    _viewModel=instance<CompareDnaViewModel>();
+    _viewModel = instance<CompareDnaViewModel>();
   }
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       appBar: AppBar(
         title: const Text(AppStrings.comparedResult),
         leading: IconButton(
-          icon: const Icon(
-              Icons.arrow_back_ios_outlined
-          ),
-          onPressed: (){
+          icon: const Icon(Icons.arrow_back_ios_outlined),
+          onPressed: () {
             _viewModel.reset();
             Navigator.pop(context);
           },
@@ -46,17 +42,17 @@ class _CompareDnaResultViewState extends State<CompareDnaResultView> {
       ),
       body: StreamBuilder<FlowState>(
           stream: _viewModel.outState,
-          builder: (context , snapshot){
-            return snapshot.data?.getScreenWidget(context , _getContentView(), (){
-              _viewModel.compareDna();
-            }) ??
-                _getContentView() ;
-          }
-      ),
+          builder: (context, snapshot) {
+            return snapshot.data?.getScreenWidget(context, _getContentView(),
+                    () {
+                  _viewModel.compareDna();
+                }) ??
+                _getContentView();
+          }),
     );
   }
 
-  Widget _getContentView(){
+  Widget _getContentView() {
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(AppPadding.p20),
@@ -82,13 +78,18 @@ class _CompareDnaResultViewState extends State<CompareDnaResultView> {
               const SizedBox(
                 height: AppSize.s40,
               ),
-              CustomActionsButtons(onPressed: (){
-                _viewModel.reset();
-                Navigator.of(context).pushNamedAndRemoveUntil(
-                    RoutesManager.servicesPresentedRoute,
-                        (route) => false
-                );
-              },),
+              CustomActionsButtons(
+                onPressed: () {
+                  _viewModel.reset();
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      RoutesManager.servicesPresentedRoute, (route) => false);
+                },
+                onPressedAdd: () {
+                  _viewModel.reset();
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      RoutesManager.populationRoute, (route) => false);
+                },
+              ),
             ],
           ),
         ),
@@ -96,10 +97,10 @@ class _CompareDnaResultViewState extends State<CompareDnaResultView> {
     );
   }
 
-  Widget _getCompareResult(){
+  Widget _getCompareResult() {
     return StreamBuilder<CompareDna>(
         stream: _viewModel.compareDnaOutput,
-        builder: (context , snapshot){
+        builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const CircularProgressIndicator();
           } else if (snapshot.hasData) {
@@ -111,18 +112,14 @@ class _CompareDnaResultViewState extends State<CompareDnaResultView> {
             // Handle the case when there is no data yet
             return const Text('No Data Available');
           }
-        }
-    );
+        });
   }
 
-
-  Widget _getCompareDnaData(CompareDna? compareDna){
-
-    if(compareDna !=null){
+  Widget _getCompareDnaData(CompareDna? compareDna) {
+    if (compareDna != null) {
       return Column(
         children: [
-          Lottie.asset(
-              AssetsLottiManager.criminal,
+          Lottie.asset(AssetsLottiManager.criminal,
               height: AppSize.s300,
               width: AppSize.s300,
               repeat: true,
@@ -157,17 +154,16 @@ class _CompareDnaResultViewState extends State<CompareDnaResultView> {
             ),
           ),
           Text(
-            compareDna.match =='DNA Not MATCH' ?
-            AppStrings.notAccusedPerson   :
-            AppStrings.accusedPerson,
+            compareDna.match == 'DNA Not MATCH'
+                ? AppStrings.notAccusedPerson
+                : AppStrings.accusedPerson,
             style: Theme.of(context).textTheme.bodyLarge,
           ),
         ],
       );
-    }else{
+    } else {
       return Container();
     }
-
   }
 
   @override
@@ -176,6 +172,3 @@ class _CompareDnaResultViewState extends State<CompareDnaResultView> {
     super.dispose();
   }
 }
-
-
-
