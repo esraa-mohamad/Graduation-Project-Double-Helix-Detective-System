@@ -95,4 +95,14 @@ class AppStrings{
   static const errorGender ="Choose gender male or female";
   static const errorBloodType ="Choose Blood type from list";
 
+  //No data cases
+  static const noName='No name Found';
+  static const noAddress='No Address Found';
+  static const noPhone='No Phone number';
+  static const noNational='No National Id ';
+  static const noGender='No Gender';
+  static const noBlood='No Blood type';
+
+
+
 }

@@ -42,7 +42,6 @@ class _SearchDatabaseFormViewState extends State<SearchDatabaseFormView> {
             Navigator.of(context).pushNamed(RoutesManager.searchResultRoute);
           }
         });
-        showSnackBar(context);
       }
     });
   }

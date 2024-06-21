@@ -1,5 +1,6 @@
 
 import 'package:double_helix_detective_system/presentation/resource/color_manager.dart';
+import 'package:double_helix_detective_system/presentation/resource/strings_manager.dart';
 import 'package:double_helix_detective_system/presentation/resource/values_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -57,7 +58,7 @@ class CustomCardShowPersonInfo extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          name,
+                          name.isEmpty?AppStrings.noName:name,
                           style: Theme.of(context)
                               .textTheme
                               .bodyLarge
@@ -77,7 +78,7 @@ class CustomCardShowPersonInfo extends StatelessWidget {
                               width: AppSize.s4,
                             ),
                             Text(
-                              address ,
+                              address.isEmpty?AppStrings.noAddress:address ,
                               style: Theme.of(context).textTheme.titleMedium!.copyWith(
                                   fontSize: FontSize.s40
                               ),
@@ -95,7 +96,7 @@ class CustomCardShowPersonInfo extends StatelessWidget {
                               width: AppSize.s4,
                             ),
                             Text(
-                              phone ,
+                              phone.isEmpty?AppStrings.noPhone:phone ,
                               style: Theme.of(context).textTheme.titleMedium!.copyWith(
                                 fontSize: FontSize.s28
                               ),
@@ -120,7 +121,7 @@ class CustomCardShowPersonInfo extends StatelessWidget {
                               width: AppSize.s4,
                             ),
                             Text(
-                              nationalId ,
+                              nationalId.isEmpty?AppStrings.noNational:nationalId ,
                               style: Theme.of(context).textTheme.titleMedium!.copyWith(
                                   fontSize: FontSize.s28
                               ),
@@ -139,7 +140,7 @@ class CustomCardShowPersonInfo extends StatelessWidget {
                               width: AppSize.s4,
                             ),
                             Text(
-                              gender ,
+                              gender.isEmpty?AppStrings.noGender:gender ,
                               style: Theme.of(context).textTheme.titleMedium,
                             ),
                             const SizedBox(
@@ -162,7 +163,7 @@ class CustomCardShowPersonInfo extends StatelessWidget {
                               width: AppSize.s4,
                             ),
                             Text(
-                              bloodType,
+                              bloodType.isEmpty?AppStrings.noBlood:bloodType,
                               style: Theme.of(context).textTheme.titleMedium,
                             ),
 

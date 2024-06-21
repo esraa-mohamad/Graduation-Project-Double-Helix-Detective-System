@@ -23,8 +23,8 @@ void showSnackBar(BuildContext context){
           children: [
             Lottie.asset(
                 AssetsLottiManager.addedSuccess,
-                height: AppSize.s60,
-                 width: AppSize.s60,
+                height: AppSize.s100,
+                 width: AppSize.s100,
                 repeat: true,
                 reverse: false,
                 animate: true),
