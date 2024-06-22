@@ -2,7 +2,7 @@ import 'package:intl/intl.dart';
 
 class AppConstants {
 
-  static const String  baseUrl = "https://dna-testing-system.onrender.com";
+  static const String  baseUrl = "https://dna-testing-system-jl95.onrender.com";
   static const String  baseUrlDna = "http://127.0.0.1:5000";
   static const String empty="";
   static  DateTime emptyDate=DateTime(0);

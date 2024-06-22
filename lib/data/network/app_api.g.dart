@@ -13,7 +13,7 @@ class _AppServicesTechnical implements AppServicesTechnical {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'https://dna-testing-system.onrender.com';
+    baseUrl ??= 'https://dna-testing-system-jl95.onrender.com';
   }
 
   final Dio _dio;
