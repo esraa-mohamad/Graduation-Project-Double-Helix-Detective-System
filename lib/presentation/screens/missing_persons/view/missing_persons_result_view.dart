@@ -4,7 +4,6 @@ import 'package:double_helix_detective_system/presentation/screens/missing_perso
 import 'package:double_helix_detective_system/presentation/widget/card_show_person_info.dart';
 import 'package:double_helix_detective_system/presentation/widget/custom_actions_buttons.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import '../../../../app/di.dart';
 import '../../../common/state_renderer/state_renderer_imp.dart';
 import '../../../resource/color_manager.dart';
@@ -144,9 +143,7 @@ class _MissingResultState extends State<MissingResult> {
   // missing person info
   Widget _getMissingPersonInfo(AllMissingSearchResult? allMissingSearchResult) {
     if (allMissingSearchResult != null && allMissingSearchResult.missingPersonInfo!.birthDate != DateTime(0)) {
-
-        String birthDate = DateFormat('yyyy-MM-dd').format(allMissingSearchResult.missingPersonInfo!.birthDate);
-        return CustomCardShowPersonInfo(
+       return CustomCardShowPersonInfo(
           backgroundColor: ColorManager.backgroundCard,
           name: allMissingSearchResult.missingPersonInfo!.name,
           address: allMissingSearchResult.missingPersonInfo!.address,
@@ -154,7 +151,7 @@ class _MissingResultState extends State<MissingResult> {
           nationalId: allMissingSearchResult.missingPersonInfo!.nationalId,
           gender: allMissingSearchResult.missingPersonInfo!.gender,
           bloodType: allMissingSearchResult.missingPersonInfo!.bloodType,
-          birthDate: birthDate,
+          birth:allMissingSearchResult.missingPersonInfo!.birthDate,
           status: allMissingSearchResult.missingPersonInfo!.status,
           description: allMissingSearchResult.missingPersonInfo!.description,
         );
@@ -222,7 +219,7 @@ class _MissingResultState extends State<MissingResult> {
                       nationalId: relative.personInfo!.nationalId,
                       gender: relative.personInfo!.gender,
                       bloodType: relative.personInfo!.bloodType,
-                      birthDate: DateFormat('yyyy-MM-dd').format(relative.personInfo!.birthDate),
+                      birth: relative.personInfo!.birthDate,
                       status: relative.personInfo!.status,
                       description: relative.personInfo!.description),
                 ))

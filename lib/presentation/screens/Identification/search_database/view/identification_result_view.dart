@@ -3,7 +3,6 @@ import 'package:double_helix_detective_system/presentation/resource/color_manage
 import 'package:double_helix_detective_system/presentation/widget/card_show_person_info.dart';
 import 'package:double_helix_detective_system/presentation/widget/custom_actions_buttons.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import '../../../../../app/di.dart';
 import '../../../../common/state_renderer/state_renderer_imp.dart';
 import '../../../../resource/font_manager.dart';
@@ -100,8 +99,6 @@ class _IdentificationResultState extends State<IdentificationResult> {
 
   Widget _getSearchMatchData(SearchMatchingInfo? searchMatchingInfo) {
     if (searchMatchingInfo != null) {
-      String birthDate = DateFormat('yyyy-MM-dd')
-          .format(searchMatchingInfo.personInfo!.birthDate);
       return Column(
         children: [
           RichText(
@@ -149,7 +146,7 @@ class _IdentificationResultState extends State<IdentificationResult> {
                   nationalId: searchMatchingInfo.personInfo!.nationalId,
                   gender: searchMatchingInfo.personInfo!.gender,
                   bloodType: searchMatchingInfo.personInfo!.bloodType,
-                  birthDate: birthDate,
+                  birth:searchMatchingInfo.personInfo!.birthDate ,
                   status: searchMatchingInfo.personInfo!.status,
                   description: searchMatchingInfo.personInfo!.description)
               : Container(

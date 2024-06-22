@@ -4,6 +4,7 @@ import 'package:double_helix_detective_system/presentation/resource/strings_mana
 import 'package:double_helix_detective_system/presentation/resource/values_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:intl/intl.dart';
 
 import '../resource/assets_manager.dart';
 import '../resource/font_manager.dart';
@@ -11,7 +12,7 @@ import '../resource/font_manager.dart';
 
 
 class CustomCardShowPersonInfo extends StatelessWidget {
-  const CustomCardShowPersonInfo({ this.backgroundColor = ColorManager.background, super.key, required this.name, required this.address, required this.phone, required this.nationalId, required this.gender, required this.bloodType, required this.birthDate, required this.status, required this.description});
+  const CustomCardShowPersonInfo({ this.backgroundColor = ColorManager.background, super.key, required this.name, required this.address, required this.phone, required this.nationalId, required this.gender, required this.bloodType, required this.birth, required this.status, required this.description});
 
   final Color backgroundColor ;
   final String name ;
@@ -20,12 +21,19 @@ class CustomCardShowPersonInfo extends StatelessWidget {
   final String nationalId ;
   final String gender ;
   final String bloodType ;
-  final String birthDate ;
+  final DateTime birth ;
   final String status ;
   final String description ;
 
   @override
   Widget build(BuildContext context) {
+    bool isBirthDateValid = birth != DateTime(0) &&
+        !(birth.year == DateTime.now().year &&
+            birth.month == DateTime.now().month &&
+            birth.day == DateTime.now().day);
+    String birthDate = isBirthDateValid
+        ? DateFormat('yyyy-MM-dd').format(birth)
+        : AppStrings.noBirthDate;
     return LayoutBuilder(
       builder: (context, constraints) {
         return Container(

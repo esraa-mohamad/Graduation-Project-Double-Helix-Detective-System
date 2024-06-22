@@ -32,7 +32,7 @@ class AppStrings{
   //identification search
   static const caseP="case";
   static const uploadFirstDna="Upload First DNA";
-  static const uploadSecondDna="Upload First DNA";
+  static const uploadSecondDna="Upload Second DNA";
   // paternity
   static const uploadFather="upload father DNA";
   static const uploadChild="upload child DNA";
@@ -102,7 +102,5 @@ class AppStrings{
   static const noNational='No National Id ';
   static const noGender='No Gender';
   static const noBlood='No Blood type';
-
-
-
+  static const noBirthDate='No Birth date';
 }
